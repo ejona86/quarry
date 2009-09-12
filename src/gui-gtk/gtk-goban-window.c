@@ -2481,9 +2481,12 @@ show_about_dialog (void)
     gtk_about_dialog_set_copyright (dialog, _(copyright_string));
     gtk_about_dialog_set_comments (dialog, _(description_string));
 
-    about_dialog = GTK_WINDOW (dialog);
+    gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_destroy (GTK_WIDGET (dialog));
 
 #else /* not GTK_2_6_OR_LATER */
+
+    about_dialog = GTK_WINDOW (dialog);
 
     GtkWidget *dialog = gtk_dialog_new_with_buttons (_("About Quarry"),
 						     NULL, 0,
@@ -2525,10 +2528,11 @@ show_about_dialog (void)
     gtk_utils_standardize_dialog (GTK_DIALOG (dialog), vbox);
     gtk_widget_show_all (vbox);
 
+    gtk_window_present (about_dialog);
+
 #endif /* not GTK_2_6_OR_LATER */
   }
 
-  gtk_window_present (about_dialog);
 }
 
 
