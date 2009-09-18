@@ -29,10 +29,7 @@
 
 #include <assert.h>
 #include <math.h>
-<<<<<<< HEAD:src/sgf/sgf-utils.c
 #include <stdarg.h>
-=======
->>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/sgf/sgf-utils.c
 
 #ifdef HAVE_MEMORY_H
 #include <memory.h>
@@ -235,7 +232,6 @@ sgf_utils_count_variations (const SgfGameTree *tree, int of_current_node,
 
 
 SgfNode *
-<<<<<<< HEAD:src/sgf/sgf-utils.c
 sgf_utils_find_next_if_at_position (SgfGameTree *tree, int x, int y)
 {
 	SgfNode *node = NULL;
@@ -257,8 +253,6 @@ sgf_utils_find_next_if_at_position (SgfGameTree *tree, int x, int y)
 
 
 SgfNode *
-=======
->>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/sgf/sgf-utils.c
 sgf_utils_find_variation_at_position (SgfGameTree *tree, int x, int y,
 				      SgfDirection direction,
 				      int after_current)
@@ -274,11 +268,7 @@ sgf_utils_find_variation_at_position (SgfGameTree *tree, int x, int y,
   if (direction == SGF_NEXT) {
     if (!after_current) {
       if (!node->parent)
-<<<<<<< HEAD:src/sgf/sgf-utils.c
   	return NULL;
-=======
-	return NULL;
->>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/sgf/sgf-utils.c
 
       node = node->parent->child;
     }
@@ -294,12 +284,7 @@ sgf_utils_find_variation_at_position (SgfGameTree *tree, int x, int y,
     }
 
     return node;
-<<<<<<< HEAD:src/sgf/sgf-utils.c
   } else {
-=======
-  }
-  else {
->>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/sgf/sgf-utils.c
     SgfNode *result = NULL;
     SgfNode *limit;
 
