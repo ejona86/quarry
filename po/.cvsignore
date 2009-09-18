@@ -1,5 +1,0 @@
-*.gmo
-Makefile
-Makefile.in
-POTFILES
-remove-potcdate.sed
