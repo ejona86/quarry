@@ -832,11 +832,19 @@ int	      sgf_utils_count_variations
 		 int black_variations[BOARD_GRID_SIZE],
 		 int white_variations[BOARD_GRID_SIZE],
 		 int *other_variations);
+<<<<<<< HEAD:src/sgf/sgf.h
+SgfNode *     sgf_utils_find_next_if_at_position (SgfGameTree *tree,
+                                                    int x, int y);
+=======
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/sgf/sgf.h
 SgfNode *     sgf_utils_find_variation_at_position (SgfGameTree *tree,
 						    int x, int y,
 						    SgfDirection direction,
 						    int after_current);
+<<<<<<< HEAD:src/sgf/sgf.h
+=======
 
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/sgf/sgf.h
 void	      sgf_utils_switch_to_variation (SgfGameTree *tree,
 					     SgfDirection direction);
 void	      sgf_utils_switch_to_given_variation (SgfGameTree *tree,

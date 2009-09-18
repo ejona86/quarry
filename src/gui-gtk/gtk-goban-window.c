@@ -299,6 +299,15 @@ static void	 setup_mode_goban_clicked (GtkGobanWindow *goban_window,
 					   GtkGobanClickData *data);
 
 static GtkGobanPointerFeedback
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+		 guess_mode_pointer_moved (GtkGobanWindow *goban_window,
+					   GtkGobanPointerData *data);
+static void	 guess_mode_goban_clicked (GtkGobanWindow *goban_window,
+					   GtkGobanClickData *data);
+
+static GtkGobanPointerFeedback
+=======
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
 		 markup_mode_pointer_moved (GtkGobanWindow *goban_window,
 					    GtkGobanPointerData *data);
 static void	 markup_mode_goban_clicked (GtkGobanWindow *goban_window,
@@ -445,6 +454,12 @@ static void	 activate_move_tool (GtkGobanWindow *goban_window,
 static void	 activate_setup_tool (GtkGobanWindow *goban_window,
 				      guint callback_action,
 				      GtkCheckMenuItem *menu_item);
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+static void	 activate_guess_tool (GtkGobanWindow *goban_window,
+				      guint callback_action,
+				      GtkCheckMenuItem *menu_item);
+=======
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
 static void	 activate_scoring_tool (GtkGobanWindow *goban_window,
 					guint callback_action,
 					GtkCheckMenuItem *menu_item);
@@ -702,11 +717,21 @@ gtk_goban_window_init (GtkGobanWindow *goban_window)
     { N_("/Edit/Tools/_Setup Tool"),	"<ctrl><alt>S",
       activate_setup_tool,		0,
       "/Edit/Tools/Move Tool" },
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+    { N_("/Edit/Tools/_Guess Tool"),	"<ctrl><alt>G",
+      activate_guess_tool,		0,
+      "/Edit/Tools/Setup Tool" },
+=======
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
     { N_("/Edit/Tools/"), NULL, NULL, 0, "<Separator>" },
 
     { N_("/Edit/Tools/C_ross Markup"),	"<ctrl>1",
       activate_markup_tool,		SGF_MARKUP_CROSS,
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+      "/Edit/Tools/Guess Tool" },
+=======
       "/Edit/Tools/Setup Tool" },
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
     { N_("/Edit/Tools/_Circle Markup"), "<ctrl>2",
       activate_markup_tool,		SGF_MARKUP_CIRCLE,
       "/Edit/Tools/Cross Markup" },
@@ -883,6 +908,10 @@ gtk_goban_window_init (GtkGobanWindow *goban_window)
   static GtkItemFactoryEntry tools_menu_entries[] = {
     { N_("/Move Tool"),		"<ctrl>M",	NULL, 0, "<Item>" },
     { N_("/Setup Tool"),	"<ctrl><alt>S",	NULL, 0, "<Item>" },
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+    { N_("/Guess Tool"),	"<ctrl><alt>G",	NULL, 0, "<Item>" },
+=======
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
     { "/", NULL, NULL, 0, "<Separator>" },
 
     { N_("/Cross Markup"),	"<ctrl>1",	NULL, 0, "<Item>" },
@@ -2481,6 +2510,12 @@ show_about_dialog (void)
     gtk_about_dialog_set_copyright (dialog, _(copyright_string));
     gtk_about_dialog_set_comments (dialog, _(description_string));
 
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+    about_dialog = GTK_WINDOW (dialog);
+
+#else /* not GTK_2_6_OR_LATER */
+
+=======
     gtk_dialog_run (GTK_DIALOG (dialog));
     gtk_widget_destroy (GTK_WIDGET (dialog));
 
@@ -2488,6 +2523,7 @@ show_about_dialog (void)
 
     about_dialog = GTK_WINDOW (dialog);
 
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
     GtkWidget *dialog = gtk_dialog_new_with_buttons (_("About Quarry"),
 						     NULL, 0,
 						     GTK_STOCK_CLOSE,
@@ -2528,11 +2564,18 @@ show_about_dialog (void)
     gtk_utils_standardize_dialog (GTK_DIALOG (dialog), vbox);
     gtk_widget_show_all (vbox);
 
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+#endif /* not GTK_2_6_OR_LATER */
+  }
+
+  gtk_window_present (about_dialog);
+=======
     gtk_window_present (about_dialog);
 
 #endif /* not GTK_2_6_OR_LATER */
   }
 
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
 }
 
 
@@ -2997,7 +3040,11 @@ reset_amazons_move_data (GtkGobanWindow *goban_window)
 }
 
 
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+
+=======
 
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
 static void
 set_goban_signal_handlers (GtkGobanWindow *goban_window,
 			   GCallback pointer_moved_handler,
@@ -3027,6 +3074,17 @@ set_goban_signal_handlers (GtkGobanWindow *goban_window,
 
 
 static GtkGobanPointerFeedback
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+guess_mode_pointer_moved (GtkGobanWindow *goban_window,
+				GtkGobanPointerData *data)
+{
+  return playing_mode_pointer_moved (goban_window, data);
+}
+
+
+static GtkGobanPointerFeedback
+=======
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
 playing_mode_pointer_moved (GtkGobanWindow *goban_window,
 			    GtkGobanPointerData *data)
 {
@@ -3095,6 +3153,48 @@ playing_mode_pointer_moved (GtkGobanWindow *goban_window,
 }
 
 
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+
+static void
+guess_mode_goban_clicked (GtkGobanWindow *goban_window,
+			    GtkGobanClickData *data)
+{
+  SgfNode * node;
+  switch (data->button) {
+  case 1:
+    if (data->non_empty_feedback && !(data->modifiers & GDK_SHIFT_MASK)) {
+      int color_to_play = goban_window->sgf_board_state.color_to_play;
+
+      if (color_to_play == EMPTY)
+	return;
+
+      if (goban_window->board->game != GAME_AMAZONS
+	|| goban_window->amazons_move_stage == SELECTING_QUEEN) {
+	if ((node = sgf_utils_find_next_if_at_position (goban_window->current_tree,
+                                                           data->x, data->y)))
+		goban_window->node_to_switch_to = node;
+	else
+		return;
+
+        about_to_change_node (goban_window);
+	sgf_utils_go_down_in_tree(goban_window->current_tree, 1);
+	sgf_utils_switch_to_given_variation (goban_window->current_tree,
+					   goban_window->node_to_switch_to);
+        just_changed_node (goban_window);
+
+        update_children_for_new_node (goban_window, TRUE, FALSE);
+      }
+      else
+        cancel_amazons_move (goban_window);
+
+      break;
+    }
+  }
+}
+
+
+=======
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
 static void
 playing_mode_goban_clicked (GtkGobanWindow *goban_window,
 			    GtkGobanClickData *data)
@@ -4387,6 +4487,10 @@ update_commands_sensitivity (const GtkGobanWindow *goban_window)
   gtk_utils_set_menu_items_sensitive (goban_window->item_factory,
 				      !goban_window->in_game_mode,
 				      "/Edit/Tools/Setup Tool",
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+				      "/Edit/Tools/Guess Tool",
+=======
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
 				      "/Edit/Tools/Cross Markup",
 				      "/Edit/Tools/Circle Markup",
 				      "/Edit/Tools/Square Markup",
@@ -5908,6 +6012,25 @@ activate_setup_tool (GtkGobanWindow *goban_window, guint callback_action,
 }
 
 
+<<<<<<< HEAD:src/gui-gtk/gtk-goban-window.c
+
+static void
+activate_guess_tool (GtkGobanWindow *goban_window, guint callback_action,
+		     GtkCheckMenuItem *menu_item)
+{
+  UNUSED (callback_action);
+
+  if (gtk_check_menu_item_get_active (menu_item)) {
+    synchronize_tools_menus (goban_window);
+
+    set_goban_signal_handlers (goban_window,
+			       G_CALLBACK (guess_mode_pointer_moved),
+			       G_CALLBACK (guess_mode_goban_clicked));
+  }
+}
+
+=======
+>>>>>>> 89ae14a3505e9a5d02d3fa7be6475df09dca9c43:src/gui-gtk/gtk-goban-window.c
 static void
 activate_scoring_tool (GtkGobanWindow *goban_window, guint callback_action,
 		       GtkCheckMenuItem *menu_item)
