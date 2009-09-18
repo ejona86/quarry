@@ -1,0 +1,75 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This file is part of Quarry                                     #
+#                                                                 #
+# Copyright (C) 2003, 2004, 2005, 2006 Paul Pogonyshev.           #
+#                                                                 #
+# This program is free software; you can redistribute it and/or   #
+# modify it under the terms of the GNU General Public License as  #
+# published by the Free Software Foundation; either version 2 of  #
+# the License, or (at your option) any later version.             #
+#                                                                 #
+# This program is distributed in the hope that it will be useful, #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of  #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   #
+# GNU General Public License for more details.                    #
+#                                                                 #
+# You should have received a copy of the GNU General Public       #
+# License along with this program; if not, write to the Free      #
+# Software Foundation, Inc., 51 Franklin Street, Fifth Floor,     #
+# Boston, MA 02110-1301, USA.                                     #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+  SECTION_GTP_ENGINES		"GTP Engine"
+		repeatable
+		new		GtpEngineList		screen_name
+				gtp_engine_list		STATIC_GTP_ENGINE_LIST
+
+		gtp_engines
+		gtp_engine_section_values
+		gtp_engine_defaults
+
+
+  SECTION_GAME_TREE_VIEW	"Game Tree View"
+		single
+		new		GameTreeView		game_tree_view_dispose
+
+		game_tree_view
+		game_tree_view_values
+		game_tree_view_defaults
+
+
+  SECTION_SGF			"SGF"
+		single
+		new		SgfConfiguration	sgf_configuration_dispose
+
+		sgf_configuration
+		sgf_configuration_values
+		sgf_configuration_defaults
+
+
+  SECTION_GO_BOARD_APPEARANCE	"Go Board Appearance"
+		single
+		new		BoardAppearance		board_appearance_dispose
+
+		go_board_appearance
+		board_appearance_values
+		go_board_appearance_defaults
+
+
+  SECTION_AMAZONS_BOARD_APPEARANCE "Amazons Board Appearance"
+		single
+		new		AmazonsBoardAppearance	amazons_board_appearance_dispose
+
+		amazons_board_appearance
+		amazons_board_appearance_values
+		amazons_board_appearance_defaults
+
+
+  SECTION_REVERSI_BOARD_APPEARANCE "Reversi Board Appearance"
+		single
+		new		BoardAppearance		board_appearance_dispose
+
+		reversi_board_appearance
+		board_appearance_values
+		reversi_board_appearance_defaults

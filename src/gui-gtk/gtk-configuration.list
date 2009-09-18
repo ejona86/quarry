@@ -1,0 +1,440 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This file is part of Quarry                                     #
+#                                                                 #
+# Copyright (C) 2003, 2004, 2005, 2006 Paul Pogonyshev.           #
+#                                                                 #
+# This program is free software; you can redistribute it and/or   #
+# modify it under the terms of the GNU General Public License as  #
+# published by the Free Software Foundation; either version 2 of  #
+# the License, or (at your option) any later version.             #
+#                                                                 #
+# This program is distributed in the hope that it will be useful, #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of  #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   #
+# GNU General Public License for more details.                    #
+#                                                                 #
+# You should have received a copy of the GNU General Public       #
+# License along with this program; if not, write to the Free      #
+# Software Foundation, Inc., 51 Franklin Street, Fifth Floor,     #
+# Boston, MA 02110-1301, USA.                                     #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+@mode configuration
+
+
+@h_include "configuration.h"
+@h_include "board.h"
+@h_include "utils.h"
+
+@c_include "gtk-configuration.h"
+@c_include "gtk-games.h"
+@c_include "gui-back-end.h"
+@c_include "utils.h"
+
+
+section_list  unnamed gtk_configuration_sections {
+  @include_list $top_srcdir$/src/gui-utils/common-configuration-sections.list
+
+  SECTION_GTK_UI		"GTK+ User Interface"
+		single
+		new		GtkUIConfiguration
+				gtk_ui_configuration_dispose
+
+		gtk_ui_configuration
+		gtk_ui_section_values
+		gtk_ui_defaults
+
+  SECTION_NEW_GAME_DIALOG	"New Game Parameters"
+		single
+		new		NewGameConfiguration
+				new_game_configuration_dispose
+
+		new_game_configuration
+		new_game_section_values
+		new_game_defaults
+
+  SECTION_NEW_GO_GAME		"New Go Game Parameters"
+		single
+		new		NewGoGameConfiguration
+				new_go_game_configuration_dispose
+
+		new_go_game_configuration
+		new_go_game_section_values
+		new_go_game_defaults
+
+  SECTION_NEW_AMAZONS_GAME	"New Amazons Game Parameters"
+		single
+		new		NewAmazonsGameConfiguration
+				new_amazons_game_configuration_dispose
+
+		new_amazons_game_configuration
+		new_amazons_game_section_values
+		new_amazons_game_defaults
+
+  SECTION_NEW_REVERSI_GAME	"New Reversi Game Parameters"
+		single
+		new		NewReversiGameConfiguration
+				new_reversi_game_configuration_dispose
+
+		new_reversi_game_configuration
+		new_reversi_game_section_values
+		new_reversi_game_defaults
+
+  SECTION_NEW_GAME_RECORD_DIALOG  "New Game Record Parameters"
+		single
+		new		NewGameRecordConfiguration
+				new_game_record_configuration_dispose
+
+		new_game_record_configuration
+		new_game_record_section_values
+		new_game_record_defaults
+
+  SECTION_NEW_GO_GAME_RECORD	"New Go Game Record Parameters"
+		single
+		new		NewGoGameRecordConfiguration
+				new_go_game_record_configuration_dispose
+
+		new_go_game_record_configuration
+		new_go_game_record_section_values
+		new_go_game_record_defaults
+
+  SECTION_NEW_AMAZONS_GAME_RECORD  "New Amazons Game Record Parameters"
+		single
+		new		NewAmazonsGameRecordConfiguration
+				new_amazons_game_record_configuration_dispose
+
+		new_amazons_game_record_configuration
+		new_amazons_game_record_section_values
+		new_amazons_game_record_defaults
+
+  SECTION_NEW_REVERSI_GAME_RECORD  "New Reversi Game Record Parameters"
+		single
+		new		NewReversiGameRecordConfiguration
+				new_reversi_game_record_configuration_dispose
+
+		new_reversi_game_record_configuration
+		new_reversi_game_record_section_values
+		new_reversi_game_record_defaults
+
+  SECTION_FIND_DIALOG		"Find Dialog Parameters"
+		single
+		new		FindDialogConfiguration
+				find_dialog_configuration_dispose
+
+		find_dialog_configuration
+		find_dialog_section_values
+		find_dialog_defaults
+
+  + NUM_GTK_CONFIGURATION_SECTIONS
+}
+
+
+@include_list $top_srcdir$/src/gui-utils/common-configuration-values.list
+
+
+values  - gtk_ui_section_values {
+  "Use GtkFileChooser if possible" use_gtk_file_chooser		boolean
+
+  "Show main toolbar"		show_main_toolbar		boolean
+  "Main toolbar style"		main_toolbar_style		enumeration
+								new
+    TOOLBAR_STYLE_DEFAULT	"Default" "Desktop" "Desktop default"
+				"System" "System default"
+    TOOLBAR_STYLE_BOTH		"Both" "Both vertically" "Vertically"
+				"Text below icons"
+    TOOLBAR_STYLE_BOTH_HORIZONTALLY  "Both horizontally" "Horizontally"
+				"Text beside icons"
+				"Text beside important icons"
+    TOOLBAR_STYLE_ICONS_ONLY	"Icons only" "Icons"
+    TOOLBAR_STYLE_TEXT_ONLY	"Text only" "Text"
+  end
+
+  "Show editing toolbar"	show_editing_toolbar		boolean
+  "Editing toolbar style"	editing_toolbar_style		enumeration
+								existing
+    TOOLBAR_STYLE_DEFAULT	"Default" "Desktop" "Desktop default"
+				"System" "System default"
+    TOOLBAR_STYLE_BOTH		"Both" "Both vertically" "Vertically"
+				"Text below icons"
+    TOOLBAR_STYLE_BOTH_HORIZONTALLY  "Both horizontally" "Horizontally"
+				"Text beside icons"
+				"Text beside important icons"
+    TOOLBAR_STYLE_ICONS_ONLY	"Icons only" "Icons"
+    TOOLBAR_STYLE_TEXT_ONLY	"Text only" "Text"
+  end
+
+  "Show navigation toolbar"	show_navigation_toolbar		boolean
+  "Navigation toolbar style"	navigation_toolbar_style	enumeration
+								existing
+    TOOLBAR_STYLE_DEFAULT	"Default" "Desktop" "Desktop default"
+				"System" "System default"
+    TOOLBAR_STYLE_BOTH		"Both" "Both vertically" "Vertically"
+				"Text below icons"
+    TOOLBAR_STYLE_BOTH_HORIZONTALLY  "Both horizontally" "Horizontally"
+				"Text beside icons"
+				"Text beside important icons"
+    TOOLBAR_STYLE_ICONS_ONLY	"Icons only" "Icons"
+    TOOLBAR_STYLE_TEXT_ONLY	"Text only" "Text"
+  end
+
+  "Show game action buttons"	show_game_action_buttons	boolean
+}
+
+
+values  - new_game_section_values {
+  "Game"			game_name			string
+
+  "White player name"		player_names[WHITE_INDEX]	string
+  "White is computer"		player_is_computer[WHITE_INDEX]	boolean
+  "Engine playing white"	engine_names[WHITE_INDEX]	string
+
+  "Black player name"		player_names[BLACK_INDEX]	string
+  "Black is computer"		player_is_computer[BLACK_INDEX]	boolean
+  "Engine playing black"	engine_names[BLACK_INDEX]	string
+}
+
+
+values  - new_go_game_section_values {
+  "Board size"			board_size			int
+
+  "Handicap is fixed"		handicap_is_fixed		boolean
+  "Fixed handicap"		fixed_handicap			int
+  "Free handicap"		free_handicap			int
+
+  "Komi"			komi				real
+
+  "Time control type"		time_control.type		int
+  "Keep track of total time"	time_control.track_total_time	int
+  "Time limit for game"		time_control.game_time_limit	time
+  "Time limit for move"		time_control.move_time_limit	time
+  "Main time"			time_control.main_time		time
+  "Overtime period length"	time_control.overtime_period_length
+								time
+  "Moves per overtime"		time_control.moves_per_overtime	int
+}
+
+
+values  - new_amazons_game_section_values {
+  "Board size"			board_size			int
+
+  "Time control type"		time_control.type		int
+  "Keep track of total time"	time_control.track_total_time	int
+  "Time limit for game"		time_control.game_time_limit	time
+  "Time limit for move"		time_control.move_time_limit	time
+  "Main time"			time_control.main_time		time
+  "Overtime period length"	time_control.overtime_period_length
+								time
+  "Moves per overtime"		time_control.moves_per_overtime	int
+}
+
+
+values  - new_reversi_game_section_values {
+  "Board size"			board_size			int
+
+  "Time control type"		time_control.type		int
+  "Keep track of total time"	time_control.track_total_time	int
+  "Time limit for game"		time_control.game_time_limit	time
+  "Time limit for move"		time_control.move_time_limit	time
+  "Main time"			time_control.main_time		time
+  "Overtime period length"	time_control.overtime_period_length
+								time
+  "Moves per overtime"		time_control.moves_per_overtime	int
+}
+
+
+values  - new_game_record_section_values {
+  "Game"			game_name			string
+
+  "White player name"		player_names[WHITE_INDEX]	string
+  "Black player name"		player_names[BLACK_INDEX]	string
+  "Game name"			game_record_name		string
+}
+
+
+values  - new_go_game_record_section_values {
+  "Board size"			board_size			int
+
+  "Handicap"			handicap			nullable int
+  "Place handicap stones"	place_handicap_stones		boolean
+
+  "Komi"			komi				nullable real
+}
+
+
+values  - new_amazons_game_record_section_values {
+  "Board size"			board_size			int
+}
+
+
+values  - new_reversi_game_record_section_values {
+  "Board size"			board_size			int
+}
+
+
+values  - find_dialog_section_values {
+  "Latest search strings"	latest_search_strings		string_list
+  "Case sensitive"		case_sensitive			boolean
+  "Whole words only"		whole_words_only		boolean
+  "Wrap around"			wrap_around			boolean
+
+  "Search whole game tree"	search_whole_game_tree		boolean
+  "Search in"			search_in			enumeration
+								new
+    SEARCH_EVERYWHERE		"Nodes and comments" "Everywhere" "Both"
+    SEARCH_IN_COMMENTS		"Comments" "Comments only"
+    SEARCH_IN_NODE_NAMES	"Node names" "Node names only"
+  end
+
+  "Auto-close search dialog"	close_automatically		boolean
+}
+
+
+@include_list $top_srcdir$/src/gui-utils/common-configuration-defaults.list
+
+
+defaults  - gtk_ui_defaults {
+  use_gtk_file_chooser			boolean		true
+
+  show_main_toolbar			boolean		true
+  main_toolbar_style			enumeration	TOOLBAR_STYLE_DEFAULT
+
+  show_editing_toolbar			boolean		true
+  editing_toolbar_style			enumeration	TOOLBAR_STYLE_DEFAULT
+
+  show_navigation_toolbar		boolean		true
+  navigation_toolbar_style		enumeration	TOOLBAR_STYLE_DEFAULT
+
+  show_game_action_buttons		boolean		true
+}
+
+
+defaults  - new_game_defaults {
+  game_name				string		"Go"
+
+  player_names				array		[NUM_COLORS]
+					string
+    [BLACK_INDEX]					user_real_name
+    [WHITE_INDEX]					user_real_name
+  end
+
+  player_is_computer			array		[NUM_COLORS]
+					boolean
+    [BLACK_INDEX]					false
+    [WHITE_INDEX]					false
+  end
+
+  engine_names				array		[NUM_COLORS]
+					string
+    [BLACK_INDEX]					NULL
+    [WHITE_INDEX]					NULL
+  end
+}
+
+
+defaults  - new_go_game_defaults {
+  board_size				int		19
+
+  handicap_is_fixed			boolean		true
+  fixed_handicap			int		0
+  free_handicap				int		0
+
+  komi					real		6.5
+
+  time_control				structure	new
+					TimeControlConfiguration
+					time_control_configuration_dispose
+
+    type				int		0
+    track_total_time			int		0
+    game_time_limit			time		30:00
+    move_time_limit			time		00:30
+    main_time				time		10:00
+    overtime_period_length		time		10:00
+    moves_per_overtime			int		25
+  end
+}
+
+
+defaults  - new_amazons_game_defaults {
+  board_size				int		10
+
+  time_control				structure	new
+					TimeControlConfiguration
+					time_control_configuration_dispose
+
+    type				int		0
+    track_total_time			int		0
+    game_time_limit			time		15:00
+    move_time_limit			time		00:20
+    main_time				time		00:00
+    overtime_period_length		time		05:00
+    moves_per_overtime			int		10
+  end
+}
+
+
+defaults  - new_reversi_game_defaults {
+  board_size				int		8
+
+  time_control				structure	new
+					TimeControlConfiguration
+					time_control_configuration_dispose
+
+    type				int		0
+    track_total_time			int		0
+    game_time_limit			time		10:00
+    move_time_limit			time		00:15
+    main_time				time		00:00
+    overtime_period_length		time		05:00
+    moves_per_overtime			int		10
+  end
+}
+
+
+defaults  - new_game_record_defaults {
+  game_name				string		"Go"
+
+  player_names				array		[NUM_COLORS]
+					string
+    # FIXME: Maybe should be `user_real_name' instead?  Or should be
+    #	     translated appropriately?
+    [BLACK_INDEX]					"Black"
+    [WHITE_INDEX]					"White"
+  end
+
+  game_record_name			string		NULL
+}
+
+
+defaults  - new_go_game_record_defaults {
+  board_size				int		19
+
+  handicap				nullable int	null
+  place_handicap_stones			boolean		true
+
+  komi					nullable real	6.5
+}
+
+
+defaults  - new_amazons_game_record_defaults {
+  board_size				int		10
+}
+
+
+defaults  - new_reversi_game_record_defaults {
+  board_size				int		8
+}
+
+
+defaults  - find_dialog_defaults {
+  latest_search_strings			string_list	-
+  case_sensitive			boolean		false
+  whole_words_only			boolean		false
+  wrap_around				boolean		true
+
+  search_whole_game_tree		boolean		true
+  search_in				enumeration	SEARCH_EVERYWHERE
+
+  close_automatically			boolean		false
+}

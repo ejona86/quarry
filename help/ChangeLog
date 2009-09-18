@@ -1,0 +1,135 @@
+2007-06-10  Dirk Blasejezak  <dblase@web.de>
+
+	* de/quarry.xml: New file, translation to German.
+
+2007-06-10  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* de, de/figures: New directories.
+
+	* de/Makefile.am, de/quarry-de.omf: New files.
+	* de/authors.xml, de/fdl.xml, de/legal.xml: New files, copy from C
+	subdirectory.
+
+	* de/figures/board-window.png, de/figures/control-center.png: New
+	files, copies of English screenshots for now.
+
+2006-11-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.2.0.)
+
+	* C/quarry.xml: Fix, update and expand a little.
+	* C/fdl.xml: Use `simplesect' tag to suppress TOC.
+	* C/authors.xml: New file.
+
+	* C/figures/board-window.png: New file.
+	* C/figures/control-center.png: Update.
+
+	* quarry-help.css (div.figure): Set left margin to zero.
+
+2006-10-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.20.)
+
+2006-10-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* C/quarry.xml: Expand.  Raise level of all sections by 1 by
+	converting `article' to a `book'.
+	
+	* quarry-help.css: Use bold font for GUI labels.
+
+2006-07-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.19.)
+
+2006-07-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.18.)
+
+	* C/quarry.xml: Expand somewhat.
+
+2006-03-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.17.)
+
+2005-10-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.16.)
+
+	* C/figures/control-center.png: Update for newer Quarry versions.
+
+	* C/quarry.xml: Update and expand somewhat.
+
+	* quarry-help.css: Add a few rules to make the HTML look more like
+	what `yelp' displays.
+
+	* quarry-help.sed: Add rule to replace `->' with a proper arrow.
+
+	* Makefile.am (html): Change target format from `html-nochunks' to
+	`xhtml-nochunks'.
+
+2005-09-27  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* C/quarry.xml: Use "Reversi" instead of "Othello".
+
+2005-06-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.15.)
+
+2005-05-07  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* C/fdl.xml: Update FSF address.
+
+2005-03-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.14.)
+
+2005-03-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.13.)
+
+2005-01-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.12.)
+
+2005-01-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.11.)
+
+2004-11-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.10.)
+
+2004-11-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* C/quarry.xml (register-game-playing-program): Fix typo (bug
+	#1835.)
+
+2004-10-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.9.)
+
+	* (Quarry version 0.1.8.)
+
+2004-10-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* quarry-help.css: New file.
+
+	* C/figures: New directory.
+	* C/figures/control-center.png: New file.
+
+	* C: New directory.
+	* C/Makefile.am: New file.
+	* C/quarry-C.omf: New file.
+	* C/quarry.xml: New file.
+	* C/legal.xml: New file.
+	* C/fdl.xml: New file.
+	* C/quarry.html: New file.
+
+	* Makefile.am: New file.
+	* quarry-help.sed: New file.
+
+
+  Copyright (C) 2004, 2005, 2006 Paul Pogonyshev.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted provided the copyright notice and this notice are preserved.

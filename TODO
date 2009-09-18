@@ -1,0 +1,87 @@
+		      THINGS PLANNED FOR 0.4/1.0
+
+* INTERNET GAME SERVER(S) SUPPORT
+
+** Start with IGS.
+   KGS has proprietary protocol and NNGS/old IGS isn't really used
+   anymore.
+
+* PLAYING GAMES
+
+** Optionally display move list.
+   Requires pondering on where to place it, since the right column has
+   no more place...
+
+* VIEWING GAME RECORDS
+
+** Display values of various SGF properties (`VA',  `BM' etc.)
+
+** Support multiple games in one file, same for editing.
+
+** GAME TREE VIEW
+
+*** Maybe add command to narrow to a subtree.
+
+* EDITING GAME RECORDS
+
+** Support editing various SGF properties (`VA', `BM' etc.)
+
+* BOARD APPEARANCE
+
+** Make Amazons look like chess queens (with SVG.)
+
+* GTP SUPPORT
+
+** Add some sort of GTP console for generic GTP engine access.
+   Look at GoGui for an example.
+
+** Add `GTP wrapper' mode.
+   The idea is to sit on a GTP channel, display the board status and
+   keep SGF records of what's going on.  This way you can connect an
+   engine to an arbitrary internet GTP server and see the games in
+   Quarry in real-time.
+
+* SGF PARSING
+
+** Complete support for charsets.
+
+* INTERNAL BOARD CODE
+
+** Score sekis correctly.
+
+* GENERAL GUI
+
+** Make the Control Center nicer, with graphics.
+   Requires artistic contributions, therefore postponed from 0.2.
+
+* GENERAL
+
+** Drop support for GTK+ 2.0 and 2.2 at least.
+   Remove all related code, obviously.
+
+** Make functions receive `size_t' and `gsize' where appropriate.
+   E.g. string lengths should have these types.  Be extra careful with
+   passing through `...'.
+
+** Maybe reimplement everything in C++/Gtkmm?  (Loads of work...)
+
+
+
+			HOW TO EDIT THIS FILE
+
+When adding a specific to-do item, start it with a verb (``fix'',
+``implement'', ``add'' etc.)  When adding a placement (for instance, a
+name of a module) for to-do items, make it a noun or a phrase that
+acts as a noun and uppercase the entire line to make it stand out.
+
+When something has been implemented, delete or update the appropriate
+entry here, don't mark it with ``done'' or something similar.  This
+file is only meant to track unimplemented, but planned features.
+Those that have been implemented should be mentioned in NEWS (and in
+ChangeLog.)
+
+
+
+Local variables:
+mode: outline
+End:

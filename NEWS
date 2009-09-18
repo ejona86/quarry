@@ -1,0 +1,344 @@
+*** Quarry 0.2.0 *****************************************************
+*                                                                    *
+*  Quarry 0.2.0 features:                                            *
+*                                                                    *
+*  * Support for Go, Amazons and Reversi games.                      *
+*                                                                    *
+*  * Nice resizable board (see screen shots.)                        *
+*                                                                    *
+*  * Playing games:                                                  *
+*    - GNU Go, GRhino or any other GTP engine can be your opponent.  *
+*    - Computer vs. computer and human vs. human games are an        *
+*      option too.                                                   *
+*    - Good support for time control.                                *
+*    - Games can be adjourned and later resumed.                     *
+*                                                                    *
+*  * Game records:                                                   *
+*    - Game record editor is simple, but supports all standard       *
+*      editing commands and has an undo history.                     *
+*    - All games can be stored in widely supported SGF FF[4] file    *
+*      format.                                                       *
+*    - Fast and robust parser can read SGF files of any version.     *
+*    - In particular, Kogo's Joseki Dictionary can be browsed with   *
+*      Quarry.                                                       *
+*    - Game tree view allows for easy navigation of game records.    *
+*    - Text search in comments is a powerful tool if you know what   *
+*      to search for.                                                *
+*    - Go board position can be exported in a format suitable for    *
+*      inserting into Sensei's Library.                              *
+*    - Support for various SGF labels and markup.                    *
+*                                                                    *
+**********************************************************************
+
+* Some bug-fixes.
+
+* Fixed and somewhat expanded manual.
+
+* Updated translations: en_GB, fr, pl, ru.
+
+
+--- New in Quarry 0.1.20 ---------------------------------------------
+
+* Many bug-fixes, including two crashing bugs on 64-bit platforms.
+
+* Significantly expanded manual.
+
+* Updated translations: en_GB, ru.
+
+
+--- New in Quarry 0.1.19 ---------------------------------------------
+
+* A severe bug fixed in the Polish translation, see bug #6367.
+
+
+--- New in Quarry 0.1.18 ---------------------------------------------
+
+* Undo/redo history has been completed and now includes comment and
+  node name changes.
+
+* Standard clipboard operations (cut, copy and paste) are supported
+  for game subtrees.
+
+* Board diagrams in ASCII and Sensei's format can be copied to
+  clipboard.
+
+* Somewhat expanded manual.
+
+* Updated translations: en_GB, fr, pl, ru.
+
+* Build process improvements, other improvements and bug-fixes.
+
+
+--- New in Quarry 0.1.17 ---------------------------------------------
+
+* More features for editing SGF game records: it is now possible to
+  rearrange game tree branches, explicitly set the move number and
+  change the player to move (useful e.g. in problems.)
+
+* Game tree view now shows tooltips over nodes.  Tooltips display
+  node's move, name and comment text.
+
+* Quarry now registers `application/x-go-sgf' MIME type (for SGF game
+  records) during installation.  GNOME 2.8+ desktop will pick the type
+  up automatically.  However, Quarry cannot associate itself with the
+  type yet...
+
+* New translation: Polish (pl), by Robert Stefaniuk.  Updated
+  translations: en_GB, ru.
+
+* Many bug-fixes and small improvements.
+
+
+--- New in Quarry 0.1.16 ---------------------------------------------
+
+* Quarry is now an SGF editor!  In addition to features added in
+  0.1.15 and earlier, it is now possible to create game records
+  without playing a game; undo/redo history has been drastically
+  improved and is now really useful; there is an editing toolbar.
+  However, undo/redo of comments and node names still needs an
+  improvement.
+
+* Command to jump straight to a named node.  Advantage over text
+  search here is name completion.  (Only for GTK+ 2.4 and up.)
+
+* Somewhat updated and expanded manual.
+
+* New translations: British English (en_GB), Russian (ru.)
+
+* Bug-fixes and small improvements.
+
+
+--- New in Quarry 0.1.15 ---------------------------------------------
+
+* First stab at making Quarry an SGF editor.  New editing commands:
+  deletion of nodes, position setup (arbitrary addition/removal of
+  pieces), SGF markup editing and scoring of Go positions.
+
+* As a special editing feature, undo/redo history is supported.
+  However, it is quite crude in this version and will often work not
+  the way you expect.  In particular, it completely ignores all
+  properties and concentrates on node addition/removal only.
+
+* Support for node names.  They are now shown above comments (much
+  like text headers), can be edited and searched the same way comments
+  can be searched.
+
+* Added support for GTK+ 2.4 file chooser dialog.  You can still opt
+  to use old-style file selection dialog in Preferences.
+
+* First translation: French (fr), by Jérémie Knuesel.
+
+* Bug-fixes and small improvements.
+
+
+--- New in Quarry 0.1.14 ---------------------------------------------
+
+* Two bug-fixes, including fix for #2089, which caused segfaults when
+  adding new GTP engines.
+
+
+--- New in Quarry 0.1.13 ---------------------------------------------
+
+* Warning about potential loss of information is no longer shown on
+  file overwriting: there must be no possibility for it anymore.
+
+* It is now possible to adjourn and later resume a game.  Actually,
+  you can resume any unfinished game, even one stored from another
+  client.
+
+* Improved time control handling.  In particular, player who runs out
+  of time now actually loses the game.
+
+* Improvements in game tree view, including better tracking of current
+  node, clear indication of current tree branch and less flickering.
+
+* New, alternative, woodgrain background by Brenn Hill.  It is not the
+  default, but you can select it in the Preferences dialog.
+
+* Small improvements and bug-fixes.
+
+
+--- New in Quarry 0.1.12 ---------------------------------------------
+
+* Bug-fixes in game tree view.  In particular, bug #1969 is fixed,
+  which crashed Quarry on many SGF files.
+
+
+--- New in Quarry 0.1.11 ---------------------------------------------
+
+* New Game Tree View control provides means of easily navigating game
+  record trees.  It looks much like that of cGoban 1 and has similar
+  features.  However, it also allows collapsing/expanding individual
+  nodes (by right-clicking) and is much faster.
+
+* Basic support for debugging GTP connections from command line.  Use
+  it if your engine won't work with Quarry out of the box.
+
+* New fancy markup theme "Filled."
+
+* Many bug-fixes (including bug #1929) and improvements here and
+  there.
+
+
+--- New in Quarry 0.1.10 ---------------------------------------------
+
+* New useful feature: text search in comments.  Can be invaluable when
+  browsing through a very large game tree like a joseki dictionary or
+  a GNU Go debug trace.
+
+* Much improved displaying of SGF labels.  In particular, no more
+  black labels on black stones.
+
+* Two toolbars and a pseudo-toolbar are added.  Those who prefer more
+  window space can just hide the toolbars.
+
+* New markup theme "Bold."  Just like the default theme, but with
+  thicker lines.
+
+* Many bug-fixes and small improvements.
+
+
+--- New in Quarry 0.1.9 ----------------------------------------------
+
+* Compilation-time error with GTK+ 2.4 fixed (bug #898,
+  mateusz@kaduk.net.)
+
+* Minor bug-fixes in game information editing.
+
+
+--- New in Quarry 0.1.8 ----------------------------------------------
+
+* Full support for SGF game information, including editing.
+
+* Support for resignation.  Most importantly, Quarry now handles
+  resignations by GTP engines.
+
+* Support for SGF labels in addition to recently added support for SGF
+  markup.  Displaying code still need tweaks to make labels more
+  readable in certain cases.
+
+* Quarry is now bundled with documentation.
+
+* You can now choose in Preferences dialog whether to save all SGF
+  files in UTF-8 or preserve original encoding.  However, support for
+  other encodings is at about the same level as in 0.1.7.
+
+* Bug-fixes, better support for earlier GTK+ versions and yet further
+  improved support for locales.
+
+
+--- New in Quarry 0.1.7 ----------------------------------------------
+
+* Partial support for different encodings of SGF files.  It is not yet
+  complete, but at least all single-byte encodings should work.
+
+* GTP engines now automatically score games they play.  (By Martin
+  Holters)
+
+* Comments can now be edited.  Just modify the text in the comment
+  pane and your changes will be remembered.
+
+* Mouse wheel can be used to go back and forth between moves
+  (Suggested by David Gómez).
+
+* Othello disks now look like disks, not like Go stones.
+
+* Markup appearance is now configurable.
+
+* Quarry is internationalized, though there are no translations yet.
+
+* Other small improvements and bug-fixes.
+
+
+--- New in Quarry 0.1.6 ----------------------------------------------
+
+* False eyes are now carefully examined and don't yield territory when
+  they shouldn't when scoring Go games.  However, sekis are still not
+  handled.
+
+* SGF markup is finally displayed on board.  Note that if you have
+  customized board background, markup can appear just barely
+  noticeable to you.  Markup appearance will be customizeable in the
+  next version.
+
+* Many miscellaneous improvements in Preferences dialog.  It shouldn't
+  crash anymore.
+
+* Board (goban) now visually indicates when it has focus and so when
+  arrow keys without Alt can be used for navigation.
+
+* Bug-fixes (including bug #522) and minor improvements.
+
+
+--- New in Quarry 0.1.5 ----------------------------------------------
+
+* Time control.  This includes time limit per game, time limit per
+  move and Canadian overtime (also known as Canadian byo-yomi).  Of
+  course games without time limits are possible as well.  Note that at
+  present if a player runs out of time, he doesn't lose automatically.
+
+* Important game information is now displayed under player names.  For
+  Go this is the number of captures and the komi.  For Othello this is
+  the number of disks a player has on board.
+
+* It is now safe to navigate game tree while a game is played.  For
+  instance, when you have two GTP engines playing against each other,
+  you can go back to the game beginning and study moves at whatever
+  speed you like.  In earlier versions this would lead to a corrupted
+  game.
+
+* Bug-fixes, including better support for locales.
+
+
+--- New in Quarry 0.1.4 ----------------------------------------------
+
+* Severe bug in 0.1.3 fixed.
+
+
+--- New in Quarry 0.1.3 ----------------------------------------------
+
+* Support for game rules.  This includes board size for all three
+  games and hadicap (both fixed and free) and komi for Go.
+
+* Go games can now be scored by the user.  Automatic scoring by the
+  playing GTP engines is not yet implemented.
+
+* Customizable board appearance (only backround at present, not the
+  pieces).  Because of the appearance of certain internal machinery,
+  all three games now look differently by default: Go looks just like
+  before, Amazons has checkerboard pattern and Othello has dark green
+  solid background.
+
+* Bug-fixes, including some backports to pre-2.4 GTK+.
+
+
+--- New in Quarry 0.1.2 ----------------------------------------------
+
+* Support for saving SGF files integrated into GUI.
+
+* Finally a way to pass when playing Go.
+
+* New feature: SGF diff.  It will allow to generate difference between
+  two SGF files as a third SGF file.  This way you will be able to
+  easily find what has changed between two version of an SGF file as
+  easily as you can find difference between versions of a text file
+  with UNIX `diff' program.
+
+  At present the feature is far from being really useful.  It is added
+  as a proof of concept.  Look for program `sgf-diff' in `src/sgf/' if
+  you want to give it a try.
+
+* Many bug-fixes.
+
+
+
+  Copyright (C) 2004, 2005, 2006 Paul Pogonyshev.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted provided the copyright notice and this notice are preserved.
+
+
+
+Local Variables:
+coding: iso-8859-1
+End:

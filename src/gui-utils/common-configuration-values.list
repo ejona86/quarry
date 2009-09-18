@@ -1,0 +1,104 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This file is part of Quarry                                     #
+#                                                                 #
+# Copyright (C) 2003, 2004, 2005, 2006 Paul Pogonyshev.           #
+#                                                                 #
+# This program is free software; you can redistribute it and/or   #
+# modify it under the terms of the GNU General Public License as  #
+# published by the Free Software Foundation; either version 2 of  #
+# the License, or (at your option) any later version.             #
+#                                                                 #
+# This program is distributed in the hope that it will be useful, #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of  #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   #
+# GNU General Public License for more details.                    #
+#                                                                 #
+# You should have received a copy of the GNU General Public       #
+# License along with this program; if not, write to the Free      #
+# Software Foundation, Inc., 51 Franklin Street, Fifth Floor,     #
+# Boston, MA 02110-1301, USA.                                     #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+values  - gtp_engine_section_values {
+  "Screen name format"		screen_name_format		string
+  "Name"			name				string
+  "Version"			version				string
+
+  "Site configuration name"	site_configuration_name		string
+  "Hidden by user"		is_hidden			boolean_write_true_only
+
+  "Command line"		command_line			string
+
+  "Supported games"		supported_games			string_list
+}
+
+
+values  - game_tree_view_values {
+  "Show tooltips"		show_tooltips			boolean
+
+  "Show game tree"		show_game_tree			enumeration
+								new
+    SHOW_GAME_TREE_ALWAYS	      "Always"
+    SHOW_GAME_TREE_AUTOMATICALLY      "Auto" "Automatically"
+    SHOW_GAME_TREE_NEVER	      "Never"
+  end
+
+  "Track current node"		track_current_node		enumeration
+								new
+    TRACK_CURRENT_NODE_ALWAYS	      "Always"
+    TRACK_CURRENT_NODE_AUTOMATICALLY  "Auto" "Automatically"
+    TRACK_CURRENT_NODE_NEVER	      "Never"
+  end
+
+  "Center on current node"	center_on_current_node		boolean
+}
+
+
+values  - sgf_configuration_values {
+  "Force UTF-8"			force_utf8			boolean
+}
+
+
+values  - board_appearance_values {
+  "Use background texture"	use_background_texture		boolean
+  "Background texture"		background_texture		string
+  "Background color"		background_color		color
+  "Grid and labels color"	grid_and_labels_color		color
+
+  "Markup theme"		markup_theme			string
+  "Use theme defaults"		use_theme_defaults		boolean
+
+  "Markup size"			markup_size			real
+  "Markup size is relative"	markup_size_is_relative		boolean
+
+  "Markup opacity"		markup_opacity			real
+
+  "Markup color on white"	markup_colors[2]		color
+  "Markup color on black"	markup_colors[1]		color
+  "Markup color on other"	markup_colors[0]		color
+}
+
+
+values  - amazons_board_appearance_values {
+  "Use background texture"	board_appearance.use_background_texture		boolean
+  "Background texture"		board_appearance.background_texture		string
+  "Background color"		board_appearance.background_color		color
+
+  "Checkerboard pattern color"	checkerboard_pattern_color	color
+  "Checkerboard pattern opacity" checkerboard_pattern_opacity	real
+
+  "Grid and labels color"	board_appearance.grid_and_labels_color		color
+
+  "Markup theme"		board_appearance.markup_theme			string
+  "Use theme defaults"		board_appearance.use_theme_defaults		boolean
+
+  "Markup size"			board_appearance.markup_size			real
+  "Markup size is relative"	board_appearance.markup_size_is_relative	boolean
+
+  "Markup opacity"		board_appearance.markup_opacity			real
+
+  "Markup color on white"	board_appearance.markup_colors[2]		color
+  "Markup color on black"	board_appearance.markup_colors[1]		color
+  "Markup color on other"	board_appearance.markup_colors[0]		color
+}

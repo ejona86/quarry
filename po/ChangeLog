@@ -1,0 +1,230 @@
+2006-11-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.2.0.)
+
+	* pl.po: Partially update, though I don't know Polish.
+
+2006-11-11  Jeremie Knuesel <knuesel@gmail.com>
+
+	* fr.po: Update.
+
+2006-11-07  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* quarry.pot: Force update.
+	* en.po: Update.
+	* en_GB.po: Update.
+	* ru.po: Update.
+
+2006-10-30  Robert Stefaniuk <kacprey@gazeta.pl>
+
+	* pl.po: Update.
+
+2006-10-29  Jeremie Knuesel <knuesel@gmail.com>
+
+	* fr.po: Update.
+
+2006-10-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.20.)
+
+2006-10-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* quarry.pot: Force update.
+	* en.po: Update.
+	* en_GB.po: Update.
+	* ru.po: Update.
+
+2006-07-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.19.)
+
+	* pl.po: Remove accidentally left slash character, which triggers
+	a severe bug (#6367.)
+
+2006-07-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.18.)
+
+	* en.po: New file (English "translation.")
+	* LINGUAS: Add `en' code.
+
+	* pl.po: Add year 2006 to the copyright string.
+
+2006-07-14  Jérémie Knuesel  <jeremie.knuesel@epfl.ch>
+
+	* fr.po: Update.
+
+2006-07-13  Jérémie Knuesel  <jeremie.knuesel@epfl.ch>
+
+	* fr.po: Update.
+
+2006-07-13  Robert Stefaniuk  <kacprey@gazeta.pl>
+
+	* pl.po: Update.
+
+2006-07-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* quarry.pot: Force update.
+	* en_GB.po: Update.
+	* ru.po: Update.
+
+	* POTFILES.in: Add `src/gui-gtk/quarry-find-dialog.c'.
+
+2006-04-19  Robert Stefaniuk  <kacprey@gazeta.pl>
+
+	* pl.po: Update.
+
+2006-03-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.17.)
+
+2006-03-08  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* en_GB.po: Update.
+	* ru.po: Update.
+
+	* quarry.pot: Force update.
+
+	* POTFILES.in: Add `src/gui-gtk/quarry-move-number-dialog.c' and
+	`src/board/board.c'.
+
+2006-01-16  Robert Stefaniuk  <kacprey@gazeta.pl>
+
+	* pl.po: Update.
+
+2005-12-23  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* LINGUAS: Add `pl' code.
+
+2005-12-19  Robert Stefaniuk  <kacprey@gazeta.pl>
+
+	* pl.po: New file (Polish translation.)
+
+2005-10-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.16.)
+
+	* ru.po: New file (Russian translation.)
+	* LINGUAS: Add `ru' code.
+
+	* en_GB.po: Update.
+
+	* quarry.pot: Force update.
+
+	* POTFILES.in: Add
+	`src/gui-gtk/quarry-save-confirmation-dialog.c', remove
+	`src/gui-gtk/gtk-utils.c'.
+
+2005-07-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* POTFILES.in: Add `src/gui-gtk/gtk-go-to-named-node-dialog.c',
+	`src/board/games.c' and `src/board/go.c'.
+
+	* Makevars (XGETTEXT_OPTIONS): Add `--keyword=Q_'.
+
+2005-06-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* Rules-quot: Remove file.
+	* insert-header.sin: Remove file, unused without quotes catalogs.
+
+	* boldquot.sed: Remove file.  Bold quotes are additionally only
+	useful for console programs.
+	* en@boldquot.header: Remove file.
+
+	* quot.sed: Remove file.  Proper quotes are good, but the way they
+	are implemented is not :(.
+	* en@quot.header: Remove file.
+
+2005-06-25  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* en_GB.po: New file (British English translation.)
+	* LINGUAS: List `en_GB' code.
+
+2005-06-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* POTFILES.in: Add `src/gui-gtk/gtk-new-game-record-dialog.c'.
+	Remove `src/gui-gtk/gtk-utils.c' as it doesn't contain any
+	translatable strings.
+
+2005-06-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.15.)
+
+2005-04-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* quarry.pot: Force update.
+
+	* POTFILES.in: Add `src/gui-gtk/gtk-file-dialog.c' and
+	`src/gui-gtk/gtk-resume-game-dialog.c'.
+
+	* LINGUAS: Add `fr' code for French translation.
+
+2005-04-11  Jérémie Knuesel  <jeremie.knuesel@epfl.ch>
+
+	* fr.po: New file (French translation.)
+
+2005-03-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.14.)
+
+2005-03-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.13.)
+
+2005-01-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.12.)
+
+2005-01-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.11.)
+
+2004-11-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.10.)
+
+2004-10-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.9.)
+
+	* (Quarry version 0.1.8.)
+
+2004-08-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* POTFILES.in: Add `src/gui-gtk/gtk-game-info-dialog.c'.
+
+2004-08-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.7.)
+
+	* Makevars (XGETTEXT_OPTIONS): Add `--from-code=UTF-8'.
+
+2004-08-21  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* Makevars: New file.
+	* LINGUAS: New file (empty).
+	* POTFILES.in: New file.
+
+2004-08-21  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.in.in: New file, from gettext-0.14.1.
+
+	* boldquot.sed: New file, from gettext-0.14.1.
+	* en@boldquot.header: New file, from gettext-0.14.1.
+	* en@quot.header: New file, from gettext-0.14.1.
+	* insert-header.sin: New file, from gettext-0.14.1.
+	* quot.sed: New file, from gettext-0.14.1.
+	* remove-potcdate.sin: New file, from gettext-0.14.1.
+	* Rules-quot: New file, from gettext-0.14.1.
+
+
+  Copyright (C) 2004, 2005, 2006 Paul Pogonyshev.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted provided the copyright notice and this notice are preserved.
+
+
+
+Local Variables:
+coding: utf-8
+End:

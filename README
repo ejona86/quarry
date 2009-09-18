@@ -1,0 +1,141 @@
+			     ABOUT QUARRY
+
+Quarry is a universal board game interface program.  At present it
+supports three games: Go, Amazons and Reversi.  It is intended to be
+useful for both users and developers of game engines (i.e. programs
+that play board games).
+
+Quarry uses are currently limited to playing against a computer
+program (e.g. GNU Go) and browsing and editing SGF game records.
+Future versions will also support Internet game servers and more.
+
+Latest Quarry versions can be found at the homepage:
+
+		     http://home.gna.org/quarry/
+
+
+			     INSTALLATION
+
+The usual `./configure; make; make install' should build and install
+Quarry.  The only serious requirement for Quarry are GTK+ 2.x and
+librsvg 2.5+ libraries, everything else must be present on a sane
+system.  See file INSTALL for details.
+
+
+			    RUNNING QUARRY
+
+Please refer to the Quarry Manual for help.  If, for some reason, you
+cannot open the manual from Quarry Help menu, direct your browser to
+the file `help/C/quarry.html'.  (There may also be translations of the
+manual to your language in directories other than `C'.)
+
+
+			    REPORTING BUGS
+
+Please use bug tracker at the Gna! project page for bug submissions.
+Point your browser to
+
+		  https://gna.org/bugs/?group=quarry
+
+Before submitting a bug, please update to the latest CVS version of
+Quarry and verify that the bug is still present.  Don't forget to
+check if the bug has been submitted already.
+
+Please include the following information in your bug report:
+
+* Bug description and the way to reproduce the bug.
+
+* Output of Quarry in the terminal, if any.  It would typically die
+  with a message like this:
+
+	quarry: file-name.c:123: some_function_name: Assertion `...'
+	failed.
+
+* If you fail to configure or build Quarry in the first place, please
+  send in several last lines of `configure's and/or `make's output,
+  depending on where the problem occurred.
+
+* System information, including version of GTK+.  You can find it by
+  typing
+
+	pkg-config --modversion gtk+-2.0
+
+  in command line.  Remember that only GTK+ 2.0 or later is supported.
+  If you have an older version, Quarry will fail to configure and it
+  is not a bug.
+
+* Everything else you find relevant.
+
+
+		       COPYRIGHTS AND LICENSES
+
+All files are copyrighted by Paul Pogonyshev and/or other Quarry
+authors (see file AUTHORS) except as noted below.  See each specific
+file for details.
+
+All files are licensed under the GNU General Public License version 2
+or (at your option) any later version except as noted below.  GNU GPL
+version 2 can be found in the file COPYING.
+
+All files named `quarry.xml' and `quarry.html' in `help/*' directories
+are licensed under GNU Free Documentation License, version 1.2 or any
+later version, with no Invariant Sections, no Front-Cover Texts, and
+no Back-Cover Texts.  GNU FDL version 1.2 can be found in file named
+COPYING-DOC.
+
+* Three files `src/utils/getopt.c', `src/utils/getopt1.c' and
+  `src/utils/getopt.h' are copyrighted by the Free Software Foundation
+  and are distributed under GNU LGPL version 2.1 or later.
+
+* Files `src/gui-gtk/gtk-color-button.c' and
+  `src/gui-gtk/gtk-color-button.h' are copyrighted 1998, 1999 by Red
+  Hat, Inc.  They are licensed GNU LGPL version 2 or later.
+
+* Files `src/gui-gtk/gtk-qhbox.c' and `src/gui-gtk/gtk-qvbox.c' are
+  copyrighted 1995-1997 by Peter Mattis, Spencer Kimball and Josh
+  MacDonald and copyrighted in subsequent years by Paul Pogonyshev.
+  They are licensed under GNU GPL version 2 or later.
+
+* File `data/textures/wood1.jpg' can be distributed freely [1].
+
+* File `data/textures/wood2.jpg' is copyrighted 2005 by Brenn Hill and
+  is distributed under Creative Commons Attribution-NonCommercial-
+  ShareAlike 2.0 license, which can be found at
+  http://creativecommons.org/licenses/by-nc-sa/2.0/legalcode.
+
+* All SVG files in `data/markup-themes' subdirectories are placed in
+  public domain by Paul Pogonyshev.
+
+* Files in the root directory of the distribution (this directory) and
+  `build' directory are either licensed by different parties as free
+  software or are in public domain.
+
+
+[1] This file was taken from
+
+	http://www.grsites.com/
+
+    On the site there is a disclaimer with the following text:
+
+	"Disclaimer: Background textures found on this site were not
+	created by the webmaster. They were obtained from various
+	sources on the internet that labeled them as "freely
+	distributable". If you should discover images in this
+	collection which you recognize as copyrighted, please email
+	the webmaster immediately so that they may be removed."
+
+    And in its "Terms of use" section, it is stated that
+
+	"The background textures found on this site were not created
+	by the webmaster, but were obtained from various sources on
+	the internet that described these graphics as freeware. Some
+	of the authors, however, might disapprove if their graphics
+	were used, for example, as part of a commercial software
+	package. Therefore, these graphics are best suited for
+	personal use (i.e. on a personal web site.)"
+
+    I'm very interested in a good texture that is either cleanly
+    licensed in a non-restrictive way that allows redistribution and
+    modification or is in public domain.  If you happen to have/know
+    about such a texture that would fit Quarry's look, please send it
+    or a link to it to <quarry-dev@gna.org>.

@@ -1,0 +1,366 @@
+2006-10-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.2.0.
+	* README: Update.
+	* NEWS: Update.
+	* TODO: Update.
+
+2006-10-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.20.
+	* NEWS: Update.
+	* TODO: Update.
+
+2006-07-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.19.
+	* NEWS: Update.
+
+2006-07-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.18.
+	* NEWS: Update.
+	* TODO: Update.
+
+2006-07-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* THANKS: Also thank Jérémie Knuesel for bug reports.
+
+2006-04-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* build: Rename from `aux' to avoid conflicts with system reserved
+	word on Win32 (Cygwin, bug #5836, fastgo@gmail.com.)
+
+2006-03-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.17.
+	* NEWS: Update.
+	* TODO: Update.
+
+2006-02-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Add `--disable-mime-database-update' option.
+
+2006-01-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Globally: use the new copyright updating scheme suggested by
+	the GNU project, i.e. include all the years when Quarry changed,
+	not particular file changed.  Update all relevant files to include
+	years 2005 and 2006.)
+
+2005-10-31  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Arrange for `DO_SCROLLKEEPER_UPDATE' conditional
+	be defined even if there is no ScrollKeeper (otherwise `configure'
+	doesn't work.)  Reported by Heikki Levanto.
+
+2005-10-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.16.
+	* NEWS: Update.
+	* TODO: Update.
+
+2005-09-27  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* README: Replace "Othello" with "Reversi" and generally update.
+
+2005-08-21  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* aux/omf.make: Fix last change.
+
+2005-08-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* aux/omf.make: Update to latest version from `gnome-common'
+	module.  Honor the new `--disable-scrollkeeper-update' option.
+
+	* aux/xmldocs.make: Merge in changes from `gnome-common' module.
+
+	* configure.ac: Generate `data/quarry.desktop'.  Add
+	`--disable-scrollkeeper-update' option at request from Michel
+	Salim.  Rearrange some options for better grouping in `configure
+	--help' output.
+
+2005-07-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* INSTALL: Mention that `po/quarry.pot' can be updated only when
+	configured with `builddir' equal to `srcdir'.
+
+	* configure.ac (QUARRY_WARNINGS_GTK): Remove `-Wcast-qual' which
+	became a source of annoying warnings recently.
+
+	* README-TRANSLATORS: New file.
+
+2005-06-27  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Check size of `int', `double' and `void *' types.
+
+2005-06-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.15.
+	* NEWS: Update.
+	* TODO: Update.
+
+2005-06-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* acinclude.m4: Remove file.  All the files it contained should be
+	found in `/usr/share/aclocal' or `/usr/local/share/autoconf' if
+	you have `pkg-config' and `gettext' installed.
+
+	* configure.ac: Add `foreign' and `check-news' arguments to the
+	`AM_INIT_AUTOMAKE' macro.
+
+2005-05-07  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* COPYING: Update to the latest version from www.gnu.org to
+	reflect the change of FSF address.
+	* COPYING-DOC: Likewise.
+
+2005-04-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* THANKS: Thank Jérémie Knuesel for the French translation.
+
+2005-03-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* aux/list.make (SUFFIXES): Also add `.h' in suffixes to make
+	`rm -f $*.stamp' below work as expected.
+	(LIST_STAMP_FILES, LIST_GENERATED_FILES): New variables, generate
+	from `LIST_FILES' with `make's substitution reference.
+
+2005-03-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.14.
+	* NEWS: Update.
+
+2005-03-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.13.
+	* NEWS: Update.
+	* TODO: Update;
+
+	* THANKS: Thank Brenn Hill for the new woodgrain texture.
+	* README: Add legal information about `data/textures/wood2.jpg'.
+
+2005-03-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* INSTALL: Add `BUILDING IN A SEPARATE DIRECTORY' section.
+
+	* aux/list.make: New file.
+
+2005-01-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* TODO: New file.
+
+2005-01-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* README-PACKAGERS: Fix the name of site configuration file.
+
+2005-01-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* README-PACKAGERS: New file.
+
+	* README: General update.  Remove `RUNNING QUARRY' section
+	contents and refer readers to the manual instead.
+
+2005-01-17  Arend Bayer  <arend.bayer@web.de>
+
+	* INSTALL: Make system requirements more explicit.
+
+2005-01-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.12.
+	* NEWS: Update.
+
+	* THANKS: New file.
+
+2005-01-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.11.
+	* NEWS: Update.
+
+2004-12-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Don't generate `Makefile's in `data/markup-themes'
+	subdirectories anymore.
+
+2004-11-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.10.
+	* NEWS: Update.
+
+2004-11-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* aux/xmldocs.make: Make XML installation conditional on
+	ScrollKeeper presence.  If it is not present, then only install
+	HTML file.
+
+	* configure.ac: Check if ScrollKeeper package is installed.
+
+2004-10-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Generate `Makefile' in `data/markup-themes/bold'.
+
+2004-10-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.9.
+	* NEWS: Update.
+
+	* configure.ac: Quarry version 0.1.8.
+	* NEWS: Update.
+
+2004-10-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* COPYING-DOC: New file.
+
+	* help: New directory.
+	* aux/omf.make, aux/xmldocs.make: New files.
+
+2004-10-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Declare `aux/' as auxiliary directory.
+
+	* aux: New directory, pile auxiliary files there; use this
+	`ChangeLog'.
+	* aux/config.guess: Move from `config.guess'.
+	* aux/config.rpath: Likewise.
+	* aux/config.sub: Likewise.
+	* aux/depcomp: Likewise.
+	* aux/install-sh: Likewise.
+	* aux/missing: Likewise.
+	* aux/mkinstalldirs: Likewise.
+
+2004-09-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* NEWS: Add all news from version 0.1.2 to 0.1.7 (change in
+	policy: add news items for development versions too).
+
+2004-08-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.7.
+
+2004-08-21  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Add GNU gettext configuration macro.
+
+	* acinclude.m4: Merge in six GNU gettext `.m4' files.
+
+	* config.guess: New file, from ftp://ftp.gnu.org/pub/gnu/config/.
+	* config.sub: New file, from ftp://ftp.gnu.org/pub/gnu/config/.
+
+2004-08-21  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* config.rpath: New file.
+	* mkinstalldirs: Updated.
+	* po: New directory.
+
+2004-08-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Disable SGF utilities by default: they are not
+	useful yet anyway.
+
+2004-08-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Search for library containing iconv().
+
+2004-08-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* README: Mention new requirement for `librsvg'.
+	* INSTALL: Likewise.
+
+	* configure.ac: Quarry version 0.1.6.
+
+2004-08-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Generate `Makefile's also in `data/markup-themes'
+	and `data/markup-themes/default'.
+
+	* configure.ac: Require `librsvg': on the second thought, it is
+	not worth the work to provide an alternative way of generating
+	markup pixbufs.  Also, require librsvg 2.5.0 at least, because
+	earlier versions fail to render certain files.
+
+2004-08-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Don't abort configuration if `gthread' library is
+	not installed (optional for Quarry).  Configure Quarry to use
+	`librsvg' if it is installed.  Define `HAVE_LIBRSVG' in `config.h'
+	if it is.
+
+2004-07-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.5.
+
+2004-07-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Remove `-Wbad-function-cast' from
+	`QUARRY_WARNINGS' and `QUARRY_WARNINGS_GTK', because it yells at
+	`(int) floor(...)'.
+
+	* configure.ac: Search for library containing floor() and
+	friends (must be `-lm').
+
+	* AUTHORS: Add Martin Holters.
+
+2004-05-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* README: Add information about GTP engines to `RUNNING QUARRY'
+	section.
+
+	* README: Add information about how to submit bug descriptions to
+	Gna! bug tracker.
+	* INSTALL: Likewise.
+
+	* configure.ac: Quarry version 0.1.4 (bug-fix version).
+
+2004-05-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.3.
+
+2004-04-26  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* README: Add information about new files `src/utils/getopt.c',
+	`src/utils/getopt1.c' and `src/utils/getopt.h'.  Add information
+	about new files `src/gui-gtk/gtk-color-button.c' and
+	`src/gui-gtk/gtk-color-button.h'.
+
+2004-04-25  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Fix mail address: <quarry-dev@gna.org>, not
+	<quarry@gna.org>.
+	* INSTALL: Likewise.
+	* README: Likewise.
+
+2004-04-21  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Quarry version 0.1.2.
+
+	* configure.ac: New option `--disable-sgf-utils'.
+
+	* configure.ac: Convert `dnl' comments to `#' comments as
+	suggested by Autoconf manual.
+
+2004-04-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Add `AM_MAINTAINER_MODE' so that `Makefile's don't
+	try to run Autoconf and/or Automake by default.
+
+2004-04-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* configure.ac: Remove `QUARRY_WARNINGS_REDUCED' variable, because
+	`-Wwrite-strings' gives warnings on too many pieces of GTK+ code
+	and it's not worth it to use the flag for some files and not the
+	others.
+
+
+Changes before the project registration on Gna! (2004-04-12) were not logged.
+
+
+  Copyright (C) 2004, 2005, 2006 Paul Pogonyshev.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted provided the copyright notice and this notice are preserved.
+
+
+
+Local Variables:
+coding: iso-8859-1
+End:

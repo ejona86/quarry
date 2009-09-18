@@ -1,0 +1,125 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This file is part of Quarry                                     #
+#                                                                 #
+# Copyright (C) 2003, 2004, 2005, 2006 Paul Pogonyshev.           #
+#                                                                 #
+# This program is free software; you can redistribute it and/or   #
+# modify it under the terms of the GNU General Public License as  #
+# published by the Free Software Foundation; either version 2 of  #
+# the License, or (at your option) any later version.             #
+#                                                                 #
+# This program is distributed in the hope that it will be useful, #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of  #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   #
+# GNU General Public License for more details.                    #
+#                                                                 #
+# You should have received a copy of the GNU General Public       #
+# License along with this program; if not, write to the Free      #
+# Software Foundation, Inc., 51 Franklin Street, Fifth Floor,     #
+# Boston, MA 02110-1301, USA.                                     #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+defaults  - gtp_engine_defaults {
+  screen_name_format		string		"%n %v"
+  name				string		NULL
+  version			string		NULL
+
+  site_configuration_name	string		NULL
+  is_hidden			boolean_write_true_only  false
+
+  command_line			string		NULL
+  supported_games		string_list	-
+}
+
+
+defaults  - game_tree_view_defaults {
+  show_tooltips			boolean		true
+  show_game_tree		enumeration	SHOW_GAME_TREE_AUTOMATICALLY
+  track_current_node		enumeration	TRACK_CURRENT_NODE_AUTOMATICALLY
+  center_on_current_node	boolean		false
+}
+
+
+defaults  - sgf_configuration_defaults {
+  force_utf8			boolean		true
+}
+
+
+defaults  - go_board_appearance_defaults {
+  use_background_texture	boolean		true
+  background_texture		string		"$PACKAGE_TEXTURES_DIR$/wood1.jpg"
+
+  background_color		color		#dbb665
+  grid_and_labels_color		color		#000000
+
+  markup_theme			string		"Default"
+  use_theme_defaults		boolean		true
+
+  markup_size			real		0.65
+  markup_size_is_relative	boolean		true
+
+  markup_opacity		real		0.8
+
+  markup_colors			array		[3]
+				color
+    [0]						#186010
+    [1]						#e6d8c6
+    [2]						#505050
+  end
+}
+
+
+defaults  - amazons_board_appearance_defaults {
+  board_appearance		structure	new
+				BoardAppearance board_appearance_dispose
+
+    use_background_texture	boolean		true
+    background_texture		string		"$PACKAGE_TEXTURES_DIR$/wood1.jpg"
+
+    background_color		color		#dbb665
+    grid_and_labels_color	color		#000000
+
+    markup_theme		string		"Default"
+    use_theme_defaults		boolean		true
+
+    markup_size			real		0.65
+    markup_size_is_relative	boolean		true
+
+    markup_opacity		real		0.8
+
+    markup_colors		array		[3]
+				color
+      [0]					#222222
+      [1]					#e6d8c6
+      [2]					#505050
+    end
+  end
+
+  # Force some brownish tint.
+  checkerboard_pattern_color	color		#604000
+  checkerboard_pattern_opacity	real		0.4
+}
+
+
+defaults  - reversi_board_appearance_defaults {
+  use_background_texture	boolean		false
+  background_texture		string		NULL
+  background_color		color		#087834
+  grid_and_labels_color		color		#cceebb
+
+  markup_theme			string		"Default"
+  use_theme_defaults		boolean		true
+
+  markup_size			real		0.65
+  markup_size_is_relative	boolean		true
+
+  markup_opacity		real		0.8
+
+  markup_colors			array		[3]
+				color
+    [0]						#cceebb
+    [1]						#e6d8c6
+    [2]						#505050
+  end
+}

@@ -1,0 +1,91 @@
+			 SYSTEM REQUIREMENTS
+
+To compile Quarry you need the following libraries:
+
+* GTK+ 2.0 or later (http://gtk.org/download/)
+
+* librsvg 2.5 or later (http://ftp.gnome.org/pub/gnome/sources/librsvg/)
+
+Note that you need both the libraries, and the header include files,
+which often come in a separate development pacakge.  You should first
+try to install these from your distribution; otherwise, download them
+from the locations indicated above.
+
+
+		   QUARRY INSTALLATION INSTRUCTIONS
+
+Untar the sources, `cd' to the directory where you unpacked Quarry and
+invoke `configure' script:
+
+	./configure [OPTIONS]
+
+If configure does not succeed, please check whether your system
+satisfies the requirements listed in the previous section.
+
+Now invoke the `make' program:
+
+	make
+
+If it succeeded then you are done.  You should now have a binary named
+`quarry' residing in the `src' directory.
+
+If something went wrong, please have a look at the next section.
+
+After this, you should install Quarry by typing
+
+	make install
+
+(you may need to login as super-user first).  After this, everything
+should be set up just fine.
+
+Note that Quarry binary can be placed anywhere.  This means that you
+can run the copy in your build directory as well the installed one.
+Also, if you rebuild Quarry, you don't need to reinstall it unless
+files in `data/' subdirectory has changed or you intend to run the
+installed binary, not the one in build directory.
+
+
+		   BUILDING IN A SEPARATE DIRECTORY
+
+Starting with version 0.1.13 Quarry supports building in a separate
+directory.  It is not tested thoroughly, but should work just fine.
+
+To build Quarry in a separate directory, proceed as usually:
+
+	mkdir some-build-directory
+	cd some-build-directory
+	path/to/source/directory/configure
+	make
+	make install
+
+Your build directory can be named whatever you like; the only
+requirement is that it is placed outside the source directory.
+`path/to/source/directory/configure' should be the path to the topmost
+directory of the distribution (where this file is placed), not to
+`src/'.
+
+However, if you configure Quarry for building in a separate directory,
+you will not be able to update `po/quarry.pot' file.  It depends on
+some files generated in build process and deficiencies in gettext's
+infrastructure prevent `make' from finding the files outside the
+source directory.  This is not much of a problem as updating
+`po/quarry.pot' should only be done by project maintainer, so unless
+you are about forking Quarry, this should be of no concern to you.
+
+
+			INSTALLATION PROBLEMS
+
+If Quarry won't configure or compile on your system and you are sure
+that the system requirements are satisfied, I would certainly like to
+fix that.  See file named README for details on how to report bugs.
+Remember that the more information you provide, the more likely I will
+fix the problem.
+
+Before sending a bug report, please make sure that GTK+ 2.x is
+installed: type
+
+	pkg-config --modversion gtk+-2.0
+
+If the library is installed, it will print the exact version.  If it
+is not, `pkg-config' will tell you that or fail to run at all.  Don't
+forget to include GTK+ version in your bug report.

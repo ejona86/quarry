@@ -1,0 +1,4572 @@
+2006-11-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.2.0.)
+
+	* gui-gtk/gtk-sgf-tree-view.c
+	(gtk_sgf_tree_view_center_on_current_node): Bug-fix: store
+	adjustment values before calling center_on_current_node() for
+	passing to update_view_port_and_maybe_move_or_resize_window().
+
+2006-11-07  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/quarry-save-confirmation-dialog.c
+	(update_secondary_text): Make two version of a string passed
+	through ngettext() contain the same number of conversion
+	specifiers (bug #7585, Bjørn Ingmar Berg.)
+
+2006-11-01  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (gtk_utils_show_and_forget_dialog): New
+	function: add "Help" button with accelerator on "F1".
+
+	* gui-gtk/gtk-game-info-dialog.c (gtk_game_info_dialog_init): Use
+	it.
+	* gui-gtk/gtk-new-game-record-dialog.c
+	(gtk_new_game_record_dialog_init): Likewise.
+	* gui-gtk/gtk-preferences.c (gtk_preferences_dialog_present):
+	Likewise.
+	* gui-gtk/gtk-progress-dialog.c
+	(gtk_progress_dialog_set_help_link_id): Likewise.
+	* gui-gtk/gtk-resume-game-dialog.c
+	(gtk_resume_game_dialog_present): Likewise.
+	* gui-gtk/quarry-assistant.c
+	(quarry_assistant_set_page_help_link_id)
+	(quarry_assistant_set_page_help_link_id_callback): Likewise.
+	* gui-gtk/quarry-find-dialog.c (quarry_find_dialog_init):
+	Likewise.
+
+2006-10-31  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-utils/configuration.c (write_string): Bug-fix: properly
+	handle non-ASCII characters in `string' (spotted by Bjørn Ingmar
+	Berg.)
+
+2006-10-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-control-center.c (gtk_control_center_present): Add
+	standard actions to "F1" and "Ctrl+W" accelerators.
+
+	* (Quarry version 0.1.20.)
+
+	* gui-gtk/gtk-goban-window.c (text_buffer_mark_set): Mark removal
+	of node name row as user action so it is included in undo history.
+
+2006-10-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-go-to-named-node-dialog.c
+	(gtk_go_to_named_node_dialog_init): Remove separator from the
+	dialog.
+
+	* gui-gtk/quarry-find-dialog.c (quarry_find_dialog_init): Add
+	"Help" button.
+	* gui-gtk/gtk-goban-window.c (find_dialog_response): Process
+	clicks on it.
+
+	* gui-gtk/gtk-resume-game-dialog.c
+	(gtk_resume_game_dialog_present): Add "Help" button.
+	(gtk_resume_game_dialog_response): Process clicks on it.
+
+	* gui-gtk/gtk-goban-window.c (do_save_collection): Show error
+	dialog on writing error.
+
+	* gui-utils/configuration.c (configuration_write_to_file): Print
+	error to `stderr' if unable to write for some reason.
+
+	* sgf/sgf-writer.c (sgf_write_file): Change return type to `const
+	char*' and return error, if any.
+
+	* utils/buffered-writer.c (buffered_writer_init): Change return
+	type to `const char*' and return result of strerror() on error in
+	opening file.  Initialize new field `error_string' to NULL.
+	(buffered_writer_dispose): Free `error_string'.
+	(flush_buffer): Set `error_string' on error.
+
+	* gui-utils/configuration-internals.h: Remove file, use
+	`configuration.h' directly.
+
+	* sgf/sgf-tree.c (sgf_game_tree_new, sgf_game_tree_set_game):
+	Adapt to memory_pool_init() change.
+
+	* utils/memory-pool.c: Hopefully a fix for #6432.
+	(memory_pool_init): Add `index_field_offset' argument and store it
+	in the structure.
+	(memory_pool_alloc, memory_pool_free, memory_pool_traverse)
+	(memory_pool_traverse_data): Use `index_field_offset'.
+	(memory_chunk_new): Add `index_field_offset' argument.
+
+	* utils/utils.h (STRUCTURE_FIELD_OFFSET): Move here from
+	`gui-utils/configuration-internals.h'.
+
+2006-10-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (initialize_gtp_player): Add code to
+	handle failed initialization gracefully and inform user.
+
+2006-10-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-game-info-dialog.c
+	(undo_or_redo_availability_changed): Swap undo histories to
+	determine can undo/can redo state on the valid history (bug
+	#7419.)
+
+2006-10-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gui-back-end.c (initialize_main_loop): Set default icon
+	as some/most window managers don't use application's
+	icon (suggested by Michel Salim).
+
+2006-10-08  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gtp/gtp-client.c (gtp_client_set_free_handicap): Bug-fix: use
+	`buffer.string', not just `buffer' where we need string (fixes a
+	bug on 64-bit machines, maybe #6432.)
+	(gtp_client_play_move): Likewise.
+
+	* gui-gtk/gtk-goban-window.c
+	(update_comment_and_node_name_if_needed): Remove old FIXME.
+	* gui-gtk/gtk-new-game-dialog.c (gtk_new_game_dialog_init):
+	Likewise.
+	* gui-gtk/quarry-find-dialog.c (quarry_find_dialog_init):
+	Likewise.
+
+	* gui-gtk/gtk-help.c (gtk_help_display): Show error dialog in case
+	`mozilla' doesn't start.
+
+	* gui-gtk/gtk-game-info-dialog.c (gtk_game_info_dialog_init): Call
+	new function update_title().
+	(update_title): New function.
+	(set_field_text): Call update_title() if game name changes.
+	(update_property): Likewise.
+
+2006-08-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-control-center.c (gtk_control_center_present): Add
+	accelerators consistent with goban windows to most buttons.
+
+2006-08-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-utils.c (find_board_state_data): Fix typo bug.
+
+2006-08-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-freezable-spin-button.c
+	(gtk_freezable_spin_button_output): Unfreeze if adjustment's value
+	changes for some reason (fixes mouse blocking in freezed state.)
+
+2006-07-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-sgf-tree-view.c (SHOULD_TRACK_CURRENT_NODE): Make it
+	work when `current_tree' is NULL (bug #6475.)
+	(track_current_node): Likewise.
+	(center_on_current_node): Likewise.
+	(update_view_port): Likewise.
+	(update_view_port_and_maybe_move_or_resize_window): Likewise.
+
+2006-07-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/quarry-find-dialog.c
+	(quarry_find_dialog_set_search_history): Mark some variables as
+	unused for old versions of GTK+.
+
+	* gui-gtk/gtk-utils.c (g_signal_accumulator_true_handled):
+	Likewise.
+
+	* gui-gtk/gtk-game-info-dialog.c
+	(game_info_spin_button_focus_out_event): Fix typo error.
+
+2006-07-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-file-dialog.c (gtk_file_dialog_get_filename): Avoid
+	warnings for missed return on non-GCC compilers.
+	(gtk_file_dialog_set_filename): Likewise.
+
+	* gui-gtk/gtk-game-info-dialog.c (get_field): Likewise.
+	(get_page_index): Likewise.
+	(get_property_type): Likewise.
+	(get_field_text): Likewise.
+	(game_info_spin_button_focus_out_event): Likewise.
+
+	* gui-gtk/gtk-games.c (gtk_games_create_board_size_adjustment):
+	Likewise.
+
+	* gui-gtk/gtk-goban.c (get_or_create_label_feedback_pixbuf):
+	Likewise.
+
+	* gui-gtk/gtk-goban-window.c (free_handicap_mode_goban_clicked):
+	Likewise.
+	(update_set_player_to_move_commands): Likewise.
+
+	* gui-gtk/quarry-find-dialog.c (quarry_find_text): Likewise.
+
+	* gui-gtk/gtk-goban-window.c (receive_copied_sgf): Initialize some
+	variables to avoid compiler warnings.
+
+	* gui-gtk/quarry-text-buffer.c: Include `gtk-utils.h' to get
+	definition of g_signal_accumulator_true_handled() on old GTK+
+	versions.
+	(quarry_text_buffer_insert_text): Initialize a variable to avoid
+	compiler warning.
+
+2006-07-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.19.)
+
+2006-07-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* utils/buffered-writer.c (update_column): Fix for the case of
+	missing memrchr().
+
+2006-07-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.18.)
+
+	* gui-gtk/gtk-new-game-dialog.c (begin_game): Create SGF
+	collection and a temporary board before anything else to satisfy
+	some assertions.
+
+	* gui-gtk/gtk-goban-window.c (receive_copied_sgf): Add a comment
+	for the translators in an obscure place (requested by Jérémie
+	Knuesel.)
+
+2006-07-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-named-vbox.c (gtk_named_vbox_size_request): Fix for
+	the case of invisible label (reported by Jérémie Knuesel.)
+
+	* gui-gtk/gtk-sgf-tree-view.c (map_modified): Call
+	update_view_port_and_maybe_move_or_resize_window() even if we are
+	not tracking the current node since the map size might have
+	changed.  Reported by Jérémie Knuesel.
+
+	* gui-gtk/gtk-goban-window.c (text_buffer_receive_undo_entry):
+	Only keep using `undo_entry_data' if there's an undo history;
+	otherwise it is deleted (reported by Jérémie Knuesel.)
+	(update_comment_and_node_name_if_needed): Likewise.
+
+2006-07-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-game-info-dialog.c
+	(gtk_game_info_dialog_class_init): Add bindings for undo and redo
+	actions.  Create `undo-history-action' signal.
+	(gtk_game_info_dialog_init): Add "Help" button.
+	(gtk_game_info_dialog_response): Handle help response.
+	(gtk_game_info_dialog_undo_history_action): New function, break
+	out of gtk_game_info_dialog_response().
+
+	* gui-gtk/quarry-marshal.glist: New marshaller `VOID:BOOLEAN'.
+
+	* gui-gtk/gtk-help.c (gtk_help_display): Don't assert that
+	`link_id' is not NULL, it is not necessary true.
+
+2006-07-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-new-game-record-dialog.c
+	(gtk_new_game_record_dialog_init): Add "Help" button.
+	(gtk_new_game_record_dialog_response): Handle help response.
+
+	* gui-gtk/gtk-game-info-dialog.c
+	(gtk_game_info_dialog_class_init): Hook up new function
+	gtk_game_info_dialog_finalize().
+	(gtk_game_info_dialog_init): Add "Undo" and "Redo" buttons.
+	Change some accelerators to make way for them.  Connect
+	enable_simple_undo() function.  Use GtkTextView, not
+	QuarryTextView, since the latter manages its own undo history.
+	Initialize new fields `sgf_undo_history', `simple_undo_field',
+	`simple_redo_field' and `simple_redo_value'.
+	(create_and_pack_game_info_entry): Add `dialog' argument.  Connect
+	enable_simple_undo() function.
+	(gtk_game_info_dialog_response): Handle undo and redo responses.
+	(gtk_game_info_dialog_finalize): New function.
+	(gtk_game_info_dialog_set_node): Use new set_field_text()
+	function.
+	(get_field, get_page_index, get_property_type, get_field_text)
+	(set_field_text, do_set_field_text): New functions.
+	(game_info_spin_button_focus_out_event): Use renamed
+	update_property() function also for property deletion.
+	(enable_simple_undo, undo_or_redo_availability_changed): New
+	functions.
+	(update_property): Rename from update_property_if_changed().  Use
+	SGF undo history and related functions.
+	(property_has_changed): New function.
+
+	* sgf/sgf-undo.c (sgf_undo_history_delete_redo_entries): New
+	function, break out of sgf_utils_apply_undo_history_entry().
+	(sgf_utils_undo): Fix typo and make function not undo everything
+	at once.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_set_text_buffer_text): Fix for
+	the case of empty text.
+
+	* sgf/sgf.h: Fix `SgfCustomOperationEntryFunction' definition.
+
+2006-07-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (update_children_for_new_node):
+	Always set comment and node name if the buffer is not modified.
+	(set_comment_and_node_name): Set buffer unmodified.
+	(update_comment_and_node_name_if_needed): Hide last undo history
+	entry.
+
+	* sgf/sgf-undo.c (sgf_undo_history_hide_last_applied_entry): New
+	function.
+	(sgf_utils_undo): Don't stop after hidden entries.
+	(sgf_utils_redo): Likewise.
+	(sgf_utils_apply_undo_history_entry): Initialize new `is_hidden'
+	field.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add menu
+	items for standard clipboard operations.  Change some accelerators
+	to make way for the new menu items.
+	(update_commands_sensitivity): Update sensitivity of the new
+	commands.
+	(cut_operation, copy_operation, paste_operation, get_copied_sgf)
+	(delete_copied_sgf, receive_copied_sgf): New functions.
+
+	* sgf/sgf-utils.c (sgf_utils_create_subtree_sgf)
+	(sgf_utils_paste_sgf): New functions.
+
+	* sgf/sgf.h (SGF_MIME_TYPE): New macro.
+
+	* sgf/sgf-tree.c (sgf_node_duplicate_recursively): Fix: use
+	sgf_node_duplicate_recursively() for recursion.
+
+2006-07-08  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-writer.c (SGF_WRITER_BUFFER_SIZE): New macro.
+	(sgf_write_in_memory): New function.
+	(write_collection): New function, break out of sgf_write_file().
+	(write_node_sequence): Constify `node' argument.
+	(do_write_go_move): Likewise.
+	(do_write_reversi_move): Likewise.
+	(do_write_amazons_move): Likewise.
+	(sgf_write_none): Constify `value' argument.
+	(sgf_write_number): Likewise.
+	(sgf_write_real): Likewise.
+	(sgf_write_double): Likewise.
+	(sgf_write_color): Likewise.
+	(sgf_write_simple_text): Likewise.
+	(sgf_write_fake_simple_text): Likewise.
+	(sgf_write_text): Likewise.
+	(sgf_write_list_of_point): Likewise.
+	(sgf_write_list_of_vector): Likewise.
+	(sgf_write_list_of_label): Likewise.
+	(sgf_write_figure_description): Likewise.
+	(sgf_write_unknown): Likewise.
+
+	* utils/buffered-writer.c (buffered_writer_init): Initialize new
+	fields `first_chunk' and `buffer_size'.  Open file in binary mode.
+	(buffered_writer_init_memory, buffered_writer_add_character): New
+	functions.
+	(flush_buffer): Add special code for memory buffered writers.
+
+	* gui-gtk/gtk-goban-window.c (do_export_diagram): Use
+	`GDK_SELECTION_CLIPBOARD' and `GDK_SELECTION_PRIMARY' constants.
+	(show_about_dialog): Use only ASCII characters in strings
+	translated by gettext.
+
+2006-07-07  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (show_find_dialog): Use new
+	QuarryFindDialog.  Set new `close_automatically' field.  Set
+	dialog's search history.
+	(find_dialog_response): Add `find_dialog' argument.
+	(do_find_text): Use new quarry_find_text() function.  Rebuild
+	search history after successful searches.
+
+	* gui-gtk/quarry-find-dialog.c: New file, broken out of
+	`gui-gtk/gtk-goban-window.c'.
+	* gui-gtk/quarry-find-dialog.h: New file.
+
+	* utils/string-list.c (string_list_clamp_size): New function.
+
+2006-07-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-file-dialog.c: Revert proper punctuation changes:
+	they are not supported by gettext with GNU libc < 2.3.3, quite
+	recent.
+	* gui-gtk/gtk-goban-window.c: Likewise.
+	* gui-gtk/gtk-new-game-record-dialog.c: Likewise.
+	* gui-gtk/gtk-parser-interface.c: Likewise.
+	* gui-gtk/gtk-preferences.c: Likewise.
+	* gui-gtk/gtk-resume-game-dialog.c: Likewise.
+	* gui-gtk/quarry-save-confirmation-dialog.c: Likewise.
+	* gui-gtk/quarry-stock.c: Likewise.
+
+	* sgf/sgf-parser.c (parse_buffer): Initialize new `file_error'
+	field.  Return `SGF_ERROR_READING_FILE' if the field becomes set.
+	(refresh_buffer): Cancel parsing on file errors instead of dying
+	in assertion failure.
+	(expand_buffer): Likewise.
+
+	* gui-utils/time-control.c
+	(time_control_save_settings_in_sgf_node): Use
+	sgf_utils_set_text_property() so that results are stored in undo
+	history.  Add `side-effect' argument.
+	(time_control_save_state_in_sgf_node): Add `side-effect' argument.
+
+	* sgf/sgf-utils.c (sgf_utils_apply_setup_changes): Add
+	`side-effect' argument.
+	(sgf_utils_apply_markup_changes): Likewise.
+	(sgf_utils_set_none_property): Likewise.
+	(sgf_utils_set_number_property): Likewise.
+	(sgf_utils_set_real_property): Likewise.
+	(sgf_utils_set_text_property): Likewise.
+	(sgf_utils_set_list_of_point_property): Likewise.
+	(sgf_utils_set_list_of_label_property): Likewise.
+	(sgf_utils_append_text_property): Likewise.
+	(sgf_utils_set_score_result): Likewise.
+	(sgf_utils_set_time_left): Likewise.
+	(sgf_utils_delete_property): Likewise.
+	(do_set_pointer_property): Likewise.
+
+	* sgf/sgf-undo.c
+	(sgf_change_node_inlined_color_undo_history_entry_new): Add
+	`side-effect' argument
+	(sgf_new_property_undo_history_entry_new): Likewise.
+	(sgf_delete_property_undo_history_entry_new): Likewise.
+	(sgf_change_property_undo_history_entry_new): Likewise.
+	(sgf_change_real_property_undo_history_entry_new): Likewise.
+	(sgf_operation_change_node_move_color_do_change): Do not set
+	`tree->node_to_switch_to' if `side-effect' field is set.
+	(sgf_operation_add_property): Likewise.
+	(sgf_operation_delete_property): Likewise.
+	(sgf_operation_change_property_do_change): Likewise.
+	(sgf_operation_change_real_property_do_change): Likewise.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add
+	"File/Export..." submenu.
+	(export_ascii_diagram, export_senseis_library_diagram)
+	(do_export_diagram): New functions.
+	(update_commands_sensitivity): Make "Export.../Sensei's Library
+	Diagram" item sensitive only for Go trees.
+
+	* sgf/sgf-utils.c (sgf_utils_export_position_as_ascii)
+	(sgf_utils_export_position_as_senseis_library_diagram)
+	(add_horizontal_coordinates, add_horizontal_line): New functions.
+
+2006-07-05  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-file-dialog.c: Use proper punctuation.
+	* gui-gtk/gtk-goban-window.c: Likewise.
+	* gui-gtk/gtk-new-game-record-dialog.c: Likewise.
+	* gui-gtk/gtk-parser-interface.c: Likewise.
+	* gui-gtk/gtk-preferences.c: Likewise.
+	* gui-gtk/gtk-resume-game-dialog.c: Likewise.
+	* gui-gtk/gtk-sgf-tree-view.c: Likewise.
+	* gui-gtk/quarry-save-confirmation-dialog.c: Likewise.
+	* gui-gtk/quarry-stock.c: Likewise.
+
+2006-07-03  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Create
+	QuarryTextBuffer to receive undo entries.  Bind `end-user-action'
+	and `receive-undo-entry' signals.
+	(do_save_collection): New function, partly broken out common part
+	of gtk_goban_window_save() and save_file_as_response().
+	(handle_go_scoring_results): Wrap everything in SGF action.  Use
+	sgf_utils_*() function, which honor undo histories.  Use
+	fetch_comment_and_node_name() and set_comment_and_node_name()
+	around comment change.
+	(set_current_tree): Call new function
+	update_comment_and_node_name_if_needed() instead of
+	fetch_comment_and_node_name().
+	(do_resign_game): Use sgf_utils_*() function, which honor undo
+	histories.
+	(update_children_for_new_node): Add `text_handled' argument.  Call
+	update_children_for_new_node() instead of
+	fetch_comment_and_node_name().  Save buffer state after inserting
+	new node's comment and node name, if asked.
+	(set_comment_and_node_name): New function, broken out of
+	update_children_for_new_node().
+	(insert_node_name): Wrap all operations in one user action so that
+	undo entry is correct.
+	(text_buffer_insert_text): Don't do anything if buffer is undoing
+	or redoing.
+	(text_buffer_after_insert_text): Likewise.
+	(text_buffer_mark_set): Likewise.
+	(text_buffer_end_user_action): New function, set
+	`node_name_inserted' here only.
+	(text_buffer_receive_undo_entry): New function.
+	(text_buffer_undo, text_buffer_redo, text_buffer_set_state_undo)
+	(text_buffer_set_state_redo): New functions.
+	(update_comment_and_node_name_if_needed): New function, partly
+	broken out of fetch_comment_and_node_name().
+	(move_has_been_played): Use sgf_utils_*() function, which honor
+	undo histories.
+	(player_is_out_of_time): Likewise.
+
+	* gui-gtk/quarry-text-buffer.c
+	(quarry_text_buffer_combine_undo_entries): Fix for the case when
+	`previous_undo_entry' becomes empty.
+	(quarry_text_buffer_get_state, quarry_text_buffer_set_state): New
+	functions.
+
+	* sgf/sgf-utils.c
+	(sgf_utils_append_text_property): Rename from
+	sgf_node_append_text_property() and modify to honor undo
+	histories.
+	(sgf_utils_set_score_result): Likewise, rename from
+	sgf_node_add_score_result().
+	(sgf_utils_apply_custom_undo_entry): New function.
+
+	* sgf/sgf-undo.c (sgf_undo_history_is_last_applied_entry_single)
+	(sgf_undo_history_check_last_applied_custom_entry_type)
+	(sgf_undo_history_get_last_applied_custom_entry_data): New
+	functions.
+	(sgf_custom_undo_history_entry_new)
+	(sgf_operation_custom_undo, sgf_operation_custom_redo)
+	(sgf_operation_custom_free_data): New functions.
+
+	* sgf/sgf-undo-operations.list: Add `SGF_OPERATION_CUSTOM'.
+
+2006-06-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/quarry-text-buffer.c (quarry_text_buffer_init):
+	Initialize new fields `is_undoing_or_redoing' and
+	`block_all_modifications'.  Connect new function
+	quarry_text_buffer_modification_guard() to `delete-range',
+	`insert-text', `apply-tag' and `remove-tag' signals.
+	(quarry_text_buffer_delete_range): Don't touch state index fields
+	when `is_undoing_or_redoing' is true.  Remove all tags first, so
+	that appropriate undo operations are recorded.  Reset
+	`block_all_modifications'.
+	(quarry_text_buffer_insert_text): Likewise for state indices and
+	`block_all_modifications'.  Ensure that inherited tags are
+	recorded as buffer modifications.
+	(quarry_text_buffer_apply_tag): Implement.
+	(quarry_text_buffer_remove_tag): Implement.
+	(quarry_text_buffer_modification_guard)
+	(quarry_text_buffer_is_undoing_or_redoing): New functions.
+	(quarry_text_buffer_undo): Use new undo_or_redo () function.
+	(quarry_text_buffer_redo): Likewise.
+	(undo_or_redo): New function, code of quarry_text_buffer_undo()
+	and quarry_text_buffer_redo() conditioned on `undo' parameter.
+	Don't save `last_assigned_state_index' (not modified now).  Set
+	`is_undoing_or_redoing' to TRUE while in this function.
+	(quarry_text_buffer_combine_undo_entries): Combine entries with
+	tag operations too (but don't count them when deciding whether to
+	combine at all.)
+	(get_text_operation, adjust_operation_offsets): New functions.
+	(add_operation): Pass `undo_entry' instead of `buffer' for
+	consistency.
+	(delete_operation): New function.
+	(insert_text): Remove all tags from the newly inserted text to
+	prevent tag inheriting from accidentally spoiling undo/redo
+	consistency.
+	(apply_tag, remove_tag): New functions.
+
+2006-06-02  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/quarry-assistant.c: Rename from `gtk-assistant.c' to
+	make way for actual GtkAssistant of GTK+ 2.10 and up.  Rename
+	functions etc. as appropriate.  (Suggested by David Gómez.)
+
+	* gui-gtk/quarry-assistant.h: Rename from `gtk-assistant.h'.
+
+2006-03-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.17.)
+
+2006-02-24  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (gtk_preferences_dialog_present):
+	Rearrange some code to avoid compiler warnings.
+
+	* gui-gtk/gtk-goban-window.c (initialize_gtp_player): Call
+	gtp_client_clear_board() since `boardsize' command is not
+	guaranteed to do that.
+
+	* gtp/gtp-client.c (gtp_client_clear_board): New function.
+
+	* gui-gtk/gtk-gtp-client-interface.c (log_gtp_stream_error): Fix
+	typo.
+
+2006-02-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-sgf-tree-view.c (VIEW_PORT_NODE): New macro, break
+	out of gtk_sgf_tree_view_button_release_event().
+	(gtk_sgf_tree_view_class_init): Hook up new
+	gtk_sgf_tree_view_motion_notify_event().
+	(gtk_sgf_tree_view_init): Reset new `last_tooltips_node' field.
+	(gtk_sgf_tree_view_realize): Add all pointer movement-related
+	flags to the event mask.
+	(gtk_sgf_tree_view_button_release_event): Call new
+	synthesize_enter_notify_event().
+	(gtk_sgf_tree_view_motion_notify_event): New function.
+	(gtk_sgf_tree_view_finalize): Unset view's tooltip, if any.
+	(gtk_sgf_tree_view_get_tooltips_enabled)
+	(gtk_sgf_tree_view_set_tooltips_enabled, append_limited_text)
+	(get_shared_tooltips, synthesize_enter_notify_event): New
+	functions.
+
+	* gui-gtk/gtk-preferences.c (create_game_tree_page): Add a check
+	button controlling whether tooltips are shown on the game tree
+	view.  Adjust a mnemonic.
+	(create_markup_box): Wrap `theme_hbox' in a GtkNamedVbox for
+	better alignment and don't pack a dummy label into it.
+	(update_game_tree_tooltips_status): New function.
+
+	* gui-gtk/gtk-named-vbox.c (gtk_named_vbox_init): Don't show the
+	label just yet.
+	(gtk_named_vbox_new): Use gtk_named_vbox_set_label_text() instead
+	of explicit gtk_label_set_text() call.
+	(gtk_named_vbox_size_request): Don't request space for the label
+	if it is not visible.
+	(gtk_named_vbox_size_allocate): Likewise: don't allocate.
+	(gtk_named_vbox_set_label_text): Show or hide the label depending
+	on whether text is empty.
+
+	* sgf/sgf-utils.c (sgf_utils_get_node_move_number): New function.
+
+	* gui-utils/common-configuration-values.list: Add value
+	controlling whether to show tooltips in game tree view.
+	* gui-utils/common-configuration-defaults.list: Likewise.
+
+	* gui-gtk/gtk-go-to-named-node-dialog.c (set_selected_node): Make
+	comment window contain text "Empty" when there is no comment and
+	don't make it sensitive.
+
+2006-02-21  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/quarry-message-dialog.c
+	(quarry_message_dialog_class_init): New function.
+	(quarry_message_dialog_init): Create only one label (so that user
+	can select the complete text, not only part.)  Initialize new
+	`primary_text' and `secondary_text' fields.
+	(quarry_message_dialog_finalize): New function.
+	(quarry_message_dialog_set_primary_text): Call set_label_text().
+	(quarry_message_dialog_set_secondary_text): Likewise.
+	(set_label_text): New function.
+
+	* gui-utils/parse-configuration.c (configuration_parse_values2):
+	Bug-fix: write `\000' instead of `\0' to avoid misinterpretations
+	if followed by a digit.
+
+	* gui-gtk/gtk-games.c (gtk_games_create_board_size_selector_box):
+	New function, break out a common part of
+	gtk_new_game_dialog_init() and gtk_new_game_record_dialog_init()
+	and add quick standard board size selectors.
+	(set_standard_board_size): New function.
+
+	* board/games.list: Add standard board sizes data to the three
+	supported games.
+
+	* board/parse-game-list.c (game_list_parse_game2): Parse and write
+	a set of standard board sizes (written in format suitable for
+	string_list_fill_from_string().)
+
+2006-02-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-parser.c (format_error_valist): Change `buffer' type
+	from `char *' to `StringBuffer *'.  Don't return anything.
+
+	* sgf/sgf-parser.h (MAX_ERROR_LENGTH): Remove macro.
+
+	* sgf/sgf-utils.c (sgf_utils_format_node_move): Change `buffer'
+	type from `char *' to `StringBuffer *'.  Don't return anything.
+
+	* board/amazons.c (amazons_format_move): Change `buffer' type from
+	`char *' to `StringBuffer *'.  Don't return anything.
+
+	* board/go.c (go_format_move): Change `buffer' type from `char *'
+	to `StringBuffer *'.  Don't return anything.
+	(go_score_game): Change `detailed_score' type from `char **' to
+	`StringBuffer *'.  Don't allocate `detailed_score' but write to
+	the buffer instead (if non-NULL.)
+
+	* board/reversi.c (reversi_format_move): Change `buffer' type from
+	`char *' to `StringBuffer *'.  Don't return anything.
+
+	* board/board.c (game_format_point): Change `buffer' type from
+	`char *' to `StringBuffer *'.  Don't return anything.
+	(game_format_position_list): Likewise.
+	(game_format_move): Likewise.
+	(game_format_move_valist): Likewise.
+	(game_format_score_difference): Add `buffer' argument, don't
+	allocate and return a string.
+
+	* board/board.h (SUGGESTED_POSITION_LIST_BUFFER_SIZE): Remove
+	macro.
+
+	* utils/string-buffer.c (string_buffer_steal_string): New
+	function.
+
+2006-02-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-parser-interface.c (gtk_parser_interface_present):
+	Update for new `response' callback usage scheme of
+	gtk_file_dialog_new().
+	* gui-gtk/gtk-utils.c (browse_button_clicked): Likewise.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_save): Use new
+	gtk_file_dialog_set_current_name() function when saving the file
+	for the first time.  Update for new `response' callback scheme.
+	(save_file_as_response): Use gtk_window_get_modal() check instead
+	of gtk_main_level() to determine if we should destroy the
+	dialog (the latter doesn't work.)
+
+	* gui-gtk/gtk-file-dialog.c (gtk_file_dialog_new): Remove
+	`response_callback' and `user_data' arguments.  Don't create
+	custom data structure or connect handlers to free it.
+	(gtk_file_dialog_set_filename): With GtkFileChooser, use
+	gtk_file_chooser_set_current_name() when the filename is not an
+	absolute path or doesn't exist.
+	(gtk_file_dialog_set_current_name): New function.
+	(file_chooser_save_response): Remove `data' argument.  Don't
+	invoke user callback.  Stop signal emission if confirmation dialog
+	is shown (this is to make it work from gtk_dialog_run().)
+	(file_selection_open_response): Likewise; stop emission if a
+	directory is selected.
+	(file_selection_save_response): Likewise; stop emission in both
+	cases.
+	(check_if_overwriting_file): Remove `data' argument.
+	(overwrite_confirmation): Remove `data' argument.  Don't invoke
+	user callback, but instead emit `response' signal on the file
+	dialog after disconnecting our handlers.
+
+	* gui-gtk/gtk-goban-window.c (update_game_specific_information):
+	Use ngettext() for integral komi, use proper minus sign.
+	(update_move_information): Use new game_format_score_difference().
+
+	* board/go.c (go_score_game): Use ngettext() for integral komi,
+	use new game_format_score_difference(), use proper minus sign.
+
+	* board/board.c (game_format_score_difference): New function,
+	break common part out of go_score_game() and
+	update_move_information().  Use ngettext() for integral score
+	differences.
+	
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Only call
+	gtk_item_factory_set_translate_func() if ENABLE_NLS is true, else
+	it won't compile without NLS (thanks to C Thomas for bug-report.)
+
+2006-02-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-file-dialog.c: Include `gtk-utils.c' again, else
+	GTK_2_4_OR_LATER never gets defined.
+
+2006-02-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Rename "Set
+	Player to Move" submenu to "Player to Move".
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add
+	"Edit/Move Branch Up" and "Edit/Move Branch Down" menu items.
+	Resolve a mnemonics conflict.
+	(update_commands_sensitivity): Update sensitivity of the new
+	commands.
+	(swap_adjacent_branches): New function.
+
+	* sgf/sgf-utils.c (sgf_utils_swap_current_node_with): New
+	function.
+
+	* sgf/sgf-undo.c (sgf_swap_nodes_undo_history_entry_new)
+	(sgf_operation_swap_nodes_do_swap): New functions.
+
+	* sgf/sgf-undo-operations.list: Add `SGF_OPERATION_SWAP_NODES'.
+
+2006-02-05  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add
+	"Edit/Set Move Number" menu item.  Adjust some mnemonics.
+	(update_commands_sensitivity): Update sensitivity of the new
+	command.
+	(set_move_number): New function.
+
+	* gui-gtk/quarry-move-number-dialog.c: New file.
+	* gui-gtk/quarry-move-number-dialog.h: New file.
+
+	* sgf/sgf-utils.c (sgf_utils_get_sequential_move_number): New
+	function.
+
+	* board/board.c (board_get_move_number): New function.
+
+	* (Globally in board/: add BoardStackEntry structure that
+	encapsulates `move_number' and, possibly, `grid_copy' fields.
+	Include it in all game-specific stack entry structures.)
+
+2006-02-04  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add
+	"Edit/Set Player to Move" submenu.  Initialize new
+	`updating_set_player_commands' field.
+	(update_children_for_new_node): Call new function
+	update_set_player_to_move_commands().
+	(update_set_player_to_move_commands, set_player_to_move): New
+	functions.
+
+	* sgf/sgf-utils.c (sgf_utils_append_variation): Make it return the
+	new node.
+	(sgf_utils_set_number_property): Add special case for `PL'
+	property.
+	(sgf_utils_determine_player_to_move_by_rules)
+	(sgf_utils_find_board_state_data): New functions.
+	(sgf_utils_descend_nodes): Adapt to new `PL' value storage scheme.
+	Check for `PL' for all non-move nodes, since in Quarry a node with
+	only a `PL' property is not considered a setup node internally.
+	(sgf_utils_ascend_nodes): Likewise.
+	(find_board_state_data): New function, break out of
+	sgf_utils_ascend_nodes().  Similar change for `PL' property as for
+	sgf_utils_descend_nodes().
+	(determine_final_color_to_play): Make the `tree' argument `const'.
+
+	* sgf/sgf-undo.c
+	(sgf_change_node_inlined_color_undo_history_entry_new): Rename
+	from sgf_change_node_move_color_undo_history_entry_new().  Add
+	`operation' argument.
+	(sgf_operation_change_node_move_color_do_change): Record the node
+	as `node_to_switch_to'.
+	(sgf_operation_change_node_to_play_color_do_change): New function.
+
+	* sgf/sgf-undo-operations.list: Add
+	`SGF_OPERATION_CHANGE_NODE_TO_PLAY_COLOR'.
+
+	* sgf/sgf-writer.c (write_node_sequence): Add special case to
+	write `PL' at appropriate place between other properties.
+
+	* sgf/sgf-properties.list (PL): Use `not_stored' storage type and
+	new sgf_parse_to_play() parser.
+
+	* sgf/sgf-parser.c (complete_node_and_update_board): Adapt to new
+	`PL' value storage scheme.
+	(do_parse_color): New function, broken out of sgf_parse_color().
+	(sgf_parse_color): Remove special case for `PL' property, this
+	function is not invoked for it anymore.
+	(sgf_parse_to_play): New function.
+
+	* sgf/sgf-tree.c (sgf_node_new): Initialize new `to_play_color'
+	field.
+	(sgf_node_duplicate): Copy `to_play_color' field.
+
+	* board/board.h: Include `assert.h' since
+	board_position_list_delete() uses assert().
+
+	* (Globally in gui-gtk/: use GLib g_return_*(), and other debug
+	macros instead of plain assert().  The intention is to make Quarry
+	more robust against programming errors.)
+
+2006-02-01  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-game-info-dialog.c (gtk_game_info_dialog_set_node):
+	Call quarry_history_text_buffer_reset_history().
+
+	* gui-gtk/quarry-history-text-buffer.c
+	(quarry_history_text_buffer_reset_history): New function.
+
+	* gui-gtk/quarry-text-buffer.c: Rename all `modifications_count'
+	to `state_index'.
+	(quarry_text_buffer_class_init): Hook up new
+	quarry_text_buffer_modified_changed().
+	(quarry_text_buffer_init): Initialize new fields
+	`last_assigned_state_index' and `unmodified_state_index'.
+	(quarry_text_buffer_delete_range): Adjust renamed `state_index' so
+	that it counts different buffer states, not just the number of
+	modifications (these are different after undo operations.)
+	(quarry_text_buffer_insert_text): Likewise.
+	(quarry_text_buffer_modified_changed): New function
+	(quarry_text_buffer_undo): Set the buffer to unmodified state if
+	`state_index' is equal to `unmodified_state_index' after the
+	operation.  Inhibit undo entry combinations on the next step.
+	(quarry_text_buffer_redo): Likewise.
+
+2006-01-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/quarry-history-text-buffer.c
+	(quarry_history_text_buffer_receive_undo_entry): Try to combine
+	the just received entry with the last one using new
+	quarry_text_buffer_combine_undo_entries().
+
+	* gui-gtk/quarry-text-buffer.c (quarry_text_buffer_init):
+	Initialize new `modifications_count', `last_modification_time' and
+	`previous_modification_time' fields.
+	(quarry_text_buffer_delete_range): Increment
+	`modifications_count'.
+	(quarry_text_buffer_insert_text): Likewise.
+	(quarry_text_buffer_begin_user_action): Update modification times.
+	Set entry's `modifications_count_before'.
+	(quarry_text_buffer_end_user_action): Set entry's
+	`modifications_count_after'.
+	(quarry_text_buffer_undo): Check that entry's modification count
+	matches the expected for the buffer.  Update buffer's count after
+	undoing.
+	(quarry_text_buffer_redo): Likewise.
+	(quarry_text_buffer_combine_undo_entries): New function.
+
+	* (Globally: use the new copyright updating scheme suggested by
+	the GNU project, i.e. include all the years when Quarry changed,
+	not particular file changed.  Update all relevant files to include
+	years 2005 and 2006.)
+
+2006-01-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-game-info-dialog.c (gtk_game_info_dialog_init): Use
+	QuarryTextView instead of GtkTextView to get undo history.
+
+	* gui-gtk/quarry-text-view.c: New file.
+	* gui-gtk/quarry-text-view.h: New file.
+
+	* gui-gtk/quarry-history-text-buffer.c: New file.
+	* gui-gtk/quarry-history-text-buffer.h: New file.
+
+	* gui-gtk/quarry-text-buffer.c: New file.
+	* gui-gtk/quarry-text-buffer.h: New file.
+
+	* gui-gtk/gtk-utils.c (g_signal_accumulator_true_handled):
+	Implement for pre-2.4 GTK+ (was not present in those versions.)
+
+	* gui-gtk/quarry-marshal.glist: New marshaller `BOOLEAN:POINTER'.
+
+2006-01-27  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-file-selector.c (gtk_file_selector_init): Use new
+	entry_focus_out_event() instead of gtk_file_selector_repopulate()
+	as `focus-out-event' handler.  Fixes a crushing bug reported by
+	Arend Bayer.
+	(entry_focus_out_event): New function: invoke
+	gtk_file_selector_repopulate() and return `FALSE'.
+
+2005-11-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_invisible_notebook): Block
+	`key-press-event' and `key-release-event' signals with new
+	block_key_signal().
+	(block_key_signal): New function.
+
+2005-11-02  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Don't force
+	window maximization, it goes in the way of the window
+	manager (suggested by Heikki Levanto.)
+
+2005-10-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.16.)
+
+	* gui-gtk/gtk-goban-window.c (game_has_been_adjourned): Add a
+	missing `the' article to a string constant.
+	(update_children_for_new_node): Add `forced' argument so that the
+	rest of code doesn't have to change `last_displayed_node' to force
+	an update.  (Fixes bug with disappearing comment changes.)  Reset
+	`text_buffer' modification state.
+	(fetch_comment_and_node_name): Temporary set comment and node name
+	with sgf_utils_set_text_property().  Still bad, but better than
+	not saving changes in undo history at all.
+
+	* gui-gtk/gtk-preferences.c (create_game_tree_page): Squeeze a
+	double space in a string constant.
+
+	* gui-gtk/gtk-help.c (gtk_help_display): Pass a `file://' URI, not
+	just a filename to the browser, otherwise `#' fragment
+	specialization doesn't work.
+
+2005-10-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-new-game-record-dialog.c
+	(gtk_new_game_record_dialog_init): Initialize widgets in
+	accordance to saved configuration values.
+	(gtk_new_game_record_dialog_response): Pass players' names and
+	game name through sgf_utils_normalize_text().  Save configuration
+	values as set up in the dialog this time.
+
+	* gui-gtk/gtk-new-game-dialog.c (begin_game): Pass players' and
+	engines' names through sgf_utils_normalize_text().
+
+	* gui-gtk/gtk-configuration.list: Add configuration parameters for
+	new game records.
+
+	* gui-utils/configuration.c (configuration_read_from_file): Handle
+	nullable configuration values.
+	(write_section): Likewise.
+
+	* gui-utils/parse-configuration.c (configuration_parse_values2):
+	Handle nullable configuration values.
+	(configuration_parse_defaults2): Likewise.
+	(look_at_field_type): Detect nullable configuration value types.
+	(add_field_declaration_if_needed): Handle nullable configuration
+	values.
+
+	* gui-gtk/quarry-save-confirmation-dialog.c
+	(quarry_save_confirmation_dialog_init): Pass "Close without
+	Saving" string through gettext.
+	(update_secondary_text): Remove parentheses that confused gettext.
+
+2005-10-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Globally: remove periods at the end of message dialog primary
+	texts to conform with HIG.)
+
+	* gui-gtk/gtk-control-center.c (gtk_control_center_quit): Ask all
+	goban windows if they need saving first.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_new): Don't set
+	no-file windows to be irreversibly modified.
+	(gtk_goban_window_stops_closing): New function.
+	(collection_modification_state_changed): Treat no-file windows
+	differently.  Track time of first modification.
+	(gtk_goban_window_close): New function.
+	(update_window_title): Treat no-file windows differently.
+
+	* gui-gtk/quarry-save-confirmation-dialog.c: New file, partially
+	inherit code from removed gtk_utils_create_message_dialog().
+	* gui-gtk/quarry-save-confirmation-dialog.h: New file.
+
+	* gui-gtk/quarry-message-dialog.c: New file.
+	* gui-gtk/quarry-message-dialog.h: New file.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_show_and_forget_dialog): New
+	function.
+	(gtk_utils_create_message_dialog): Remove function, partially
+	inherited by new file `quarry-message-dialog.c'.
+
+2005-09-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c
+	(handle_drag_and_drop): Return early in no-op drag-and-drop to
+	avoid assertion failure in string_list_move().
+	(gtk_preferences_guess_engine_by_name): Improve for the case of
+	multiple versions of the same engine.
+
+	* gui-gtk/gtk-goban-window.c (leave_game_mode): Call
+	update_commands_sensitivity() since editing tools become
+	available.
+	(update_commands_sensitivity): Don't touch "Edit/Go to Named Node"
+	menu item if it is not present to begin with.
+
+	* gui-gtk/gui-back-end.c (run_main_loop): Use `for' loops instead
+	of g_ptr_array_foreach(), which is absent from old GLib versions.
+
+2005-09-27  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Globally: use "Reversi" instead of "Othello" everywhere to
+	avoid potential trademark problems as suggested by Michel
+	Alexandre Salim.)
+
+	* gui-utils/tile-renderer.c (render_reversi_disks): Rename from
+	render_othello_disks().
+
+	* gui-gtk/gtk-new-game-dialog.c (gtk_new_game_dialog_init): Adjust
+	a couple mnemonics because of letter 'O' becoming unused.
+
+	* gui-gtk/gtk-preferences.c
+	(create_reversi_board_appearance_page): Rename from
+	create_othello_board_appearance_page().
+
+	* gui-gtk/quarry-stock.c: Adjust mnemonic of `QUARRY_STOCK_CREATE'
+	item: 'R' is now taken by "Reversi".
+
+	* gtp/gtp-client.c (gtp_client_set_game): Add special case to
+	supply "Othello" as game name, per de facto GTP standard.
+	(store_supported_games_list): Likewise in opposite direction:
+	translate "Othello" to "Reversi".
+
+	* sgf/sgf-parser.c (do_parse_reversi_move): Rename from
+	do_parse_othello_move().
+
+	* sgf/sgf-writer.c (do_write_reversi_move): Rename from
+	do_write_othello_move().
+
+	* board/reversi.c: Rename from `othello.c'.
+	* board/reversi.h: Rename from `othello.h'.
+
+	* board/reversi.c (reversi_adjust_color_to_play): Rename from
+	othello_adjust_color_to_play().
+	(reversi_get_default_setup): Rename from
+	othello_get_default_setup().
+	(reversi_is_legal_move): Rename from othello_is_legal_move().
+	(reversi_play_move): Rename from othello_play_move().
+	(reversi_undo): Rename from othello_undo().
+	(reversi_apply_changes): Rename from othello_apply_changes().
+	(reversi_add_dummy_move_entry): Rename from
+	othello_add_dummy_move_entry().
+	(reversi_format_move): Rename from othello_format_move().
+	(reversi_parse_move): Rename from othello_parse_move().
+	(reversi_validate_board): Rename from othello_validate_board().
+	(reversi_dump_board): Rename from othello_dump_board().
+	(reversi_count_disks): Rename from othello_count_disks().
+
+2005-09-26  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-parser.c (do_parse_simple_text): Fix leading whitespace
+	skipping (`continue' won't work in `do ... while (0)' loop.)
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "Label
+	Tool" and "Number Tool" items to "Edit" and editing tools menus.
+	Initialize new `next_sgf_label' and `labels_mode' fields.
+	(about_to_change_node): Emit `click-canceled' signal on window's
+	goban.
+	(label_mode_pointer_moved, label_mode_goban_clicked): New
+	functions.
+	(update_children_for_new_node): Reset `next_sgf_label'.
+	(update_commands_sensitivity): Handle sensitivity of new menu
+	items.
+	(activate_label_tool): New function.
+
+	* gui-gtk/gtk-add-or-edit-label-dialog.c: New file.
+	* gui-gtk/gtk-add-or-edit-label-dialog.h: New file.
+
+	* gui-gtk/gtk-goban.c (VERTICAL_LINE_GAP): New macro, broke out of
+	draw_vertical_line_with_gaps() and gtk_goban_update().
+	(gtk_goban_init): Reset various new fields related to label
+	feedback.
+	(gtk_goban_expose): Add code for rendering semi-transparent label
+	feedback using new get_or_create_label_feedback_pixbuf().  Use
+	markup colors also for labels instead of black/white (via new
+	render_label().)  Alter label color based on SGF markup too:
+	improves label readability.
+	(draw_vertical_line_with_gaps): Also make gaps for label feedback.
+	(draw_horizontal_line_with_gaps): Likewise.
+	(gtk_goban_button_press_event): New function.
+	(gtk_goban_leave_notify_event): Reset label feedback too.
+	(gtk_goban_finalize): Call new free_label_feedback_data().
+	(gtk_goban_set_label_feedback): New function.
+	(emit_pointer_moved): When resetting feedback overlay, reset label
+	feedback too.
+	(create_label_text_pixbuf, get_or_create_label_feedback_pixbuf)
+	(free_label_feedback_data): New functions.
+
+	* sgf/sgf-tree.c (sgf_game_tree_delete): Use
+	sgf_undo_history_delete() instead of removed.
+	sgf_undo_history_delete_dont_free_data()
+	(sgf_label_list_get_label, sgf_label_list_set_label)
+	(sgf_label_list_contains_label, compare_sgf_labels): New
+	functions.
+
+	* sgf/sgf-undo.c (sgf_undo_history_delete_dont_free_data): Remove
+	function: data in `SgfChangePropertyOperationEntry' isn't linked
+	from property pool and it's not worth it to have special-case code
+	for this.
+
+	* board/board.h (POINTS_LESS_THAN): New macro.
+
+2005-09-25  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-tile-set.c (scale_and_paint_svg_image): Change a lot
+	of types and use explicit casting to suppress all GCC 4.0
+	warnings.
+
+	* gui-gtk/gtk-named-vbox.h (_GtkNamedVBox): Change type of
+	`left_padding' field to `int' to avoid GCC 4.0 warning.
+
+	* gui-gtk/gtk-gtp-client-interface.c (handle_engine_output):
+	Change type of `bytes_read' to `gsize' to silence GCC 4.0 warning.
+	(handle_engine_stderr): Likewise.
+
+	* gui-utils/tile-renderer.c (duplicate_and_adjust_alpha): Change
+	type of `new_pixel_data' and `scan' to `unsigned char *' to deal
+	with GCC 4.0 warnings.
+	(saturate_and_set_alpha): Likewise.
+	(combine_pixels_diagonally): Likewise.
+
+	* sgf/sgf-utils.c (sgf_utils_descend_nodes): Explicitly cast an
+	argument of sgf_node_get_number_property_value() to `int *' to
+	prevent GCC 4.0 warning.
+
+	* utils/buffered-writer.c (buffered_writer_add_character): Change
+	type of `buffer_size' and some local variables to
+	`size_t'.  (Dealing with GCC 4.0 warnings.)
+	(buffered_writer_add_newline): Likewise for local variables.
+	(buffered_writer_cat_as_string): Likewise for `length' and local
+	variables.
+	(buffered_writer_cat_as_strings): Likewise for length arguments
+	from variadic argument list.
+	(buffered_writer_vprintf): Likewise for a local variable.
+	(buffered_writer_vcprintf): Likewise.
+	(update_column): Likewise for `length' and a local variable.
+
+2005-07-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-utils/tile-renderer.c (duplicate_and_adjust_alpha): Replace
+	`image_size' argument with `width' and `height'.
+	(saturate_and_set_alpha): New function.
+
+2005-07-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-game-info-dialog.c (gtk_game_info_dialog_init): Fix:
+	set mnemonic widget for "Comment / Description" label to be the
+	text view, not its scrollable parent.
+
+	* gui-utils/common-configuration-values.list
+	(amazons_board_appearance_values): Fix two wrong `markup_colors'
+	indices.
+
+2005-07-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c: Add some comments for translators.
+	(gtk_goban_window_init): Add "Add Empty Node" item to "Edit" menu.
+	Remove accidental mnemonic from toolbar editing tool menu.  Pass
+	"Pass" and "Resign" strings through gettext().
+	(gtk_goban_window_enter_game_mode): Pass "Please set up..."
+	message through ngettext(): not all languages have the same forms
+	for all integers greater than 1.
+	(show_go_to_named_node_dialog): Fix
+	gtk_utils_create_message_dialog() invocation arguments order.
+	(update_commands_sensitivity): Sensitize/desensitize new menu item
+	as appropriate.  Make search and "Go to Named Node" commands
+	insensitive in special modes.
+	(append_empty_variation): New function.
+
+	* gui-gtk/gtk-go-to-named-node-dialog.c
+	(gtk_go_to_named_node_dialog_new): Explicitly cast `node_name' to
+	`gpointer' to suppress warning.
+	(gtk_go_to_named_node_dialog_finalize): Arrange for calling new
+	free_node_list() function on each `completion_tree' node.
+	(free_node_list): New function.
+
+	* gui-gtk/quarry-stock.c: Add context information to the renamed
+	stock items' strings.
+	(quarry_stock_init): Use Q_() instead of _() to handle context.
+
+	* gui-gtk/quarry-stock.h (QUARRY_STOCK_FIND_NEXT): Rename from
+	`QUARRY_STOCK_NEXT'.
+	(QUARRY_STOCK_FIND_PREVIOUS): Rename from `QUARRY_STOCK_PREVIOUS'.
+
+	* gui-gtk/gtk-assistant.c (gtk_assistant_init): Use
+	`GTK_STOCK_GO_FORWARD' instead of `QUARRY_STOCK_NEXT' (as
+	suggested by HIG.)
+
+	* gui-gtk/gtk-preferences.c (gtk_preferences_dialog_present):
+	Generate game name labels in category tree with
+	gtk_games_get_capitalized_name().
+	(create_gtp_engines_page): Prepare "Supported game(s):" label for
+	using `game'/`games' as appropriate.
+	(create_saving_sgf_page): Add accidentally missing mnemonics.
+	(gtk_preferences_dialog_update_gtp_engine_info): Translate game
+	names and capitalize the first.  Set `game'/`games' as described
+	above.
+
+	* gui-gtk/gtk-resume-game-dialog.c (analyze_game_to_be_resumed):
+	Pass name of unsupported game through gettext.
+	(gtk_resume_game_dialog_present): Use
+	gtk_games_get_capitalized_name() for retreiving game name.  Add
+	context information to "Not set" strings.
+
+	* gui-gtk/gtk-games.c (gtk_games_get_capitalized_name): New
+	function.
+	(gtk_games_name_to_index): Use new function game_from_game_name()
+	and return GTK_GAME_UNSUPPORTED, not -1 if the game is not
+	supported.
+
+	* gui-gtk/gui-back-end.c
+	(gui_back_end_register_object_to_finalize): Use GPtrArray instead
+	of GSList for `objects_to_finalize'.
+	(gui_back_end_register_pointer_to_free): New function.
+	(run_main_loop): Free the registered pointers and GPtrArray's.
+
+	* board/board.c (game_from_game_name): New function, essentially
+	move code of gtk_games_name_to_index() here.
+
+	* board/games.list: Add `GAME_INVALID' identifier.
+
+	* board/go.c (go_score_game): Chop the text into pieces to allow
+	proper translation.  Use gettext and utils_cat_printf().
+
+	* quarry.h (Q_): New macro.
+
+	* utils/utils.c (utils_cat_printf): New function.
+	(utils_cat_vprintf): New function, essentially move code of
+	utils_vprintf() here.
+	(utils_gettext_with_context): New function.
+
+	* board/parse-game-list.c (CAPITALIZATION_HINT): New macro.
+	(game_list_parse_game2): Mark game names in output up for
+	`xgettext' harvesting.  Add comments for translators.
+
+2005-07-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "Go to
+	Named Node" item in "Go" menu when using GTK+ 2.4 and up.
+	(gtk_goban_window_enter_game_record_mode): Set undo history
+	notification callback to undo_or_redo_availability_changed().
+	(undo_or_redo_availability_changed): New function, break out of
+	update_commands_sensitivity().
+	(show_go_to_named_node_dialog): New function.
+	(set_current_tree): Call undo_or_redo_availability_changed().
+	(set_goban_signal_handlers): Call gtk_goban_force_feedback_poll():
+	changing editing tool normally involves changing feedback.
+
+	* gui-gtk/gtk-go-to-named-node-dialog.c: New file.
+	* gui-gtk/gtk-go-to-named-node-dialog.h: New file.
+
+	* gui-gtk/quarry-stock.c: New stock item `QUARRY_STOCK_GO_TO_NODE.
+
+	* sgf/sgf-undo.c (sgf_undo_history_new): Initialize new
+	`notification_callback' and `user_data' fields.
+	(sgf_undo_history_set_notification_callback): New function.
+	(begin_undoing_or_redoing): Set `could_undo' and `could_redo'
+	fields of `tree'.
+	(end_undoing_or_redoing): Send notification if undo/redo
+	availability has changed (based on `could_undo' and `could_redo'.)
+
+	* sgf/sgf-privates.h (UNDO_HISTORY_DO_NOTIFY): New macro.
+
+2005-07-10  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-undo.c: New file, break out of `sgf-utils.c'.
+	(sgf_undo_history_new): Link up the new history to tree's list of
+	undo histories.
+	(sgf_undo_history_delete): Detach the history from tree's list of
+	undo histories.
+	(sgf_new_node_undo_history_entry_new): Rename from
+	create_new_node_undo_history_entry() and make global.  Remove
+	`tree' argument and retrieve `current_variation' field from
+	`new_node->parent', not `tree->current_node' (removes restriction
+	on new node's parent.)
+	(sgf_delete_node_undo_history_entry_new): New function, break out
+	of sgf_utils_delete_current_node().
+	(sgf_delete_node_children_undo_history_entry_new): New function,
+	break out of sgf_utils_delete_current_node_children().
+	(sgf_change_node_move_color_undo_history_entry_new): New function,
+	break out of sgf_utils_apply_setup_changes().
+	(sgf_new_property_undo_history_entry_new): Rename from
+	create_new_property_undo_history_entry() and make global.
+	(sgf_delete_property_undo_history_entry_new): Rename from
+	create_delete_property_undo_history_entry() and make global.
+	(sgf_change_property_undo_history_entry_new): Rename from
+	create_change_property_undo_history_entry() and make global.
+	(sgf_change_real_property_undo_history_entry_new): New function,
+	break out of sgf_utils_set_real_property().
+	(sgf_utils_apply_undo_history_entry): Rename from
+	apply_undo_history_entry() and make global.
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Set new `undo_history_list'
+	field to NULL.
+	(sgf_game_tree_delete): Delete all undo histories in
+	`undo_history_list'.
+
+	* sgf/sgf-utils.c (sgf_utils_do_switch_to_given_node): Rename from
+	do_switch_to_given_node() and make global.
+	(sgf_utils_descend_nodes): Rename from descend_nodes() and make
+	global.
+	(sgf_utils_ascend_nodes): Rename from ascend_nodes() and make
+	global.
+
+2005-07-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "Editing
+	toolbar" item in "View" menu.  Add editing toolbar with some
+	buttons and an option menu for selecting editing tool.
+	(gtk_goban_window_finalize): Unreference new `tools_item_factory'
+	field.
+	(show_or_hide_editing_toolbar, tools_option_menu_changed)
+	(synchronize_tools_menus): New functions.
+	(update_commands_sensitivity): Set editing toolbar's button
+	sensitive or insensitive, as appropriate.  Call
+	synchronize_tools_menus().
+	(activate_move_tool): Call synchronize_tools_menus ().
+	(activate_setup_tool): Likewise.
+	(activate_scoring_tool): Likewise.
+	(activate_markup_tool): Likewise.
+
+	* gui-gtk/gtk-preferences.c (create_gtk_ui_page): Also create
+	controls for editing toolbar parameters.
+	(create_toolbar_style_box): New function, break out of
+	create_gtk_ui_page().
+	(gtk_preferences_register_editing_toolbar): New function.
+
+	* gui-gtk/gtk-configuration.list: Add configuration parameters for
+	editing toolbars.
+
+	* sgf/sgf-tree.c (sgf_collection_is_modified): Rename accidentally
+	left `num_modified_trees' to `num_modified_undo_histories'.
+	(sgf_collection_set_unmodified): Likewise.
+	* sgf/sgf-utils.c (end_undoing_or_redoing): Likewise.
+
+2005-07-04  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_new): Set
+	collection notification callback to new
+	collection_modification_state_changed().  Set
+	`is_irreversibly_modified' for newly created collections.
+	(set_sgf_collection_is_modified): Remove function.
+	(collection_modification_state_changed): New function.
+	(gtk_goban_window_save): Call sgf_collection_set_unmodified()
+	after a successful save.
+	(save_file_as_response): Likewise.
+	(game_info_dialog_property_changed): Don't call removed
+	set_sgf_collection_is_modified() and rely on notifications.
+	(handle_go_scoring_results): Likewise.
+	(play_pass_move): Likewise.
+	(do_resign_game): Likewise.
+	(playing_mode_goban_clicked): Likewise.
+	(setup_mode_goban_clicked): Likewise.
+	(markup_mode_goban_clicked): Likewise.
+	(fetch_comment_and_node_name): Likewise.
+	(move_has_been_played): Likewise.
+	(player_is_out_of_time): Likewise.
+	(delete_current_node): Likewise.
+	(delete_current_node_children): Likewise.
+
+	* sgf/sgf-utils.c (sgf_undo_history_new): Initialize new
+	`unmodified_state_entry' field.
+	(begin_undoing_or_redoing): Set new `tree_was_modified' and
+	`collection_was_modified' fields.
+	(end_undoing_or_redoing): Bug-fix: emit notifications even if
+	`node_to_switch_to' is NULL.  Emit notification about collection's
+	modification state change when appropriate.
+	(apply_undo_history_entry): Set `is_irreversibly_modified'
+	collection's field when modifying a tree without an undo history.
+
+	* sgf/sgf-tree.c (sgf_collection_new): Initialize new fields
+	`num_modified_undo_histories', `is_irreversibly_modified',
+	`notification_callback' and `user_data' fields.
+	(sgf_collection_add_game_tree): Set `tree->collection' field.
+	(sgf_collection_is_modified, sgf_collection_set_unmodified)
+	(sgf_collection_set_notification_callback): New functions.
+	(sgf_game_tree_new): Initialize new `collection' field.
+
+	* sgf/sgf-privates.h (COLLECTION_DO_NOTIFY): New macro.
+	(GAME_TREE_DO_NOTIFY): Rename from DO_NOTIFY() and move from
+	`sgf-utils.c'
+
+2005-07-03  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (browsing_dialog_response): Die in assertion
+	failure if `data->associated_entry' is not `GTK_ENTRY' or
+	`GTK_FILE_SELECTOR' (avoid warning about uninitialized `entry'.)
+
+	* sgf/sgf-utils.c (sgf_utils_apply_setup_changes): Initialize
+	`undo_history' to avoid GCC warning.
+	(sgf_utils_end_action): Bug-fix: call end_undoing_or_redoing()
+	whenever `undo_operation_level' is zero, don't require an undo
+	history.
+
+	* sgf/sgf-utils.c (sgf_utils_append_variation): Call
+	sgf_utils_begin_action() and sgf_utils_end_action().
+	(sgf_utils_apply_setup_changes): Call sgf_utils_begin_action() and
+	sgf_utils_end_action().  Pass node's `move_color' change through
+	undo history so that it is done not only the first time.
+	(sgf_utils_apply_markup_changes): Call sgf_utils_begin_action()
+	and sgf_utils_end_action().
+	(sgf_utils_set_none_property, sgf_utils_set_number_property)
+	(sgf_utils_set_real_property, sgf_utils_set_text_property)
+	(sgf_utils_set_list_of_label_property): New functions.
+	(sgf_utils_set_time_left): Use sgf_utils_set_*() functions instead
+	of sgf_node_add_*() ones.  Call sgf_utils_begin_action() and
+	sgf_utils_end_action().
+	(sgf_utils_delete_current_node): Call sgf_utils_begin_action() and
+	sgf_utils_end_action().
+	(sgf_utils_delete_current_node_children): Likewise.
+	(sgf_utils_delete_property, sgf_utils_begin_action)
+	(sgf_utils_end_action): New functions.
+	(sgf_utils_undo): Call begin_undoing_or_redoing() and
+	end_undoing_or_redoing().  Handle actions comprised of multiple
+	history entries.
+	(sgf_utils_redo): Likewise.
+	(sgf_undo_history_delete): Use delete_undo_history_entry() to
+	handle NULL `free_data' functions.
+	(do_set_pointer_property, strings_are_equal)
+	(create_new_property_undo_history_entry)
+	(create_delete_property_undo_history_entry)
+	(create_change_property_undo_history_entry): New functions.
+	(delete_undo_history_entry): New function, don't call `free_data'
+	if it is NULL.
+	(begin_undoing_or_redoing, set_is_modifying_map)
+	(set_is_modifying_tree, end_undoing_or_redoing): New functions.
+	(apply_undo_history_entry): Use delete_undo_history_entry().
+	Initialize `is_last_in_action' field of the `entry'.
+	(sgf_operation_add_node): Pass notifications through
+	set_is_modifying_*() functions.  Schedule current tree node
+	switching using `node_to_switch_to' field.
+	(sgf_operation_delete_node): Likewise.
+	(sgf_operation_delete_node_children_undo): Likewise.
+	(sgf_operation_delete_node_children_redo): Likewise.
+	(sgf_operation_change_node_move_color_do_change)
+	(sgf_operation_add_property, sgf_operation_delete_property)
+	(sgf_operation_new_property_free_data)
+	(sgf_operation_delete_property_free_data)
+	(sgf_operation_change_property_do_change)
+	(sgf_operation_change_property_free_data): New functions.
+	(sgf_operation_change_real_property_do_change): New function,
+	conditioned on `SGF_REAL_VALUES_ALLOCATED_SEPARATELY'.
+	(find_property_link): New function.
+
+	* sgf/sgf-undo-operations.list: New operations:
+	`SGF_OPERATION_CHANGE_NODE_MOVE_COLOR',
+	`SGF_OPERATION_NEW_PROPERTY', `SGF_OPERATION_DELETE_PROPERTY',
+	`SGF_OPERATION_CHANGE_PROPERTY' and (conditional)
+	`SGF_OPERATION_CHANGE_REAL_PROPERTY'.
+
+	* sgf/sgf.h (sgf_utils_set_double_property)
+	(sgf_utils_set_color_property): New macros.
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Initialize new field
+	`undo_operation_level'.
+	(sgf_property_free_value): New function, break code out of
+	free_property_value() and change signature.
+	(sgf_label_lists_are_equal): New function.
+
+2005-06-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* board/board.h (POINTS_ARE_EQUAL): Move from
+	`sgf/sgf-diff-utils.c'
+
+	* sgf/sgf-writer.c (sgf_write_none): Change `value' type from
+	`SgfValue' to `SgfValue *'.
+	(sgf_write_number): Likewise.
+	(sgf_write_real): Likewise.  Also access `value->real' as
+	determined by `SGF_REAL_VALUES_ALLOCATED_SEPARATELY'.
+	(sgf_write_double): Likewise.
+	(sgf_write_color): Likewise.
+	(sgf_write_simple_text): Likewise.
+	(sgf_write_fake_simple_text): Likewise.
+	(sgf_write_text): Likewise.
+	(sgf_write_list_of_point): Likewise.
+	(sgf_write_list_of_vector): Likewise.
+	(sgf_write_list_of_label): Likewise.
+	(sgf_write_figure_description): Likewise.
+	(sgf_write_unknown): Likewise.
+
+	* sgf/sgf-parser.c (sgf_parse_real): Access `(*link)->value.real'
+	as determined by `SGF_REAL_VALUES_ALLOCATED_SEPARATELY'.
+
+	* sgf/sgf-tree.c (sgf_node_get_real_property_value): Access
+	`properties->value.real' as determined by
+	`SGF_REAL_VALUES_ALLOCATED_SEPARATELY'.
+	(sgf_node_add_real_property): Likewise.
+	(sgf_property_duplicate): Likewise.
+
+	* sgf/sgf-properties.list: Use
+	`SGF_REAL_VALUES_ALLOCATED_SEPARATELY' as appropriate.
+
+	* sgf/parse-sgf-list.c (SGF_REAL_VALUES_ALLOCATED_SEPARATELY): New
+	macro.  Pass it as condition to parse_list_main().
+
+	* board/games.list: Add '@' signs before all directives.
+	* sgf/sgf-errors.list: Likewise.
+	* sgf/sgf-undo-operations.list: Likewise.
+	* gui-utils/markup-theme-configuration.list: Likewise.
+	* gui-gtk/gtk-configuration.list: Likewise.
+
+	* utils/parse-list.c: Add conditionals support.  Make all
+	directives (`mode', `c_include' etc.) start with '@' sign.
+	(parse_list_main): Add `conditions' argument.  Strip `_NEW'
+	suffix (if present) from `.h' file global control macro name.
+	Empty the new condition stack.
+	(do_parse_lists): Die in error if condition stack is not empty
+	after having processed the list file.  Process new
+	`@define_condition' directive.
+	(read_line): Process new `@if', `@ifnot', `@else' and `@endif'
+	directives.  Ignore lines inside condition blocks when condition
+	is false.
+	(get_condition, push_condition_stack, pop_condition_stack): New
+	functions.
+
+2005-06-25  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_message_dialog): Use
+	g_markup_escape_text() on message and hint texts.
+	(gtk_utils_create_titled_page): Likewise for title text.
+
+	* sgf/sgf-utils.c (find_time_control_data): Add `const' qualifier
+	to `tree' argument.
+
+2005-06-23  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-utils.c (sgf_utils_set_time_left): New function, break
+	out of time_control_save_state_in_sgf_node() in
+	`gui-utils/time-control.c', but also update board state of the
+	tree if setting time in the current node.
+	(sgf_utils_find_time_control_data): New function.
+	(find_time_control_data): Only use ``weird fix'' if `upper_limit'
+	has children.
+
+2005-06-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (go_scoring_mode_cancel): New
+	function.
+	(handle_go_scoring_results): New function, break out of
+	go_scoring_mode_done().  Use `board' and `board_state' stored in
+	the current tree (they may correspond to the off-screen game
+	position.)
+	(update_commands_sensitivity): Desensitize all tools except the
+	move tool when playing a game.  Likewise for scoring tool when
+	scoring a game (unlike scoring a position in a game record.)
+	(move_has_been_played): Use board stored in the current tree (same
+	as for handle_go_scoring_results().)  When scoring using GTP
+	engines, don't leave game mode yet.
+	(engine_has_scored): If the human gets to score, be sure to switch
+	to the game position node.  If the engines agree with each other,
+	add results to the game position node instead of the displayed
+	node.  And leave game mode here.
+	(cancel_scoring): Likewise, except that ``engines agree'' case
+	cannot happen here.
+	(enter_scoring_mode): Activate appropriate menu item and let the
+	callback do the rest.
+	(activate_scoring_tool): Move most code of enter_scoring_mode()
+	here.  Allow to cancel scoring when not in game mode.  Guess
+	``initial'' dead stones from SGF territory properties using
+	go_guess_dead_stones().
+
+	* board/go.c (go_guess_dead_stones): New function.
+
+2005-06-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-new-game-dialog.c: Make it a GLib class (lots of
+	small changes everywhere.)
+	(gtk_new_game_dialog_get_type): New function.
+	(gtk_new_game_dialog_init): New function, break out of
+	gtk_new_game_dialog_present().  Pass `game_labels[k]' string
+	through gettext.
+	(gtk_new_game_dialog_present): Only allow one dialog at a time.
+	(swap_players): Change argument's type to `GtkNewGameDialog'.
+	(get_selected_game): Likewise.
+	(show_game_specific_rules): Likewise.
+	(set_handicap_adjustment_limits): Likewise.
+	(get_game_rules_help_link_id): Likewise.
+	(instantiate_players): Likewise.
+
+	* gui-gtk/gtk-new-game-dialog.h (GTK_TYPE_NEW_GAME_DIALOG)
+	(GTK_NEW_GAME_DIALOG, GTK_NEW_GAME_DIALOG_CLASS)
+	(GTK_IS_NEW_GAME_DIALOG, GTK_IS_NEW_GAME_DIALOG_CLASS)
+	(GTK_NEW_GAME_DIALOG_GET_CLASS): New macros.
+
+	* gui-gtk/gtk-assistant.c (gtk_assistant_set_user_data): New
+	function.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "New
+	Game Record" item to the "File" menu.
+
+	* gui-gtk/gtk-control-center.c (gtk_control_center_present): Add
+	"New Game Record Button".  Pass "Resume Game" string through
+	gettext.
+
+	* gui-gtk/gtk-new-game-record-dialog.c: New file.
+	* gui-gtk/gtk-new-game-record-dialog.h: New file.
+
+	* gui-gtk/gtk-games.c (game_rules_labels): New global array of
+	constant strings.
+	(gtk_games_create_board_size_adjustment)
+	(gtk_games_create_handicap_adjustment)
+	(gtk_games_create_komi_adjustmet): New functions, break out of
+	gtk_new_game_dialog_present().
+	(gtk_games_set_handicap_adjustment_limits): New function, break
+	out of set_handicap_adjustment_limits() in
+	`gtk-new-game-dialog.c'.
+
+2005-06-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (gtk_utils_pack_array_in_box)
+	(gtk_utils_get_selected_radio_index): New functions.
+
+	* gui-gtk/quarry-stock.c: New stock item `QUARRY_STOCK_CREATE'.
+
+	* gui-gtk/gtk-sgf-tree-view.c (configure_adjustment): Add
+	`original_value' argument and call gtk_adjustment_value_changed()
+	if current value doesn't match original.  Fixes problem when tree
+	view's scrollbars wouldn't reflect most scrolls.
+
+2005-06-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.15.)
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add items
+	for five SGF markup types to the "Edit/Tools" menu.
+	(setup_mode_pointer_moved): When removing a string of stones with
+	Ctrl-click, hide all feedback if the pointer moves outside the
+	string.
+	(setup_mode_goban_clicked): Likewise, don't make any changes if
+	pointer has been moved outside the string.  Call
+	set_sgf_collection_is_modified(): we're not switching to proper
+	modification tracking with undo history yet.
+	(markup_mode_pointer_moved, markup_mode_goban_clicked)
+	(activate_markup_tool): New functions.
+
+	* sgf/sgf-utils.c (sgf_utils_apply_markup_changes): New function.
+
+	* board/board.c (board_position_list_add_position): Allow `list'
+	to be NULL.
+
+	* board/go.c (go_is_same_string): New function.
+
+	* gui-gtk/gtk-goban.c (gtk_goban_expose): Handle
+	`GOBAN_MARKUP_GHOSTIFY_SGF_MARKUP' and
+	`GOBAN_MARKUP_GHOSTIFY_SGF_MARKUP_SLIGHTLY' flags.
+	(gtk_goban_button_press_event): Reset new `anti_slip_disabled'
+	field upon a new button press.
+	(gtk_goban_button_release_event): Use `anti_slip_disabled' instead
+	of checking if press point has been reset to null.  Set new
+	`non_empty_feedback' field in the data sent to callbacks.
+	(gtk_goban_set_overlay_data): Add `sgf_markup_tile' argument.
+	(gtk_goban_disable_anti_slip_mode): Set `anti_slip_disabled' to
+	`TRUE' instead of setting the press point to null.
+	(gtk_goban_set_contents): Add `sgf_markup_contents' argument.
+	Free the dummy overlay contents (a memory leak plug.)
+	(gtk_goban_get_sgf_markup_contents): New function.
+	(set_feedback_data): Handle all the new SGF markup feedbacks.  Set
+	`non_empty_feedback' field.
+	(set_overlay_data): Add `sgf_markup_tile' arguments.  Add special
+	handling for ghostifying flags in goban markup.
+
+	* gui-gtk/gtk-goban.h: A whole lot of new feedback types for SGF
+	markup feedback.  Add `GOBAN_MARKUP_GHOSTIFY_SGF_MARKUP',
+	`GOBAN_MARKUP_GHOSTIFY_SGF_MARKUP_SLIGHTLY',
+	`GOBAN_MARKUP_GRID_FLAGS_MASK', `GOBAN_MARKUP_SGF_FLAGS_MASK' and
+	`GOBAN_SGF_MARKUP_TILE_DONT_CHANGE' constants.
+	(GtkGobanClickData): Replace `feedback_tile' field with
+	`non_empty_feedback'.
+
+	* gui-gtk/gtk-tile-set.c (gtk_sgf_markup_tile_set_create): Create
+	additional 25% and 50% transparent tiles.
+	(gtk_sgf_markup_tile_set_delete): Unreference new tiles.
+	(create_pixbuf_from_pixel_data): New function.
+
+	* gui-gtk/gtk-tile-set.h (SGF_MARKUP_OPAQUE)
+	(SGF_MARKUP_25_TRANSPARENT, SGF_MARKUP_50_TRANSPARENT)
+	(NUM_ALL_SGF_MARKUP_SHADES): New macros.
+
+2005-06-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add
+	"Edit/Tools" submenu.  Initialize new `drawn_position_list' field.
+	(free_handicap_mode_done): Use grid_diff() instead of
+	gtk_goban_diff_against_grid().
+	(go_scoring_mode_done): Modify to work when used as an editing
+	tool instead of in game mode.
+	(set_goban_signal_handlers): Emit `click-canceled' signal on the
+	goban.
+	(setup_mode_pointer_moved, setup_mode_goban_clicked)
+	(delete_drawn_position_list): New functions.
+	(activate_move_tool, activate_setup_tool, activate_scoring_tool):
+	New functions.
+
+	* sgf/sgf-utils.c (sgf_utils_apply_setup_changes)
+	(sgf_utils_set_list_of_point_property): New functions.
+	(create_new_node_undo_history_entry): New function, break out of
+	sgf_utils_append_variation().
+
+2005-05-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban.c (gtk_goban_class_init): Create
+	`click-canceled' signal.  Fix copy'n'paste bug in `goban-clicked'
+	signal creation.
+	(gtk_goban_size_allocate): Emit `click-canceled'.
+	(gtk_goban_button_release_event): Emit `click-canceled' when
+	needed; handle cases when anti-slipping is disabled.
+	(gtk_goban_leave_notify_event): Emit `click-canceled'.
+	(gtk_goban_click_canceled): New function.
+	(gtk_goban_disable_anti_slip_mode): New function.
+	(gtk_goban_diff_against_grid): Remove function (essentially moved
+	to grid_diff() in `board/board.c'.)
+	(set_feedback_data): Handle two new feedbacks:
+	`GOBAN_FEEDBACK_GHOSTIFY' and `GOBAN_FEEDBACK_GHOSTIFY_SLIGHTLY'.
+	Process goban markup feedback before main feedback, because the
+	latter can now modify the former.
+
+	* board/board.c (board_position_list_union): Add `const' modifier
+	to both arguments.
+	(board_position_list_add_position): New function.
+	(grid_diff): New function, essentially inherit code of
+	gtk_goban_diff_against_grid() from `gui-gtk/gtk-goban.c'.
+
+2005-05-08  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-qbox.h (GTK_IS_QBOX): Remove extra parenthesis.
+
+2005-05-07  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Globally: update FSF address in the legal notices.)
+
+2005-04-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-utils/common-configuration-defaults.list: Make default
+	markup color on white stones a little darker for all games.
+
+	* gui-gtk/gtk-goban.c (gtk_goban_init): Initalize `last_move_pos'
+	field that replaced `last_move_x' and `last_move_y'.
+	(gtk_goban_set_parameters): Fill `sgf_markup' grid with
+	`SGF_MARKUP_NONE', not `TILE_NONE' value.
+	(gtk_goban_expose): Remove special code for marking last move
+	position.  Do that based on `last_move_pos' field with SGF markup
+	instead.
+	(gtk_goban_update): Remove special code for invalidation last move
+	position area.  Properly update `last_move_pos' instead.
+
+	* gui-gtk/gtk-tile-set.c (gtk_sgf_markup_tile_set_create): Create
+	an additional pseudo-SGF markup for last move from file named
+	`last-move.svg'.
+	(gtk_sgf_markup_tile_set_delete): Delete it.
+
+	* sgf/sgf.h (SGF_MARKUP_NONE): Set to -1 to make way for
+	`SGF_PSEUDO_MARKUP_LAST_MOVE' in `gui-gtk/gtk-tile-set.h'.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "Quit"
+	menu item.
+
+	* gui-gtk/gtk-control-center.c (gtk_control_center_present): Add
+	"Quit" button (part of #2290.)
+	(gtk_control_center_quit): New function.
+
+	* gui-gtk/gtk-resume-game-dialog.c (gtk_resume_game): Use static
+	variable to store pointer to file dialog used for resuming games.
+
+	* gui-gtk/gtk-parser-interface.c (gtk_parser_interface_present):
+	Add `dialog_window' parameter and only create new file dialog if
+	there is no dialog of requested type already present.  Use static
+	variable to store default opening dialog.
+
+2005-04-27  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-resume-game-dialog.c (do_resume_game): Don't assert
+	that instantiation was successful, just do nothing if it was not.
+
+	* gui-gtk/gtk-new-game-dialog.c (gtk_new_game_dialog_present): Use
+	gtk_preferences_guess_engine_by_name().
+	(begin_game): Don't assert that instantiation was successful, just
+	do nothing if it was not.
+
+	* gui-gtk/gtk-preferences.c
+	(gtk_preferences_guess_engine_by_name): Rename from
+	guess_engine_by_player_name() and move from
+	`gui-gtk/gtk-resume-game-dialog.c' here.
+	(gtk_preferences_create_engine_selector): Replace `engine_name'
+	argument with `engine_data' and so don't resolve engines names.
+	(gtk_preferences_set_engine_selector_game_index): Bug-fix for
+	pre-2.4 GTK+: preserve the selection; it gets lost since the menu
+	is rebuilt from scratch.
+	(gtk_preferences_instantiate_selected_engine): When `have_error'
+	is set and we don't try to instantiate engine, at least reset the
+	`gtp_client' pointer to NULL.  Add missing dot to error message.
+	(gtk_preferences_do_instantiate_engines): If `have_error' is set,
+	call `instantiation_callback' with `INSTANTIATION_FAILED' status.
+
+	* gui-gtk/gtk-games.h (GtkGameIndex): Add `GTK_GAME_ANY'.
+
+2005-04-24  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* board/go.c (go_score_game): Plug a memory leak.
+
+	* gui-gtk/gtk-goban-window.c (move_has_been_generated): Use
+	gtk_sgf_tree_signal_proxy_push_tree_state() and
+	gtk_sgf_tree_signal_proxy_pop_tree_state().
+
+	* gui-gtk/gtk-sgf-tree-signal-proxy.c
+	(gtk_sgf_tree_signal_proxy_finalize): New function.
+	(gtk_sgf_tree_signal_proxy_attach): Initialize new `state_stack'
+	field with NULL.
+	(gtk_sgf_tree_signal_proxy_push_tree_state)
+	(gtk_sgf_tree_signal_proxy_pop_tree_state): New functions.
+	(receive_notification): Block current node-related signals when
+	`state_stack' is not empty.  For other signals, temporary restore
+	original board state.  (Indirect fix for SGF tree view behaviour
+	when browsing a game in progress.)
+
+2005-04-23  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-configuration.list: Add "Search in" configuration
+	parameter.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_class_init): Create
+	text tags for highlighting of node names in the commentary text
+	buffer.
+	(gtk_goban_window_init): Add "Edit Node Name" item in the menu.
+	Create text buffer ourself, with custom tag table.
+	(show_find_dialog): Create a set of radio buttons for selecting
+	between comments and/or node name search.  Some minor redesign.
+	Use gtk_utils_make_window_only_horizontally_resizable().
+	(find_dialog_response): Retrieve property search scope settings.
+	(do_find_text): Search in comments and/or node names, as
+	requested.  When mapping normalized text to original, only work
+	with one line (matches cannot cross line boundaries.)  Use
+	gtk_text_view_scroll_to_mark() instead of
+	gtk_text_view_scroll_to_iter() as suggested by the API reference.
+	(get_top_buffer_part, get_bottom_buffer_part): New functions.
+	(update_children_for_new_node): Call new insert_node_name() if the
+	new node has a name.
+	(insert_node_name, select_node_name, text_buffer_insert_text)
+	(text_buffer_after_insert_text, text_buffer_mark_set): New
+	functions.
+	(fetch_comment_and_node_name): Rename from
+	fetch_comment_if_changed().  Also fetch node name if needed.
+
+	* gui-gtk/gtk-utils.c (gtk_text_buffer_select_range): New
+	function: trivial implementation for pre-2.4 GTK+ so that other
+	code can avoid version checks.
+
+2005-04-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Register
+	gettext() with gtk_item_factory_set_translate_func() to allow
+	proper translation of menu items.  Prevent collapse of main menu
+	on GTK+ 2.4 and up with gtk_toolbar_set_show_arrow().  Mark some
+	items as important with new `flags' argument of
+	gtk_utils_append_toolbar_button().  Don't translate argument
+	string to gtk_utils_set_menu_items_sensitive() with _()
+	call (unneeded after registering the translation function.)
+	(gtk_goban_window_new): Don't translate argument string to
+	gtk_utils_set_menu_items_sensitive().
+	(set_sgf_collection_is_modified): Likewise.
+	(show_or_hide_main_toolbar): Likewise for
+	gtk_item_factory_get_widget() argument.
+	(show_or_hide_navigation_toolbar): Likewise.
+	(show_or_hide_game_action_buttons): Likewise.
+	(show_or_hide_sgf_tree_view): Likewise.
+	(update_commands_sensitivity): Likewise.
+
+	* gui-gtk/gtk-preferences.c (create_gtk_ui_page): Use ``beside'',
+	not ``besides''.  The latter carries different meaning.  Assert
+	toolbar style constants and style name strings consistency.  Don't
+	allow text beside icons for pre-2.4 GTK+.
+	(change_toolbar_style): Adjust toolbar style for older GTK+
+	because of the above change.
+	(set_toolbar_style): Don't allow text beside icons for pre-2.4
+	versions of GTK+.
+
+	* gui-gtk/gtk-configuration.list (gtk_ui_section_values): Use
+	``beside'', not ``besides''.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_append_toolbar_button): Add
+	`flags' argument.  Use GtkToolButton and new argument for GTK+ 2.4
+	and up.
+
+	* gui-gtk/gtk-utils.h (gtk_utils_append_toolbar_space): New
+	macro (behaviour depends on GTK+ version.)
+	(gtk_toolbar_set_show_arrow): Define to nothing for pre-2.4
+	versions of GTK+.
+
+2005-04-08  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-utils.c (sgf_utils_delete_current_node): Set
+	`parent_current_variation' to a neighbor of `tree->current_node',
+	not to `tree->current_node' itself (fixes segfaults and incorrect
+	behaviour spotted by Evan Daniel.)
+
+	* sgf/sgf-tree.c (sgf_node_get_previous_node): New function.
+	(sgf_node_get_last_child): Assert that `node' is not NULL.
+
+2005-03-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-parser-interface.c (open_game_record): Call
+	gtk_goban_window_enter_game_record_mode().
+
+	* gui-gtk/gtk-goban-window.c: Add labels to all navigation toolbar
+	buttons.
+	(gtk_goban_window_init): Add "Undo", "Redo", "Delete Node" and
+	"Delete Node's Children" menu items to "Edit" menu.
+	(gtk_goban_window_enter_game_record_mode): New function.
+	(leave_game_mode): Call gtk_goban_window_enter_game_record_mode().
+	(update_children_for_new_node): Don't try to fetch comment if
+	`goban_window->last_displayed_node' is NULL.
+	(update_commands_sensitivity): Sensitize/desensitize new menu
+	items as appropriate.
+	(undo_operation, redo_operation, delete_current_node)
+	(delete_current_node_children): New functions.
+
+	* sgf/sgf-utils.c (sgf_utils_append_variation): Rely on
+	apply_undo_history_entry() and functions it invokes for performing
+	the main job.
+	(sgf_utils_delete_current_node)
+	(sgf_utils_delete_current_node_children, sgf_utils_undo)
+	(sgf_utils_redo, sgf_undo_history_new, sgf_undo_history_delete)
+	(sgf_undo_history_delete_dont_free_data): New functions.
+	(do_switch_to_given_node): New function, break out of
+	sgf_utils_switch_to_given_node().
+	(apply_undo_history_entry, sgf_operation_add_node)
+	(sgf_operation_delete_node, sgf_operation_new_node_free_data)
+	(sgf_operation_delete_node_free_data)
+	(sgf_operation_delete_node_children_undo)
+	(sgf_operation_delete_node_children_redo)
+	(sgf_operation_delete_node_children_free_data, find_node_link):
+	New functions.
+
+	* sgf/sgf.h (sgf_utils_can_undo, sgf_utils_can_redo): New macros.
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Initialize new
+	`undo_history' field with NULL.
+	(sgf_game_tree_delete): Delete undo history if needed.
+	(sgf_node_append_child): Remove function.
+	(sgf_node_get_last_child): New function.
+	(sgf_node_is_game_info_node): Don't use links where they are not
+	needed.
+	(GET_PROPERTY_VALUE): Likewise.
+	(sgf_node_get_number_property_value): Likewise.
+	(sgf_node_get_real_property_value): Likewise.
+
+	* sgf/sgf-undo.h: New file.
+	* sgf/sgf-undo-operations.list: New file.
+
+	* sgf/parse-sgf-list.c: Add mode to parse undo operations list.
+	(undo_operation_list_parse_undo_operation2): New function.
+
+2005-03-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Force
+	`goban' widget to grab focus.
+	(show_game_information_dialog): Make `game_info_dialog' always
+	stay above `goban_window'.
+
+	* gui-gtk/gtk-file-selector.c (gtk_file_selector_finalize): Free
+	`last_directory' string, don't leak it.
+
+2005-03-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Register
+	toolbars with gtk_preferences_register_main_toolbar() and
+	gtk_preferences_register_navigation_toolbar().
+
+	* gui-gtk/gtk-preferences.c (gtk_preferences_dialog_present): Add
+	"General" category with "Interface" subcategory.  Don't make
+	"Close" button default (not recommended by HIG.)
+	(create_gtp_engines_page): New function.
+	(gtk_preferences_dialog_response): Handle
+	`PREFERENCES_PAGE_GTK_UI'.
+	(change_toolbar_style, gtk_preferences_register_main_toolbar)
+	(gtk_preferences_register_navigation_toolbar)
+	(do_register_toolbar, unregister_toolbar)
+	(gtk_preferences_have_non_hidden_gtp_engine): New functions.
+
+	* gui-utils/configuration.c (configuration_read_from_file): Tweak
+	enumeration value parsing to allow values with embedded
+	whitespace.
+
+	* gui-utils/parse-configuration.c (configuration_parse_values2):
+	Fix line-wrapping of `enumeration_values_as_strings'.
+
+	* gui-gtk/gtk-configuration.list: Add configuration parameters for
+	file chooser dialog and toolbar styles.
+
+	* gtp/gtp-test.c (send_to_engine): Use write() instead of fwrite()
+	and fdatasync() instead of fflush().
+	(main): Move all side-effect function calls out of `assert's to
+	make the code work with assertions disabled (spotted by Darren
+	Cook.)  Don't wrap `engine_in' in a stream, use file descriptor.
+
+	* sgf/sgf-parser.c (refresh_buffer): Fix `assert' as described
+	above.
+	(expand_buffer): Likewise.
+
+	* sgf/sgf-diff.c (main): Fix `assert's as described above.
+
+	* gui-gtk/gtk-tile-set.c (gtk_sgf_markup_tile_set_create): Fix
+	`assert' as described above.
+	(scale_and_paint_svg_image): Don't assert that rsvg_handle_write()
+	and rsvg_handle_close() are successful.
+
+	* gui-gtk/gtk-preferences.c (do_remove_gtp_engine): Fix `assert'
+	as described above.
+	(do_move_gtp_engine): Likewise.
+	(gtk_gtp_engine_dialog_present): Likewise.
+
+	* gui-gtk/gtk-goban-window.c (go_scoring_mode_done): Don't assert
+	that komi is set and make it default to 0.0.
+
+2005-03-19  Sjoerd Simons  <sjoerd@spring.luon.net>
+
+	* board/board.h: Use `signed char' instead of `char' as field type
+	in BoardPoint structure (`char' may be signed or unsigned
+	depending on architecture.)
+
+2005-03-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* board/Makefile.am: Add explicit dependency to solve problems
+	with parallel build.
+	(LIST_STAMP_FILES, LIST_GENERATED_FILES): Remove variables, now
+	defined in `$(top_srcdir)/aux/list.make'.
+	* sgf/Makefile.am: Likewise.
+	* gui-utils/Makefile.am: Likewise.
+	* gui-gtk/Makefile.am: Likewise.
+
+2005-03-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_save): Use
+	gtk_file_dialog_new() and friends..
+	(suggest_filename): Return filename in UTF-8 rather than in file
+	system encoding.
+	(save_file_as_response): Use gtk_file_dialog_get_filename().
+
+	* gui-gtk/gtk-parser-interface.c (gtk_parser_interface_present):
+	Use gtk_file_dialog_new() and friends.
+	(open_file_response): Likewise.
+
+	* gui-gtk/gtk-utils.c
+	(gtk_utils_add_file_selection_response_handlers): Remove function.
+	(file_selection_response, overwrite_confirmation): Remove
+	functions (code inherited by `gui-gtk/gtk-file-dialog.c'.)
+	(browse_button_clicked): Use gtk_file_dialog_new() and friends.
+	(browsing_dialog_response): Likewise.
+
+	* gui-gtk/gtk-file-dialog.c, gui-gtk/gtk-file-dialog.h: New files.
+
+2005-03-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.14.)
+
+	* gtp/gtp-client.c (store_protocol_version): Guard all accesses to
+	`client', it may be NULL.  Prevents segfaults.
+
+	* gui-gtk/gtk-preferences.c (engine_is_visible_and_supports_game):
+	Gracefully handle cases when called with iterator, for which data
+	is not yet set.  Prevents segfaults (bug #2089,
+	magnade@gmail.com.)
+
+2005-03-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.13.)
+
+	* gui-gtk/Makefile.am: Rename `quarry-marshal.list' to
+	`quarry-marshal.glist' in `EXTRA_DIST' too.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Initialize
+	`time_controls' with NULL.
+	(gtk_goban_window_enter_game_mode): Replace `black_time_control'
+	and `white_time_control' arguments with single `time_control'.
+	(gtk_goban_window_resume_game): Remove `black_time_control' and
+	`white_time_control' arguments altogether.  Simply reuse time
+	controls created by set_current_tree().  Set time controls' states
+	after skipping played moves.
+	(leave_game_mode): Don't delete time controls.
+	(set_current_tree): Create and set time control using
+	time_control_new_from_sgf_node().
+	(set_time_controls): New function.
+	(update_children_for_new_node): When not in game mode, set clock's
+	displayed time from `goban_window->sgf_board_state'.
+	(update_window_title): Place ``modified'' string in brackets: too
+	many parentheses already.
+
+	* gui-utils/time-control.c (time_control_new_from_sgf_node)
+	(time_control_duplicate, time_control_save_settings_in_sgf_node)
+	(time_control_save_state_in_sgf_node)
+	(time_control_apply_defaults_if_needed, time_control_set_state):
+	New functions.  SGF saving functions are broken out of
+	begin_game() and move_has_been_played() correspondingly.
+	(time_control_is_short_on_time): Always add overtime length to the
+	remaining time.  Effectively, don't report ``short on time'' when
+	in the end of main time, but having a long overtime in reserve.
+
+	* gui-utils/Makefile.am (AM_CPPFLAGS): Add `src/sgf' to include
+	search path.
+
+	* sgf/sgf-utils.c (sgf_utils_enter_tree): Initialize
+	`tree->board_state' with `board_state' argument.
+	(sgf_utils_go_down_in_tree): Remove `board_state' argument and use
+	`tree->board_state' instead.
+	(sgf_utils_go_up_in_tree): Likewise.
+	(sgf_utils_switch_to_variation): Likewise.
+	(sgf_utils_switch_to_given_variation): Likewise.
+	(sgf_utils_append_variation): Likewise.
+	(do_enter_tree): Remove `board_state' argument.  Initialize new
+	`tree->board_state' fields related to time control.
+	(descend_nodes): Remove `board_state' argument.  Track
+	`game_info_node' here and set new `game_info_node_depth' field as
+	appropriate.  Only check `PL' property value for setup nodes.
+	Call new find_time_control_data() function.
+	(ascend_nodes): Remove `board_state' argument.  Bug-fix: always
+	find `last_move_node' (could be erroneously set to NULL in rare
+	cases.)  Only check `PL' property value for setup nodes.  Simplify
+	`game_info_node' evaluation using `game_info_node_depth' field.
+	Call find_time_control_data().
+	(find_game_info_node): Remove function.
+	(find_time_control_data): New function.
+	(determine_final_color_to_play): Remove `board_state' argument.
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Initialize new `board_state'
+	field.
+	(sgf_game_tree_set_state): Handle new `board_state' field of
+	SgfGameTree and SgfBoardState structures.
+	(sgf_game_tree_get_state): Likewise.
+
+2005-03-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (create_background_table): Use
+	GtkFileSelector for background texture selection when the widget
+	is defined (on GTK+ 2.4 and up.)
+	(board_background_texture_changed): New function.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_browse_button): Assert
+	that `associated_entry' is a GtkEntry or GtkFileSelector.
+	(browse_button_clicked): Handle GtkFileSelector case.
+	(browsing_dialog_response): Likewise.
+
+	* gui-gtk/quarry-marshal.glist: Rename from `quarry-marshal.list'.
+
+	* Makefile.am: Use `top_builddir' where appropriate to allow
+	building in a separate directory.
+	* utils/Makefile.am: Likewise.
+	* board/Makefile.am: Likewise.
+	* sgf/Makefile.am: Likewise.
+	* gtp/Makefile.am: Likewise.
+	* gui-utils/Makefile.am: Likewise.
+	* gtk-utils/Makefile.am: Likewise.
+
+	* gtp/Makefile.am: Include `$(EXTRA_PROGRAMS)' in `CLEANFILES',
+	not `MOSTLYCLEANFILES'.
+	* sgf/Makefile.am: Likewise.
+
+	* board/Makefile.am: Use `$(top_srcdir)/aux/list.make' to generate
+	rules to parse `games.list'.
+
+	* sgf/Makefile.am: Likewise for `sgf-errors.list' and
+	`sgf-properties.list'.
+
+	* gui-utils/Makefile.am: Likewise for
+	`markup-theme-configuration.list'.  Add missing
+	`MOSTLYCLEANFILES'.
+
+	* gui-gtk/Makefile.am: Likewise for `gtk-configuration.list'.
+
+2005-03-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* board/games.list: Add `mode' command at the beginning.
+	* sgf/sgf-errors.list: Likewise.
+	* sgf/sgf-properties.list: Likewise.
+	* gui-utils/markup-theme-configuration.list: Likewise.
+	* gui-gtk/gtk-configuration.list: Likewise.
+
+	* gui-gtk/gtk-configuration.list: Adapt to new substitution
+	scheme.  Use `$top_srcdir$' passed through command line instead of
+	relative path to allow building in a separate directory.
+
+	* gui-utils/common-configuration-defaults.list: Adapt to new
+	substitution scheme.
+
+	* board/parse-game-list.c: Specify mode in `game_lists' (now
+	required.)
+	* gui-utils/parse-configuration.c: Likewise for `list_set'.
+
+	* utils/parse-list.c (parse_list_main): Signal error if a
+	substitution name contains a dollar sign.  Get mode from list
+	file, not from command line.
+	(print_usage): Remove `list_sets' and `num_sets' arguments and
+	code to output information about removed command line argument.
+	(read_line): Reimplement substitutions: replace
+	`$substition-name$' with corresponding substituion value in all
+	lines before any further processing, even `include_list' checks.
+
+2005-03-10  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-file-selector.c, gui-gtk/gtk-file-selector.h: New
+	files.
+
+2005-03-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-properties.list: Rename `SGF_TIME_LEFT_4BLACK' to
+	`SGF_TIME_LEFT_FOR_BLACK' and likewise for other properties.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Use
+	`QUARRY_STOCK_MENU_ITEM_ABOUT' for that menu item.
+	(show_about_dialog): Use native GtkAboutDialog with GTK+ 2.6+.
+
+	* gui-gtk/gtk-preferences.c (gtk_preferences_init): Fix GTK+ 2.4+
+	compilation: gtk_tree_model_filter_set_visible_func(), not
+	gtk_tree_model_filter_set_visible_function().
+	(gtk_preferences_dialog_present): Move previously global
+	`preferences_dialog_categories' here.  Use `GTK_STOCK_EXECUTE' for
+	"GTP Engines" page and `QUARRY_STOCK_ICON_FILE' for "Game
+	Records (SGF)" category.
+
+	* gui-gtk/quarry-stock.h (QUARRY_STOCK_ICON_DIRECTORY)
+	(QUARRY_STOCK_FILE, QUARRY_STOCK_MENU_ITEM_ABOUT): New
+	compatibility macros for GTK+ stock items.
+
+	* gui-gtk/gtk-utils.h (GTK_2_6_OR_LATER): New macro.
+	(gtk_dialog_set_default_response): Define this to
+	gtk_utils_workaround_set_default_response() for GTK+ 2.0.
+	* gui-gtk/gtk-utils.c (gtk_utils_workaround_set_default_response):
+	New function, for GTK+ 2.0 only.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_new):
+	Sensitize/desensitize "Save" menu item and toolbar button,
+	depending on whether the SGF collection was read from file.
+	(set_sgf_collection_is_modified): New temporary function.
+	(gtk_goban_window_save): Mark SGF collection as unmodified after
+	saving.
+	(save_file_as_response): Likewise.
+	(game_info_dialog_property_changed): Mark SGF collection as
+	modified after the change.
+	(go_scoring_mode_done): Likewise.
+	(play_pass_move): Likewise.
+	(do_resign_game): Likewise.
+	(playing_mode_goban_clicked): Likewise.
+	(update_window_title): Append " (modified)" to the window title if
+	appropriate.  If there is no game name and no associated file, set
+	window title to "Unnamed Game".
+	(fetch_comment_if_changed): Mark SGF collection as modified after
+	the change.  Also take care to notice if the comment has not been
+	changed.
+	(move_has_been_played): Mark SGF collection as modified after the
+	change.
+	(player_is_out_of_time): Likewise.
+
+2005-03-05  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add
+	"Recenter on Current Node" menu item in "View" menu.  Desensitize
+	it if game tree view is not shown right away.
+	(do_find_text): Don't assert for `text_to_find', call
+	show_find_dialog() if it is not set.
+	(game_info_dialog_property_changed): Call update_window_title()
+	when `SGF_GAME_NAME' property is changed.
+	(show_or_hide_sgf_tree_view): Sensitize/desensitize "Recenter on
+	Current Node" menu item depending on `sgf_tree_view' visibility.
+	Recenter `sgf_tree_view' after showing it.
+	(recenter_sgf_tree_view): New function.
+	(update_player_information): Standardize function prototype and
+	compute SGF property types from `player_color' argument.
+
+	* gui-gtk/gtk-sgf-tree-view.c (gtk_sgf_tree_view_style_set): New
+	function.
+	(gtk_sgf_tree_view_center_on_current_node): New function.
+	(track_current_node): Use
+	update_view_port_and_maybe_move_or_resize_window().
+	(center_on_current_node): New function, break out of
+	track_current_node().
+	(update_view_port_and_maybe_move_or_resize_window): Always call
+	gtk_widget_queue_draw() for now.
+	(about_to_modify_map): Don't do anything if the view's widget is
+	not realized.
+	(about_to_change_current_node): Likewise.
+	(current_node_changed): Likewise.
+	(map_modified): Likewise.
+
+	* sgf/sgf-tree-map.c (update_internal_view_port): Allocate one
+	more SgfGameTreeMapLine, because do_update_internal_view_port()
+	can write there without advancing the pointer.
+	(update_internal_view_port): Add another skipping optimization.
+
+	* sgf/sgf-tree.c (sgf_game_tree_delete): Call
+	sgf_game_tree_invalidate_map() before deleting all nodes to avoid
+	accessing freed memory.
+
+2005-03-02  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-resume-game-dialog.c (guess_engine_by_player_name):
+	Don't crash if `player_name' is NULL, just return NULL.
+
+2005-03-01  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-sgf-tree-view.c (SHOULD_TRACK_CURRENT_NODE): New
+	macro, broken out of gtk_sgf_tree_view_update_view_port().
+	(gtk_sgf_tree_view_realize): Only request events for the
+	`output_window' to avoid unnecessary exposures.
+	(gtk_sgf_tree_view_expose): Use precomputed tile maps for drawing.
+	(gtk_sgf_tree_view_unrealize): Free tile maps.
+	(gtk_sgf_tree_view_set_sgf_tree): Hook up handlers to
+	GtkSgfTreeSignalProxy signals.
+	(gtk_sgf_tree_view_update_view_port): Don't try to track current
+	node (it's buggy here since the map might have changed.)
+	(track_current_node): New function, broken out of
+	gtk_sgf_tree_view_update_view_port().
+	(update_view_port): Compute tile maps based on result of
+	sgf_game_tree_fill_map_view_port() and
+	sgf_game_tree_get_current_branch_marks().
+	(about_to_modify_map, about_to_change_current_node)
+	(current_node_changed, map_modified): New functions; track current
+	node here.
+
+	* gui-gtk/gtk-goban-window.c (set_current_tree): Attach a
+	GtkSgfTreeSignalProxy to the tree.
+	(sgf_tree_view_clicked): Don't call
+	gtk_sgf_tree_view_update_view_port().
+	(update_children_for_new_node): Likewise.
+	(move_has_been_generated): Likewise.
+
+	* gui-gtk/gtk-sgf-tree-signal-proxy.h: New file.
+	* gui-gtk/gtk-sgf-tree-signal-proxy.c: New file.
+
+	* gui-gtk/quarry-marshal.list: New marshaller
+	`VOID:POINTER,POINTER'.
+
+	* sgf/sgf-utils.c (DO_NOTIFY): New macro.
+	(sgf_utils_go_down_in_tree): Send `about-to-change-current-node'
+	and `current-node-changed' notifications.
+	(sgf_utils_go_up_in_tree): Likewise.
+	(sgf_utils_switch_to_variation): Likewise.
+	(sgf_utils_switch_to_given_variation): Likewise.
+	(sgf_utils_switch_to_given_node): Likewise.
+	(sgf_utils_append_variation): Send various notifications.
+	(sgf_utils_set_node_is_collapsed): Send `about-to-modify-map' and
+	`map-modified' notifications.
+
+2005-02-26  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Initialize new
+	`notification_callback' field; don't initialize removed
+	`free_user_data'.
+	(sgf_game_tree_delete): Send deletion notification.  Don't use
+	removed `free_user_data'.
+	(sgf_game_tree_set_user_data): Remove function.
+	(sgf_game_tree_set_notification_callback): New function.
+
+2005-01-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-progress-dialog.c: Don't comment it out when
+	`THREADS_SUPPORTED' is false, the widget is usable either way.
+	Compiling without threads was impossible because of this.
+
+2005-01-25  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* quarry.c: Update copyright string.
+	* gui-gtk/gtk-goban-window.c (show_about_dialog): Likewise.
+
+2005-01-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "Resume
+	Game" and "Close" items in "File" menu and "Adjourn Game" in
+	"Play" menu.  Change mnemonic for "New Game" item and use "Ctrl+N"
+	shortcut for it.
+	(gtk_goban_window_resume_game): New function.
+	(do_enter_game_mode): New function, break out of
+	gtk_goban_window_enter_game_mode().
+	(leave_game_mode): Fix copy'n'paste bug (`BLACK_INDEX' =>
+	`WHITE_INDEX'), caused segmentation faults.
+	(gtk_goban_window_save): Handle game adjourning.  Use new
+	suggest_filename() function for providing default filename in
+	dialog.
+	(suggest_filename): New function.
+	(save_file_as_response): Handle game adjourning.
+	(game_has_been_adjourned): New function.
+	(free_handicap_mode_done): Call free_handicap_has_been_placed()
+	after leave_special_mode(), the latter changes the SGF tree.
+	(go_scoring_mode_done): Call reenter_current_node() after
+	leave_special_mode() for the same reason.
+	(play_pass_move): Call update_children_for_new_node() after
+	move_has_been_played() for the same reason.
+	(resign_game): Rename from play_resign().  Call
+	update_children_for_new_node() after move_has_been_played().
+	(navigate_goban): Don't do anything if the window is in a special
+	mode.
+	(update_window_title): Remove `game_info_node' argument.
+	(update_game_specific_information): Make `goban_window' argument
+	`const'.
+	(update_move_information): Likewise.
+	(update_commands_sensitivity): New function, break out from
+	update_children_for_new_node().  Set sensitivity of "Adjourn Game"
+	menu item.  Desensitize navigation commands when in special mode.
+	(initialize_gtp_player): Don't ask GTP engine to place free
+	handicap stones when `pending_free_handicap' is zero (when
+	resuming games.)
+	(enter_scoring_mode): Call new update_commands_sensitivity()
+	function.
+	(move_has_been_generated): Call update_children_for_new_node()
+	after move_has_been_played().
+
+	* gui-gtk/gtk-resume-game-dialog.c: New file.
+	* gui-gtk/gtk-resume-game-dialog.h: New file
+.
+	* gui-gtk/gtk-preferences.c (gtk_preferences_init): Create
+	filtered models for each supported games (GTK+ 2.4+ only.)
+	(gtk_preferences_create_engine_selector): Add `only_this_game'
+	argument.
+	(gtk_preferences_set_engine_selector_game_index): Assert that the
+	selector is not one-game-only.
+	(gtk_preferences_set_engine_selector_selection): Make
+	`engine_data' argument `const'.  Handle one-game-only selectors.
+	(gtk_preferences_get_engine_selector_selection): Handle
+	one-game-only selectors.
+	(engine_is_visible_and_supports_game): New function.
+	(build_and_attach_menu): Handle one-game-only selectors.
+
+	* gui-gtk/gtk-utils.c (do_align_left_widget): Handle boxes inside
+	other boxes more intelligently.
+
+	* gui-gtk/gtk-games.c (gtk_games_get_game_index): New function.
+
+	* utils/utils.c (utils_parse_double): Allow `result' to be
+	NULL (for simple value validation.)
+
+2005-01-21  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-parser-interface.c
+	(gtk_parser_interface_present_default): New function, to use in
+	place of old calls to gtk_parser_interface_present().
+	(gtk_parser_interface_present): Add `title' and `callback'
+	arguments.  Use gtk_window_present() instead of gtk_widget_show().
+	(open_file_response): Add `callback' argument.
+	(open_game_record): New function, break out of
+	analyze_parsed_data() (or gtk_parse_sgf_file() for non-threading
+	version.)  Use gtk_window_present() instead of gtk_widget_show().
+	(gtk_parse_sgf_file): Add `callback' argument. Make `filename'
+	always absolute.
+	(analyze_parsed_data): Call `callback' that should deal with
+	parsed data (default callback is open_game_record().)
+	(gtk_parse_sgf_file): (Non-threading version) Same as for
+	threading version.  Also make compilable.
+
+	* gui-gtk/gtk-control-center.c (gtk_control_center_present): Add
+	"Resume Game" button.  Reduce spacing between button groups.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_save): Take care to
+	use UTF-8 for widgets/output and file system encoding for
+	everything else in filenames.
+	(update_window_title): Likewise.
+	* gui-gtk/gtk-parser-interface.c (gtk_parse_sgf_file): Likewise.
+	(analyze_parsed_data): Likewise.
+	* gui-gtk/gtk-utils.c (file_selection_response): Likewise.
+	(browse_button_clicked): Likewise.
+	(browsing_dialog_response): Likewise.
+
+2005-01-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-new-game-dialog.c (update_game_and_players_page):
+	Use gtk_preferences_have_non_hidden_gtp_engine() to determine if
+	there are computer opponents available.
+
+	* gui-gtk/gtk-preferences.c (gtk_preferences_init): Add
+	`ENGINES_IS_VISIBLE' column to tree model.  Recompute engine names
+	based on `screen_name' fields.  For GTK+ 2.4+ create a filtered
+	model based on this column.
+	(create_gtp_engines_page): Add "Show" column to the list.  Fix
+	"Support game(s):" label.  Create a label for displaying
+	additional information.
+	(gtk_preferences_dialog_update_gtp_engine_info): Don't allow
+	removing engines coming from site configuration.  Show whether
+	engine is coming from there in additional label.
+	(show_or_hide_gtp_engine): New function.
+	(do_remove_gtp_engine): Use
+	gtk_preferences_have_non_hidden_gtp_engine().
+	(gtk_preferences_have_non_hidden_gtp_engine): New function.
+	(gtk_preferences_create_engine_selector): Use filtered model for
+	GTK+ 2.4+ to exclude hidden engines.
+	(gtk_preferences_set_engine_selector_selection): Take hidden
+	engines into account.
+	(gtk_preferences_get_engine_selector_selection): Likewise.
+	(build_and_attach_menu): Likewise.
+	(update_engine_screen_name): Add `update_tree_model' argument.
+
+	* gui-gtk/gui-back-end.c (initialize_main_loop): Read site
+	configuration file if the user doesn't have any configuration yet.
+
+	* gui-utils/common-configuration-values.list: Add values for
+	tracking site configuration and hidden engines to
+	`gtp_engine_section_values'.
+	* gui-utils/common-configuration-defaults.list: Likewise.
+
+	* gui-utils/configuration.c (configuration_read_from_file):
+	Support new `VALUE_TYPE_BOOLEAN_WRITE_TRUE_ONLY' value type.
+	(write_section): Likewise.
+	(configuration_init_repeatable_section): New function.
+
+	* gui-utils/parse-configuration.c (configuration_parse_values2):
+	Support new `VALUE_TYPE_BOOLEAN_WRITE_TRUE_ONLY' value type.
+	(configuration_parse_defaults2): Likewise.
+	(add_field_declaration_if_needed): Likewise.
+	(look_at_field_type): New function.
+
+	* utils/string-list.c (string_list_dispose_item)
+	(string_list_steal_item, string_list_steal_first_item): New
+	functions.
+
+2005-01-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (leave_game_mode): New function.
+	(do_resign_game): Call leave_game_mode().
+	(move_has_been_played): Call time_control_*() functions itself,
+	GtkClock doesn't do it anymore.  Call leave_game_mode() if the
+	move is too late or if the game ends normally.
+	(move_has_been_generated): Ignore move when not in game mode.
+	(start_clock_if_needed): Call time_control_start().
+	(player_is_out_of_time): New function.
+
+	* gui-gtk/gtk-clock.c (gtk_clock_init): Initialize all fields.
+	(gtk_clock_realize): Call set_background_pixmap().
+	(set_background_pixmap): New function.
+	(gtk_clock_finalize): Don't assume that GLib event source exists
+	if `time_control' is set.
+	(gtk_clock_start, gtk_clock_stop)
+	(gtk_clock_initialize_for_time_control, clock_set_time): Remove
+	functions.
+	(gtk_clock_set_time, gtk_clock_use_time_control)
+	(gtk_clock_time_control_state_changed)
+	(fetch_time_from_time_control, do_set_time, ensure_clock_size)
+	(clock_tick_callback):New functions, partially inherit removed
+	code.
+	(time_control_watch_prepare, time_control_watch_check)
+	(time_control_watch_dispatch)
+	(time_control_watch_source_set_tick_time): New functions.
+
+	* gui-utils/time-control.c
+	(time_control_get_time_till_seconds_update)
+	(time_control_is_short_on_time): New functions.
+
+2005-01-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_save): Don't show
+	warning about potential information loss.
+
+	* sgf/sgf-writer.c (write_game_tree): Write `ST' property value,
+	if set.
+	(sgf_write_list_of_vector): Implement.
+	(sgf_write_figure_description): New function.
+
+	* sgf/sgf-parser.c (sgf_parse_constrained_number): Also handle
+	`PM' property.
+	(sgf_parse_list_of_point): Use end_parsing_value() instead of
+	next_token_in_value() so that whitespaces is warned about.
+	(sgf_parse_list_of_vector): Implement.
+	(sgf_parse_list_of_label): Treat non-composite values as values
+	with empty label.
+	(sgf_parse_figure): Implement.
+	(sgf_parse_print_mode): Remove function.
+	(sgf_parse_style): Implement.
+
+	* sgf/sgf-errors.list (SGF_WARNING_DUPLICATE_VECTOR)
+	(SGF_ERROR_ZERO_LENGTH_VECTOR, SGF_WARNING_UNKNOWN_FLAGS)
+	(SGF_ERROR_FIGURE_FLAGS_EXPECTED, SGF_WARNING_UNKNOWN_PRINT_MODE):
+	New error strings.
+
+	* sgf/sgf-properties.list (ST): Use `not_stored' storage type.
+	(FG): Change storage type to `figure_description'.
+	(PM): Use `sgf_parse_constrained_number' as value parser.
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Initialize new
+	`style_is_set' field.
+	(sgf_game_tree_duplicate): Copy `style' field only if it is set.
+	(sgf_node_get_list_of_label_property_value): New function.
+	(sgf_node_add_pointer_property): Handle values of
+	`SGF_FIGURE_DESCRIPTION' type.
+	(sgf_property_duplicate): Handle values of `SGF_LIST_OF_VECTOR'
+	and `SGF_FIGURE_DESCRIPTION' types.
+	(free_property_value): Handle `SGF_FIGURE_DESCRIPTION' value type.
+	(SGF_VECTOR_LIST_DEFAULT_INITIAL_SIZE)
+	(SGF_VECTOR_LIST_SIZE_INCREMENT): New macros.
+	(sgf_vector_list_new, sgf_vector_list_shrink)
+	(sgf_vector_list_add_vector, sgf_vector_list_has_vector)
+	(sgf_vector_list_duplicate, sgf_figure_description_new)
+	(sgf_figure_description_duplicate)
+	(sgf_figure_description_delete): New functions.
+
+	* sgf/sgf.h (sgf_vector_list_delete): New macro.
+
+2005-01-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.12.)
+
+	* sgf/sgf-tree-map.c (VIEW_PORT_NODE, VIEW_PORT_LINE_ADJUSTMENT):
+	New macros.
+	(sgf_game_tree_get_current_branch_marks): New function.
+	(sgf_game_tree_node_is_within_view_port): Bug-fix: don't assume
+	that the requested view port dimensions match internal view port.
+	(update_internal_view_port): Check if internal view port already
+	contains necessary data (was previously checked at higher level.)
+	(do_update_internal_view_port): Bug-fix: remove primary tree line
+	storage out of the `for' loop, could cause serious memory
+	corruption (bug #1969, Arend Bayer.)
+
+	* sgf/sgf-utils.c (do_enter_tree): Adjust new `current_node_depth'
+	field according to changes of `current_node'.
+	(descend_nodes): Likewise.
+	(ascend_nodes): Likewise.
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Initialize new
+	`current_node_depth' field.
+	(sgf_game_tree_set_state): Also save `current_node_depth'.  Change
+	prototype and don't return old state.
+	(sgf_game_tree_get_state): New function, break out of
+	sgf_game_tree_set_state().
+
+2005-01-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.11.)
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Maximize the
+	window by default.
+	(sgf_tree_view_clicked): New function.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_set_sensitive_on_toggle): Add
+	`reverse_meaning' argument.
+	(set_widget_sensitivity_on_toggle_reversed): New function.
+
+	* gui-gtk/gtk-preferences.c (create_game_tree_page): Add controls
+	for tracking current node configuration parameters.
+	(store_radio_button_setting): Bug-fix: radio button groups are in
+	reverse-creation order, cope with that.  Use library functions.
+	(update_markup_theme_defaults_usage): Always initialize
+	`use_theme_defaults'.
+
+	* gui-utils/common-configuration-sections.list: Rename "Editing
+	and Viewing" section to "Game Tree View".
+	* gui-utils/common-configuration-values.list: Add values for
+	whether to track current node in the game tree view.
+	* gui-utils/common-configuration-defaults.list: Likewise.  Also
+	change the default for `show_game_tree' to
+	`SHOW_GAME_TREE_AUTOMATICALLY'.
+
+	* gui-gtk/gtk-sgf-tree-view.c (gtk_sgf_tree_view_class_init): Add
+	integer `button_index' argument to "sgf-tree-view-clicked" signal.
+	(gtk_sgf_tree_view_init): Don't call gtk_goban_base_set_game().
+	Initialize new `map_width' and `map_height' fields.
+	(gtk_sgf_tree_view_realize): Call
+	sgf_game_tree_get_map_dimensions() instead of update_view_port().
+	(gtk_sgf_tree_view_size_request): Base size request on internal
+	`map_width' and `map_height' fields.
+	(gtk_sgf_tree_view_expose): Draw a cross over collapsed nodes.
+	(gtk_sgf_tree_view_button_press_event)
+	(gtk_sgf_tree_view_button_release_event): Also pass on right
+	button clicks.
+	(gtk_sgf_tree_view_unrealize): Free view port data.
+	(gtk_sgf_tree_view_finalize): Don't free view port (unneeded.)
+	(gtk_sgf_tree_view_set_sgf_tree): Don't call removed
+	sgf_game_tree_activate_map(); call gtk_goban_base_set_game().
+	(gtk_sgf_tree_view_update_view_port): Scroll view port as needed
+	when tracking the current node.
+	(configure_adjustment): Use `map_width' and `map_height'.
+	(update_view_port_and_maybe_move_or_resize_window): Make
+	`original_hadjustment_value' and `original_vadjustment_value'
+	arguments.  Replace first call to update_view_port() with a call
+	to sgf_game_tree_get_map_dimensions().  Request full redraw if
+	window size changes.
+
+	* gui-gtk/quarry-marshal.list: New marshaller `VOID:POINTER,INT'.
+
+	* sgf/sgf-utils.c (sgf_utils_append_variation): Pass
+	`tree->current_node' to sgf_game_tree_invalidate_map().
+	(sgf_utils_set_node_is_collapsed): New function.
+
+	* sgf/sgf-tree-map.c (REPORT_PERFORMANCE_STATISTICS): Rename macro
+	from `PRINT_RUN_TIMES'.
+	(DECLARE_TIME_VARIABLES, STORE_STARTING_TIME, PRINT_RUN_TIME)
+	(MIN_NODES_PER_DATA_CHUNK): New macros.
+	(sgf_game_tree_activate_map, sgf_game_tree_deactivate_map): Remove
+	functions.
+	(sgf_game_tree_invalidate_map): Add `node' parameter and rewrite
+	to handle new intermediate data.
+	(sgf_game_tree_get_map_dimensions): New function.
+	(sgf_game_tree_fill_map_view_port): Rename from
+	sgf_game_tree_update_view_port().
+	(sgf_game_tree_get_node_coordinates)
+	(sgf_game_tree_node_is_within_view_port)
+	(find_intermediate_data_for_node, view_port_is_after_data_point)
+	(view_port_is_before_data_point, free_map_data_point)
+	(update_internal_map_data): New functions.
+	(update_internal_view_port): Optimize for speed capitalizing on
+	data stored by update_internal_map_data().
+	(do_update_internal_view_port): Break out of
+	update_internal_view_port().
+	(get_node_coordinates): New function.
+
+2005-01-03  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Initialize new
+	`map_data_list' field.
+	(sgf_game_tree_delete): Call sgf_game_tree_invalidate_map() to
+	free all memory allocated for the map.
+	(sgf_node_new): Initialize new `has_intermediate_map_data' field.
+
+2004-12-31  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-base.c (gtk_goban_base_unrealize): Call
+	parent's method.
+
+2004-12-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* board/board.c (board_position_list_union): Rewrite to avoid
+	accessing unallocated memory in some cases (bug #1929,
+	warped_dragon@hotmail.com.)
+
+	* gui-gtk/gtk-goban-window.c (move_has_been_played): Add time
+	control information to the game SGF tree.
+
+	* gui-gtk/gtk-new-game-dialog.c (begin_game): Add information
+	about game time limits to the game SGF tree.
+
+	* sgf/sgf-properties.list: Sort `TM' property before 'OT'.
+	(MN, OB, OW): Use `sgf_parse_constrained_number' as value parser.
+
+	* sgf/sgf-parser.c (parse_buffer): Reset new
+	`data->ko_property_error_position.line' field.  Delete error lists
+	when parsing failed with `SGF_INVALID_FILE'.
+	(complete_node_and_update_board): Add error if there is `KO'
+	property, but no move in the node.  Split nodes with setup
+	properties and `MN' mixed.
+	(sgf_parse_none): Store error position if parsing `KO' property.
+	(sgf_parse_constrained_number): New function.
+	(sgf_parse_move_number, sgf_parse_moves_left): Remove functions.
+	(insert_error_valist): Bug-fix: store line and column in the
+	inserted item, not in the last.
+
+	* sgf/sgf-errors.list (SGF_ERROR_KO_PROPERTY_WITHOUT_MOVE): New
+	error string.
+
+	* utils/string-list.c (string_list_insert): Return the inserted
+	item.
+	(string_list_insert_from_buffer): Likewise.
+	(string_list_insert_ready): Likewise.
+	(string_list_insert_ready_item): Likewise.
+
+	* sgf/sgf-tree.c (sgf_node_find_property): Allow `link' to be
+	NULL.
+
+2004-12-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-parser-interface.c (analyze_parsed_data): Cast
+	`data->parent' to GtkWindow type only when non-NULL.  If there is
+	no parent window, make error dialog non-modal and register it with
+	gtk_control_center_window_created().
+	(gtk_parse_sgf_file): Likewise.  Also fix for changed
+	gtk_utils_create_message_dialog() prototype.
+
+	* sgf/sgf-tree-map.c (update_internal_view_port): Fix bug that
+	caused overlapping branches in rare cases (reported by Arend
+	Bayer.)
+
+2004-12-25  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (update_board_markup_theme): Bug-fix:
+	duplicate theme name, don't just copy the pointer.
+
+	* gui-gtk/gtk-sgf-tree-view.c (gtk_sgf_tree_view_realize): Call
+	parent class method.
+
+	* gui-gtk/gtk-goban.c (gtk_goban_set_parameters): Don't emit
+	`appearance-changed' signal.
+	(gtk_goban_realize): Call parent class method.
+	(gtk_goban_size_allocate): Don't calculate stones and SGF markup
+	margins.
+	(gtk_goban_expose): Use new compute_goban_margins() function.
+	(gtk_goban_appearance_changed): Remove function.
+	(gtk_goban_allocate_screen_resources)
+	(gtk_goban_free_screen_resources): New functions, inherit code of
+	removed gtk_goban_base_appearance_changed().
+	(gtk_goban_finalize): Don't unreference `small_tile_set'.
+	(gtk_goban_update): Use compute_goban_margins().
+	(set_overlay_data): Likewise.
+	(compute_goban_margins): New function.
+
+	* gui-gtk/gtk-goban-base.c (gtk_goban_base_class_init): Create
+	`allocate-screen-resources' and `free-screen-resources' signals;
+	don't create `appearance-changed' signal.
+	(gtk_goban_base_realize, gtk_goban_base_unrealize): New functions.
+	(gtk_goban_base_appearance_changed): Remove function.
+	(gtk_goban_base_allocate_screen_resources)
+	(gtk_goban_base_free_screen_resources): New functions, inherit
+	code of removed gtk_goban_base_appearance_changed().
+	(gtk_goban_base_finalize): Don't unreference tile sets here.
+	(gtk_goban_base_update_appearance): Emit the new signals, not
+	`appearance-changed' and only if the widget is realized.
+	(gtk_goban_base_set_cell_size): Likewise.
+
+	* gui-gtk/gtk-assistant.c (gtk_assistant_update_buttons):
+	Workaround GTK+ 2.0 problem that caused annoying warnings in some
+	cases.
+
+	* quarry.c (main): Parse command line after gui_back_end_init() is
+	called so that GTK+/GLib options are not seen by getopt_long().
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "New
+	Game" and "Control Center" menu items.
+	(save_file_as_response): Call update_window_title() when saving to
+	a (different) file.
+	(show_or_hide_navigation_toolbar): Fix copy'n'paste bug: use
+	`show_navigation_toolbar' field, not `show_main_toolbar' one.
+	(update_window_title): When there is no game name, try to create
+	window title from use players' names.  Set window title even if
+	there's no base name.
+	(initialize_gtp_player): Return 1 to indicate no error to the GTP
+	client module.
+
+	* gtp/gtp-client.c (parse_final_status_list): Take care to signal
+	error only if the list is badly formatted.
+
+	* gui-gtk/gtk-gtp-client-interface.c (log_gtp_stream_error): Don't
+	assume that there is a log file, errors are reported regardless of
+	GTP client's echo status.
+
+	* gui-gtk/gtk-goban.c (gtk_goban_size_allocate): Fix bug with cell
+	size calculation that occured when the resulting font was larger
+	than requested (reported by Arend Bayer.)
+
+2004-12-24  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-gtp-client-interface.c (gtk_create_gtp_client):
+	Handle GTP debugging options: hook up necessary callbacks, create
+	pipe and IO channel for child's stderr etc.
+	(handle_engine_stderr, log_gtp_stream, log_gtp_stream_error): New
+	functions.
+	(client_deleted): Close stderr channel and log file if necessary.
+
+	* gtp/gtp-client.c (gtp_client_grab_response): Report errors
+	before response lines.  Properly ignore empty lines between
+	responses.
+	(dispatch_response): Send an empty line to `line_callback' after
+	any potential error.
+	(store_protocol_version): Send a warning about future GTP version.
+
+	* quarry-main.h: New file.
+
+	* quarry.c (main): Parse command line.  Add `--gtp-log',
+	`--gtp-show-stderr', `--help', `--usage' and `--version' options.
+
+2004-12-23  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* board/amazons.c (amazons_parse_move): Also parse moves in
+	A1-B2/C3 and A1-B2xC3 formats (wish #1952,
+	emarkus@cs.ualberta.ca.)
+
+2004-12-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-parser.c (sgf_parse_list_of_label): When combining label
+	lists ensure that the old list's text strings are not freed as we
+	reuse them (bug reported by Arend Bayer.)
+
+2004-12-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c: Add "Game Tree" category.
+	(create_saving_sgf_page): New function.
+	(create_markup_box): Alter layout to reflect changes in theme
+	default usage policy.  Remove two buttons and add a check button.
+	(gtk_preferences_dialog_response): Handle
+	`PREFERENCES_PAGE_GAME_TREE'.
+	(update_board_background_texture): New function.
+	(update_board_appearance): Remove accidental code duplication.
+	(update_board_markup_theme): Rename from update_board_markup().
+	(use_theme_default_size, use_theme_default_opacity): Remove
+	functions.
+	(update_markup_theme_defaults_usage): New function.
+
+	* gui-gtk/gtk-utils.h (gtk_utils_block_signal_handlers)
+	(gtk_utils_unblock_signal_handlers): New macros.
+
+	* gui-gtk/gtk-tile-set.c
+	(gtk_sgf_markup_tile_set_create_or_reuse): Adapt to new theme
+	defaults usage scheme.
+
+	* gui-utils/common-configuration-values.list: Add "Use theme
+	defaults" value.  Add previously forgotten "Markup theme" value to
+	`amazons_board_appearance_values'
+	* gui-utils/common-configuration-defaults.list: Likewise for
+	`use_theme_defaults'
+
+	* sgf/sgf-tree-map.c (sgf_game_tree_update_view_port): Fix `if'
+	condition, don't call update_internal_view_port() when not needed.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "Game
+	Tree" check menu item.  Don't pack `sgf_tree_view's parent widget
+	to `vpaned' unless configured to always show game tree view.
+	Initialize new `sgf_tree_view_visibility_locked' field.
+	(gtk_goban_window_enter_game_mode): Never hide clocks.
+	(gtk_goban_window_destroy): Unreference `sgf_tree_view's parent.
+	(show_or_hide_sgf_tree_view, show_sgf_tree_view_automatically):
+	New functions.
+	(set_current_tree): When configured to show game tree view
+	automatically, show/hide it depending on whether the new tree has
+	any variations.  But respect `sgf_tree_view_visibility_locked',
+	set by show_or_hide_sgf_tree_view() when invoked from menu.
+	(update_children_for_new_node): Call
+	show_sgf_tree_view_automatically() for `current_node'.
+	(update_game_information): Never hide players' information.
+	(update_player_information): Set return type to `void'.
+	(move_has_been_generated): Call show_sgf_tree_view_automatically()
+	for `game_position_node'.
+
+2004-12-10  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-utils/common-configuration-sections.list: Add configuration
+	parameter for whether and when to show game tree view.
+	* gui-utils/common-configuration-values.list: Likewise.
+	* gui-utils/common-configuration-defaults.list: Likewise.
+
+	* gui-utils/configuration.c (configuration_read_from_file): Add
+	support for `enumeration' value type.
+	(parse_integer): New function, broken out of
+	configuration_read_from_file().
+	(write_section): Add support for `enumeration' value type.
+
+	* gui-utils/parse-configuration.c (configuration_parse_sections2):
+	Adjust output to follow modified (see `ChangeLog' entry of 12
+	October) coding convention.
+	(configuration_parse_values2): Likewise.
+	(configuration_parse_defaults2): Likewise.
+	(configuration_finalize_defaults): Likewise.
+	(add_field_dispose_call_if_needed): Likewise.
+	(finish_function): Likewise.
+	(configuration_initialize_sections): Save `c_file_array_name' on
+	the heap, don't write to `h_file_bottom' yet.
+	(configuration_parse_values2): Add support for `enumeration' value
+	type.
+	(configuration_initialize_defaults): Perform write to
+	`h_file_bottom' delayed in configuration_initialize_sections().
+	(configuration_parse_defaults2): Add support for `enumeration'
+	value type.
+	(configuration_parse_defaults2): Likewise.
+	(add_field_declaration_if_needed): Likewise.
+
+	* gui-gtk/gtk-sgf-tree-view.c (gtk_sgf_tree_view_size_allocate):
+	Remove debugging leftover.
+	(gtk_sgf_tree_view_expose): Only draw if the widget is realized,
+	not if `current_tree' is set.  Implement line clipping to
+	workaround X drawing problems with very long lines (over 32K.)
+	(gtk_sgf_tree_view_update_view_port): Do nothing if widget is not
+	realized.
+
+2004-12-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add an
+	GtkSgfTreeView to the sidebar.
+	(set_current_tree): Inform `sgf_tree_view' about the change.
+	(switch_to_given_node): New function.
+	(update_children_for_new_node): Force `sgf_tree_view' view port
+	update.
+	(move_has_been_generated): Likewise if not displaying game node.
+
+	* sgf/sgf-utils.c (sgf_utils_append_variation): Call new function
+	sgf_game_tree_invalidate_map().
+
+	* gui-gtk/gtk-sgf-tree-view.c, gui-gtk/gtk-sgf-tree-view.h: New
+	files.
+
+	* gui-gtk/quarry-marshal.list: New marshaller
+	`VOID:OBJECT,OBJECT'.
+
+	* sgf/sgf-parser.c (complete_node_and_update_board): Make last
+	change work.
+
+2004-12-08  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* utils/utils.c (utils_realloc): Don't choke if `realloc (..., 0)'
+	returns NULL.
+
+	* sgf/sgf-tree-map.c: New file.
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Initialize new `user_data',
+	`free_user_data', `map_width', `view_port_nodes' and
+	`view_port_lines' fields.
+	(sgf_game_tree_delete): Free `user_data' (if necessary),
+	`view_port_nodes' and `view_port_lines' fields.
+	(sgf_game_tree_set_user_data): New function.
+	(sgf_node_new): Initialize new `is_collapsed' field.
+
+2004-12-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (update_board_background_texture): Use
+	gtk_goban_base_update_appearance() instead of
+	gtk_goban_update_appearance().
+	(update_board_markup): Likewise.
+	(update_board_appearance): Likewise.
+
+	* gui-gtk/gtk-goban.c (gtk_goban_get_type): Descend from
+	GtkGobanBase, not GtkWidget.
+	(gtk_goban_set_parameters): Use new function
+	gtk_goban_base_set_game() and `appearance-changed' signal.
+	(gtk_goban_size_allocate): Use new function
+	gtk_goban_base_set_cell_size().  Be a nice inherited method and
+	call parent's method instead of doing everything itself.
+	(unreference_cached_objects, set_goban_style_appearance)
+	(gtk_goban_appearance_changed): Remove functions (part of
+	functionality went to `gui-gtk/gtk-goban-base.c'.)
+	(gtk_goban_appearance_changed): New function (inherit most of
+	set_goban_non_style_appearance() functionality.)
+	(gtk_goban_update_appearance): Remove function (functionality
+	inherited by gtk_goban_base_update_appearance().)
+
+	* gui-gtk/gtk-goban-base.c, gui-gtk/gtk-goban-base.h: New
+	files (part of `gui-gtk/gtk-goban.c' fuctionality.)
+
+2004-11-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.10.)
+
+2004-11-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-help.c (gtk_help_display): Don't try to launch Yelp
+	if ScrollKeeper wasn't found on configure stage.
+
+2004-11-26  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (IS_IN_SPECIAL_MODE): New macro.
+	(gtk_goban_window_init): Use `GTK_STOCK_PROPERTIES'es shortcut and
+	icon for "Game Information" menu item.  Add "View" sub-menu.
+	Rearrange "Go" sub-menu items so that "previous"-like items always
+	go before "next"-like.
+	(gtk_goban_window_init): Add main and navigation toolbars.  Add
+	"Pass" and "Resign" buttons to the sidebar.  Tweak sidebar
+	spacing.
+	(gtk_goban_window_enter_game_mode): Call
+	update_children_for_new_node() since result of
+	USER_CAN_PLAY_MOVES() might change.  Bug-fix: don't start user's
+	clock if the user is setting free handicap.
+	(show_or_hide_main_toolbar, show_or_hide_navigation_toolbar)
+	(show_or_hide_game_action_buttons): New functions.
+	(set_current_tree): Show or hide "Pass" button depending on game.
+	(play_resign): Ask user if she really wants to resign first.
+	(do_resign_game): New function, broken out of play_resign().
+	(update_children_for_new_node): Also sensitize/desensitize toolbar
+	buttons and game action buttons.  Make "Pass" and "Resign" menu
+	items and buttons insensitive when in special mode.
+	(move_has_been_played): ReSet `in_game_mode' if game is over.
+	(move_has_been_generated): Use do_resign_game() instead of
+	play_resign().
+
+	* gui-gtk/gtk-configuration.list: Add "GTK+ User Interface"
+	section.
+
+	* gui-utils/configuration.c (IS_ACCEPTABLE_NAME_CHARACTER): New
+	macro.
+	(configuration_read_from_file): Use
+	IS_ACCEPTABLE_NAME_CHARACTER().  This allows digits, hyphen, plus
+	sign and apostrophe in names, in addition to digits accepted
+	before.
+
+	* utils/string-buffer.c (string_buffer_vcprintf): Bug-fix:
+	increase string length also when buffer reallocation is needed.
+
+2004-11-25  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (gtk_utils_append_toolbar_button)
+	(invoke_toolbar_button_callback)
+	(gtk_utils_set_toolbar_buttons_sensitive)
+	(set_toolbar_item_sensitive): New functions.
+
+2004-11-24  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (play_resign): Bug-fix: don't stop
+	the clock if we don't have a time control in the first place.
+
+2004-11-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-utils/configuration.c (configuration_read_from_file): Don't
+	segfault on certain malformed input.
+	(parse_string): Respect comments starting with '#' symbol (this
+	will break old configuration files with custom colors.)
+	(write_section): Write colors enclosed in quotes, because they
+	contain '#' symbol.
+
+	* sgf/sgf-tree.c (sgf_node_split): Bug-fix: set `node->move_color'
+	to `EMPTY' since the move is moved to the child node.
+
+	* sgf/sgf-parser.c (complete_node_and_update_board): Bug-fix:
+	remove `PL' properties that have no effect, not those changing
+	color to move.
+
+2004-11-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (do_find_text): Scroll text view so
+	that the found text is always visible.
+
+2004-10-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban.c (gtk_goban_expose): Only use
+	draw_horizontal_line_with_gaps() and
+	draw_vertical_line_with_gaps() for Go, not other games.  Draw
+	labels on black stones using white color.  Don't draw last move
+	indicator over SGF labels.
+
+	* gui-gtk/gtk-configuration.list: Add "Find Dialog Parameters"
+	section.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "Find",
+	"Find Next" and "Find Previous" menu items.  Initialize new
+	`find_dialog' and `text_to_find' fields.
+	(gtk_goban_window_finalize): Free `text_to_find' and destroy
+	`find_dialog' (if present.)
+	(show_find_dialog, find_dialog_response)
+	(find_dialog_parameters_changed, do_find_text)
+	(strstr_whole_word, strrstr_whole_word)
+	(char_is_word_constituent, get_normalized_text)
+	(get_offset_in_original_text): New functions.
+	(about_to_change_node, just_changed_node): New functions, broken
+	out of navigate_goban().
+	(playing_mode_goban_clicked): Bug-fix: invoke new
+	about_to_change_node() and just_changed_node() when switching
+	variations on right button click (could lead to game tree
+	corruption when playing a game.)
+	(update_move_information): Bug-fix: only call
+	sgf_node_get_result() if there is a game-info node in the first
+	place.
+
+	* sgf/sgf-utils.c (sgf_utils_switch_to_given_node): New function.
+
+2004-10-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/quarry-stock.c: New stock item `QUARRY_STOCK_PREVIOUS'.
+
+	* sgf/sgf-tree.c (sgf_game_tree_traverse_forward)
+	(sgf_game_tree_traverse_backward, sgf_node_traverse_forward)
+	(sgf_node_traverse_backward): New functions.
+
+	* gui-gtk/gtk-control-center.c (gtk_control_center_destroy):
+	Remove function, use gtk_utils_null_pointer_on_destroy() instead.
+	* gui-gtk/gtk-goban-window.c (save_file_as_destroy): Likewise.
+	(game_info_dialog_destroyed): Likewise.
+	(about_dialog_destroy): Likewise.
+	* gui-gtk/gtk-preferences.c (gtk_preferences_dialog_destroy):
+	Likewise.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_null_pointer_on_destroy)
+	(null_pointer_on_destroy)
+	(null_pointer_on_destroy_ask_control_center): New functions.
+
+	* gui-gtk/gtk-goban-window.c (show_about_dialog): Fix copyright
+	string (add year 2003.)  Center-justify copyright label.  Use
+	`GTK_RESPONSE_CANCEL' for the "Close" button, so that the dialog
+	can be closed with Escape.
+
+2004-10-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban.c (gtk_goban_set_parameters): Update goban's
+	hoshi points using new go_get_hoshi_points() function.
+	(gtk_goban_size_allocate): Don't touch hoshi points here.
+	(gtk_goban_expose): Use new draw_vertical_line_with_gaps() and
+	draw_horizontal_line_with_gaps() to draw all lines.  Don't draw
+	hoshi points over SGF labels.
+	(draw_vertical_line_with_gaps, draw_horizontal_line_with_gaps):
+	New functions.
+	(gtk_goban_finalize): Free overlay data, don't leak memory.
+	(gtk_goban_update): Adjust `rectangle_sgf_label' so that label
+	gaps get redrawn properly.
+	(find_hoshi_points): Remove function.
+
+	* board/go.c (go_get_hoshi_points): New function, inherit code of
+	removed find_hoshi_points() in `gui-gtk/gtk-goban.c'.
+
+	* gui-gtk/gtk-new-game-dialog.c (begin_game): Bug-fix: duplicate
+	"Void" string before passing it to sgf_node_add_text_property().
+
+	* gui-gtk/gtk-utils.c (time_spin_button_output): Use
+	utils_ncprintf() once more: now it knows about field width.
+
+	* utils/utils.c (utils_vncprintf): Add support for field width
+	This is an indirect bug-fix for write_section() in
+	`gui-utils/configuration.c', it used to write time incorrectly.
+
+2004-10-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.9.)
+
+	* gui-gtk/gtk-utils.c (freeze_on_empty_input): Use
+	gtk_freezable_spin_button_freeze_and_stop_input().
+
+	* gui-gtk/gtk-freezable-spin-button.c
+	(gtk_freezable_spin_button_init): Reset new `is_in_output' field.
+	(gtk_freezable_spin_button_new): Connect also to `input' signal.
+	(gtk_freezable_spin_button_output): Set `is_in_output' while
+	changing entry's text.
+	(gtk_freezable_spin_button_input): New function.
+	(gtk_freezable_spin_button_changed): Bug-fix: only unfreeze when
+	changed not from our own `output' signal handler.
+	(gtk_freezable_spin_button_freeze_and_stop_input): New function.
+
+	* gui-gtk/gtk-game-info-dialog.c (gtk_game_info_dialog_init):
+	Bug-fix: Call gtk_utils_convert_to_time_spin_button() after
+	gtk_utils_freeze_on_empty_input(), so that
+	time_spin_button_input() is the last handler.
+
+2004-10-14  anonymous  <mateusz@kaduk.net>
+
+	* gui-gtk/gtk-preferences.c (prepare_to_rebuild_menus)
+	(rebuild_all_menus): Fix macro definition for GTK+ 2.4 broken by
+	extra spaces (bug #898.)
+
+2004-10-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.8.)
+
+2004-10-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (game_info_dialog_property_changed):
+	New function.
+	(update_player_information): Add a comma before ranks not starting
+	with a digit (i.e. "Honinbo".)
+
+	* gui-gtk/gtk-game-info-dialog.c: Enable editing of game
+	information.  Add `property-changed' signal.
+	(gtk_game_info_dialog_init): Remove temporary notice from dialog
+	title.  Make all controls save their values (i.e. editable.)  Use
+	GtkFreezableSpinButton for handicap, komi and main time entries.
+	Adjust some mnemonic keys to make space for not yet added "Help"
+	button.
+	(create_and_pack_game_info_entry): New function.
+	(gtk_game_info_dialog_set_node): Bug-fix: set `main_time'
+	adjustment for all games, not just for Go.  Freeze spin buttons
+	when properties have illegal (from SGF point of view) values.
+	(game_info_entry_focus_out_event, game_comment_focus_out_event)
+	(game_info_spin_button_value_changed)
+	(game_info_spin_button_focus_out_event)
+	(update_property_if_changed): New functions.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_freezable_spin_button):
+	New function.
+	(gtk_utils_convert_to_time_spin_button): New function, break out
+	of gtk_utils_create_time_spin_button().
+	(gtk_utils_set_text_buffer_text): New function, break out of
+	update_children_for_new_node() (in `gui-gtk/gtk-goban-window.c'.)
+	(gtk_utils_freeze_on_empty_input, freeze_on_empty_input): New
+	functions.
+
+	* gui-gtk/gtk-freezable-spin-button.c: New file.
+	* gui-gtk/gtk-freezable-spin-button.h: New file.
+
+2004-10-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-utils.c (sgf_utils_normalize_text): Add `is_simple_text'
+	parameter.  Handle simple text.  Remove all occurences of '\r'
+	character.  Don't leak `buffer' if `text' contains whitespace
+	only.
+
+	* gui-gtk/gtk-utils.h (GtkUtilsBrowsingDoneCallback): Make really
+	the same as the prototype of the `focus-out-event' handler.
+	* gui-gtk/gtk-preferences.c (update_board_background_texture):
+	Likewise.
+
+	* (Globally: put a space before opening parenthesis in function
+	calls and so be closer to GNU coding standard.  Files will be
+	converted only when some other change is being commited.)
+
+2004-10-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (gtk_preferences_dialog_present): Add
+	help button.
+	(create_gtp_engines_page): Change "Supported games" label to
+	"Supported game(s)".  Make "Supported game(s)" go before "Command
+	line".
+	(gtk_preferences_dialog_destroy): New function.
+	(gtk_gtp_engine_dialog_response): Call
+	gtk_progress_dialog_set_help_link_id().
+	* gui-gtk/gtk-preferences.h: Add previously missed
+	`PREFERENCES_PAGE_SGF_SAVING'.
+
+	* gui-gtk/gtk-progress-dialog.c (gtk_progress_dialog_init): Reset
+	new `help_link_id' field to NULL.
+	(gtk_progress_dialog_update): New function.
+	(gtk_progress_dialog_response): Handle `GTK_RESPONSE_HELP'.
+
+	* gui-gtk/gtk-new-game-dialog.c (gtk_new_game_dialog_present):
+	Change some mnemonic keys to make space for new "Help" button.
+	Set help links for both assistant pages.
+	(instantiate_players): New function.
+
+	* gui-gtk/gtk-assistant.c (gtk_assistant_init): Initialize new
+	`help_button' field to NULL.
+	(gtk_assistant_update_buttons): Sensitize or desensitize help
+	button if present.
+	(gtk_assistant_response): Handle `GTK_RESPONSE_HELP'.
+	(gtk_assistant_add_page): Reset new `help_link_id' and
+	`help_link_id_callback' fields to NULL.
+	(gtk_assistant_set_page_help_link_id)
+	(gtk_assistant_set_page_help_link_id_callback): New functions.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add
+	"Contents" (of "Help") menu item.
+	(show_help_contents): New function.
+
+	* gui-gtk/gtk-help.c, gui-gtk/gtk-help.h: New files.
+
+2004-10-05  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-parser.c (parse_property): Adjust to changed storage of
+	unknown properties.
+	(parse_unknown_property_values): Likewise.  Add
+	`property_value_list' argument; add values to that list.
+
+2004-10-04  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-writer.c (do_write_text): Add `terminating_character'
+	argument.  Output `terminating_character' in encoding specified by
+	`CA' property, so that the file is parseable.
+	(sgf_write_simple_text, sgf_write_text, sgf_write_list_of_label):
+	Don't write terminating ']', do_write_text() does this now.
+	(sgf_write_unknown): Adjust to work with changed storage of
+	unknown properties.  Output ']' like do_write_text() now does.
+
+	* sgf/sgf-tree.c (sgf_node_find_unknown_property)
+	(sgf_property_duplicate, free_property_value): Cope with changed
+	storage of unknown properties.
+	(sgf_property_delete): Use free_property_value().
+	(free_property_value): Compile unconditionally (for use from
+	sgf_property_delete()).  Make `inline'.
+
+	* sgf/sgf.h: Change storage of unknown properties: store them in
+	`StringList's now.
+
+2004-10-03  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban.c (gtk_goban_set_parameters): Reset `grid',
+	`goban_markup', `sgf_markup' and `sgf_labels'.  Free `sgf_labels'
+	strings if needed.
+	(gtk_goban_expose): Render SGF labels.
+	(gtk_goban_finalize): Free `sgf_labels' strings if needed.
+	(gtk_goban_update): New argument `sgf_label_list'.  Use
+	grid_copy() instead of memcpy().
+
+	* gui-gtk/gtk-goban.h (KEEP_SGF_LABELS): New macro.
+
+	* board/board.c (DO_FILL_GRID, DO_COPY_GRID): New macros.
+	(board_fill_grid, board_fill_int_grid): Remove functions.
+	(grid_fill, int_grid_fill, pointer_grid_fill): New functions,
+	inherit removed functions' code.
+	(grid_copy, int_grid_copy, pointer_grid_copy): New functions.
+	* board/board.h (uint_grid_fill, board_fill_grid)
+	(board_fill_int_grid, board_fill_pointer_grid, uint_grid_copy):
+	New macros.
+
+2004-09-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (gtk_utils_workaround_focus_bug): New
+	function.
+	* gui-gtk/gtk-assistant.c (gtk_assistant_response): Use it.
+
+	* gui-gtk/gtk-goban-window.c (USER_IS_TO_PLAY): New macro.
+	(gtk_goban_window_enter_game_mode): Use USER_IS_TO_PLAY() instead
+	of USER_CAN_PLAY_MOVES().
+	(free_handicap_has_been_placed): Don't start clock if white player
+	is a GTP engine that hasn't yet initialized (fixes crashes).
+	(initialize_gtp_player): Bug-fix: only check if handicap is fixed
+	if the number of stones doesn't exceed maximal fixed handicap for
+	game's board size in the first place.  Otherwise an assertion in
+	go_get_fixed_handicap_stones() fails.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init):
+	Center-justify `move_information_label'.
+	(update_move_information): Print result when browsing the last
+	node of main variation.
+	(move_has_been_generated): Handle resignation of GTP engines.
+
+2004-09-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-tree.c (sgf_node_get_result): New function.
+
+	* sgf/sgf-utils.c (do_enter_tree): Keep value of new
+	`last_main_variation_node' field of `SgfBoardState' structure
+	valid.
+	(descend_nodes): Likewise.
+	(ascend_nodes): Likewise.
+
+2004-09-10  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "Resign"
+	menu item.
+	(play_resign): New function.
+	(update_children_for_new_node): Sensitize/desensitize "Resign"
+	menu item.
+	(go_scoring_mode_done): Add game result SGF property.
+	(move_has_been_played): Likewise for Amazons and Othello.
+
+	* sgf/sgf-utils.c (sgf_utils_append_variation): Rename from
+	sgf_utils_append_move_variation().  Handle variations without
+	moves (when `color' is set to `EMPTY').
+
+	* sgf/sgf-tree.c (sgf_node_add_score_result)
+	(sgf_node_append_text_property): New functions.
+
+	* gui-gtk/gtk-new-game-dialog.c (begin_game): Set game result to
+	"Void" initially.
+
+	* gtp/gtp-client.c (parse_generated_move): Handle "resign" answer
+	of GTP engines.
+
+	* board/board-topology.h (SPECIAL_X, SPECIAL_Y, SPECIAL_POSITION):
+	New macros.
+	* gtp/gtp-client.h (RESIGNATION_X, RESIGNATION_Y, RESIGNATION):
+	New macros.
+
+2004-09-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.h
+	(gtk_utils_make_window_only_horizontally_resizable): Define to
+	nothing for pre-2.2 GTK+ (workaround GTK+ bug).
+
+	* gui-gtk/gtk-parser-interface.c (gtk_parse_sgf_file): Don't use
+	GTK_WIDGET() on NULL pointer.
+	* gui-gtk/gtk-progress-dialog.c (gtk_progress_dialog_new):
+	Likewise.
+
+	* gui-gtk/gtk-assistant.c (gtk_assistant_update_buttons): Make
+	`is_last_page' calculation work in pre-2.2 case.
+
+	* gui-gtk/gtk-preferences.c (do_remove_gtp_engine): Pre-2.4 (or
+	pre-2.2?) gtk_list_store_remove() didn't return anything.  Add
+	special case.
+
+	* gui-gtk/gtk-clock.c (gtk_clock_expose): Remove `const' from
+	`black_color' and `gray_color' declaration to avoid warnings with
+	earlier GTK+ versions.
+
+2004-08-31  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* utils/utils.c (utils_parse_double): Bug-fix: don't skip one
+	extra character when there is no decimal dot.
+
+	* sgf/sgf-tree.c (sgf_node_get_time_limit): New function.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add "Game
+	Information" menu item.  Initialize new `game_info_dialog' field.
+	(gtk_goban_window_destroy): Destroy game info dialog if exists.
+	(show_game_information_dialog, game_info_dialog_destroyed): New
+	functions.
+	(update_game_information): Call gtk_game_info_dialog_set_node() if
+	game info dialog exists.
+
+	* sgf/sgf-properties.list: Rename `SGF_RULES' to `SGF_RULE_SET'.
+
+	* gui-gtk/gtk-game-info-dialog.c, gui-gtk/gtk-game-info-dialog.h:
+	New files.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_entry): Add `mode'
+	argument.
+	(advance_focus): New function.
+	(gtk_utils_align_left_widgets)
+	(do_align_left_widgets, do_align_left_widget): New functions.
+	(time_spin_button_output): Bug-fix: use sprintf() again,
+	utils_ncprintf() doesn't know about field width.
+
+2004-08-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-parser.c (sgf_parse_date): Fall back to
+	sgf_parse_simple_text() for now.
+	(sgf_parse_result): Implement with error checking.
+	(looking_at, invalid_game_info_property): New functions.
+
+2004-08-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-writer.c (sgf_write_file): Remove `1||' accidentally
+	left in the code.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_save): Use
+	configuration variable to decide whether to force UTF-8.
+	(save_file_as_response): Likewise.
+
+	* gui-gtk/gtk-preferences.c: Add "Game Records (SGF)" category.
+	(create_saving_sgf_page, store_toggle_setting): New functions.
+	(update_board_background): Remove function.
+	(update_board_markup): Remove GtkCheckButton case.
+	(update_board_appearance): Add GtkToggleButton case.  Bug-fix:
+	don't ignore first field of appearance structures.
+
+	* gui-utils/common-configuration-sections.list: Add configuration
+	parameter (whether to force UTF-8 encoding) for saving SGF files.
+	* gui-utils/common-configuration-values.list: Likewise.
+	* gui-utils/common-configuration-defaults.list: Likewise.
+
+	* gui-gtk/gtk-new-game-dialog.c (begin_game): Use *cprintf()
+	functions when locale-specific formatting is not needed and is not
+	expected.
+	* gui-gtk/gtk-tile-set.c (scale_and_paint_svg_image): Likewise.
+	* gui-gtk/gtk-utils.c (time_spin_button_output): Likewise.
+	* gui-utils/configuration.c (write_section): Likewise.
+	* gui-utils/parse-configuration.c: Likewise.
+	* gtp/gtp-client.c (send_command): Likewise.
+	* sgf/parse-sgf-list.c: Likewise.
+	* sgf/sgf-diff-utils.c (do_generate_text_diff): Likewise.
+	* sgf/sgf-parser.c: Likewise.
+	* sgf/sgf-tree.c (sgf_node_get_handicap): Likewise.
+	* sgf/sgf-utils.c (sgf_utils_set_handicap): Likewise.
+	* sgf/sgf-writer.c: Likewise.
+	* board/board.c (game_format_point): Likewise.
+	* board/parse-game-list.c (game_list_parse_game2): Likewise.
+	* utils/parse-list.c (do_parse_lists): Likewise.
+
+	* utils/buffered-writer.c (buffered_writer_vprintf): Properly
+	handle cases when vsnprintf() returns -1.
+	(buffered_writer_printf, buffered_writer_vprintf): New functions.
+
+	* utils/string-buffer.c (string_buffer_vprintf): Properly handle
+	cases when vsnprintf() returns -1.
+	(string_buffer_cprintf, string_buffer_vcprintf): New functions.
+
+	* utils/utils.c (FORMAT_DOUBLE_DECIMALS): Remove macro (replaced
+	with new anonymous enumeration).
+	(utils_cprintf, utils_vcprintf, utils_ncprintf, utils_vncprintf):
+	New functions.
+	(utils_vprintf): Properly handle vsnprintf() return value after
+	the very first call.
+	(utils_format_double): Remove function (code is inherited by
+	utils_vncprintf()).
+	(utils_parse_double): Allow the string contain '+' as the first
+	character.
+
+2004-08-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.7.)
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): New
+	sub-menus: "Edit" with "Preferences" item and "Help" with "About"
+	item.
+	(show_preferences_dialog, show_about_dialog)
+	(about_dialog_destroy): New functions.
+
+	* gui-gtk/gtk-preferences.c (gtk_preferences_dialog_present):
+	Change type of `page_to_select' parameter to `gpointer'.
+
+2004-08-27  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-tile-set.c (gtk_main_tile_set_create_or_reuse):
+	Restore accidentally removed special case: only use odd-sized
+	tiles for Go (otherwise they won't center properly).
+
+	* gui-utils/tile-renderer.c (render_go_stones): Fix stone center
+	positioning once more (previous fix didn't work in all cases).
+	Remove debug output accidentally left in the code.
+	(render_othello_disks): Likewise for disk center positioning.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Make sure
+	right side doesn't shrink below certain width (suggested by Arend
+	Bayer).
+	(force_minimal_width): New function.
+
+2004-08-26  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-utils/tile-renderer.c (render_othello_disks): New function.
+	* gui-gtk/gtk-tile-set.c (gtk_main_tile_set_create): Use
+	render_othello_disks() for Othello.
+
+2004-08-25  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban.c (set_goban_non_style_appearance): Update
+	goban's SGF markup tile set.
+
+	* gui-gtk/gtk-preferences.c (create_go_board_appearance_page):
+	Create a page for markup appearance configuration.
+	(create_amazons_board_appearance_page): Likewise.
+	(create_othello_board_appearance_page): Likewise.
+	(create_board_appearance_notebook_page): Add markup page to the
+	notebook (passed as new parameter `markup_widget').
+	(update_board_background): Remove only GtkColorButton case.
+	Change `game_index's type to `gpointer'.
+	(update_board_background_texture): Likewise for `game_index'.
+	(create_markup_box, update_board_grid_and_labels_color)
+	(use_theme_default_size, use_theme_default_opacity)
+	(game_to_board_appearance_structure): New functions.
+	(update_board_grid_and_labels_color, update_checkerboard_pattern):
+	Remove functions.
+	(update_board_appearance): New function, contains code from
+	update_board_background(), update_board_grid_and_labels_color()
+	and update_checkerboard_pattern().
+
+	* gui-gtk/gtk-tile-set.c
+	(gtk_sgf_markup_tile_set_create_or_reuse): Remove `theme'
+	parameter.  Handle markup configuration.  Scale markup for Go when
+	decrementing markup cell/pixbuf size.  Update for new
+	`GtkSgfMarkupTileSetKey' format.
+	(gtk_sgf_markup_tile_set_compare_keys): Update for new
+	`GtkSgfMarkupTileSetKey' format.
+	(gtk_sgf_markup_tile_set_duplicate_key): Likewise.
+	(gtk_sgf_markup_tile_set_create): Handle markup configuration.
+	Read files here instead of scale_and_paint_svg_image().  Reuse
+	pixbufs when markup color over different backgrounds match.
+	(scale_and_paint_svg_image): Empty `color_properties' string list
+	just in case not all declared properties exist.
+
+2004-08-24  Martin Holters  <martin.holters@gmx.de>
+
+	* board/board.c (board_position_list_union): New function.
+
+	* utils/string-list.c (string_list_count_items): New function.
+
+	* gtp/gtp-client.c (gtp_client_final_status_list)
+	(parse_final_status_list): New functions.
+	* gui-gtk/gtk-goban-window.c (engine_has_scored)
+	(enter_scoring_mode, cancel_scoring): New functions.
+	(move_has_been_played): Invoke gtp_client_final_status_list() of
+	GTP engine player(s) (if any) before user may score.
+
+2004-08-23  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_selector): Pass items'
+	text through _() also for pre-2.4 version of the function.
+	(gtk_utils_create_selector_from_string_list): New function.
+
+	* quarry.c (main): Invoke gui_utils_enumerate_themes() before
+	anything else GUI-related and gui_utils_discard_theme_lists()
+	afterwards.  Don't call gui_back_end_main_*() if
+	gui_back_end_init() failed in the first place.
+
+	* Makefile.am (AM_CPPFLAGS): Add `src/gui-utils' and `src/board'
+	to include path (the latter is required by
+	`gui-utils/gui-utils.h', not by `quarry.c' itself).
+
+	* gui-utils/gui-utils.c (gui_utils_enumerate_themes)
+	(gui_utils_discard_theme_lists): New functions.
+
+	* gui-utils/configuration.c (configuration_read_from_file): Return
+	non-zero if file is read successfully.
+
+	* gui-utils/Makefile.am (AM_CPPFLAGS): Define `PACKAGE_DATA_DIR'.
+
+	* utils/Makefile.am: Make `tags' target depend on `libutils.a' and
+	`libparselist.a', as otherwise `make tags' won't work in a clean
+	source tree.
+
+2004-08-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-utils/markup-theme-configuration.list: New file.
+
+	* gui-utils/common-configuration-values.list: Add configuration
+	parameters for markup appearance for all supported games.
+	* gui-utils/common-configuration-defaults.list: Likewise.
+
+	* gui-gtk/gtk-goban-window.c (update_children_for_new_node): Move
+	cursor to comment's first line.
+	(fetch_comment_if_changed): Don't store empty comments, delete
+	them.
+
+	* sgf/sgf-utils.c (sgf_utils_normalize_text): Return NULL if
+	normalized comment is empty.
+
+2004-08-21  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_save): Make sure
+	that the comment for the current node is saved if needed.
+	(save_file_as_response): Likewise.
+	(set_current_tree): Likewise.
+	(update_children_for_new_node): Likewise, but for the node goban
+	just left.  Append one newline to the displayed comment to ease
+	editing.
+	(fetch_comment_if_changed): New function.
+
+	* sgf/sgf-utils.c (sgf_utils_normalize_text): New function.
+
+	* sgf/sgf-tree.c (sgf_node_add_number_property): Add `overwrite'
+	parameter.
+	(sgf_node_add_real_property): Likewise.
+	(sgf_node_add_pointer_property): Likewise.
+
+	* sgf/sgf.h (sgf_node_add_double_property): Add `overwrite'
+	parameter.
+	(sgf_node_add_color_property): Likewise.
+	(sgf_node_add_text_property): Likewise.
+	(sgf_node_add_list_of_point_property): Likewise.
+	(sgf_node_add_list_of_label_property): Likewise.
+
+	* gettext.h (textdomain): Cast to `void' when NLS is disabled to
+	avoid pointless compiler warnings.
+	(bindtextdomain): Likewise.
+	(bind_textdomain_codeset): Likewise.
+
+	* gui-gtk/gtk-color-button.c: Use _().
+	* gui-gtk/gtk-control-center.c: Likewise.
+	* gui-gtk/gtk-gtp-client-interface.c: Likewise.
+
+	* gui-gtk/gtk-games.c: Use N_().
+
+	* gui-gtk/gtk-goban-window.c: Use _(), N_() and ngettext().  Tweak
+	some strings to allow better l10n.
+
+	* gui-gtk/gtk-new-game-dialog.c: Use _() and N_().
+	* gui-gtk/gtk-parser-interface.c: Likewise.
+	* gui-gtk/gtk-preferences.c: Likewise.
+	* gui-gtk/quarry-stock.c: Likewise.
+
+	* gui-gtk/gtk-utils.c (file_selection_response): Use _() and N_().
+	(gtk_utils_create_selector): Invoke _() on items' text.
+	(gtk_utils_create_radio_chain): Likewise for labels' text.
+
+	* gettext.h: New file, copied from GNU gettext 0.14.1.
+	* quarry.h (_, N_): New macros: i18n.
+	* quarry.c (main): Initialize i18n text domain.
+
+2004-08-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-new-game-dialog.c (begin_game): Set UTF-8 encoding
+	for the created game tree.
+
+	* sgf/sgf-writer.c (sgf_write_file): New parameter `force_utf8'.
+	(write_game_tree): Write `CA' property.  Create an iconv handle
+	for converting text property values if conversion is requested.
+	(do_write_text): Tell buffered writer to convert text.  Skip UTF-8
+	characters, not just bytes.
+	(sgf_write_fake_simple_text): Likewise.
+	(sgf_write_unknown): Likewise.
+
+	* sgf/sgf-properties.list: Mark `CA' property as not stored.
+	* sgf/sgf-parser.c (sgf_parse_char_set): New function.
+
+	* utils/buffered-writer.c (buffered_writer_init): Reset new field
+	`iconv_handle' to NULL.
+	(buffered_writer_add_character): Convert incoming text using
+	iconv(), if requested.
+	(buffered_writer_add_newline): Likewise.
+	(buffered_writer_cat_as_string): Likewise.
+	(buffered_writer_vprintf): Likewise.
+	(update_column): Count UTF-8 characters, not bytes.
+
+	* utils/utils.h (buffered_writer_set_iconv_handle): New macro.
+
+	* quarry.h (IS_UTF8_STARTER): New macro.
+
+2004-08-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-parser.c: Start handling of non-UTF-8 encodings.
+	(parse_buffer): Open/close iconv handles.
+	(parse_root): Parse value of `CA' property and create an iconv
+	handle for converting to UTF-8.
+	(do_parse_simple_text): Invoke convert_text_to_utf8().
+	(do_parse_text): Likewise.
+	(convert_text_to_utf8): New function.
+
+	* sgf/sgf-tree.c (sgf_game_tree_new): Initialize new `char_set'
+	field.
+	(sgf_game_tree_delete): Free `char_set'.
+	(sgf_game_tree_duplicate): Duplicate value of `char_set'.
+
+	* utils/utils.c (utils_duplicate_string): Allow `string' to be
+	NULL.
+
+2004-08-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban.c (gtk_goban_scroll_event): New
+	function (navigate goban in respond to mouse wheel movement, wish
+	#610, David Gómez).
+
+2004-08-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-parser-interface.c (analyze_parsed_data): Free
+	`data', don't leak memory.
+
+2004-08-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.6.)
+
+	* gui-utils/tile-renderer.c (render_go_stones): Fix stone center
+	positioning (used to be off by 0.5 pixels both horizontally and
+	vertically).
+
+2004-08-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban.c: Tweak stones' placement and size.
+	(gtk_goban_size_allocate): Create a tile set for drawing SGF
+	markup.
+	(gtk_goban_expose): Draw SGF markup.
+	(unreference_cached_objects): New function.
+	(gtk_goban_update): Handle incoming SGF markup, don't ignore it.
+
+	* gui-gtk/gui-back-end.c (gui_back_end_image_new)
+	(gui_back_end_image_delete): Remove functions.
+
+	* gui-gtk/gtk-tile-set.h: Rename from `gtk-tile-set-interface.h'.
+	* gui-gtk/gtk-tile-set.c: New file (part of `gui-utils/tile-set.c'
+	functionality and more).
+
+	* gui-utils/tile-renderer.c (PIXEL): Remove macro.
+	(tile_set_create_or_reuse, tile_set_unreference)
+	(tile_set_dump_recycle): Remove functions.
+	(render_go_stones): Rename from `create_go_stone_images'.  Only
+	render basic images here (one black, one white).
+	(duplicate_and_adjust_alpha, combine_pixels_diagonally): New
+	functions.
+
+	* gui-utils/tile-renderer.c: Rename from `tile-set.c'.
+	* gui-utils/tile-renderer.h: Rename from `tile-set.h'.
+
+	* utils/object-cache.c: New file (part of `gui-utils/tile-set.c'
+	functionality).
+
+2004-08-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* Makefile.am (quarry_LDADD): Remove recently added
+	`QUARRY_RSVG_LIBS' (it is now merged into `QUARRY_GTHREAD_LIBS').
+	* gui-gtk/Makefile.am (QUARRY_FULL_GTK_CFLAGS): Remove
+	`QUARRY_RSVG_CFLAGS' (it is now merged into
+	`QUARRY_GTHREAD_CFLAGS').
+	(AM_CPPFLAGS): Remove `PACKAGE_TEXTURES_DIR', it is obviously
+	derivable from `PACKAGE_DATA_DIR'.
+
+2004-08-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (gtk_gtp_engine_dialog_present):
+	Properly handle requests for modification of engine
+	information (don't die with assertion failure).
+	(gtk_gtp_engine_dialog_response, client_deleted): Handle "modify
+	engine information" version of dialog.
+	(update_engine_screen_name)
+	(find_gtp_tree_model_iterator_by_engines_data): New
+	functions (break out of chain_client_initialized()).
+
+	* gui-gtk/quarry-stock.c: New stock item `QUARRY_STOCK_MODIFY'.
+
+	* gui-gtk/gtk-preferences.c (create_background_table): Add button
+	for browsing for a texture.
+	(browse_for_gtp_engine, browsing_dialog_response): Remove
+	functions.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_browse_button)
+	(browse_button_clicked, browsing_dialog_response): New
+	functions (mostly inherit code of removed functions in
+	`gtk-preferences.c').
+
+	* gui-gtk/gtk-preferences.c (gtk_preferences_dialog_present):
+	Adapt page selection to new (tree) categories model.  Don't crash
+	when invoked with preferences dialog already shown and
+	`page_to_select' equal to -1.
+
+2004-08-11  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c: Split "Board Appearance" category
+	into three (one per game).
+	(gtk_preferences_dialog_present): Arrange preferences categories
+	in a tree rather than in a list.
+	(create_board_appearance_page): Remove function.
+	(create_go_board_appearance_page)
+	(create_amazons_board_appearance_page)
+	(create_othello_board_appearance_page)
+	(create_board_appearance_widgets)
+	(create_board_appearance_notebook_page): New
+	functions (essentially, inherit the code of removed
+	create_board_appearance_page()).
+	(gtk_preferences_dialog_change_page): Take care not to switch to
+	nonexistent pages.
+
+2004-08-10  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* board/go.c (go_mark_territory_on_grid): Detect false eyes that
+	don't yield territory and don't mark them.
+
+2004-08-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* Makefile.am (quarry_LDADD): Include `QUARRY_GTHREAD_LIBS' (split
+	off from `QUARRY_GTK_LIBS') and new `QUARRY_RSVG_LIBS' flags.
+	* gui-gtk/Makefile.am (QUARRY_FULL_GTK_CFLAGS): Include
+	`QUARRY_GTHREAD_CFLAGS' (split off from `QUARRY_GTK_CFLAGS') and
+	new `QUARRY_RSVG_CFLAGS'.
+
+2004-08-07  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (create_gtp_engines_page): Create GTP
+	engine information labels.
+	(gtk_preferences_dialog_update_gtp_engine_info): Display selected
+	GTP engine name, version, command line and supported games in
+	corresponding labels.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_left_aligned_label): New
+	function.
+
+	* utils/string-list.c (string_list_implode): New function.
+
+	* gui-gtk/gtk-goban.c (gtk_goban_expose): Draw a small rectangle
+	to indicate focused state of widget.
+	(gtk_goban_button_press_event): Grab focus when goban is clicked
+	outside the playing area (e.g. on labels).
+	(gtk_goban_focus_in_or_out_event): New function.
+
+2004-08-04  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* quarry.c (main): Use `SIG_IGN' as signal handler for `SIGPIPE'.
+	(catch_broken_pipe_signal): Remove function.
+
+2004-07-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_save): Handle
+	"Save" command, but issue warning about potential loss of
+	information (bug #522, David Gómez).
+
+2004-07-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.5.)
+
+	* gui-gtk/gtk-goban-window.c: Make it safe to navigate to a
+	different node while a game (with GTP engines participating) is
+	going on.
+	(IS_DISPLAYING_GAME_NODE): New macro.
+	(navigate_goban): Handle special cases of navigating from/to the
+	current game node.
+	(move_has_been_generated): Take care to attach new moves to the
+	current game's node, not to the displayed node.
+
+	* board/board.c (board_duplicate_without_stacks): New function.
+
+2004-07-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-tree.c (sgf_game_tree_set_state): New function.
+
+	* gui-utils/parse-configuration.c (configuration_parse_defaults2):
+	Initialize a few variables to avoid compiler warnings.
+	* gui-gtk/gtk-new-game-dialog.c (gtk_new_game_dialog_present):
+	Likewise.
+	(begin_game): Likewise.
+
+2004-07-16  Martin Holters  <martin.holters@gmx.de>
+
+	* board/go.c (go_score_game): Don't use utils_format_double(),
+	format as user's locale specifies.
+	* gui-gtk/gtk-goban-window.c (update_game_specific_information):
+	Likewise.
+
+	* sgf/sgf-tree.c (sgf_node_get_komi): Use utils_parse_double().
+	* gui-utils/configuration.c (configuration_read_from_file):
+	Likewise for parsing values of type `VALUE_TYPE_REAL'.
+
+	* utils/utils.c (utils_format_double): Don't use sprintf() and
+	thus be locale insensitive.
+	(utils_parse_double): New function, parse doubles in
+	locale-insensitive manner.
+
+2004-06-19  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (time_spin_button_input): Use new function
+	utils_parse_time() (which contains the code previously resided
+	here).
+
+	* gui-gtk/gtk-utils.h (gtk_utils_set_selector_active_item_index):
+	New macro.
+
+	* gui-gtk/gtk-new-game-dialog.c (gtk_new_game_dialog_present):
+	Initialize time control parameter widgets from configuration
+	variables.
+	(begin_game): Store time control configuration at successful game
+	start.
+
+	* gui-gtk/gtk-configuration-structures.c: Remove file.
+	* gui-gtk/gtk-configuration-structures.h: Remove file.
+
+	* gui-gtk/gtk-configuration.list: Ask `parse-configuration' to
+	declare `NewGameConfiguration' structure.  Break game-specific
+	variables out to separate sections.  Add time control variables
+	for each game.
+
+	* gui-utils/common-configuration-defaults.list: Update for new
+	format of fields of structural types.
+
+	* gui-utils/parse-configuration.c: Rewrite to allow random
+	structure declarations and array fields.  Add support for
+	configuration variables of `time' type.
+	(push_subscription_stack, pop_subscription_stack)
+	(recursively_build_full_field_name)
+	(add_field_declaration_if_needed)
+	(add_field_dispose_call_if_needed)
+	(recursively_build_full_field_name): New functions.
+
+	* gui-utils/configuration.c (configuration_read_from_file)
+	(write_section): Add support for `time' configuration value type.
+	(write_section): Change indentation of variable value from 16 to
+	24 (variable names are usually long).
+
+	* utils/parse-list.c (parse_thing): Allow `FIELD_NAME' to have '['
+	as its first character.  Handle new thing type, `TIME_VALUE'.
+
+	* utils/utils.c (utils_cat_string): Allow `string' argument to be
+	NULL.
+	(utils_cat_as_string): Likewise.
+	(utils_format_double): Rename from format_double() and move here.
+	(utils_parse_time): Break out from time_spin_button_input() (a
+	function in `gui-gtk/gtk-utils.c').
+
+	* utils/format.c: Remove file.
+
+2004-06-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-parser.c (parse_property): Bug-fix: store return value
+	of utils_cat_as_string() back in `(*link)->value.text'.
+
+2004-06-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Create
+	labels for displaying game-specific information (number of
+	captures and komi for Go, number of disks for Othello).
+	(set_current_tree): Hide the labels for Amazons (not used).
+	(update_game_specific_information): New function, fill the labels
+	with information.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_set_widgets_visible): New
+	function.
+
+	* board/othello.c (othello_count_disks): New function.
+
+	* gui-utils/tile-set.c (create_go_stone_images): Create 50%
+	transparent tile of mixed colors (half black, half white).
+	* gui-gtk/gtk-goban-window.c (update_children_for_new_node): Mark
+	positions with variations of both color with new tile.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Create clock
+	widgets for both players.
+	(gtk_goban_window_enter_game_mode): Take care of time control.
+	(initialize_gtp_player): Likewise.
+	(move_has_been_played): Likewise.
+	(generate_move_via_gtp, start_clock_if_needed): New functions.
+
+	* gui-gtk/gtk-clock.c, gui-gtk/gtk-clock.h: New files.
+
+	* gtp/gtp-client.c (COLOR_STRING): New macro.
+	(gtp_client_send_time_settings, gtp_client_send_time_left): New
+	functions.
+
+2004-06-10  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-new-game-dialog.c (gtk_new_game_dialog_present): Add
+	time control parameters widgets.
+	(time_control_type_changed): New function.
+	(begin_game): Create `TimeControl' objects when needed.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_time_spin_button)
+	(time_spin_button_output, time_spin_button_input): New functions.
+
+	* gui-gtk/gui-back-end.c (gui_back_end_timer_restart)
+	(gui_back_end_timer_delete)
+	(gui_back_end_timer_get_seconds_elapsed): New functions.
+
+	* gui-utils/time-control.c, gui-utils/time-control.h: New files.
+
+2004-06-06  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_selector)
+	(gtk_utils_create_invisible_notebook): New functions.
+
+2004-06-01  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (gtk_preferences_finalize): Remove.
+	(gtk_preferences_init): Register `gtp_engines_list_store' with
+	gui_back_end_register_object_to_finalize().
+
+	* gui-gtk/gui-back-end.c
+	(gui_back_end_register_object_to_finalize): New function.
+	(run_main_loop): Dereference objects from `objects_to_finalize'
+	list.
+
+2004-05-27  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (chain_client_initialized): Update
+	engine's information after successful initialization.  I.e. notice
+	version upgrades, etc. automatically.
+
+	* utils/string-list.c (string_list_duplicate_items): Bug-fix:
+	don't leave the new list unterminated, write NULL in the last
+	`next' pointer.
+
+2004-05-21  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (initialize_gtp_player): Don't send
+	`fixed_handicap 0' GTP command (specification requires to just
+	omit it).
+
+2004-05-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf.h: Remove types `SgfPoint', `SgfPositionList',
+	`SgfAmazonsMoveData' and `SgfAbstractMoveData' and all `#define'd
+	pseudo-functions.
+
+	* sgf/sgf.h: Use types from board code instead of removed ones.
+	* sgf/sgf-diff-utils.c: Likewise.
+	* sgf/sgf-parser.c: Likewise.
+	* sgf/sgf-tree.c: Likewise.
+	* sgf/sgf-utils.c: Likewise.
+	* sgf/sgf-writer.c: Likewise.
+
+	* (Quarry version 0.1.4.)
+
+	* gui-gtk/gtk-goban-window.c (playing_mode_goban_clicked):
+	Bug-fix: use `GOBAN_TILE_DONT_CHANGE' instead of `TILE_NONE'.
+	Caused serious problems with all games when trying to play an
+	illegal move.
+	(free_handicap_mode_goban_clicked): Likewise.
+
+2004-05-12  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.3.)
+
+	* gui-gtk/gtk-goban-window.c: Add support for user scoring of Go
+	games.  Cope with the changes in goban's feedback handling.
+	(update_territory_markup, go_scoring_mode_done)
+	(reenter_current_node, go_scoring_mode_pointer_moved)
+	(go_scoring_mode_goban_clicked): New functions.
+	(play_pass_move): Call move_has_been_played() after updating
+	controls for new SGF node so that the former function can change
+	goban's contents.
+	(playing_mode_goban_clicked): Likewise.
+	(update_children_for_new_node): Make dead stones more transparent.
+	(free_handicap_has_been_placed): Use reenter_current_node().
+
+	* gui-gtk/gtk-goban.c: Add possibility for overlays to span
+	several positions by using position lists.  Make overlays
+	overwrite goban markup as well as the main grid.
+	(gtk_goban_set_contents): Rename from
+	gtk_goban_set_grid_contents().
+	(set_feedback_data): Handle more feedback types, including goban
+	markup overwriting feedbacks.
+
+	* board/go.c (go_get_string_stones)
+	(go_get_logically_dead_stones, go_score_game)
+	(go_mark_territory_on_grid): New functions.
+
+2004-05-10  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* board/board.c (board_position_list_sort)
+	(board_position_lists_overlap)
+	(board_position_list_find_position)
+	(board_position_list_mark_on_grid): New functions.
+
+	* utils/utils.c (utils_compare_ints): New function.
+
+2004-05-09  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-new-game-dialog.c (set_handicap_adjustment_limits):
+	Don't use adjustment properties: they only appeared in GTK+ 2.4.
+
+2004-05-01  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-preferences.c (create_board_appearance_page): Add
+	controls for configuring Amazons' checkerboard pattern.  Change
+	controls layout: consider grid and labels a part of background.
+	(update_board_grid_and_labels_color): Rename from
+	update_board_foreground().
+	(update_checkerboard_pattern): New function.
+
+	* gui-utils/common-configuration-values.list: Rename "Foreground"
+	configuration variable to "Grid and labels color".
+
+	* gui-gtk/gtk-utils.c (gtk_utils_pack_in_box): Add a way to
+	request packing in box end.
+	(gtk_utils_create_mnemonic_label): New function.
+
+	* gui-gtk/gtk-named-vbox.c (gtk_named_vbox_size_request)
+	(gtk_named_vbox_size_allocate): Use `QUARRY_SPACING_SMALL' instead
+	of the box spacing as distance between the label and the contents.
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Use
+	`QUARRY_SPACING_SMALL' instead of `QUARRY_SPACING_GOBAN_WINDOW'
+	for the gap between players' control sets.
+
+2004-04-30  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban.c (gtk_goban_expose): Don't draw clipped
+	objects (significant speedup).
+	(gtk_goban_expose): Draw checkerboard pattern if requested.
+	(set_goban_style_appearance): Rename from
+	set_goban_appearance_style().
+	(set_goban_non_style_appearance): New function.  Only handles
+	checkerboard pattern at present.
+
+	* gui-utils/tile-set.c (tile_set_create_or_reuse): Initialize
+	`cell_size' parameter of `TileSet' structure.
+
+	* gui-utils/common-configuration-sections.list: Add configuration
+	parameters for checkerboard pattern for Amazons board.
+	* gui-utils/common-configuration-values.list: Likewise.
+	* gui-utils/common-configuration-defaults.list: Likewise.
+
+	* gui-utils/parse-configuration.c (configuration_parse_defaults2):
+	Add support for structure fields in new (generated) structures.
+
+	* gui-utils/common-configuration-values.list: Remove value
+	identifiers (not used now).
+	* gui-gtk/gtk-configuration.list: Likewise.
+
+	* gui-utils/configuration.c (configuration_set_section_values):
+	Remove function.
+	(configuration_set_string_value)
+	(configuration_set_string_list_value)
+	(configuration_set_string_list_value_steal_strings): New
+	functions.
+
+	* utils/string-list.c (string_list_duplicate_items): Add `const'
+	modifier to second argument.
+
+	* gui-gtk/gtk-new-game-dialog.c (begin_game): Free `data'
+	structure.
+
+2004-04-29  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_finalize):
+	Unreference `item_factory'.
+
+2004-04-28  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* utils/utils.h (string_list_is_empty)
+	(string_list_is_single_string): Don't cast to `const StringList *'
+	to avoid GCC 3.3+ warnings.
+	* gui-utils/configuration.c (write_section): Cast to `const
+	StringList *' to cope with the above change.
+
+	* gui-gtk/gtk-goban-window.c: Add full support for free handicap.
+	(GTP_ENGINE_CAN_PLAY_MOVES): New macro.
+	(gtk_goban_window_init): Create "special mode" control set.
+	(gtk_goban_window_enter_game_mode): Enter free handicap special
+	mode if user is to set up free handicap.
+	(enter_special_mode, leave_special_mode)
+	(free_handicap_mode_done)
+	(set_goban_signal_handlers, free_handicap_mode_pointer_moved)
+	(free_handicap_mode_goban_clicked)
+	(free_handicap_has_been_placed): New functions.
+	(navigate_goban): Rename from playing_mode_navigate_goban().
+	Navigation should always work the same way or just be disabled.
+	(initialize_gtp_player): Rewrite: make reentrant and more generic.
+	(gtp_player_initialized_for_game): Remove (essentially include in
+	the above function).
+	(move_has_been_played): Rewrite.  Remove `color' parameter again.
+	Generate moves even if opponent is not initialized.
+	* gui-gtk/quarry-stock.c: New stock item `QUARRY_STOCK_DONE'.
+	* gui-gtk/gtk-new-game-dialog.c (gtk_new_game_dialog_present):
+	Don't desensitize free handicap controls: unneeded now.
+
+	* gui-gtk/gtk-goban.h: New feedback types
+	`GOBAN_FEEDBACK_ADD_BLACK_OR_REMOVE' and
+	`GOBAN_FEEDBACK_ADD_WHITE_OR_REMOVE'.  Remove `_DEFAULT' from
+	`GOBAN_FEEDBACK_MOVE' and its color variants.
+	* gui-gtk/gtk-goban.c (gtk_goban_set_grid_contents)
+	(gtk_goban_get_grid_contents, gtk_goban_diff_against_grid): New
+	functions.
+	(set_overlay_data): Allow setting overlay tile to `TILE_NONE'.
+	(set_feedback_data): Handle new feedback types.  Cope with the
+	above change.
+
+	* gui-gtk/gtk-utils.h: Define gtk_entry_set_alignment() to nothing
+	unless GTK+ version is 2.4 or higher.
+	(G_MAXUINT8, G_MAXUINT16): Define if not yet defined by GLib
+	headers.
+
+	* gtp/gtp-client.c (gtp_client_place_free_handicap)
+	(parse_free_handicap_placement, gtp_client_set_free_handicap): New
+	functions.
+	* board/board.c (game_format_position_list)
+	(game_parse_position_list): New functions.
+
+	* sgf/sgf-utils.c (sgf_utils_add_free_handicap_stones): New
+	function.
+	(determine_final_color_to_play): If there is positive handicap,
+	set `sgf_color_to_play' to `WHITE' only if handicap stones are
+	present in the same node.
+
+2004-04-27  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* utils/memory-pool.c (memory_pool_free): Fix bug: do free the
+	very last item in the pool if asked.  Fix typo: when profiling,
+	increment the number of freed items, not of allocated ones.
+
+	* sgf/sgf-diff-utils.c (generate_sgf_collection_diff)
+	(generate_sgf_node_layer_diff): Initialize some variables to
+	silence GCC warnings.
+	* gui-utils/configuration.c (configuration_read_from_file):
+	Likewise.
+	* gui-gtk/gtk-utils.c (gtk_utils_create_titled_page): Likewise.
+
+	* gui-gtk/gtk-color-button.c: Various backports to GTK+ pre-2.4
+	and for compilation in Quarry source tree.  See file for details.
+
+	* gui-gtk/quarry-marshal.list: New marshaller `VOID:VOID'.
+	* gui-gtk/Makefile.am: Fix typo in `quarry-marshal.c' build rule:
+	">", not ">>".
+
+2004-04-26  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-color-button.c, gui-gtk/gtk-color-button.h: New
+	files, copy from GTK+ version 2.4.0.  Rename to follow Quarry
+	filename standard.  Modify to avoid compilation if GTK+ 2.4 is
+	present anyway.
+
+	* gui-gtk/gtk-preferences.c (create_board_appearance_page):
+	Implement.  Add controls for all implemented board appearance
+	configuration variables.
+	(update_board_background, update_board_background_texture)
+	(update_board_foreground): New functions.
+
+	* gui-gtk/gtk-goban.c: Keep track of all goban widgets.
+	(gtk_goban_update_appearance): New function.
+
+	* utils/utils.h (QUARRY_COLORS_ARE_EQUAL): New macro.
+
+	* gui-utils/common-configuration-defaults.list: Use value
+	substitution for default texture file paths.
+	* gui-gtk/Makefile.am: Pass `PACKAGE_TEXTURES_DIR' variable to
+	`parse-configuration' utility.
+
+	* gui-utils/parse-configuration.c (configuration_parse_defaults2):
+	Read defaults of type `string' with parse_multiline_string() so
+	that value substitution makes sense.
+
+	* utils/parse-list.c: Add new `substitute_value' command support.
+	Add command-line options support.
+	(parse_list_main): Print help/usage messages to `stdout' or
+	`stderr' according to GNU standards.
+	(print_usage): New function.
+
+	* utils/utils.h (AssociationList): New global string list type.
+	* utils/string-list.c (association_list_item_dispose)
+	(association_list_find_association): New functions.
+
+	* utils/getopt.c, utils/getopt1.c, utils/getopt.h: New files, copy
+	from GNU C Library version 2.3.2.
+
+2004-04-25  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban.c: Use style modifiers instead of new style
+	for changing widget appearance.
+	(set_goban_appearance_style): New function.
+	* gui-gtk/gtk-utils.c (gtk_utils_set_gdk_color)
+	(gtk_utils_set_quarry_color): New functions.
+
+	* gui-utils/parse-configuration.c (configuration_parse_sections2):
+	Bug-fix: don't try to define new structure several times.
+
+	* gui-utils/common-configuration-sections.list: Add configuration
+	data for board appearance for Go, Amazons and Othello games.
+	* gui-utils/common-configuration-values.list: Likewise.
+	* gui-utils/common-configuration-defaults.list: Likewise.
+
+	* gui-utils/configuration.c (configuration_read_from_file): Only
+	consider first word of value when parsing values of non-string
+	configuration variables.
+
+	* gui-utils/parse-configuration.c: Add support for `color'
+	configuration value type.
+	* gui-utils/configuration.c: Likewise.
+
+	* utils/utils.h (QuarryColor): New structure.
+	* utils/parse-list.c (parse_color): New function.
+	* gui-utils/configuration-internals.h: Include `utils.h' for the
+	`QuarryColor' structure.
+
+2004-04-24  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-utils/configuration.c (configuration_read_from_file): Close
+	configuration file.
+
+2004-04-23  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-configuration.list: Add configuration variables for
+	game rules to "New Game Parameters" section.
+	* gui-gtk/gtk-new-game-dialog.c (gtk_new_game_dialog_present): Use
+	new configuration variables for initialization.
+	(begin_game): Set them when beginning new game.
+
+	* gui-utils/parse-configuration.c: Add support for configuration
+	variables of type `real'.
+	* gui-utils/configuration.c: Likewise.
+	* gui-utils/configuration.c: Complete support for configuration
+	variables of type `int' (reading from file).
+
+	* gui-gtk/gtk-goban-window.c (initialize_gtp_player): Add support
+	for fixed handicap and komi.
+	* gtp/gtp-client.c (gtp_client_set_fixed_handicap)
+	(gtp_client_set_komi): New functions.
+
+	* sgf/sgf-tree.c (sgf_node_get_komi): New function.
+
+	* gui-gtk/gtk-new-game-dialog.c: Implement game rules (partially).
+	(show_game_specific_rules, set_handicap_adjustment_limits): New
+	functions.
+
+	* sgf/sgf-utils.c (sgf_utils_set_handicap): New function.
+	* board/go.c (go_get_max_fixed_handicap)
+	(go_get_fixed_handicap_stones): New functions.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_spin_button): New
+	function.
+
+2004-04-22  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-games.h (GTK_MIN_BOARD_SIZE, GTK_MAX_BOARD_SIZE):
+	New macros.
+
+	* quarry.h (MIN, MAX, ROUND_DOWN): New macros.  Use `#undef' to
+	avoid conflicts with GLib or whatever else.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_titled_page): Don't use
+	gtk_widget_show_all() on page contents (too intrusive).
+	(gtk_utils_create_titled_page): Use gtk_utils_pack_in_box().
+	* gui-gtk/gtk-assistant.c (gtk_assistant_add_page): Show added
+	pages.
+
+2004-04-21  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* (Quarry version 0.1.2.)
+
+	* sgf/sgf-diff-utils.c: New file with various functions for
+	comparing SGF game trees and their collections.
+	* sgf/sgf-diff.c: New file with standalone `sgf-diff' utility
+	code (very simplistic at present).
+
+	* sgf/sgf-writer.c (sgf_write_file): Add empty line between SGF
+	game trees.
+
+	* sgf/sgf-tree.c (sgf_node_delete): Rewrite to reduce stack usage
+	when branching factor is high (follow algorithm of
+	parse_node_tree() and parse_node_sequence() from `sgf-parser.c').
+	(sgf_node_count_subtree_nodes): Likewise (had different problem).
+	(sgf_node_count_subtree_nodes): Rename from
+	sgf_node_count_sub_tree_nodes().
+
+	* sgf/sgf-tree.c (sgf_game_tree_duplicate)
+	(sgf_game_tree_duplicate_with_nodes)
+	(sgf_node_duplicate, sgf_node_duplicate_recursively)
+	(sgf_node_duplicate_to_given_depth, sgf_property_duplicate): New
+	functions.
+	(sgf_label_list_duplicate): New function.
+
+	* board/board.h (board_position_list_duplicate): New macro.
+	* sgf/sgf.h (sgf_position_list_duplicate): New macro.
+
+2004-04-20  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c (move_has_been_played): Fix crashes
+	when `color_to_play' is EMPTY (happens in Othello games) by
+	getting explicit `color' argument from the caller.
+
+2004-04-18  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-parser.c (parse_buffer): Fix bug that prevented correct
+	parsing of files with multiple SGF game trees.
+
+2004-04-17  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* board/board.c (board_position_lists_are_equal): Rename from
+	board_position_list_equal().
+	* sgf/sgf.h (sgf_position_lists_are_equal): Likewise.
+
+2004-04-16  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-goban-window.c
+	(USER_CAN_PLAY_MOVES): New macro.
+	(gtk_goban_window_init): New sub-menu "Play" with "Pass" item.
+	(play_pass_move): New function.
+	(update_children_for_new_node): Sensitize/desensitize "Pass" menu
+	item depending on the current game and who is to play.
+
+2004-04-15  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-gtk/gtk-utils.c (gtk_utils_create_message_dialog): Comment
+	gtk_window_set_skip_taskbar_hint() call out because it prevents
+	KDE window manager from giving message dialogs focus.  Also make
+	dialog modal even it has no parent (unless flags tell otherwise).
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_save): Use
+	gtk_utils_add_file_selection_response_handlers().
+	* gui-gtk/gtk-parser-interface.c (gtk_parser_interface_present):
+	Likewise.
+	* gui-gtk/gtk-preferences.c (browse_for_gtp_engine): Likewise.
+
+	* gui-gtk/gtk-utils.c
+	(gtk_utils_add_file_selection_response_handlers)
+	(overwrite_confirmation, file_selection_response): New functions.
+	Ask user if she really wants to overwrite existing file.
+	(gtk_utils_create_message_dialog): Remove `response_callback'
+	argument.  Add `GTK_UTILS_DESTROY_ON_RESPONSE' flag to acomplish
+	similar goal.
+	* gui-gtk/quarry-stock.c: New stock item `QUARRY_STOCK_OVERWRITE'.
+
+2004-04-14  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* gui-utils/tile-set.c (tile_set_dump_recycle): Bug-fix: don't
+	deadlock when performing "lazy" recycling.
+
+	* gui-gtk/gtk-utils.c (gtk_utils_set_menu_items_sensitive): New
+	function.
+
+	* gui-gtk/gtk-goban-window.c: Remove `navigate_goban' signal.
+	(gtk_goban_window_init): Add "Go" (as verb) sub-menu.  Replace
+	`navigate_goban' signal with generated `GtkAccelGroup' bindings.
+	(update_children_for_new_node): Set items of "Go" sub-menu
+	sensitive or insensitive depending on the node.
+
+	* gui-gtk/gtk-goban.c (gtk_goban_class_init): Initialize
+	`navigate' class member, even if GLib does that itself.
+	* gui-gtk/gtk-preferences.c (engine_selector_destroyed): Free
+	selector data, don't leak memory.
+
+	* board/amazons.c (amazons_is_legal_move): Bug-fix: make function
+	work properly when "to" point is a null point.
+
+2004-04-13  Paul Pogonyshev  <pogonyshev@gmx.net>
+
+	* sgf/sgf-writer.c (do_write_point_or_rectangle): Fix typo ('['
+	instead of ']') that caused severe SGF file corruptions.
+
+	* gui-gtk/gtk-goban-window.c: Add basic support for SGF file
+	saving.  Note: quite dangerous now, because it never checks or
+	asks anything, just writes.
+	(gtk_goban_window_save)
+	(save_file_as_response, save_file_as_destroy): New functions.
+
+	* gui-gtk/gtk-goban-window.c (gtk_goban_window_init): Add menu bar
+	to window (with just few items for now).
+
+	* gui-gtk/Makefile.am: Remove custom build rules for
+	`quarry-stock.o', because `QUARRY_WARNINGS_GTK' does not contain
+	`-Wwrite-strings' (which is problematic for this file) anymore.
+
+
+Changes before the project registration on Gna! (2004-04-12) were not logged.
+
+
+  Copyright (C) 2004, 2005, 2006 Paul Pogonyshev.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted provided the copyright notice and this notice are preserved.
+
+
+Local Variables:
+coding: iso-8859-1
+End:
