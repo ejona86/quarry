@@ -244,7 +244,7 @@ sgf_utils_find_next_if_at_position (SgfGameTree *tree, int x, int y)
 		sgf_utils_go_down_in_tree(tree, 1);
 
 		node = tree->current_node;
-		if (node->move_point.x != x || node->move_point.y == y)
+		if (node->move_point.x != x || node->move_point.y != y)
 			node = sgf_utils_find_variation_at_position(tree, x, y, SGF_NEXT, 0);
 		sgf_utils_go_up_in_tree(tree, 1);
 	}
