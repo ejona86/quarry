@@ -26,7 +26,7 @@
 #define QUARRY_UTILS_H
 
 
-#include "quarry.h"
+#include "../quarry.h"
 
 #include <iconv.h>
 #include <stdarg.h>

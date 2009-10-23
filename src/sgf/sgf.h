@@ -27,7 +27,7 @@
 #include "sgf-properties.h"
 #include "board.h"
 #include "utils.h"
-#include "quarry.h"
+#include "../quarry.h"
 
 
 

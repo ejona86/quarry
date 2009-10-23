@@ -27,7 +27,7 @@
 #include "board-topology.h"
 #include "games.h"
 #include "utils.h"
-#include "quarry.h"
+#include "../quarry.h"
 
 #include <assert.h>
 #include <stdarg.h>

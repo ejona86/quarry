@@ -11,6 +11,7 @@ AM_CPPFLAGS = 					\
 						\
 	$(QUARRY_WARNINGS_GTK)			\
 						\
+	-I $(top_srcdir)			\
 	-I $(top_srcdir)/src			\
 	-I $(top_srcdir)/src/board		\
 	-I $(top_builddir)/src/board		\

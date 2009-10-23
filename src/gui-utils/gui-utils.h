@@ -25,7 +25,7 @@
 
 
 #include "board.h"
-#include "quarry.h"
+#include "../quarry.h"
 
 
 int		gui_utils_enumerate_themes (void);

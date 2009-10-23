@@ -24,7 +24,7 @@
 #define QUARRY_GTK_GUI_BACK_END_H
 
 
-#include "quarry.h"
+#include "../quarry.h"
 
 
 int		gui_back_end_init (int *argc, char **argv[]);

@@ -24,7 +24,7 @@
 #define QUARRY_BOARD_TOPOLOGY_H
 
 
-#include "quarry.h"
+#include "../quarry.h"
 
 
 #define BOARD_MIN_WIDTH		5
