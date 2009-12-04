@@ -46,6 +46,7 @@
 
 
 #include "sgf.h"
+#include "file-parser-common.h"
 #include "sgf-parser.h"
 #include "sgf-errors.h"
 #include "sgf-privates.h"
@@ -65,54 +66,10 @@
 #include <memory.h>
 #endif
 
-
-#define SGF_END			0
-
-/* SGF specification remains silent about escaping in non-text
- * properties, but `SGFC' allows escaping in them.  Function
- * next_token_in_value() provides transparent escaping.  In order to
- * avoid premature end of value parsing, escaped ']' is replaced with
- * the below character, which is never returned by next_character().
- */
-#define ESCAPED_BRACKET		'\r'
-
-
-typedef struct _BufferPositionStorage	BufferPositionStorage;
-
-struct _BufferPositionStorage {
-  char		token;
-  int		line;
-  int		column;
-  int		pending_column;
+const SgfParserParameters sgf_parser_defaults = {
+  4 * 1024 * 1024, 64 * 1024, 1024 * 1024,
+  0
 };
-
-
-#define STORE_BUFFER_POSITION(data, index, storage)			\
-  do {									\
-    (data)->stored_buffer_pointers[index] = (data)->buffer_pointer;	\
-    (storage).token			  = (data)->token;		\
-    (storage).line			  = (data)->line;		\
-    (storage).column			  = (data)->column;		\
-    (storage).pending_column		  = (data)->pending_column;	\
-  } while (0)
-
-#define RESTORE_BUFFER_POSITION(data, index, storage)			\
-  do {									\
-    (data)->buffer_pointer = (data)->stored_buffer_pointers[index];	\
-    (data)->token	   = (storage).token;				\
-    (data)->line	   = (storage).line;				\
-    (data)->column	   = (storage).column;				\
-    (data)->pending_column = (storage).pending_column;			\
-  } while (0)
-
-
-#define STORE_ERROR_POSITION(data, storage)				\
-  do {									\
-    (storage).line   = (data)->line;					\
-    (storage).column = (data)->column;					\
-    (storage).notch  = (data)->error_list->last;			\
-  } while (0)
-
 
 static int	    parse_buffer (SgfParsingData *data,
 				  SgfCollection **collection,
@@ -201,10 +158,9 @@ static void	    next_token_in_value (SgfParsingData *data);
 static void	    next_character (SgfParsingData *data);
 
 
-const SgfParserParameters sgf_parser_defaults = {
-  4 * 1024 * 1024, 64 * 1024, 1024 * 1024,
-  0
-};
+/* This keeps us from having to make global functions of the file parsing. */
+#include "ugf-parser.c"
+
 
 
 

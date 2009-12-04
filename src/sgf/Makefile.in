@@ -271,6 +271,7 @@ libsgf_a_SOURCES = \
 	sgf-undo.c		\
 	sgf-utils.c		\
 	sgf-writer.c		\
+	ugf-parser.c		\
 				\
 	sgf.h			\
 	sgf-parser.h		\

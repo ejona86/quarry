@@ -723,7 +723,7 @@ go_board_appearance_defaults_init (void *section_structure)
 {
   BoardAppearance *structure = (BoardAppearance *) section_structure;
 
-  structure->background_texture	= utils_duplicate_string (PACKAGE_DATA_DIR "/textures/wood1.jpg");
+  structure->background_texture	= utils_duplicate_string ("/usr/local/share/quarry/textures/wood1.jpg");
   structure->markup_theme	= utils_duplicate_string ("Default");
 }
 
@@ -734,7 +734,7 @@ amazons_board_appearance_defaults_init (void *section_structure)
   AmazonsBoardAppearance *structure = (AmazonsBoardAppearance *) section_structure;
 
   structure->board_appearance.background_texture
-    = utils_duplicate_string (PACKAGE_DATA_DIR "/textures/wood1.jpg");
+    = utils_duplicate_string ("/usr/local/share/quarry/textures/wood1.jpg");
   structure->board_appearance.markup_theme
     = utils_duplicate_string ("Default");
 }

@@ -1833,12 +1833,15 @@ suggest_filename (GtkGobanWindow *goban_window)
       = sgf_node_get_text_property_value (game_info_node, SGF_PLAYER_WHITE);
     const char *black_player
       = sgf_node_get_text_property_value (game_info_node, SGF_PLAYER_BLACK);
+    const char *date_played
+      = sgf_node_get_text_property_value (game_info_node, SGF_DATE);
 
     if (white_player && black_player) {
-      suggested_filename = utils_cat_strings (NULL,
-					      white_player,
-					      " vs ", black_player, ".sgf",
-					      NULL);
+      suggested_filename = utils_cat_strings (NULL, date_played ? date_played : "",
+						date_played ? " ": "",
+						black_player,
+						" vs ", white_player, ".sgf",
+						NULL);
     }
     else {
       const char *game_name = sgf_node_get_text_property_value (game_info_node,

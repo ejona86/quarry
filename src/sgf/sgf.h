@@ -45,6 +45,12 @@
  */
 #define SETUP_NODE		SPECIAL_ON_GRID_VALUE
 
+enum
+{
+	FILE_FORMAT_SGF,
+	FILE_FORMAT_UGF,
+	FILE_FORMAT_UNKNOWN
+};
 
 enum {
   SGF_MARKUP_CROSS,
@@ -1045,6 +1051,23 @@ int		sgf_game_tree_node_is_within_view_port (SgfGameTree *tree,
 							int view_port_y1,
 							int *node_x,
 							int *node_y);
+
+/* ugf-parser.c */
+
+int		 ugf_parse_file (const char *filename,
+				 SgfCollection **collection,
+				 SgfErrorList **error_list,
+				 const SgfParserParameters *parameters,
+				 int *file_size, int *bytes_parsed,
+				 const int *cancellation_flag);
+int		 ugf_parse_buffer (char *buffer, int size,
+				   SgfCollection **collection,
+				   SgfErrorList **error_list,
+				   const SgfParserParameters *parameters,
+				   int *bytes_parsed,
+				   const int *cancellation_flag);
+
+
 
 
 #endif /* QUARRY_SGF_H */

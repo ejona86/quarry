@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.                                     *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef PARSER-COMMON
-#define PARSER-COMMON
+#ifndef SGF_PARSER_COMMON
+#define SGF_PARSER_COMMON
 
 #include "sgf.h"
 #include "sgf-parser.h"
@@ -91,6 +91,15 @@ struct _BufferPositionStorage {
     (storage).notch  = (data)->error_list->last;			\
   } while (0)
 
+enum
+{
+        UGF_SECTION_HEADER,
+        UGF_SECTION_DATA,
+        UGF_SECTION_FIGURE,
+
+	UGF_SECTION_UNDEF = -1
+};
 
 #endif
-/* file-parser-common.h */
+
+/* sgf-parser-common.h */

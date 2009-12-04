@@ -43,6 +43,7 @@
 #include "utils.h"
 
 #include <gtk/gtk.h>
+#include <string.h>
 
 /* For chdir() function. */
 #if HAVE_UNISTD_H
@@ -148,7 +149,7 @@ open_game_record (SgfCollection *sgf_collection, SgfErrorList *sgf_error_list,
 #include "gtk-progress-dialog.h"
 
 
-static gpointer	 thread_wrapped_sgf_parse_file (ParsingThreadData *data);
+static gpointer	 thread_wrapped_parse_game_file (ParsingThreadData *data);
 
 static gboolean	 update_progress_bar (GtkProgressDialog *progress_dialog,
 				      ParsingThreadData *data);
@@ -167,6 +168,8 @@ gtk_parse_sgf_file (const char *filename, GtkWindow *parent,
   gchar *label_text;
   gchar *absolute_filename;
   gchar *filename_in_utf8;
+  gchar *extension;
+  int format = FILE_FORMAT_UNKNOWN;
 
   g_return_if_fail (filename);
 
@@ -202,17 +205,37 @@ gtk_parse_sgf_file (const char *filename, GtkWindow *parent,
 
   gtk_control_center_new_reason_to_live ();
 
-  g_thread_create ((GThreadFunc) thread_wrapped_sgf_parse_file,
+  extension = absolute_filename + (strlen(absolute_filename) - 3);
+  if (strcmp(extension,"sgf") == 0)
+  {
+	format = FILE_FORMAT_SGF;
+  }
+  else if (strcmp(extension,"ugi") == 0)
+  {
+	format = FILE_FORMAT_UGF;
+  }
+
+  data->format = format;
+
+  g_thread_create ((GThreadFunc) thread_wrapped_parse_game_file,
 		   data, FALSE, NULL);
 }
 
 
 static gpointer
-thread_wrapped_sgf_parse_file (ParsingThreadData *data)
+thread_wrapped_parse_game_file (ParsingThreadData *data)
 {
   ThreadEventData *event_data;
 
-  data->result = sgf_parse_file (data->filename,
+  if (data->format == FILE_FORMAT_SGF)
+	data->result = sgf_parse_file (data->filename,
+				 &data->sgf_collection, &data->error_list,
+				 &sgf_parser_defaults,
+				 &data->file_size, &data->bytes_parsed,
+				 &data->cancellation_flag);
+
+  if (data->format == FILE_FORMAT_UGF)
+	data->result = ugf_parse_file (data->filename,
 				 &data->sgf_collection, &data->error_list,
 				 &sgf_parser_defaults,
 				 &data->file_size, &data->bytes_parsed,
@@ -338,6 +361,7 @@ gtk_parse_sgf_file (const char *filename, GtkWindow *parent,
   SgfCollection *sgf_collection;
   SgfErrorList *error_list;
   int result;
+  gchar *extension;
 
   if (g_path_is_absolute (filename))
     absolute_filename = g_strdup (filename);
@@ -348,9 +372,17 @@ gtk_parse_sgf_file (const char *filename, GtkWindow *parent,
     g_free (current_directory);
   }
 
-  result = sgf_parse_file (absolute_filename, &sgf_collection, &error_list,
+  extension = absolute_filename + (strlen(absolute_filename) - 4);
+  if (extension == "sgf")
+	result = sgf_parse_file (absolute_filename, &sgf_collection, &error_list,
 			   &sgf_parser_defaults, NULL, NULL, NULL);
+  if (extension == "ugi")
+	result = ugf_parse_file (absolute_filename, &sgf_collection, &error_list,
+			   &sgf_parser_defaults, NULL, NULL, NULL);
+  if (!result)
+	result = SGF_ERROR_READING_FILE;
 
+  
   if (result == SGF_PARSED) {
     if (parent) {
       gchar *directory = g_path_get_dirname (absolute_filename);

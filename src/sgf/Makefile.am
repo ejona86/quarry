@@ -29,6 +29,7 @@ sgf-undo-operations.c: sgf-undo-operations.h
 
 include $(top_srcdir)/build/list.make
 
+# ugf-parser.c is NOT included; tricky #include in sgf-parser.c
 libsgf_a_SOURCES =		\
 	sgf-diff-utils.c	\
 	sgf-parser.c		\

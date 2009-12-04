@@ -62,6 +62,7 @@ struct _ParsingThreadData {
   int			file_size;
   int			bytes_parsed;
   int			cancellation_flag;
+  int			format; /* SGF, UGF, etc. */
 
   int			result;
 
