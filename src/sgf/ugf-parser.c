@@ -72,9 +72,10 @@ static int	    parse_ugf_buffer (SgfParsingData *data,
 
 
 inline static char *ugf_get_line (SgfParsingData *data, char *existing_text);
-inline static void  ugf_next_token (SgfParsingData *data);
-static void	    ugf_next_token_in_value (SgfParsingData *data);
-static void	    ugf_next_character (SgfParsingData *data);
+inline static void ugf_next_line (SgfParsingData *data);
+inline static void ugf_next_token (SgfParsingData *data);
+static void	   ugf_next_token_in_value (SgfParsingData *data);
+static void	   ugf_next_character (SgfParsingData *data);
 
 
 const SgfParserParameters ugf_parser_defaults = {
@@ -217,6 +218,8 @@ parse_ugf_buffer (SgfParsingData *data,
   int dummy_cancellation_flag;
   char *line_contents;
 
+  SgfGameTree *tree;
+
   assert (parameters->first_column == 0 || parameters->first_column == 1);
 
   *collection = sgf_collection_new ();
@@ -259,48 +262,62 @@ parse_ugf_buffer (SgfParsingData *data,
   data->latin1_to_utf8 = iconv_open ("UTF-8", "ISO-8859-1");
   assert (data->latin1_to_utf8 != (iconv_t) (-1));
 
-  next_token (data);
+  ugf_next_token (data);
 
-  do {
+  while (data->token != '[') {
     /* Skip any junk that might appear before section declaration. */
-    if (data->token != '[') {
-	continue;
-    }
-	int current_section = UGF_SECTION_UNDEF;
+    ugf_next_line (data);
+  } 
+  int current_section = UGF_SECTION_UNDEF;
 
-	line_contents = ugf_get_line(data, (char *)NULL);
-	printf("%s\n", line_contents);
-	if (strcmp(line_contents, "[Header]") == 0)
+	while ((line_contents = ugf_get_line(data, (char *)NULL)))
 	{
-		printf("Got the header.\n");
-		current_section = UGF_SECTION_HEADER;
-		continue;
-	} else if (strcmp(line_contents, "[Data]") == 0)
-	{
-		printf("Got the body.\n");
-		data->tree = sgf_game_tree_new ();
-		sgf_collection_add_game_tree (*collection, data->tree);
-		current_section = UGF_SECTION_DATA;
-		continue;
-	} else if (strcmp(line_contents, "[Figure]") == 0)
-	{
-		printf("Got the figure.\n");
-		current_section = UGF_SECTION_FIGURE;
-		continue;
-	} else {
-		if (current_section == UGF_SECTION_UNDEF)
-			continue;
-		if (current_section == UGF_SECTION_HEADER)
+		if (strcmp(line_contents, "[Header]") == 0)
 		{
+			printf("Got the header.\n");
+			current_section = UGF_SECTION_HEADER;
+			data->game_info_node = data->node;
 			continue;
-		}
-		if (current_section == UGF_SECTION_DATA)
+		} else if (strcmp(line_contents, "[Data]") == 0)
 		{
+			printf("Got the body.\n");
+			data->tree = sgf_game_tree_new ();
+			sgf_collection_add_game_tree (*collection, data->tree);
+			tree = data->tree;
+			current_section = UGF_SECTION_DATA;
 			continue;
-		}
-		if (current_section == UGF_SECTION_FIGURE)
+		} else if (strcmp(line_contents, "[Figure]") == 0)
 		{
+			printf("Got the figure.\n");
+			current_section = UGF_SECTION_FIGURE;
 			continue;
+		} else if (data->token == '[')
+		{
+			printf("Unknown section.\n");
+			current_section = UGF_SECTION_UNDEF;
+			continue;
+		} else {
+			if (current_section == UGF_SECTION_UNDEF)
+				continue;
+			if (current_section == UGF_SECTION_HEADER)
+			{
+				ugf_parse_property(data);
+				continue;
+			}
+			if (current_section == UGF_SECTION_DATA)
+			{
+				data->tree->root = parse_ugf_tree (data, NULL);
+
+				if (tree->root) {
+					tree->current_node = tree->root;
+					return 1;
+				}
+				continue;
+			}
+			if (current_section == UGF_SECTION_FIGURE)
+			{
+				continue;
+			}
 		}
 	}
 
@@ -311,7 +328,7 @@ parse_ugf_buffer (SgfParsingData *data,
     if (data->tree_char_set_to_utf8 != data->latin1_to_utf8
 	&& data->tree_char_set_to_utf8 != NULL)
       iconv_close (data->tree_char_set_to_utf8);
-  } while (data->token != SGF_END);
+/*  } while (data->token != SGF_END); */
 
   if (data->board)
     board_delete (data->board);
@@ -345,8 +362,8 @@ parse_ugf_buffer (SgfParsingData *data,
  * The function does nothing but finding these properties (if they are
  * present at all).  Afterwards, root node is parsed as usually.
  */
-/*static int
-parse_root (SgfParsingData *data)
+static int
+ugf_root_node (SgfParsingData *data, const char *width_string)
 {
   SgfGameTree *tree = data->tree;
   BufferPositionStorage storage;
@@ -356,62 +373,17 @@ parse_root (SgfParsingData *data)
   STORE_BUFFER_POSITION (data, 1, storage);
 
   data->in_parse_root = 1;
-  data->game	      = 0;
-  data->board_width   = 0;
+  data->game	      = GAME_GO;
+  data->game_type_expected = 0;
+  data->board_width = atoi(width_string);
 
-  next_token (data);
-
-  while (data->token != ';' && data->token != '(' && data->token != ')'
-	 && data->token != SGF_END) {
-    SgfType property_type = SGF_NUM_PROPERTIES;
-
-    while (data->token != '[' && data->token != SGF_END) {
-      if ('A' <= data->token && data->token <= 'Z') {
-	if (property_type >= SGF_NUM_PROPERTIES) {
-	  property_type = (property_tree[property_type - SGF_NUM_PROPERTIES]
-			   [1 + (data->token - 'A')]);
-	}
-	else
-	  property_type = SGF_UNKNOWN;
-      }
-      else if (data->token < 'a' || 'z' < data->token) {
-	property_type = SGF_NUM_PROPERTIES;
-	next_token (data);
-	continue;
-      }
-
-      next_character (data);
-    }
-
-    if (property_type >= SGF_NUM_PROPERTIES)
-      property_type = property_tree[property_type - SGF_NUM_PROPERTIES][0];
-
-    if (property_type == SGF_GAME_TYPE && !data->game) {
-      next_token (data);
-      if (do_parse_number (data, &data->game)) {
-	if (1 <= data->game && data->game <= 1000) {
-	  if ((data->board_width || !GAME_IS_SUPPORTED (data->game))
-	      && tree->char_set)
-	    break;
-	}
-	else
-	  data->game = 0;
-      }
-    }
-    else if (property_type == SGF_BOARD_SIZE && !data->board_width) {
-      next_token (data);
-      if (do_parse_board_size (data, &data->board_width, &data->board_height,
-			       0)
-	  && data->game && tree->char_set)
-	break;
-    }
+/*
     else if (property_type == SGF_CHAR_SET && !tree->char_set) {
       tree->char_set = do_parse_simple_text (data, SGF_END);
 
       if (tree->char_set) {
 	char *char_set_uppercased = utils_duplicate_string (tree->char_set);
 	char *scan;
-*/
 	/* We now deal with an UTF-8 string, so uppercasing latin
 	 * letters is not a problem.
 	 */
@@ -445,6 +417,7 @@ parse_root (SgfParsingData *data)
     data->game = GAME_GO;
     data->game_type_expected = 0;
   }
+*/
 
   if (GAME_IS_SUPPORTED (data->game)) {
     if (data->board_width == 0) {
@@ -464,10 +437,6 @@ parse_root (SgfParsingData *data)
     if (data->use_board) {
       if (data->game == GAME_GO)
 	data->do_parse_move = do_parse_go_move;
-      else if (data->game == GAME_REVERSI)
-	data->do_parse_move = do_parse_reversi_move;
-      else if (data->game == GAME_AMAZONS)
-	data->do_parse_move = do_parse_amazons_move;
       else
 	assert (0);
 
@@ -511,28 +480,16 @@ parse_root (SgfParsingData *data)
   tree->board_height = data->board_height;
 
   tree->file_format = 0;
-  tree->root = parse_node_tree (data, NULL);
-
-  if (data->token == SGF_END && !data->cancelled)
-    add_error (data, SGF_CRITICAL_UNEXPECTED_END_OF_FILE);
-  next_token (data);
-
-  if (tree->root) {
-    tree->current_node = tree->root;
-    return 1;
-  }
-
-  return 0;
+  return 1;
 }
-*/
 
 
-/*
+
 static SgfNode *
-parse_node_tree (SgfParsingData *data, SgfNode *parent)
+parse_ugf_tree (SgfParsingData *data, SgfNode *parent)
 {
   SgfNode *node;
-*/
+
   /* Skip any junk that might appear before the first node. */
 /*  while (data->token != ';') {
     if (data->token == ')') {
@@ -550,16 +507,13 @@ parse_node_tree (SgfParsingData *data, SgfNode *parent)
   STORE_ERROR_POSITION (data, data->node_error_position);
   next_token (data);
 
-  node = sgf_node_new (data->tree, parent);
-  parse_node_sequence (data, node);
 */
-  /* Skip any junk after the last variation. */
-/*  while (data->token != ')' && data->token != SGF_END)
-    next_token (data);
+  node = sgf_node_new (data->tree, parent);
+  /* parse_node_sequence (data, node); */
 
   return node;
 }
-*/
+
 
 /* Parse a sequence (a straight tree branch) of nodes.
  *
@@ -634,29 +588,28 @@ parse_node_sequence (SgfParsingData *data, SgfNode *node)
 }
 */
 
-/*
+
 static void
-parse_property (SgfParsingData *data)
+ugf_parse_property (SgfParsingData *data)
 {
-*/  /* FIXME: this loop should add errors in certain cases. */
-/*  while (data->token != '[') {
+  /* FIXME: this loop should add errors in certain cases. */
+  while (data->token != '\n' && data->token != '=') {
     data->temp_buffer = data->buffer;
 
     STORE_ERROR_POSITION (data, data->property_name_error_position);
 
-    while (data->token != '[') {
-      if ('A' <= data->token && data->token <= 'Z')
+    while (data->token != '\n' && data->token != '=') {
+      if ('A' <= data->token && data->token <= 'z')
 	*data->temp_buffer++ = data->token;
-      else if (data->token == ';' || data->token == '(' || data->token == ')'
+/*      else if (data->token == ';' || data->token == '(' || data->token == ')'
 	       || data->token == SGF_END)
 	return;
       else if (data->token < 'a' || 'z' < data->token) {
 	if (data->token != ' ' && data->token != '\n')
 	  data->temp_buffer = data->buffer;
-
-	next_token (data);
+	next_character (data);
 	break;
-      }
+*/
 
       next_character (data);
     }
@@ -666,8 +619,44 @@ parse_property (SgfParsingData *data)
     char *name = data->buffer;
     char *name_end = data->temp_buffer;
     SgfType property_type = 0;
-*/
-    /* We have parsed some name.  Now look it up in the name tree. */
+    char *property_name = strndup(name, name_end - name + 1);
+    if (data->token == '=')
+	{
+		next_character (data);
+		while (data->token != '\n' && data->token != SGF_END)
+		{
+			data->temp_buffer = data->buffer;
+			while (data->token != '\n' && data->token != SGF_END)
+			{
+				*data->temp_buffer++ = data->token;
+				next_character (data);
+			}
+		}
+	} else return;
+    char *property_value = strndup(data->buffer, data->temp_buffer - data->buffer + 1);
+	if (!property_value)
+		return;
+
+    /* We have parsed some name.  Now turn it into an SGF property by hand. */
+
+	if (strcmp(property_name, "Size") == 0)
+	{
+  		ugf_root_node (data, property_value);
+		return;
+	}
+	if (strcmp(property_name, "Date") == 0)
+		property_name = "DT";
+	if (strcmp(property_name, "Winner") == 0)
+		property_name = "RE";
+	if (strcmp(property_name, "PlayerB") == 0)
+		property_name = "PB";
+	if (strcmp(property_name, "PlayerW") == 0)
+		property_name = "PW";
+	if (strcmp(property_name, "Commentator") == 0)
+		property_name = "AN";
+	if (strcmp(property_name, "Title") == 0)
+		property_name = "GN";
+
 /*    while (1) {
       property_type = property_tree[property_type][1 + (*name - 'A')];
       name++;
@@ -723,35 +712,12 @@ parse_property (SgfParsingData *data)
 	}
       }
     }
-    else {
-*/      /* An unknown property.  We preserve it for it might be used by
-       * some other program (and SGF specification requires us to do
-       * so).  The property is preserved as a string list:
-       *
-       *   name (identifier), value, value ...
-       */
-/*      SgfProperty **link;
-
-      if (!sgf_node_find_unknown_property (data->node, data->buffer,
-					   name_end - data->buffer, &link)) {
-	*link = sgf_property_new (data->tree, SGF_UNKNOWN, *link);
-	(*link)->value.unknown_value_list = string_list_new ();
-	string_list_add_from_buffer ((*link)->value.unknown_value_list,
-				     data->buffer, name_end - data->buffer);
-      }
-      else {
-*/	/* Duplicated unknown properties.  Assume list value type. */
-/*	add_error (data, SGF_WARNING_UNKNOWN_PROPERTIES_MERGED, data->buffer);
-      }
-
-      parse_unknown_property_values (data, (*link)->value.unknown_value_list);
-      return;
-    }
+*/
   }
 
-  discard_values (data);
+  /*discard_values (data);*/
 }
-*/
+
 
 
 /* Refresh a buffer by reading next portion of data from file.  Data
@@ -2965,7 +2931,7 @@ end_parsing_value (SgfParsingData *data)
 
 
 inline static void
-next_line (SgfParsingData *data)
+ugf_next_line (SgfParsingData *data)
 {
 	do
 		next_character (data);
@@ -2973,7 +2939,6 @@ next_line (SgfParsingData *data)
 	next_character (data);
 }
 
-
 /* Read characters from the input buffer skipping any whitespace
  * encountered.  This is just a wrapper around next_character().
  */
@@ -2982,7 +2947,7 @@ ugf_next_token (SgfParsingData *data)
 {
   do
     next_character (data);
-  while (data->token == ' ' || data->token == '\n');
+  while (data->token == ' ' || data->token == '\n' || data->token == '\r');
 }
 
 
