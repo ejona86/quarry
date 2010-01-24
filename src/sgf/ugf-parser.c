@@ -70,12 +70,16 @@ static int	    parse_ugf_buffer (SgfParsingData *data,
 				  int *bytes_parsed,
 				  const int *cancellation_flag);
 
+static SgfNode     *init_ugf_tree (SgfParsingData *data, SgfNode *parent);
+static SgfNode     *push_ugf_node (char *line_contents, SgfNode *parent);
+static SgfError    do_parse_ugf_move (SgfParsingData *data);
 
 inline static char *ugf_get_line (SgfParsingData *data, char *existing_text);
 inline static void ugf_next_line (SgfParsingData *data);
 inline static void ugf_next_token (SgfParsingData *data);
 static void	   ugf_next_token_in_value (SgfParsingData *data);
 static void	   ugf_next_character (SgfParsingData *data);
+static void        ugf_parse_property (SgfParsingData *data);
 
 
 const SgfParserParameters ugf_parser_defaults = {
@@ -84,7 +88,6 @@ const SgfParserParameters ugf_parser_defaults = {
 };
 
 
-
 /* Read a UGF file and parse the (singular?) game tree it contains.  If the
  * maximum buffer size specified in `parameters' is not enough to keep
  * the whole file in memory, this function sets up data required for
@@ -219,6 +222,7 @@ parse_ugf_buffer (SgfParsingData *data,
   char *line_contents;
 
   SgfGameTree *tree;
+  SgfNode *current_node;
 
   assert (parameters->first_column == 0 || parameters->first_column == 1);
 
@@ -284,6 +288,8 @@ parse_ugf_buffer (SgfParsingData *data,
 			data->tree = sgf_game_tree_new ();
 			sgf_collection_add_game_tree (*collection, data->tree);
 			tree = data->tree;
+			data->tree->root = init_ugf_tree (data, NULL);
+			current_node = data->tree->root;
 			current_section = UGF_SECTION_DATA;
 			continue;
 		} else if (strcmp(line_contents, "[Figure]") == 0)
@@ -306,12 +312,7 @@ parse_ugf_buffer (SgfParsingData *data,
 			}
 			if (current_section == UGF_SECTION_DATA)
 			{
-				data->tree->root = parse_ugf_tree (data, NULL);
-
-				if (tree->root) {
-					tree->current_node = tree->root;
-					return 1;
-				}
+				current_node = push_ugf_node(line_contents, current_node);
 				continue;
 			}
 			if (current_section == UGF_SECTION_FIGURE)
@@ -321,6 +322,10 @@ parse_ugf_buffer (SgfParsingData *data,
 		}
 	}
 
+	if (tree->root) {
+		tree->current_node = tree->root;
+		return 1;
+	}
     /* If we couldn't get any game info, kill it. */
     if (!data->board && data->tree)
       sgf_game_tree_delete (data->tree);
@@ -436,7 +441,7 @@ ugf_root_node (SgfParsingData *data, const char *width_string)
 		       && data->board_height <= BOARD_MAX_HEIGHT);
     if (data->use_board) {
       if (data->game == GAME_GO)
-	data->do_parse_move = do_parse_go_move;
+	data->do_parse_move = do_parse_ugf_move;
       else
 	assert (0);
 
@@ -486,7 +491,7 @@ ugf_root_node (SgfParsingData *data, const char *width_string)
 
 
 static SgfNode *
-parse_ugf_tree (SgfParsingData *data, SgfNode *parent)
+init_ugf_tree (SgfParsingData *data, SgfNode *parent)
 {
   SgfNode *node;
 
@@ -509,11 +514,20 @@ parse_ugf_tree (SgfParsingData *data, SgfNode *parent)
 
 */
   node = sgf_node_new (data->tree, parent);
-  /* parse_node_sequence (data, node); */
 
   return node;
 }
 
+/* Add a single node to the game tree from the Data section of a UGF file
+ *
+ * UGF files are more like stacks than trees - only one path exists in the Data section.
+ * Hence the name push_ugf_node(). ECB
+*/
+static SgfNode *
+push_ugf_node (char *line_contents, SgfNode *parent)
+{
+	return parent;
+}
 
 /* Parse a sequence (a straight tree branch) of nodes.
  *
@@ -1623,9 +1637,9 @@ do_parse_point (SgfParsingData *data, BoardPoint *point)
   return 2;
 }
 
-
+*/
 static SgfError
-do_parse_go_move (SgfParsingData *data)
+do_parse_ugf_move (SgfParsingData *data)
 {
   BoardPoint *move_point = &data->node->move_point;
 
@@ -1634,7 +1648,7 @@ do_parse_go_move (SgfParsingData *data)
 
     STORE_BUFFER_POSITION (data, 0, storage);
 
-    switch (do_parse_point (data, move_point)) {
+/*    switch (do_parse_point (data, move_point)) {
     case 0:
       return SGF_SUCCESS;
 
@@ -1649,6 +1663,7 @@ do_parse_go_move (SgfParsingData *data)
       RESTORE_BUFFER_POSITION (data, 0, storage);
       return SGF_FATAL_INVALID_VALUE;
     }
+*/
   }
 
   move_point->x = PASS_X;
@@ -1656,7 +1671,7 @@ do_parse_go_move (SgfParsingData *data)
 
   return SGF_SUCCESS;
 }
-
+/*
 
 static SgfError
 do_parse_reversi_move (SgfParsingData *data)
