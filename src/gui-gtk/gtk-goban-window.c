@@ -1386,6 +1386,9 @@ gtk_goban_window_new (SgfCollection *sgf_collection, const char *filename)
 {
   GtkWidget *widget = GTK_WIDGET (g_object_new (GTK_TYPE_GOBAN_WINDOW, NULL));
   GtkGobanWindow *goban_window = GTK_GOBAN_WINDOW (widget);
+  GtkWidget *guess_tool_menu_item
+    = gtk_item_factory_get_widget (goban_window->item_factory,
+				   "/Edit/Tools/Guess Tool");
 
   g_return_val_if_fail (sgf_collection, NULL);
   g_return_val_if_fail (!filename || g_path_is_absolute (filename), NULL);
@@ -1410,6 +1413,8 @@ gtk_goban_window_new (SgfCollection *sgf_collection, const char *filename)
 
   set_current_tree (goban_window, sgf_collection->first_tree);
 
+  gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(guess_tool_menu_item), TRUE);
+  activate_guess_tool(goban_window, 0, GTK_CHECK_MENU_ITEM(guess_tool_menu_item));
   return widget;
 }
 

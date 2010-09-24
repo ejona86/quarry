@@ -29,8 +29,6 @@
  * - No limits on any string lengths (be that text property value or
  *   property identifier) except those imposed by memory availability.
  *
- * - High parsing speed (if anyone out there has huge UGF files...)
- *
  * - Reading of input file in chunks: smaller memory footprint (again,
  *   noticeable on huge files only).
  *
@@ -71,8 +69,9 @@ static int	    parse_ugf_buffer (SgfParsingData *data,
 				  const int *cancellation_flag);
 
 static SgfNode     *init_ugf_tree (SgfParsingData *data, SgfNode *parent);
-static SgfNode     *push_ugf_node (char *line_contents, SgfNode *parent);
+static SgfNode     *push_ugf_node (SgfParsingData *data, SgfNode *parent);
 static SgfError    do_parse_ugf_move (SgfParsingData *data);
+SgfError           ugf_parse_move (SgfParsingData *data);
 
 inline static char *ugf_get_line (SgfParsingData *data, char *existing_text);
 inline static void ugf_next_line (SgfParsingData *data);
@@ -294,7 +293,7 @@ parse_ugf_buffer (SgfParsingData *data,
 			continue;
 		} else if (strcmp(line_contents, "[Figure]") == 0)
 		{
-			printf("Got the figure.\n");
+			printf("Got a figure.\n");
 			current_section = UGF_SECTION_FIGURE;
 			continue;
 		} else if (data->token == '[')
@@ -312,7 +311,7 @@ parse_ugf_buffer (SgfParsingData *data,
 			}
 			if (current_section == UGF_SECTION_DATA)
 			{
-				current_node = push_ugf_node(line_contents, current_node);
+				current_node = push_ugf_node(data, current_node);
 				continue;
 			}
 			if (current_section == UGF_SECTION_FIGURE)
@@ -389,6 +388,7 @@ ugf_root_node (SgfParsingData *data, const char *width_string)
       if (tree->char_set) {
 	char *char_set_uppercased = utils_duplicate_string (tree->char_set);
 	char *scan;
+*/
 	/* We now deal with an UTF-8 string, so uppercasing latin
 	 * letters is not a problem.
 	 */
@@ -524,9 +524,12 @@ init_ugf_tree (SgfParsingData *data, SgfNode *parent)
  * Hence the name push_ugf_node(). ECB
 */
 static SgfNode *
-push_ugf_node (char *line_contents, SgfNode *parent)
+push_ugf_node (SgfParsingData *data, SgfNode *parent)
 {
-	return parent;
+	parent->child = sgf_node_new (data->tree, parent);
+	data->node = parent->child;
+	ugf_parse_move(data);
+	return parent->child;
 }
 
 /* Parse a sequence (a straight tree branch) of nodes.
@@ -1094,7 +1097,7 @@ ugf_parse_none (SgfParsingData *data)
   *link = sgf_property_new (data->tree, data->property_type, *link);
 
   next_character (data);
-  if (data->token == ']') {
+  if (data->token == ',') {
     next_token (data);
     return SGF_SUCCESS;
   }
@@ -1172,7 +1175,7 @@ ugf_parse_constrained_number (SgfParsingData *data)
     return SGF_FATAL_DUPLICATE_PROPERTY;
 
   begin_parsing_value (data);
-  if (data->token == ']')
+  if (data->token == ',')
     return SGF_FATAL_EMPTY_VALUE;
 
   STORE_BUFFER_POSITION (data, 0, storage);
@@ -1282,7 +1285,7 @@ ugf_parse_real (SgfParsingData *data)
     return SGF_FATAL_DUPLICATE_PROPERTY;
 
   begin_parsing_value (data);
-  if (data->token == ']')
+  if (data->token == ',')
     return SGF_FATAL_EMPTY_VALUE;
 
   STORE_BUFFER_POSITION (data, 0, storage);
@@ -1363,7 +1366,7 @@ ugf_parse_color (SgfParsingData *data)
     return SGF_FATAL_DUPLICATE_PROPERTY;
 
   begin_parsing_value (data);
-  if (data->token == ']')
+  if (data->token == ',')
     return SGF_FATAL_EMPTY_VALUE;
 
   color = do_parse_color (data);
@@ -1579,9 +1582,9 @@ ugf_parse_text (SgfParsingData *data)
   return SGF_SUCCESS;
 }
 
-/*
+
 static int
-do_parse_point (SgfParsingData *data, BoardPoint *point)
+ugf_parse_point (SgfParsingData *data, BoardPoint *point)
 {
   if (('a' <= data->token && data->token <= 'z')
       || ('A' <= data->token && data->token <= 'Z')) {
@@ -1597,6 +1600,11 @@ do_parse_point (SgfParsingData *data, BoardPoint *point)
 
       point->x = (x >= 'a' ? x - 'a' : x - 'A' + ('z' - 'a' + 1));
       point->y = (y >= 'a' ? y - 'a' : y - 'A' + ('z' - 'a' + 1));
+
+      if (data->token == 'B')
+        data->property_type = SGF_BLACK;
+      else
+        data->property_type = SGF_NONE;
 
       return (point->x < data->board_width && point->y < data->board_height
 	      ? 0 : 1);
@@ -1637,18 +1645,18 @@ do_parse_point (SgfParsingData *data, BoardPoint *point)
   return 2;
 }
 
-*/
+
 static SgfError
 do_parse_ugf_move (SgfParsingData *data)
 {
   BoardPoint *move_point = &data->node->move_point;
 
-  if (data->token != ']') {
+  if (data->token != '\n') {
     BufferPositionStorage storage;
 
     STORE_BUFFER_POSITION (data, 0, storage);
 
-/*    switch (do_parse_point (data, move_point)) {
+    switch (ugf_parse_point (data, move_point)) {
     case 0:
       return SGF_SUCCESS;
 
@@ -1663,7 +1671,7 @@ do_parse_ugf_move (SgfParsingData *data)
       RESTORE_BUFFER_POSITION (data, 0, storage);
       return SGF_FATAL_INVALID_VALUE;
     }
-*/
+
   }
 
   move_point->x = PASS_X;
@@ -1671,68 +1679,10 @@ do_parse_ugf_move (SgfParsingData *data)
 
   return SGF_SUCCESS;
 }
-/*
-
-static SgfError
-do_parse_reversi_move (SgfParsingData *data)
-{
-  if (data->token != ']') {
-    BufferPositionStorage storage;
-
-    STORE_BUFFER_POSITION (data, 0, storage);
-
-    switch (do_parse_point (data, &data->node->move_point)) {
-    case 0:
-      return SGF_SUCCESS;
-
-    case 1:
-      return SGF_FATAL_MOVE_OUT_OF_BOARD;
-
-    default:
-      RESTORE_BUFFER_POSITION (data, 0, storage);
-      return SGF_FATAL_INVALID_VALUE;
-    }
-  }
-
-  return SGF_FATAL_EMPTY_VALUE;
-}
-
-
-static SgfError
-do_parse_amazons_move (SgfParsingData *data)
-{
-  if (data->token != ']') {
-    int point_parsing_error;
-    BufferPositionStorage storage;
-
-    STORE_BUFFER_POSITION (data, 0, storage);
-
-    point_parsing_error = do_parse_point (data,
-					  &data->node->data.amazons.from);
-    if (point_parsing_error == 0) {
-      point_parsing_error = do_parse_point (data, &data->node->move_point);
-      if (point_parsing_error == 0) {
-	point_parsing_error
-	  = do_parse_point (data, &data->node->data.amazons.shoot_arrow_to);
-
-	if (point_parsing_error == 0)
-	  return SGF_SUCCESS;
-      }
-    }
-
-    if (point_parsing_error == 1)
-      return SGF_FATAL_MOVE_OUT_OF_BOARD;
-
-    RESTORE_BUFFER_POSITION (data, 0, storage);
-    return SGF_FATAL_INVALID_VALUE;
-  }
-
-  return SGF_FATAL_EMPTY_VALUE;
-}
 
 
 SgfError
-sgf_parse_move (SgfParsingData *data)
+ugf_parse_move (SgfParsingData *data)
 {
   SgfError error;
 
@@ -1743,8 +1693,6 @@ sgf_parse_move (SgfParsingData *data)
     if (error == SGF_SUCCESS) {
       data->node->move_color = (data->property_type == SGF_BLACK
 				? BLACK : WHITE);
-      if (data->game == GAME_AMAZONS)
-	data->move_error_position = data->property_name_error_position;
 
       return end_parsing_value (data);
     }
@@ -1767,7 +1715,7 @@ sgf_parse_move (SgfParsingData *data)
       node->move_color = (data->property_type == SGF_BLACK ? BLACK : WHITE);
       node->parent = data->node;
       data->node->child = node;
-
+/*
       if (end_parsing_value (data) == SGF_ERROR_ILLEGAL_TRAILING_CHARACTERS)
 	add_error (data, SGF_ERROR_ILLEGAL_TRAILING_CHARACTERS);
 
@@ -1777,10 +1725,8 @@ sgf_parse_move (SgfParsingData *data)
       }
 
       STORE_ERROR_POSITION (data, data->node_error_position);
-      if (data->game == GAME_AMAZONS)
-	data->move_error_position = data->property_name_error_position;
-      parse_node_sequence (data, node);
-
+      parse_ugf_node_sequence (data, node);
+*/
       board_undo (data->board, num_undos);
 
       return SGF_SUCCESS;
@@ -1792,7 +1738,7 @@ sgf_parse_move (SgfParsingData *data)
   data->non_sgf_point_error_position.line = 0;
   return error;
 }
-
+/*
 
 static int
 do_parse_point_or_rectangle (SgfParsingData *data,
@@ -2962,7 +2908,7 @@ ugf_next_token (SgfParsingData *data)
 {
   do
     next_character (data);
-  while (data->token == ' ' || data->token == '\n' || data->token == '\r');
+  while (data->token == ' ' || data->token == ',' || data->token == '\n' || data->token == '\r');
 }
 
 
@@ -2986,7 +2932,7 @@ ugf_next_token_in_value (SgfParsingData *data)
 
   data->whitespace_passed = 1;
 
-  if (data->token == ' ' || data->token == '\n') {
+  if (data->token == ' ' || data->token == '\n' || data->token == ',') {
     if (!data->whitespace_error_position.line) {
       STORE_ERROR_POSITION (data, data->whitespace_error_position);
       data->whitespace_passed = 0;
@@ -2999,7 +2945,7 @@ ugf_next_token_in_value (SgfParsingData *data)
 	if (data->token == '[')
 	  data->token = ESCAPED_BRACKET;
       }
-    } while (data->token == ' ' || data->token == '\n');
+    } while (data->token == ' ' || data->token == '\n' || data->token == ',');
   }
 }
 
