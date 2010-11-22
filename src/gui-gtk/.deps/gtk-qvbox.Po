@@ -3,10 +3,8 @@ gtk-qvbox.o: gtk-qvbox.c gtk-qvbox.h ../../src/quarry.h ../../config.h \
  /usr/include/libintl.h /usr/include/features.h \
  /usr/include/bits/predefs.h /usr/include/sys/cdefs.h \
  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
- /usr/include/gnu/stubs-32.h \
- /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h /usr/include/locale.h \
- /usr/include/bits/locale.h /usr/include/xlocale.h gtk-qbox.h \
- /usr/include/gtk-2.0/gtk/gtk.h /usr/include/gtk-2.0/gdk/gdk.h \
+ /usr/include/gnu/stubs-32.h gtk-qbox.h /usr/include/gtk-2.0/gtk/gtk.h \
+ /usr/include/gtk-2.0/gdk/gdk.h \
  /usr/include/gtk-2.0/gdk/gdkapplaunchcontext.h \
  /usr/include/glib-2.0/gio/gio.h /usr/include/glib-2.0/gio/giotypes.h \
  /usr/include/glib-2.0/gio/gioenums.h /usr/include/glib-2.0/glib-object.h \
@@ -15,6 +13,7 @@ gtk-qvbox.o: gtk-qvbox.c gtk-qvbox.h ../../src/quarry.h ../../config.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
+ /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h \
  /usr/lib/gcc/i486-linux-gnu/4.4.1/include-fixed/limits.h \
  /usr/lib/gcc/i486-linux-gnu/4.4.1/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
@@ -34,8 +33,9 @@ gtk-qvbox.o: gtk-qvbox.c gtk-qvbox.h ../../src/quarry.h ../../config.h \
  /usr/include/bits/sigstack.h /usr/include/bits/pthreadtypes.h \
  /usr/include/bits/sigthread.h /usr/include/glib-2.0/glib/gbase64.h \
  /usr/include/glib-2.0/glib/gbookmarkfile.h /usr/include/bits/time.h \
- /usr/include/glib-2.0/glib/gcache.h /usr/include/glib-2.0/glib/glist.h \
- /usr/include/glib-2.0/glib/gmem.h /usr/include/glib-2.0/glib/gslice.h \
+ /usr/include/xlocale.h /usr/include/glib-2.0/glib/gcache.h \
+ /usr/include/glib-2.0/glib/glist.h /usr/include/glib-2.0/glib/gmem.h \
+ /usr/include/glib-2.0/glib/gslice.h \
  /usr/include/glib-2.0/glib/gchecksum.h \
  /usr/include/glib-2.0/glib/gcompletion.h \
  /usr/include/glib-2.0/glib/gconvert.h \
@@ -167,7 +167,6 @@ gtk-qvbox.o: gtk-qvbox.c gtk-qvbox.h ../../src/quarry.h ../../config.h \
  /usr/include/pango-1.0/pango/pango-utils.h /usr/include/stdio.h \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h /usr/include/bits/stdio2.h \
  /usr/lib/gtk-2.0/include/gdkconfig.h \
  /usr/include/gtk-2.0/gdk/gdkdisplay.h \
  /usr/include/gtk-2.0/gdk/gdkevents.h /usr/include/gtk-2.0/gdk/gdkcolor.h \
@@ -437,14 +436,6 @@ gtk-qvbox.h:
 
 /usr/include/gnu/stubs-32.h:
 
-/usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h:
-
-/usr/include/locale.h:
-
-/usr/include/bits/locale.h:
-
-/usr/include/xlocale.h:
-
 gtk-qbox.h:
 
 /usr/include/gtk-2.0/gtk/gtk.h:
@@ -474,6 +465,8 @@ gtk-qbox.h:
 /usr/lib/glib-2.0/include/glibconfig.h:
 
 /usr/include/glib-2.0/glib/gmacros.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h:
 
 /usr/lib/gcc/i486-linux-gnu/4.4.1/include-fixed/limits.h:
 
@@ -536,6 +529,8 @@ gtk-qbox.h:
 /usr/include/glib-2.0/glib/gbookmarkfile.h:
 
 /usr/include/bits/time.h:
+
+/usr/include/xlocale.h:
 
 /usr/include/glib-2.0/glib/gcache.h:
 
@@ -846,10 +841,6 @@ gtk-qbox.h:
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
-
-/usr/include/bits/stdio2.h:
 
 /usr/lib/gtk-2.0/include/gdkconfig.h:
 

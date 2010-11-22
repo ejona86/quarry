@@ -183,6 +183,8 @@ sgf_undo_history_delete_redo_entries (SgfUndoHistory *history,
 {
   SgfUndoHistoryEntry *this_entry;
 
+  if (!tree) return;
+
   assert (history);
 
   if (history->last_applied_entry) {

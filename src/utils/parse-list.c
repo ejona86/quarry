@@ -162,7 +162,7 @@ parse_list_main (int argc, char *argv[],
     switch (option) {
     case OPTION_HELP:
       print_usage (stdout);
-      printf (help_string);
+      printf ("%s", help_string);
 
       result = 0;
       goto exit_parse_list_main;

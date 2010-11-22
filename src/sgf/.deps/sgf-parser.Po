@@ -5,31 +5,29 @@ sgf-parser.o: sgf-parser.c sgf.h sgf-properties.h ../../src/board/board.h \
  /usr/include/features.h /usr/include/bits/predefs.h \
  /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h \
- /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h /usr/include/locale.h \
- /usr/include/bits/locale.h /usr/include/xlocale.h \
  ../../src/board/games.h ../../src/utils/utils.h \
- ../../src/utils/../quarry.h /usr/include/iconv.h /usr/include/stdio.h \
+ ../../src/utils/../quarry.h /usr/include/iconv.h \
+ /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h /usr/include/stdio.h \
  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h /usr/include/bits/stdio2.h \
  /usr/include/stdlib.h /usr/include/sys/types.h /usr/include/time.h \
  /usr/include/endian.h /usr/include/bits/endian.h \
  /usr/include/bits/byteswap.h /usr/include/sys/select.h \
  /usr/include/bits/select.h /usr/include/bits/sigset.h \
  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
  /usr/include/bits/pthreadtypes.h /usr/include/alloca.h \
- /usr/include/bits/stdlib.h /usr/include/assert.h ../quarry.h \
- file-parser-common.h sgf-parser.h sgf-errors.h ../../src/quarry.h \
- sgf-privates.h sgf-writer.h ../../src/board/game-info.h \
- ../../src/board/board-internals.h ../../src/board/board.h \
+ /usr/include/assert.h ../quarry.h file-parser-common.h sgf-parser.h \
+ sgf-errors.h ../../src/quarry.h sgf-privates.h sgf-writer.h \
+ ../../src/board/game-info.h ../../src/board/board-internals.h \
+ ../../src/board/board.h \
  /usr/lib/gcc/i486-linux-gnu/4.4.1/include-fixed/limits.h \
  /usr/lib/gcc/i486-linux-gnu/4.4.1/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
  /usr/include/bits/posix2_lim.h /usr/include/string.h \
- /usr/include/bits/string.h /usr/include/bits/string2.h \
- /usr/include/bits/string3.h /usr/include/memory.h ugf-parser.c
+ /usr/include/xlocale.h /usr/include/memory.h ugf-parser.c \
+ /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stdbool.h
 
 sgf.h:
 
@@ -61,14 +59,6 @@ sgf-properties.h:
 
 /usr/include/gnu/stubs-32.h:
 
-/usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h:
-
-/usr/include/locale.h:
-
-/usr/include/bits/locale.h:
-
-/usr/include/xlocale.h:
-
 ../../src/board/games.h:
 
 ../../src/utils/utils.h:
@@ -76,6 +66,8 @@ sgf-properties.h:
 ../../src/utils/../quarry.h:
 
 /usr/include/iconv.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h:
 
 /usr/include/stdio.h:
 
@@ -92,10 +84,6 @@ sgf-properties.h:
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
-
-/usr/include/bits/stdio.h:
-
-/usr/include/bits/stdio2.h:
 
 /usr/include/stdlib.h:
 
@@ -122,8 +110,6 @@ sgf-properties.h:
 /usr/include/bits/pthreadtypes.h:
 
 /usr/include/alloca.h:
-
-/usr/include/bits/stdlib.h:
 
 /usr/include/assert.h:
 
@@ -163,12 +149,10 @@ sgf-writer.h:
 
 /usr/include/string.h:
 
-/usr/include/bits/string.h:
-
-/usr/include/bits/string2.h:
-
-/usr/include/bits/string3.h:
+/usr/include/xlocale.h:
 
 /usr/include/memory.h:
 
 ugf-parser.c:
+
+/usr/lib/gcc/i486-linux-gnu/4.4.1/include/stdbool.h:

@@ -1406,6 +1406,8 @@ gtk_goban_window_new (SgfCollection *sgf_collection, const char *filename)
 					"/File/Save", NULL);
     gtk_utils_set_toolbar_buttons_sensitive (goban_window->main_toolbar, FALSE,
 					     &toolbar_save, NULL);
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(guess_tool_menu_item), TRUE);
+    activate_guess_tool(goban_window, 0, GTK_CHECK_MENU_ITEM(guess_tool_menu_item));
   }
 
   sgf_collection_set_notification_callback
@@ -1413,8 +1415,6 @@ gtk_goban_window_new (SgfCollection *sgf_collection, const char *filename)
 
   set_current_tree (goban_window, sgf_collection->first_tree);
 
-  gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(guess_tool_menu_item), TRUE);
-  activate_guess_tool(goban_window, 0, GTK_CHECK_MENU_ITEM(guess_tool_menu_item));
   return widget;
 }
 

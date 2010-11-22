@@ -245,6 +245,8 @@ thread_wrapped_parse_game_file (ParsingThreadData *data)
   event_data->callback = analyze_parsed_data;
   event_data->result   = data;
 
+  printf("%d\n", data->result == SGF_PARSING_CANCELLED);
+
   g_async_queue_push (thread_events_queue, event_data);
   g_main_context_wakeup (NULL);
 
