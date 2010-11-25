@@ -670,7 +670,7 @@ ugf_parse_property (SgfParsingData *data, char * line_contents)
 		bp = strchr(data->buffer_pointer, ',');
 		*bp = '=';
 		data->buffer_pointer = bp - 1;
-		bp = strchr(property_value, ',') - 1;
+		bp = strchr(property_value, ',');
 		*bp = '\0';
 	}
 	else if (strcmp(name_start, "PlayerW") == 0)
@@ -690,11 +690,14 @@ ugf_parse_property (SgfParsingData *data, char * line_contents)
 		bp = strchr(data->buffer_pointer, ',');
 		*bp = '=';
 		data->buffer_pointer = bp - 1;
-		bp = strchr(property_value, ',') - 1;
+		bp = strchr(property_value, ',');
 		*bp = '\0';
 	}
 	else if (strcmp(name_start, "Commentator") == 0)
+	{
 		property_type = SGF_ANNOTATOR;
+		*(strrchr(property_value, ',')) = '\0';
+	}
 	else if (strcmp(name_start, "Title") == 0)
 	{
 		property_type = SGF_GAME_NAME;
