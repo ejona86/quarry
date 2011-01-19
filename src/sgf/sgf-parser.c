@@ -570,7 +570,13 @@ parse_root (SgfParsingData *data)
   next_token (data);
 
   if (tree->root) {
+    SgfProperty **link;
     tree->current_node = tree->root;
+    data->game_info_node = tree->current_node;
+    if (!sgf_node_find_property (data->game_info_node, SGF_PLAYER_BLACK, &link))
+      *link = sgf_property_new (data->tree, SGF_PLAYER_BLACK, *link);
+      *link = sgf_property_new (data->tree, SGF_PLAYER_WHITE, *link);
+      (*link)->value.text = "Unknown";
     return 1;
   }
 
