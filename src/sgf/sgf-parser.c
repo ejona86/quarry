@@ -246,7 +246,9 @@ sgf_parse_file (const char *filename, SgfCollection **collection,
 			       parameters, bytes_parsed, cancellation_flag);
       }
 
+     /* How is this a double free() ?
       utils_free (parsing_data.buffer);
+     */
     }
 
     fclose (file);
@@ -570,13 +572,16 @@ parse_root (SgfParsingData *data)
   next_token (data);
 
   if (tree->root) {
-    SgfProperty **link;
     tree->current_node = tree->root;
-    data->game_info_node = tree->current_node;
-    if (!sgf_node_find_property (data->game_info_node, SGF_PLAYER_BLACK, &link))
-      *link = sgf_property_new (data->tree, SGF_PLAYER_BLACK, *link);
-      *link = sgf_property_new (data->tree, SGF_PLAYER_WHITE, *link);
-      (*link)->value.text = "Unknown";
+    if (!data->game_info_node) {
+	    SgfProperty **link;
+	    data->game_info_node = tree->root;
+	    tree->current_node = data->game_info_node;
+	    *link = sgf_property_new (tree, SGF_PLAYER_BLACK, *link);
+	    (*link)->value.text = "Unknown";
+	    *link = sgf_property_new (tree, SGF_PLAYER_WHITE, *link);
+	    (*link)->value.text = "Unknown";
+    }
     return 1;
   }
 
@@ -687,6 +692,15 @@ parse_node_sequence (SgfParsingData *data, SgfNode *node)
   board_undo (data->board, num_undos);
 
   data->game_info_node = game_info_node;
+  if (!data->game_info_node) {
+    SgfProperty **link;
+    data->game_info_node = data->tree->root;
+    data->tree->current_node = data->game_info_node;
+    *link = sgf_property_new (data->tree, SGF_PLAYER_BLACK, *link);
+    (*link)->value.text = "Unknown";
+    *link = sgf_property_new (data->tree, SGF_PLAYER_WHITE, *link);
+    (*link)->value.text = "Unknown";
+  }
 }
 
 

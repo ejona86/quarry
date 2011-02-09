@@ -76,6 +76,7 @@ char	       *program_directory = NULL;
 void *
 utils_malloc (size_t size)
 {
+  assert (size > 0);
   void *pointer = malloc (size);
 
 #if ENABLE_MEMORY_PROFILING

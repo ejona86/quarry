@@ -115,8 +115,7 @@ gtk_help_display (const gchar *link_id)
 
     GError  *error = NULL;
 
-    /* FIXME: Make fallback browser configurable. */
-    child_argv[0] = "mozilla";
+    child_argv[0] = "xdg-open";
 
     if (link_id) {
       child_argv[1] = g_strconcat (("file://" PACKAGE_DATA_DIR
@@ -133,7 +132,7 @@ gtk_help_display (const gchar *link_id)
 
     if (error) {
       gchar* error_message
-	= g_strdup_printf (_("Neither Yelp nor Mozilla works. You may browse "
+	= g_strdup_printf (_("Neither Yelp nor system default browser works. You may browse "
 			     "help with a different browser, see file `%s'."),
 			   PACKAGE_DATA_DIR "/help/C/quarry.html");
       GtkWidget *error_dialog
