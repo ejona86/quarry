@@ -574,13 +574,14 @@ parse_root (SgfParsingData *data)
   if (tree->root) {
     tree->current_node = tree->root;
     if (!data->game_info_node) {
-	    SgfProperty **link;
-	    data->game_info_node = tree->root;
-	    tree->current_node = data->game_info_node;
-	    *link = sgf_property_new (tree, SGF_PLAYER_BLACK, *link);
-	    (*link)->value.text = "Unknown";
-	    *link = sgf_property_new (tree, SGF_PLAYER_WHITE, *link);
-	    (*link)->value.text = "Unknown";
+      SgfProperty **link;
+      data->game_info_node = tree->root;
+      if (!sgf_node_find_property (data->game_info_node, SGF_PLAYER_BLACK, &link)) {
+        *link = sgf_property_new (tree, SGF_PLAYER_BLACK, *link);
+        (*link)->value.text = utils_cprintf("Unknown");
+        *link = sgf_property_new (tree, SGF_PLAYER_WHITE, *link);
+        (*link)->value.text = utils_cprintf("Unknown");
+      }
     }
     return 1;
   }
@@ -691,16 +692,6 @@ parse_node_sequence (SgfParsingData *data, SgfNode *node)
 
   board_undo (data->board, num_undos);
 
-  data->game_info_node = game_info_node;
-  if (!data->game_info_node) {
-    SgfProperty **link;
-    data->game_info_node = data->tree->root;
-    data->tree->current_node = data->game_info_node;
-    *link = sgf_property_new (data->tree, SGF_PLAYER_BLACK, *link);
-    (*link)->value.text = "Unknown";
-    *link = sgf_property_new (data->tree, SGF_PLAYER_WHITE, *link);
-    (*link)->value.text = "Unknown";
-  }
 }
 
 
