@@ -47,7 +47,7 @@
 
 * INTERNAL BOARD CODE
 
-** Score sekis correctly.
+** Score sekis correctly. (ECB: ??? Never seen it wrong here, but I inherited this TODO list...)
 
 * GENERAL GUI
 
@@ -58,6 +58,8 @@
 
 ** Drop support for GTK+ 2.0 and 2.2 at least.
    Remove all related code, obviously.
+
+** Relatedly, move toward GTK+ 3.0
 
 ** Make functions receive `size_t' and `gsize' where appropriate.
    E.g. string lengths should have these types.  Be extra careful with

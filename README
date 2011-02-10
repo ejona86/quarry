@@ -11,7 +11,7 @@ Future versions will also support Internet game servers and more.
 
 Latest Quarry versions can be found at the homepage:
 
-		     http://home.gna.org/quarry/
+		http://gitorious.org/quarry/pages/Home
 
 
 			     INSTALLATION
@@ -32,14 +32,12 @@ manual to your language in directories other than `C'.)
 
 			    REPORTING BUGS
 
-Please use bug tracker at the Gna! project page for bug submissions.
-Point your browser to
+Please use the mailing list for bug submissions:
 
-		  https://gna.org/bugs/?group=quarry
+		quarry-dev@gna.org
 
-Before submitting a bug, please update to the latest CVS version of
-Quarry and verify that the bug is still present.  Don't forget to
-check if the bug has been submitted already.
+Before submitting a bug, please update to the latest git HEAD and
+verify that the bug is still present.
 
 Please include the following information in your bug report:
 
@@ -69,9 +67,9 @@ Please include the following information in your bug report:
 
 		       COPYRIGHTS AND LICENSES
 
-All files are copyrighted by Paul Pogonyshev and/or other Quarry
-authors (see file AUTHORS) except as noted below.  See each specific
-file for details.
+All files are copyrighted by Paul Pogonyshev, Ethan Baldridge, Joseph
+Piché and/or other Quarry authors (see file AUTHORS) except as noted
+below.  See each specific file for details.
 
 All files are licensed under the GNU General Public License version 2
 or (at your option) any later version except as noted below.  GNU GPL

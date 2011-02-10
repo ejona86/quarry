@@ -1,7 +1,7 @@
 dnl  Process this file with Autoconf to produce a `configure' script.
 
 # Package name and version.
-AC_INIT([Quarry], [0.2.0], [quarry-dev@gna.org])
+AC_INIT([Quarry], [0.3.0], [quarry-dev@gna.org])
 AC_PREREQ(2.57)
 
 # Check if the script is running in the proper directory.  Alarm if it
@@ -15,8 +15,8 @@ AM_MAINTAINER_MODE
 
 AC_CONFIG_HEADER(config.h)
 
-AH_TEMPLATE(PACKAGE, [The name of the package.])
-AH_TEMPLATE(VERSION, [The version of the distribution.])
+AH_TEMPLATE(PACKAGE, [Quarry])
+AH_TEMPLATE(VERSION, [0.3.0])
 
 # Checks for programs.
 AC_PROG_CC

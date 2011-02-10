@@ -1,3 +1,11 @@
+Quarry 0.3.0 features:
+
+  * UGF import support
+  * A few bugs fixed
+  * Quarry registers and associates itself with application/x-go-ugf
+
+
+
 *** Quarry 0.2.0 *****************************************************
 *                                                                    *
 *  Quarry 0.2.0 features:                                            *
