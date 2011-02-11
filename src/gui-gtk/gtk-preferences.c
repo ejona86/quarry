@@ -378,10 +378,13 @@ gtk_preferences_init (void)
       = gtk_tree_model_filter_new (GTK_TREE_MODEL (gtp_engines_list_store),
 				   NULL);
 
+/*
+ * ECB: seems like a good idea, but building a partial selector confuses
+ * choosing the proper engine to resume a game - just don't do it for now
     gtk_tree_model_filter_set_visible_func
       (GTK_TREE_MODEL_FILTER (only_one_game_gtp_engines_tree_model[k]),
        engine_is_visible_and_supports_game, GINT_TO_POINTER (k), NULL);
-
+*/
     gui_back_end_register_object_to_finalize
       (only_one_game_gtp_engines_tree_model[k]);
   }
@@ -2737,7 +2740,6 @@ gtk_preferences_set_engine_selector_selection
 	  engine_to_select++;
 
 #else
-
 	if (!data->only_this_game
 	    || gtk_games_engine_supports_game (engine_scan,
 					       data->selector_game_index))
