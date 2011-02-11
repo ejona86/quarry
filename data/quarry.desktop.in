@@ -10,4 +10,4 @@ Type=Application
 Version=@VERSION@
 Categories=Application;GTK;GNOME;Game;BoardGame;
 StartupNotify=true
-MimeType=application/x-go-sgf;text/sgf;text/x-sgf;
+MimeType=application/x-go-sgf;text/sgf;text/x-sgf;application/x-go-ugi;text/ugf;text/x-ugf
