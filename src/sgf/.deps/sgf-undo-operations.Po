@@ -6,20 +6,22 @@ sgf-undo-operations.o: sgf-undo-operations.c sgf-undo.h sgf.h \
  /usr/include/features.h /usr/include/bits/predefs.h \
  /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h \
+ /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h /usr/include/locale.h \
+ /usr/include/bits/locale.h /usr/include/xlocale.h \
  ../../src/board/games.h ../../src/utils/utils.h \
- ../../src/utils/../quarry.h /usr/include/iconv.h \
- /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h /usr/include/stdio.h \
+ ../../src/utils/../quarry.h /usr/include/iconv.h /usr/include/stdio.h \
  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+ /usr/include/bits/stdio.h /usr/include/bits/stdio2.h \
  /usr/include/stdlib.h /usr/include/sys/types.h /usr/include/time.h \
  /usr/include/endian.h /usr/include/bits/endian.h \
  /usr/include/bits/byteswap.h /usr/include/sys/select.h \
  /usr/include/bits/select.h /usr/include/bits/sigset.h \
  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
  /usr/include/bits/pthreadtypes.h /usr/include/alloca.h \
- /usr/include/assert.h ../quarry.h sgf-undo-operations.h \
- ../../src/quarry.h
+ /usr/include/bits/stdlib.h /usr/include/assert.h ../quarry.h \
+ sgf-undo-operations.h ../../src/quarry.h
 
 sgf-undo.h:
 
@@ -53,6 +55,14 @@ sgf-properties.h:
 
 /usr/include/gnu/stubs-32.h:
 
+/usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h:
+
+/usr/include/locale.h:
+
+/usr/include/bits/locale.h:
+
+/usr/include/xlocale.h:
+
 ../../src/board/games.h:
 
 ../../src/utils/utils.h:
@@ -60,8 +70,6 @@ sgf-properties.h:
 ../../src/utils/../quarry.h:
 
 /usr/include/iconv.h:
-
-/usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h:
 
 /usr/include/stdio.h:
 
@@ -78,6 +86,10 @@ sgf-properties.h:
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
+
+/usr/include/bits/stdio2.h:
 
 /usr/include/stdlib.h:
 
@@ -104,6 +116,8 @@ sgf-properties.h:
 /usr/include/bits/pthreadtypes.h:
 
 /usr/include/alloca.h:
+
+/usr/include/bits/stdlib.h:
 
 /usr/include/assert.h:
 

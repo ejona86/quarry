@@ -28,8 +28,8 @@ gettextsrcdir = $(datadir)/gettext/po
 
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
-MKINSTALLDIRS = @MKINSTALLDIRS@
-mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
+#MKINSTALLDIRS = @MKINSTALLDIRS@
+mkinstalldirs = $(SHELL) $(top_srcdir)/build/mkinstalldirs
 
 GMSGFMT = @GMSGFMT@
 MSGFMT = @MSGFMT@

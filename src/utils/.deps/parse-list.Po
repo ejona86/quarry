@@ -18,7 +18,7 @@ parse-list.o: parse-list.c parse-list.h utils.h ../quarry.h \
  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
  /usr/include/bits/pthreadtypes.h /usr/include/alloca.h \
  /usr/include/bits/stdlib.h ../../src/quarry.h /usr/include/assert.h \
- /usr/include/ctype.h /usr/include/getopt.h \
+ /usr/include/ctype.h getopt.h \
  /usr/lib/gcc/i486-linux-gnu/4.4.1/include-fixed/limits.h \
  /usr/lib/gcc/i486-linux-gnu/4.4.1/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
@@ -117,7 +117,7 @@ utils.h:
 
 /usr/include/ctype.h:
 
-/usr/include/getopt.h:
+getopt.h:
 
 /usr/lib/gcc/i486-linux-gnu/4.4.1/include-fixed/limits.h:
 

@@ -6,18 +6,20 @@ gtk-preferences.o: gtk-preferences.c gtk-preferences.h \
  /usr/include/features.h /usr/include/bits/predefs.h \
  /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h \
- /usr/include/iconv.h /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h \
+ /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h /usr/include/locale.h \
+ /usr/include/bits/locale.h /usr/include/xlocale.h /usr/include/iconv.h \
  /usr/include/stdio.h /usr/include/bits/types.h \
  /usr/include/bits/typesizes.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+ /usr/include/bits/stdio.h /usr/include/bits/stdio2.h \
  /usr/include/stdlib.h /usr/include/sys/types.h /usr/include/time.h \
  /usr/include/endian.h /usr/include/bits/endian.h \
  /usr/include/bits/byteswap.h /usr/include/sys/select.h \
  /usr/include/bits/select.h /usr/include/bits/sigset.h \
  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
  /usr/include/bits/pthreadtypes.h /usr/include/alloca.h \
- ../../src/quarry.h ../../src/board/board.h \
+ /usr/include/bits/stdlib.h ../../src/quarry.h ../../src/board/board.h \
  ../../src/board/board-topology.h ../../src/board/../quarry.h \
  ../../src/board/games.h /usr/include/assert.h gtk-games.h \
  ../../src/gtp/gtp-client.h ../../src/sgf/sgf.h \
@@ -49,7 +51,7 @@ gtk-preferences.o: gtk-preferences.c gtk-preferences.h \
  /usr/include/bits/sigaction.h /usr/include/bits/sigcontext.h \
  /usr/include/bits/sigstack.h /usr/include/bits/sigthread.h \
  /usr/include/glib-2.0/glib/gbase64.h \
- /usr/include/glib-2.0/glib/gbookmarkfile.h /usr/include/xlocale.h \
+ /usr/include/glib-2.0/glib/gbookmarkfile.h \
  /usr/include/glib-2.0/glib/gcache.h /usr/include/glib-2.0/glib/glist.h \
  /usr/include/glib-2.0/glib/gmem.h /usr/include/glib-2.0/glib/gslice.h \
  /usr/include/glib-2.0/glib/gchecksum.h \
@@ -430,7 +432,9 @@ gtk-preferences.o: gtk-preferences.c gtk-preferences.h \
  gtk-help.h gtk-named-vbox.h gtk-gtp-client-interface.h \
  gtk-progress-dialog.h gtk-sgf-tree-view.h quarry-message-dialog.h \
  quarry-stock.h ../../src/gui-utils/markup-theme-configuration.h \
- ../../src/gui-utils/configuration.h /usr/include/string.h
+ ../../src/gui-utils/configuration.h /usr/include/string.h \
+ /usr/include/bits/string.h /usr/include/bits/string2.h \
+ /usr/include/bits/string3.h
 
 gtk-preferences.h:
 
@@ -462,9 +466,15 @@ gtk-configuration.h:
 
 /usr/include/gnu/stubs-32.h:
 
-/usr/include/iconv.h:
-
 /usr/lib/gcc/i486-linux-gnu/4.4.1/include/stddef.h:
+
+/usr/include/locale.h:
+
+/usr/include/bits/locale.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/iconv.h:
 
 /usr/include/stdio.h:
 
@@ -481,6 +491,10 @@ gtk-configuration.h:
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
+
+/usr/include/bits/stdio2.h:
 
 /usr/include/stdlib.h:
 
@@ -507,6 +521,8 @@ gtk-configuration.h:
 /usr/include/bits/pthreadtypes.h:
 
 /usr/include/alloca.h:
+
+/usr/include/bits/stdlib.h:
 
 ../../src/quarry.h:
 
@@ -613,8 +629,6 @@ gtk-games.h:
 /usr/include/glib-2.0/glib/gbase64.h:
 
 /usr/include/glib-2.0/glib/gbookmarkfile.h:
-
-/usr/include/xlocale.h:
 
 /usr/include/glib-2.0/glib/gcache.h:
 
@@ -1487,3 +1501,9 @@ quarry-stock.h:
 ../../src/gui-utils/configuration.h:
 
 /usr/include/string.h:
+
+/usr/include/bits/string.h:
+
+/usr/include/bits/string2.h:
+
+/usr/include/bits/string3.h:
