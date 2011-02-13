@@ -2009,7 +2009,7 @@ do_export_diagram (GtkGobanWindow *goban_window, char *diagram_string,
 {
   static const gchar *hint
     = N_("You can usually paste the diagram in another application using "
-	 "`Ctrl+C' key combination or by selecting appropriate menu item.");
+	 "`Ctrl+V' key combination or by selecting appropriate menu item.");
 
   int diagram_string_length = strlen (diagram_string);
   GtkWidget *message_dialog;
