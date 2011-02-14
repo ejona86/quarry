@@ -2983,7 +2983,8 @@ insert_error_valist (SgfParsingData *data, SgfError error,
 
   if (error != SGF_WARNING_ERROR_SUPPRESSED
       && ++data->times_error_reported[error] == MAX_TIMES_TO_REPORT_ERROR) {
-    error_position->notch = error_position->notch->next;
+    if (error_position->notch)
+      error_position->notch = error_position->notch->next;
     insert_error (data, SGF_WARNING_ERROR_SUPPRESSED, error_position);
   }
 }
