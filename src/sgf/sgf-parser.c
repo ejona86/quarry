@@ -635,7 +635,7 @@ parse_node_tree (SgfParsingData *data, SgfNode *parent)
 static void
 parse_node_sequence (SgfParsingData *data, SgfNode *node)
 {
-  SgfNode *game_info_node = data->game_info_node;
+  /* SgfNode *game_info_node = data->game_info_node; */
   int num_undos = 0;
 
   while (1) {

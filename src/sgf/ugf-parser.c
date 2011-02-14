@@ -83,7 +83,7 @@ inline static void ugf_next_character (SgfParsingData *data);
 static void        ugf_parse_property (SgfParsingData *data, char *line_contents);
 static int         ugf_parse_point (SgfParsingData *data, BoardPoint *point);
 static SgfError    ugf_parse_label (SgfParsingData *data, int x, int y, const char *label_string);
-static SgfError    ugf_parse_simple_text (SgfParsingData *data);
+/*static SgfError    ugf_parse_simple_text (SgfParsingData *data); */
 
 inline SgfType     get_sgf_property(const char *name);
 
@@ -319,7 +319,9 @@ parse_ugf_buffer (SgfParsingData *data,
 			current_node = data->tree->root;
 		} else if (strstr(line_contents, "[Figure]") == line_contents)
 		{
+#if DEBUG
 			printf("Got a figure.\n");
+#endif
 			current_section = UGF_SECTION_FIGURE;
 		} else if (strchr(line_contents, '[') == line_contents)
 		{
@@ -598,9 +600,6 @@ init_ugf_tree (SgfParsingData *data, SgfNode *parent)
 SgfNode *
 push_ugf_node (SgfParsingData *data, SgfNode *parent)
 {
-	SgfNode *game_info_node = data->game_info_node;
-	int num_undos = 0;
-
 	parent->child = sgf_node_new (data->tree, parent);
 	data->node = parent->child;
 	ugf_parse_move(data);
@@ -624,7 +623,9 @@ ugf_parse_property (SgfParsingData *data, char * line_contents)
 		return;
 
 	*name_end = '\0';
+#if DEBUG
 	printf("UGF Property: %s, Value: %s\n", name_start, property_value);
+#endif
 	/* We have parsed some name.  Now turn it into an SGF property by hand. */
 
 	if (!data->game_info_node)
@@ -707,7 +708,9 @@ ugf_parse_property (SgfParsingData *data, char * line_contents)
 	}
 	else return;
 
+#if DEBUG
 	printf("Property Value: %s\n", property_value);
+#endif
 
 	data->property_type = property_type;
 	data->buffer_pointer = strchr(data->buffer_pointer, '=') + 1;
@@ -771,6 +774,7 @@ parse_unknown_property_values (SgfParsingData *data,
 
 
 /* Parse value of "none" type.  Basically value validation only. */
+/*
 SgfError
 ugf_parse_none (SgfParsingData *data)
 {
@@ -792,7 +796,7 @@ ugf_parse_none (SgfParsingData *data)
 
   return SGF_ERROR_NON_EMPTY_VALUE;
 }
-
+*/
 
 /* Parse a number.  This function is used instead of atoi() or
  * strtol() because we prefer not to create a string for the latter.
@@ -852,6 +856,7 @@ do_parse_number (SgfParsingData *data, int *number)
  * warning if the print mode specified is not described in SGF
  * specification.
  */
+/*
 SgfError
 ugf_parse_constrained_number (SgfParsingData *data)
 {
@@ -882,7 +887,7 @@ ugf_parse_constrained_number (SgfParsingData *data)
   RESTORE_BUFFER_POSITION (data, 0, storage);
   return SGF_FATAL_INVALID_VALUE;
 }
-
+*/
 /*
 static int
 do_parse_real (SgfParsingData *data, double *real)
@@ -961,7 +966,7 @@ do_parse_real (SgfParsingData *data, double *real)
   return 0;
 }
 */
-
+/*
 SgfError
 ugf_parse_real (SgfParsingData *data)
 {
@@ -993,11 +998,12 @@ ugf_parse_real (SgfParsingData *data)
   RESTORE_BUFFER_POSITION (data, 0, storage);
   return SGF_FATAL_INVALID_VALUE;
 }
-
+*/
 
 /* Parse a "double" value.  Allowed values are [1] (normal) and [2]
  * (emphasized).  Anything else is considered an error.
  */
+/*
 SgfError
 ugf_parse_double (SgfParsingData *data)
 {
@@ -1018,7 +1024,7 @@ ugf_parse_double (SgfParsingData *data)
 
   return SGF_ERROR_INVALID_DOUBLE_VALUE;
 }
-
+*/
 
 /*static int
 do_parse_color (SgfParsingData *data)
@@ -1044,6 +1050,7 @@ do_parse_color (SgfParsingData *data)
  * other values are allowed except that [w] and [b] are upcased and
  * warned about.
  */
+/*
 SgfError
 ugf_parse_color (SgfParsingData *data)
 {
@@ -1069,7 +1076,7 @@ ugf_parse_color (SgfParsingData *data)
 
   return SGF_FATAL_INVALID_VALUE;
 }
-
+*/
 
 /* Parse a simple text value.  All leading and trailing whitespace
  * characters are removed.  Other newlines, if encountered, are
@@ -1081,12 +1088,14 @@ ugf_parse_color (SgfParsingData *data)
  * SGF_END or color (':') depending on desired value terminator in
  * addition to ']'.
  */
+/*
 static char *
 ugf_do_parse_simple_text (SgfParsingData *data, char extra_stop_character)
 {
   data->temp_buffer = data->buffer;
-
+*/
   /* Skip leading whitespace. */
+/*
   while (1) {
     next_token (data);
     if (data->token == '\\') {
@@ -1118,8 +1127,9 @@ ugf_do_parse_simple_text (SgfParsingData *data, char extra_stop_character)
       next_character (data);
     } while (data->token != ']' && data->token != extra_stop_character
 	     && data->token != SGF_END);
-
+*/
     /* Delete trailing whitespace. */
+/*
     while (*(data->temp_buffer - 1) == ' ')
       data->temp_buffer--;
 
@@ -1128,6 +1138,7 @@ ugf_do_parse_simple_text (SgfParsingData *data, char extra_stop_character)
 
   return NULL;
 }
+*/
 
 /*
 static char *
@@ -1182,7 +1193,7 @@ ugf_get_line (SgfParsingData *data, char *existing_text)
 
 
 /* Parse a simple text value, that is, a line of text. */
-static SgfError
+/*static SgfError
 ugf_parse_simple_text (SgfParsingData *data)
 {
   SgfProperty **link;
@@ -1203,8 +1214,9 @@ ugf_parse_simple_text (SgfParsingData *data)
 
   return SGF_WARNING_PROPERTY_WITH_EMPTY_VALUE;
 }
+*/
 
-
+/*
 SgfError
 ugf_parse_text (SgfParsingData *data)
 {
@@ -1231,8 +1243,8 @@ ugf_parse_text (SgfParsingData *data)
 
   if (!property_found) {
     if (!text) {
-      /* Not really a success, but simpler this way. */
-      return SGF_SUCCESS;
+*/      /* Not really a success, but simpler this way. */
+/*      return SGF_SUCCESS;
     }
 
     *link = sgf_property_new (data->tree, data->property_type, *link);
@@ -1241,7 +1253,7 @@ ugf_parse_text (SgfParsingData *data)
   (*link)->value.text = text;
   return SGF_SUCCESS;
 }
-
+*/
 
 static int
 ugf_parse_point (SgfParsingData *data, BoardPoint *point)
@@ -1480,6 +1492,7 @@ ugf_parse_label (SgfParsingData *data, int x, int y, const char *label_string)
 /* Parse a value of `AP' property (composed simpletext ":"
  * simpletext).  The value is stored in SgfGameTree structure.
  */
+/*
 SgfError
 ugf_parse_application (SgfParsingData *data)
 {
@@ -1487,15 +1500,16 @@ ugf_parse_application (SgfParsingData *data)
 
 	if (data->tree->application_name)
 		return SGF_FATAL_DUPLICATE_PROPERTY;
-
+*/
 	/* Parse the first part of value. */
+/*
 	text = do_parse_simple_text (data, ':');
 	if (text) {
 		data->tree->application_name = text;
 
 		if (data->token == ':') {
-			/* Parse the second part of value. */
-			data->tree->application_version = do_parse_simple_text (data, SGF_END);
+*/			/* Parse the second part of value. */
+/*			data->tree->application_version = do_parse_simple_text (data, SGF_END);
 		}
 		else if (data->token == ']')
 			add_error (data, SGF_WARNING_COMPOSED_SIMPLE_TEXT_EXPECTED);
@@ -1506,8 +1520,9 @@ ugf_parse_application (SgfParsingData *data)
 
 	return SGF_WARNING_PROPERTY_WITH_EMPTY_VALUE;
 }
+*/
 
-
+/*
 SgfError
 ugf_parse_figure (SgfParsingData *data)
 {
@@ -1552,8 +1567,9 @@ ugf_parse_figure (SgfParsingData *data)
 
   return end_parsing_value (data);
 }
+*/
 
-
+/*
 SgfError
 ugf_parse_file_format (SgfParsingData *data)
 {
@@ -1581,8 +1597,9 @@ ugf_parse_file_format (SgfParsingData *data)
   RESTORE_BUFFER_POSITION (data, 0, storage);
   return SGF_FATAL_INVALID_VALUE;
 }
+*/
 
-
+/*
 SgfError
 ugf_parse_handicap (SgfParsingData *data)
 {
@@ -1623,8 +1640,9 @@ ugf_parse_handicap (SgfParsingData *data)
 
   return invalid_game_info_property (data, *link, &storage);
 }
+*/
 
-
+/*
 SgfError
 ugf_parse_komi (SgfParsingData *data)
 {
@@ -1696,8 +1714,9 @@ ugf_parse_markup_property (SgfParsingData *data)
 
   return SGF_SUCCESS;
 }
+*/
 
-
+/*
 SgfError
 ugf_parse_result (SgfParsingData *data)
 {
@@ -1735,7 +1754,9 @@ ugf_parse_result (SgfParsingData *data)
 	int result_index = looking_at (data, non_score_results, 6);
 
 	if (result_index != -1) {
+*/
 	  /* Use full-word reasons internally. */
+/*
 	  (*link)->value.text
 	    = utils_cprintf ("%c+%s",
 			     color, non_score_results[result_index | 1]);
@@ -1750,7 +1771,9 @@ ugf_parse_result (SgfParsingData *data)
     int result_index = looking_at (data, no_winner_results, 4);
 
     if (result_index != -1) {
+*/
       /* Prefer "Draw" to "0". */
+/*
       (*link)->value.text
 	= utils_duplicate_string (no_winner_results[result_index != 0
 						    ? result_index : 2]);
@@ -1806,8 +1829,9 @@ ugf_parse_setup_property (SgfParsingData *data)
 
   return SGF_SUCCESS;
 }
+*/
 
-
+/*
 SgfError
 ugf_parse_style (SgfParsingData *data)
 {
@@ -1834,8 +1858,9 @@ ugf_parse_style (SgfParsingData *data)
   RESTORE_BUFFER_POSITION (data, 0, storage);
   return SGF_FATAL_INVALID_VALUE;
 }
+*/
 
-
+/*
 SgfError
 ugf_parse_territory (SgfParsingData *data)
 {
@@ -1909,8 +1934,9 @@ ugf_parse_time_limit (SgfParsingData *data)
   *link = sgf_property_new (data->tree, data->property_type, *link);
   return invalid_game_info_property (data, *link, &storage);
 }
+*/
 
-
+/*
 SgfError
 ugf_parse_to_play (SgfParsingData *data)
 {
@@ -1924,8 +1950,9 @@ ugf_parse_to_play (SgfParsingData *data)
   data->node->to_play_color = do_parse_color (data);
 
   if (data->node->to_play_color != EMPTY) {
+*/
     /* `PL' is a setup property. */
-    data->has_any_setup_property = 1;
+/*    data->has_any_setup_property = 1;
 
     next_token_in_value (data);
     return end_parsing_value (data);
@@ -1933,9 +1960,10 @@ ugf_parse_to_play (SgfParsingData *data)
 
   return SGF_FATAL_INVALID_VALUE;
 }
-
+*/
 
 /* FIXME: write this function. */
+/*
 SgfError
 ugf_parse_letters (SgfParsingData *data)
 {
@@ -1943,9 +1971,11 @@ ugf_parse_letters (SgfParsingData *data)
   while (data->token != '\n') next_token (data);
   return end_parsing_value (data);
 }
+*/
 
 
 /* FIXME: write this function. */
+/*
 SgfError
 ugf_parse_simple_markup (SgfParsingData *data)
 {
@@ -1953,6 +1983,7 @@ ugf_parse_simple_markup (SgfParsingData *data)
   while (data->token != '\n') next_token (data);
   return end_parsing_value (data);
 }
+*/
 
 inline static void
 begin_parsing_ugf_value (SgfParsingData *data)
