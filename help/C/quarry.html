@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Quarry Manual</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><meta http-equiv="Content-Style-Type" content="text/css"><link rel="stylesheet" href="../quarry-help.css" type="text/css"></head><body><table border="0" cellspacing="0" cellpadding="0" align="center"><tr><td style="width: 90ex; padding: 2ex 6ex;" class="contents"><div class="book" lang="en" xml:lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="index"></a><span class="application">Quarry</span> Manual</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Paul</span> <span class="surname">Pogonyshev</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a href="mailto:pogonyshev@gmx.net">pogonyshev@gmx.net</a>&gt;</code></p></div></div></div></div></div><div><p class="releaseinfo">
-      This manual describes version 0.2 of Quarry.
-    </p></div><div><p class="copyright">Copyright © 2004, 2005, 2006 Paul Pogonyshev</p></div><div><div class="legalnotice"><a id="legalnotice"></a><p>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Quarry Manual</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><meta http-equiv="Content-Style-Type" content="text/css"><link rel="stylesheet" href="../quarry-help.css" type="text/css"></head><body><table border="0" cellspacing="0" cellpadding="0" align="center"><tr><td style="width: 90ex; padding: 2ex 6ex;" class="contents"><div xml:lang="en" class="book" title="Quarry Manual" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="index"></a><span class="application">Quarry</span> Manual</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Paul</span> <span class="surname">Pogonyshev</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a class="email" href="mailto:pogonyshev@gmx.net">pogonyshev@gmx.net</a>&gt;</code></p></div></div></div><div class="author"><h3 class="author"><span class="firstname">Ethan</span> <span class="surname">Baldridge</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a class="email" href="mailto:baldridge.ethan@gmail.com">baldridge.ethan@gmail.com</a>&gt;</code></p></div></div></div></div></div><div><p class="releaseinfo">
+      This manual describes version 0.3 of Quarry.
+    </p></div><div><p class="copyright">Copyright © 2004, 2005, 2006 Paul Pogonyshev</p></div><div><p class="copyright">Copyright © 2011 Ethan Baldridge</p></div><div><div class="legalnotice" title="Legal Notice"><a id="legalnotice"></a><p>
     Permission is granted to copy, distribute and/or modify this document under the terms
     of the GNU Free Documentation License, Version 1.2 or any later version published by
     the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no
     Back-Cover Texts.  A copy of the license is included in the section entitled
-    “<span class="quote">GNU Free Documentation License</span>” or in the file
+    <span class="quote">“<span class="quote">GNU Free Documentation License</span>”</span> or in the file
     <code class="filename">COPYING-DOCS</code> distributed with this manual.
   </p><p>
     DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS OF THE GNU
     FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT:
 
-    </p><div class="orderedlist"><ol type="1"><li><p>
-	  DOCUMENT IS PROVIDED ON AN “<span class="quote">AS IS</span>” BASIS, WITHOUT WARRANTY OF ANY
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+	  DOCUMENT IS PROVIDED ON AN <span class="quote">“<span class="quote">AS IS</span>”</span> BASIS, WITHOUT WARRANTY OF ANY
 	  KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES
 	  THAT THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS FREE OF DEFECTS
 	  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE RISK AS
@@ -25,7 +25,7 @@
 	  CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS
 	  LICENSE. NO USE OF ANY DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS
 	  AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER; AND
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
 	  UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING
 	  NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY
 	  CONTRIBUTOR, OR ANY DISTRIBUTOR OF THE DOCUMENT OR MODIFIED VERSION OF THE
@@ -37,108 +37,108 @@
 	  OF THE DOCUMENT, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE POSSIBILITY
 	  OF SUCH DAMAGES.
 	</p></li></ol></div><p>
-  </p></div></div><div><div class="legalnotice"><a id="id2453142"></a><p class="legalnotice-title"><b>Feedback</b></p><p>
+  </p></div></div><div><div class="legalnotice" title="Feedback"><a id="id2854388"></a><p class="legalnotice-title"><b>Feedback</b></p><p>
 	To report a bug or make a suggestion regarding the <span class="application">Quarry</span> application or this
-	manual, either send a message to <code class="email">&lt;<a href="mailto:quarry-dev@gna.org">quarry-dev@gna.org</a>&gt;</code> or use
-	<a href="https://gna.org/bugs/?group=quarry" target="_top"><span class="application">Quarry</span> bug tracker</a>.
-      </p></div></div><div><div class="revhistory"><table border="0" cellspacing="0" cellpadding="3" width="100%" summary="Revision history"><tr><th align="left" valign="top" colspan="2"><b>Revision History</b></th></tr><tr><td align="left">Revision Quarry Manual V0.2</td><td align="left">November 2006</td></tr><tr><td align="left" colspan="2">
-	  <p class="author">Paul Pogonyshev
-	    <code class="email">&lt;<a href="mailto:pogonyshev@gmx.net">pogonyshev@gmx.net</a>&gt;</code>
+	manual, either send a message to <code class="email">&lt;<a class="email" href="mailto:quarry-dev@gna.org">quarry-dev@gna.org</a>&gt;</code> or use
+	<a class="ulink" href="https://gna.org/bugs/?group=quarry" target="_top"><span class="application">Quarry</span> bug tracker</a>.
+      </p></div></div><div><div class="revhistory"><table border="0" cellspacing="0" cellpadding="3" width="100%" summary="Revision history"><tr><th align="left" valign="top" colspan="2"><b>Revision History</b></th></tr><tr><td align="left">Revision Quarry Manual V0.3</td><td align="left">June 2011</td></tr><tr><td align="left" colspan="2">
+	  <p class="author">Ethan Balridge
+	    <code class="email">&lt;<a class="email" href="mailto:baldridge.ethan@gmail.com">baldridge.ethan@gmail.com</a>&gt;</code>
 	  </p>
-	</td></tr></table></div></div></div><hr /></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="preface"><a href="#introduction">Introduction</a></span></dt><dt><span class="chapter"><a href="#getting-started">1. Getting Started</a></span></dt><dd><dl><dt><span class="section"><a href="#start">To Start <span class="application">Quarry</span></a></span></dt><dt><span class="section"><a href="#when-start">When You Start <span class="application">Quarry</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#usage">2. Usage</a></span></dt><dd><dl><dt><span class="section"><a href="#new-game">To Start a New Game</a></span></dt><dt><span class="section"><a href="#open-game-record">To Open a Game Record</a></span></dt><dt><span class="section"><a href="#save-game-record">To Save a Game Record</a></span></dt><dt><span class="section"><a href="#register-game-playing-program">To Register a Game-Playing Program</a></span></dt><dt><span class="section"><a href="#adjourn-game">To Adjourn a Game</a></span></dt><dt><span class="section"><a href="#resume-game">To Resume a Game</a></span></dt></dl></dd><dt><span class="chapter"><a href="#windows-and-menus">3. Quarry Windows and Menus</a></span></dt><dd><dl><dt><span class="section"><a href="#new-game-dialog">New Game Dialog</a></span></dt><dd><dl><dt><span class="section"><a href="#new-game-dialog-game-and-players">Game &amp; Players Page</a></span></dt><dt><span class="section"><a href="#new-game-dialog-game-rules">Game Rules Page</a></span></dt></dl></dd><dt><span class="section"><a href="#new-game-record-dialog">New Game Record Dialog</a></span></dt><dt><span class="section"><a href="#resuming-game-dialog">Resuming Game Dialog</a></span></dt><dt><span class="section"><a href="#board-windows">Board Windows</a></span></dt><dd><dl><dt><span class="section"><a href="#board">The Board</a></span></dt><dt><span class="section"><a href="#board-window-information-pane">Board Window Information Pane</a></span></dt><dt><span class="section"><a href="#game-tree-view">Game Tree View</a></span></dt><dt><span class="section"><a href="#board-window-menu">Board Window Menu</a></span></dt></dl></dd><dt><span class="section"><a href="#find-dialog">Find Dialog</a></span></dt><dt><span class="section"><a href="#game-information-dialog">Game Information Dialog</a></span></dt></dl></dd><dt><span class="chapter"><a href="#preferences">4. Settings</a></span></dt><dd><dl><dt><span class="section"><a href="#preferences-gtk-ui">General Interface</a></span></dt><dt><span class="section"><a href="#preferences-game-tree">Game Tree</a></span></dt><dt><span class="section"><a href="#preferences-gtp-engines">GTP Engines</a></span></dt><dd><dl><dt><span class="section"><a href="#preferences-gtp-engine-information-dialog">GTP Engine Information Dialog</a></span></dt></dl></dd><dt><span class="section"><a href="#preferences-saving-game-records">Saving Game Records</a></span></dt><dt><span class="section"><a href="#preferences-go-board-appearance">Go Board Appearance</a></span></dt><dt><span class="section"><a href="#preferences-amazons-board-appearance">Amazons Board Appearance</a></span></dt><dt><span class="section"><a href="#preferences-reversi-board-appearance">Reversi Board Appearance</a></span></dt></dl></dd><dt><span class="appendix"><a href="#authors">A. <span class="application">Quarry</span> Authors</a></span></dt><dt><span class="appendix"><a href="#fdl">B. GNU Free Documentation License</a></span></dt></dl></div><div class="list-of-figures"><p><b>List of Figures</b></p><dl><dt>1.1. <a href="#control-center-screen-shot"><span class="application">Quarry</span> Control Center</a></dt><dt>3.1. <a href="#board-window-screen-shot"><span class="application">Quarry</span> Board Window showing Kogo’s Joseki Dictionary</a></dt></dl></div><div class="list-of-tables"><p><b>List of Tables</b></p><dl><dt>3.1. <a href="#id2513234">Board keyboard shortcuts</a></dt><dt>3.2. <a href="#id2515906">Valid <span class="guilabel">Game result</span> values</a></dt></dl></div><div class="preface" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="introduction"></a>Introduction</h2></div></div></div><p>
+	</td></tr></table></div></div></div><hr /></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="preface"><a href="#introduction">Introduction</a></span></dt><dt><span class="chapter"><a href="#getting-started">1. Getting Started</a></span></dt><dd><dl><dt><span class="section"><a href="#start">To Start <span class="application">Quarry</span></a></span></dt><dt><span class="section"><a href="#when-start">When You Start <span class="application">Quarry</span></a></span></dt></dl></dd><dt><span class="chapter"><a href="#usage">2. Usage</a></span></dt><dd><dl><dt><span class="section"><a href="#new-game">To Start a New Game</a></span></dt><dt><span class="section"><a href="#open-game-record">To Open a Game Record</a></span></dt><dt><span class="section"><a href="#save-game-record">To Save a Game Record</a></span></dt><dt><span class="section"><a href="#register-game-playing-program">To Register a Game-Playing Program</a></span></dt><dt><span class="section"><a href="#adjourn-game">To Adjourn a Game</a></span></dt><dt><span class="section"><a href="#resume-game">To Resume a Game</a></span></dt></dl></dd><dt><span class="chapter"><a href="#windows-and-menus">3. Quarry Windows and Menus</a></span></dt><dd><dl><dt><span class="section"><a href="#new-game-dialog">New Game Dialog</a></span></dt><dd><dl><dt><span class="section"><a href="#new-game-dialog-game-and-players">Game &amp; Players Page</a></span></dt><dt><span class="section"><a href="#new-game-dialog-game-rules">Game Rules Page</a></span></dt></dl></dd><dt><span class="section"><a href="#new-game-record-dialog">New Game Record Dialog</a></span></dt><dt><span class="section"><a href="#resuming-game-dialog">Resuming Game Dialog</a></span></dt><dt><span class="section"><a href="#board-windows">Board Windows</a></span></dt><dd><dl><dt><span class="section"><a href="#board">The Board</a></span></dt><dt><span class="section"><a href="#board-window-information-pane">Board Window Information Pane</a></span></dt><dt><span class="section"><a href="#game-tree-view">Game Tree View</a></span></dt><dt><span class="section"><a href="#board-window-menu">Board Window Menu</a></span></dt></dl></dd><dt><span class="section"><a href="#find-dialog">Find Dialog</a></span></dt><dt><span class="section"><a href="#game-information-dialog">Game Information Dialog</a></span></dt></dl></dd><dt><span class="chapter"><a href="#preferences">4. Settings</a></span></dt><dd><dl><dt><span class="section"><a href="#preferences-gtk-ui">General Interface</a></span></dt><dt><span class="section"><a href="#preferences-game-tree">Game Tree</a></span></dt><dt><span class="section"><a href="#preferences-gtp-engines">GTP Engines</a></span></dt><dd><dl><dt><span class="section"><a href="#preferences-gtp-engine-information-dialog">GTP Engine Information Dialog</a></span></dt></dl></dd><dt><span class="section"><a href="#preferences-saving-game-records">Saving Game Records</a></span></dt><dt><span class="section"><a href="#preferences-go-board-appearance">Go Board Appearance</a></span></dt><dt><span class="section"><a href="#preferences-amazons-board-appearance">Amazons Board Appearance</a></span></dt><dt><span class="section"><a href="#preferences-reversi-board-appearance">Reversi Board Appearance</a></span></dt></dl></dd><dt><span class="appendix"><a href="#authors">A. <span class="application">Quarry</span> Authors</a></span></dt><dt><span class="appendix"><a href="#fdl">B. GNU Free Documentation License</a></span></dt></dl></div><div class="list-of-figures"><p><b>List of Figures</b></p><dl><dt>1.1. <a href="#control-center-screen-shot"><span class="application">Quarry</span> Control Center</a></dt><dt>3.1. <a href="#board-window-screen-shot"><span class="application">Quarry</span> Board Window showing Kogo’s Joseki Dictionary</a></dt></dl></div><div class="list-of-tables"><p><b>List of Tables</b></p><dl><dt>3.1. <a href="#id2905107">Board keyboard shortcuts</a></dt><dt>3.2. <a href="#id2907767">Valid <span class="guilabel">Game result</span> values</a></dt></dl></div><div class="preface" title="Introduction"><div class="titlepage"><div><div><h2 class="title"><a id="introduction"></a>Introduction</h2></div></div></div><p>
       The <span class="application">Quarry</span> application allows you to play the board games of Go, Amazons and Reversi.
       You can play with computer programs or with another human, and save, view and edit
       game records.
     </p><p>
       <span class="application">Quarry</span> provides the following features:
-    </p><div class="itemizedlist"><ul type="disc"><li><p>
+    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
 	  Support for Go, Amazons and Reversi games.
-	</p></li><li><p>
-	  Nice resizable <a href="#board-windows" title="Board Windows">board</a>.
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
+	  Nice resizable <a class="link" href="#board-windows" title="Board Windows">board</a>.
+	</p></li><li class="listitem"><p>
 	  Playing games:
 
-	  </p><div class="itemizedlist"><ul type="circle"><li><p>
-		<a href="http://www.gnugo.org/gnugo.html" target="_top"><span class="application">GNU
+	  </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p>
+		<a class="ulink" href="http://www.gnugo.org/gnugo.html" target="_top"><span class="application">GNU
 		    Go</span></a>,
-		<a href="http://rhino.sourceforge.net/" target="_top"><span class="application">GRhino</span></a>
+		<a class="ulink" href="http://rhino.sourceforge.net/" target="_top"><span class="application">GRhino</span></a>
 		or any other
-		<a href="http://www.lysator.liu.se/~gunnar/gtp/" target="_top">GTP</a>
+		<a class="ulink" href="http://www.lysator.liu.se/~gunnar/gtp/" target="_top">GTP</a>
 		(Game Text Protocol) engine can be your opponent.
-	      </p></li><li><p>
+	      </p></li><li class="listitem"><p>
 		Computer vs. computer and human vs. human games are an option too.
-	      </p></li><li><p>
-		Good support for <a href="#new-game-dialog-time-settings" title="Time Limit Settings">time
+	      </p></li><li class="listitem"><p>
+		Good support for <a class="link" href="#new-game-dialog-time-settings" title="Time Limit Settings">time
 		  control</a>.
-	      </p></li><li><p>
-		Games can be <a href="#adjourn-game" title="To Adjourn a Game">adjourned</a> and
-		later <a href="#resume-game" title="To Resume a Game">resumed</a>.
+	      </p></li><li class="listitem"><p>
+		Games can be <a class="link" href="#adjourn-game" title="To Adjourn a Game">adjourned</a> and
+		later <a class="link" href="#resume-game" title="To Resume a Game">resumed</a>.
 	      </p></li></ul></div><p>
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
 	  Game records:
 
-	  </p><div class="itemizedlist"><ul type="circle"><li><p>
+	  </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p>
 		All games can be stored in widely supported
-		<a href="http://www.red-bean.com/sgf/" target="_top">SGF</a> FF[4]
+		<a class="ulink" href="http://www.red-bean.com/sgf/" target="_top">SGF</a> FF[4]
 		file format.
-	      </p></li><li><p>
+	      </p></li><li class="listitem"><p>
 		Fast and robust parser can read SGF files of any version.
-	      </p></li><li><p>
+	      </p></li><li class="listitem"><p>
 		In particular,
-		<a href="http://waterfire.us/joseki.htm" target="_top">Kogo’s Joseki
+		<a class="ulink" href="http://waterfire.us/joseki.htm" target="_top">Kogo’s Joseki
 		  Dictionary</a> can be browsed with <span class="application">Quarry</span>.
-	      </p></li><li><p>
-		<a href="#game-tree-view" title="Game Tree View">Game Tree View</a> allows for easy
+	      </p></li><li class="listitem"><p>
+		<a class="link" href="#game-tree-view" title="Game Tree View">Game Tree View</a> allows for easy
 		navigation of game records.
-	      </p></li><li><p>
-		<a href="#find-dialog" title="Find Dialog">Text search in comments</a> is a powerful
+	      </p></li><li class="listitem"><p>
+		<a class="link" href="#find-dialog" title="Find Dialog">Text search in comments</a> is a powerful
 		tool if you know what to search for.
-	      </p></li><li><p>
+	      </p></li><li class="listitem"><p>
 		Go board position can be exported in a format suitable for inserting into
-		<a href="http://senseis.xmp.net/" target="_top">Sensei’s Library</a>.
-	      </p></li><li><p>
+		<a class="ulink" href="http://senseis.xmp.net/" target="_top">Sensei’s Library</a>.
+	      </p></li><li class="listitem"><p>
 		Support for various SGF labels and markup.
 	      </p></li></ul></div><p>
-	</p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	</p></li></ul></div><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 	<span class="application">Quarry</span> itself can play neither Go, nor Amazons, nor Reversi.  To have a computer
 	opponent, you need to find a program (e.g. <span class="application">GNU Go</span>
 	mentioned above) that supports GTP and
-	<a href="#register-game-playing-program" title="To Register a Game-Playing Program">register it in <span class="application">Quarry</span></a>.
-      </p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	<a class="link" href="#register-game-playing-program" title="To Register a Game-Playing Program">register it in <span class="application">Quarry</span></a>.
+      </p></div><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 	<span class="application">Quarry</span> does not have any support for Internet game servers and it will not be added
 	before versions 0.3.x.
-      </p></div></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="getting-started"></a>Chapter 1. Getting Started</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#start">To Start <span class="application">Quarry</span></a></span></dt><dt><span class="section"><a href="#when-start">When You Start <span class="application">Quarry</span></a></span></dt></dl></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="start"></a>To Start <span class="application">Quarry</span></h2></div></div></div><p>
+      </p></div></div><div class="chapter" title="Chapter 1. Getting Started"><div class="titlepage"><div><div><h2 class="title"><a id="getting-started"></a>Chapter 1. Getting Started</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#start">To Start <span class="application">Quarry</span></a></span></dt><dt><span class="section"><a href="#when-start">When You Start <span class="application">Quarry</span></a></span></dt></dl></div><div class="section" title="To Start Quarry"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="start"></a>To Start <span class="application">Quarry</span></h2></div></div></div><p>
 	You can start <span class="application">Quarry</span> from your Applications menu, it should typically be available
 	under
-	<span class="guimenu">Games</span>&nbsp;&rarr;&nbsp;<span class="guisubmenu">Board Games</span>.
+	<span class="guimenu">Games</span> → <span class="guisubmenu">Board Games</span>.
 
 	However, this may depend on the exact way you installed the program and your
 	operating system.
       </p><p>
 	<span class="application">Quarry</span> can also be started from the command line.  Simply
-	type <span><strong class="command">quarry</strong></span> in and press <span><strong class="keycap">Return</strong></span>.
+	type <span class="command"><strong>quarry</strong></span> in and press <span class="keycap"><strong>Return</strong></span>.
       </p><p>
 	You can also have <span class="application">Quarry</span> open one or more game records immediatly after you start
 	it.  Just type
       </p><p>
-	<span><strong class="command">quarry</strong></span> <em class="replaceable"><code>file1.sgf file2.sgf ...</code></em>
+	<span class="command"><strong>quarry</strong></span> <em class="replaceable"><code>file1.sgf file2.sgf ...</code></em>
       </p><p>
-	in the command line and press <span><strong class="keycap">Return</strong></span>.  <span class="application">Quarry</span> will start with
+	in the command line and press <span class="keycap"><strong>Return</strong></span>.  <span class="application">Quarry</span> will start with
 	specified file(s) open.
-      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+      </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 	  Filenames don’t have to end in <code class="filename">.sgf</code>, but names of SGF files
 	  typically do have this suffix.
-	</p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="when-start"></a>When You Start <span class="application">Quarry</span></h2></div></div></div><p>
+	</p></div></div><div class="section" title="When You Start Quarry"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="when-start"></a>When You Start <span class="application">Quarry</span></h2></div></div></div><p>
 	When you start <span class="application">Quarry</span>, Control Center window is displayed:
-      </p><div class="figure"><a id="control-center-screen-shot"></a><p class="title"><b>Figure 1.1. <span class="application">Quarry</span> Control Center</b></p><div class="screenshot"><div class="mediaobject"><img src="figures/control-center.png" alt="&#10;&#9;&#9;Shows Quarry Control Center window.&#10;&#9;      " /></div></div></div><p>
+      </p><div class="figure"><a id="control-center-screen-shot"></a><p class="title"><b>Figure 1.1. <span class="application">Quarry</span> Control Center</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="figures/control-center.png" alt="Shows Quarry Control Center window." /></div></div></div></div><br class="figure-break" /><p>
 	The Control Center window consists of the following elements:
       </p><div class="variablelist"><dl><dt><span class="term"><span class="guibutton">New Game</span> button</span></dt><dd><p>
 	      This button allows you to start a new game.  It will pop up the
-	      <a href="#new-game-dialog" title="New Game Dialog">New Game dialog</a> where you can select
+	      <a class="link" href="#new-game-dialog" title="New Game Dialog">New Game dialog</a> where you can select
 	      the game (Go, Amazons or Reversi), opponents and game-specific rules.
 	    </p></dd><dt><span class="term"><span class="guibutton">New Game Record</span> button</span></dt><dd><p>
 	      Clicking this buttons allows you to create a game record without actually
-	      playing a game.  <a href="#new-game-record-dialog" title="New Game Record Dialog">New Game Record
+	      playing a game.  <a class="link" href="#new-game-record-dialog" title="New Game Record Dialog">New Game Record
 	      dialog</a> will be shown, asking you for basic game record parameters.
 	    </p></dd><dt><span class="term"><span class="guibutton">Open Game Record</span> button</span></dt><dd><p>
 	      This button allows you to select a game record for viewing and/or editing.
@@ -146,100 +146,100 @@
 	      File dialog.
 	    </p></dd><dt><span class="term"><span class="guibutton">Resume Game</span> button</span></dt><dd><p>
 	      Click this button to resume a game you
-	      <a href="#adjourn-game" title="To Adjourn a Game">adjourned</a> earlier.  Actually, you can
+	      <a class="link" href="#adjourn-game" title="To Adjourn a Game">adjourned</a> earlier.  Actually, you can
 	      resume about any unfinished game, even one you started in a different
 	      client.  A standart Open File dialog will be popped up for you to select the
 	      file containing the game record you wish to resume.
 	    </p></dd><dt><span class="term"><span class="guibutton">Preferences</span> button</span></dt><dd><p>
 	      This button opens the <span class="application">Quarry</span>
-	      <a href="#preferences" title="Chapter&#xA0;4.&#xA0;Settings">Preferences dialog</a>.
+	      <a class="link" href="#preferences" title="Chapter 4. Settings">Preferences dialog</a>.
 	    </p></dd><dt><span class="term"><span class="guibutton">Quit</span> button</span></dt><dd><p>
 	      Closes all windows and quits the program.  However, if there are unsaved
 	      changes in any of the open game records, you will be asked what to do with
 	      them first.
-	    </p></dd></dl></div></div></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="usage"></a>Chapter 2. Usage</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#new-game">To Start a New Game</a></span></dt><dt><span class="section"><a href="#open-game-record">To Open a Game Record</a></span></dt><dt><span class="section"><a href="#save-game-record">To Save a Game Record</a></span></dt><dt><span class="section"><a href="#register-game-playing-program">To Register a Game-Playing Program</a></span></dt><dt><span class="section"><a href="#adjourn-game">To Adjourn a Game</a></span></dt><dt><span class="section"><a href="#resume-game">To Resume a Game</a></span></dt></dl></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="new-game"></a>To Start a New Game</h2></div></div></div><p>
+	    </p></dd></dl></div></div></div><div class="chapter" title="Chapter 2. Usage"><div class="titlepage"><div><div><h2 class="title"><a id="usage"></a>Chapter 2. Usage</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#new-game">To Start a New Game</a></span></dt><dt><span class="section"><a href="#open-game-record">To Open a Game Record</a></span></dt><dt><span class="section"><a href="#save-game-record">To Save a Game Record</a></span></dt><dt><span class="section"><a href="#register-game-playing-program">To Register a Game-Playing Program</a></span></dt><dt><span class="section"><a href="#adjourn-game">To Adjourn a Game</a></span></dt><dt><span class="section"><a href="#resume-game">To Resume a Game</a></span></dt></dl></div><div class="section" title="To Start a New Game"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="new-game"></a>To Start a New Game</h2></div></div></div><p>
 	To start a new game, click the <span class="guibutton">New Game</span> button in the
-	<a href="#when-start" title="When You Start Quarry"><span class="application">Quarry</span> Control Center window</a> or choose
-	<span class="guimenu">File</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">New Game…</span>
-	menu item in any of the already open <a href="#board-windows" title="Board Windows">Board
-	Windows</a>.  The <a href="#new-game-dialog" title="New Game Dialog">New Game dialog</a> will
+	<a class="link" href="#when-start" title="When You Start Quarry"><span class="application">Quarry</span> Control Center window</a> or choose
+	<span class="guimenu">File</span> → <span class="guimenuitem">New Game…</span>
+	menu item in any of the already open <a class="link" href="#board-windows" title="Board Windows">Board
+	Windows</a>.  The <a class="link" href="#new-game-dialog" title="New Game Dialog">New Game dialog</a> will
 	appear, where you can choose the kind of game you want and the opponents.
       </p><p>
 	If you want to play against a computer program, you need to
-	<a href="#register-game-playing-program" title="To Register a Game-Playing Program">register it</a> in <span class="application">Quarry</span> first
+	<a class="link" href="#register-game-playing-program" title="To Register a Game-Playing Program">register it</a> in <span class="application">Quarry</span> first
 	(once only, of course.)  To do this, click the
 	<span class="guibutton">Manage Engine List</span> button in the dialog.
       </p><p>
 	For more information, see the
-	<a href="#new-game-dialog" title="New Game Dialog">detailed description of New Game
+	<a class="link" href="#new-game-dialog" title="New Game Dialog">detailed description of New Game
 	  dialog</a>.
-      </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="open-game-record"></a>To Open a Game Record</h2></div></div></div><p>
+      </p></div><div class="section" title="To Open a Game Record"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="open-game-record"></a>To Open a Game Record</h2></div></div></div><p>
 	You can open a game record in one of three ways:
-      </p><div class="itemizedlist"><ul type="disc"><li><p>
+      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
 	    Click the <span class="guibutton">Open Game Record</span> button in the
-	    <a href="#when-start" title="When You Start Quarry">Control Center window</a>.  <span class="application">Quarry</span> will display
+	    <a class="link" href="#when-start" title="When You Start Quarry">Control Center window</a>.  <span class="application">Quarry</span> will display
 	    the <span class="guilabel">Open SGF File</span> dialog.  Select the file with the game
 	    record you want to open and click the <span class="guibutton">OK</span>.
-	  </p></li><li><p>
+	  </p></li><li class="listitem"><p>
 	    Choose
-	    <span class="guimenu">File</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Open</span>
-	    menu item or simply press <span><strong class="keycap">Ctrl+O</strong></span> in any opened
-	    <a href="#board-windows" title="Board Windows">Board window</a>.  Similarly to the previous
+	    <span class="guimenu">File</span> → <span class="guimenuitem">Open</span>
+	    menu item or simply press <span class="keycap"><strong>Ctrl+O</strong></span> in any opened
+	    <a class="link" href="#board-windows" title="Board Windows">Board window</a>.  Similarly to the previous
 	    case, <span class="application">Quarry</span> will display the <span class="guilabel">Open SGF File</span> dialog.
-	  </p></li><li><p>
+	  </p></li><li class="listitem"><p>
 	    When starting <span class="application">Quarry</span> from the command line, specify the name of file (or
 	    several names at once):
 	  </p><p>
-	    <span><strong class="command">quarry</strong></span> <em class="replaceable"><code>file1.sgf file2.sgf ...</code></em>
+	    <span class="command"><strong>quarry</strong></span> <em class="replaceable"><code>file1.sgf file2.sgf ...</code></em>
 	  </p><p>
 	    The specified file(s) will be opened automatically.
-	  </p></li></ul></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="save-game-record"></a>To Save a Game Record</h2></div></div></div><p>
+	  </p></li></ul></div></div><div class="section" title="To Save a Game Record"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="save-game-record"></a>To Save a Game Record</h2></div></div></div><p>
 	To save a game record, choose
-	<span class="guimenu">File</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Save</span>
-	menu item in its <a href="#board-windows" title="Board Windows">Board window</a> (or simply
-	press <span><strong class="keycap">Ctrl+S</strong></span>.)  If the game record does not yet have a filename,
+	<span class="guimenu">File</span> → <span class="guimenuitem">Save</span>
+	menu item in its <a class="link" href="#board-windows" title="Board Windows">Board window</a> (or simply
+	press <span class="keycap"><strong>Ctrl+S</strong></span>.)  If the game record does not yet have a filename,
 	<span class="application">Quarry</span> will display the <span class="guilabel">Save As</span> dialog.  Enter the name for
 	the file, then click the <span class="guibutton">OK</span>.
       </p><p>
 	If you want to save a game record under a different filename, choose
-	<span class="guimenu">File</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Save As</span>
+	<span class="guimenu">File</span> → <span class="guimenuitem">Save As</span>
 	menu item.  Enter a name for the file in the <span class="guilabel">Save As</span> dialog
 	and click <span class="guibutton">OK</span>.
-      </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="register-game-playing-program"></a>To Register a Game-Playing Program</h2></div></div></div><p>
+      </p></div><div class="section" title="To Register a Game-Playing Program"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="register-game-playing-program"></a>To Register a Game-Playing Program</h2></div></div></div><p>
 	To register a game-playing program in <span class="application">Quarry</span>, first open the
-	<a href="#preferences" title="Chapter&#xA0;4.&#xA0;Settings">Preferences dialog</a> and select
+	<a class="link" href="#preferences" title="Chapter 4. Settings">Preferences dialog</a> and select
 	<span class="guilabel">GTP Engines</span> category in its left pane.  (You can also click
 	the <span class="guibutton">Manage Engine List</span> button in the
-	<a href="#new-game-dialog" title="New Game Dialog">New Game dialog</a>, which immediatly displays
+	<a class="link" href="#new-game-dialog" title="New Game Dialog">New Game dialog</a>, which immediatly displays
 	the <span class="guilabel">GTP Engines</span> category.)
       </p><p>
 	Then click the <span class="guibutton">Add</span> button and, in the
-	<a href="#preferences-gtp-engine-information-dialog" title="GTP Engine Information Dialog">appeared dialog</a>,
+	<a class="link" href="#preferences-gtp-engine-information-dialog" title="GTP Engine Information Dialog">appeared dialog</a>,
 	enter the command line required to launch the program in GTP mode.  You should
 	consult the program’s manual to find out how the command line should look like.
 	For instance, command line for
-	<a href="http://www.gnugo.org/gnugo.html" target="_top"><span class="application">GNU
+	<a class="ulink" href="http://www.gnugo.org/gnugo.html" target="_top"><span class="application">GNU
 	Go</span></a> should be like this (note the double hyphens):
       </p><p>
-	<span><strong class="command">gnugo --mode gtp --quiet</strong></span>
+	<span class="command"><strong>gnugo --mode gtp --quiet</strong></span>
       </p><p>
 	Other programs may require different options or no options at all.
-      </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="adjourn-game"></a>To Adjourn a Game</h2></div></div></div><p>
+      </p></div><div class="section" title="To Adjourn a Game"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="adjourn-game"></a>To Adjourn a Game</h2></div></div></div><p>
 	To adjourn a game, choose
-	<span class="guimenu">Play</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Adjourn Game</span>
+	<span class="guimenu">Play</span> → <span class="guimenuitem">Adjourn Game</span>
 	menu item.  If the game has never been saved yet, you will need to enter the name
 	of the file you would like to store it in.
       </p><p>
 	Actually, adjourning differs from saving only in that it closes
-	the <a href="#board-windows" title="Board Windows">game’s window</a>.
-      </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="resume-game"></a>To Resume a Game</h2></div></div></div><p>
+	the <a class="link" href="#board-windows" title="Board Windows">game’s window</a>.
+      </p></div><div class="section" title="To Resume a Game"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="resume-game"></a>To Resume a Game</h2></div></div></div><p>
 	To resume a previously adjourned game, click <span class="guibutton">Resume Game</span>
-	button in the <a href="#when-start" title="When You Start Quarry"><span class="application">Quarry</span> Control Center window</a> or
+	button in the <a class="link" href="#when-start" title="When You Start Quarry"><span class="application">Quarry</span> Control Center window</a> or
 	select <span class="guimenuitem">Resume Game…</span> item from
 	the <span class="guimenu">File</span> menu.  You will be prompted for the file that contains
 	the game record.
       </p><p>
-	When you select the file, <a href="#resuming-game-dialog" title="Resuming Game Dialog">Resuming Game
+	When you select the file, <a class="link" href="#resuming-game-dialog" title="Resuming Game Dialog">Resuming Game
 	Dialog</a> pops up, where you should specify the players.  <span class="application">Quarry</span> will try to
 	guess the opponents based on the data stored in the game record, but it can make a
 	mistake in determining whether there are any computer players and which engines
@@ -248,24 +248,24 @@
       </p><p>
 	If the game you select is already finished, you will be prompted to open it for
 	viewing and/or editing instead of resuming.
-      </p></div></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="windows-and-menus"></a>Chapter 3. Quarry Windows and Menus</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#new-game-dialog">New Game Dialog</a></span></dt><dd><dl><dt><span class="section"><a href="#new-game-dialog-game-and-players">Game &amp; Players Page</a></span></dt><dt><span class="section"><a href="#new-game-dialog-game-rules">Game Rules Page</a></span></dt></dl></dd><dt><span class="section"><a href="#new-game-record-dialog">New Game Record Dialog</a></span></dt><dt><span class="section"><a href="#resuming-game-dialog">Resuming Game Dialog</a></span></dt><dt><span class="section"><a href="#board-windows">Board Windows</a></span></dt><dd><dl><dt><span class="section"><a href="#board">The Board</a></span></dt><dt><span class="section"><a href="#board-window-information-pane">Board Window Information Pane</a></span></dt><dt><span class="section"><a href="#game-tree-view">Game Tree View</a></span></dt><dt><span class="section"><a href="#board-window-menu">Board Window Menu</a></span></dt></dl></dd><dt><span class="section"><a href="#find-dialog">Find Dialog</a></span></dt><dt><span class="section"><a href="#game-information-dialog">Game Information Dialog</a></span></dt></dl></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="new-game-dialog"></a>New Game Dialog</h2></div></div></div><p>
+      </p></div></div><div class="chapter" title="Chapter 3. Quarry Windows and Menus"><div class="titlepage"><div><div><h2 class="title"><a id="windows-and-menus"></a>Chapter 3. Quarry Windows and Menus</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#new-game-dialog">New Game Dialog</a></span></dt><dd><dl><dt><span class="section"><a href="#new-game-dialog-game-and-players">Game &amp; Players Page</a></span></dt><dt><span class="section"><a href="#new-game-dialog-game-rules">Game Rules Page</a></span></dt></dl></dd><dt><span class="section"><a href="#new-game-record-dialog">New Game Record Dialog</a></span></dt><dt><span class="section"><a href="#resuming-game-dialog">Resuming Game Dialog</a></span></dt><dt><span class="section"><a href="#board-windows">Board Windows</a></span></dt><dd><dl><dt><span class="section"><a href="#board">The Board</a></span></dt><dt><span class="section"><a href="#board-window-information-pane">Board Window Information Pane</a></span></dt><dt><span class="section"><a href="#game-tree-view">Game Tree View</a></span></dt><dt><span class="section"><a href="#board-window-menu">Board Window Menu</a></span></dt></dl></dd><dt><span class="section"><a href="#find-dialog">Find Dialog</a></span></dt><dt><span class="section"><a href="#game-information-dialog">Game Information Dialog</a></span></dt></dl></div><div class="section" title="New Game Dialog"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="new-game-dialog"></a>New Game Dialog</h2></div></div></div><p>
 	The New Game dialog consists of two pages, <span class="guilabel">Game &amp; Players</span>
 	and <span class="guilabel">Game Rules</span>.  When you open the dialog, the first page
 	appears.  When you click <span class="guibutton">Next</span> button, the second page is
 	displayed, which is specific for each of three games—Go, Amazons and Reversi.
-      </p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="new-game-dialog-game-and-players"></a>Game &amp; Players Page</h3></div></div></div><p>
+      </p><div class="section" title="Game &amp; Players Page"><div class="titlepage"><div><div><h3 class="title"><a id="new-game-dialog-game-and-players"></a>Game &amp; Players Page</h3></div></div></div><p>
 	  On this page you can select one of three available games and the opponents.  You
 	  can make selections in arbitrary order—first choose the game and then the
 	  opponents or the other way round.  At any time, all playable combinations of
-	  games and computer players are marked with “<span class="quote">Yes</span>” icons, while all
-	  unplayable combinations are marked with “<span class="quote">No</span>” icons.
+	  games and computer players are marked with <span class="quote">“<span class="quote">Yes</span>”</span> icons, while all
+	  unplayable combinations are marked with <span class="quote">“<span class="quote">No</span>”</span> icons.
 	  The <span class="guibutton">Next</span> button is sensitive only when a playable
 	  combination of game and opponents is selected.
-	</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	</p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 	    Before playing against a computer program (e.g.
-	    <a href="http://www.gnugo.org/gnugo.html" target="_top"><span class="application">GNU
+	    <a class="ulink" href="http://www.gnugo.org/gnugo.html" target="_top"><span class="application">GNU
 	    Go</span></a>, you need to register it in <span class="application">Quarry</span>.  See
-	    <a href="#preferences-gtp-engines" title="GTP Engines">GTP Engines</a> section for how to
+	    <a class="link" href="#preferences-gtp-engines" title="GTP Engines">GTP Engines</a> section for how to
 	    do this.
 	  </p></div><p>
 	  <span class="guilabel">Game &amp; Players</span> page conists of the following controls:
@@ -293,22 +293,22 @@
 		to <span class="guilabel">Black Player</span> section and vice versa.
 	      </p></dd><dt><span class="term"><span class="guibutton">Manage Engine List</span> button</span></dt><dd><p>
 		This button opens <span class="application">Quarry</span> Preferences dialog at the
-		<a href="#preferences-gtp-engines" title="GTP Engines">GTP Engines</a> page.  A
+		<a class="link" href="#preferences-gtp-engines" title="GTP Engines">GTP Engines</a> page.  A
 		convenient way to register new program and/or modify parameters of the
 		already registered ones just before starting a new game.
 	      </p></dd><dt><span class="term"><span class="guibutton">Next</span> button</span></dt><dd><p>
 		When you are done with this page, click the <span class="guibutton">Next</span>
 		button to tweak game specific rules on the next page.
-	      </p></dd></dl></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="new-game-dialog-game-rules"></a>Game Rules Page</h3></div></div></div><p>
+	      </p></dd></dl></div></div><div class="section" title="Game Rules Page"><div class="titlepage"><div><div><h3 class="title"><a id="new-game-dialog-game-rules"></a>Game Rules Page</h3></div></div></div><p>
 	  On this page you can select the rules for the game.  The page has two parts.
 	  The upper part is different for each of Go, Amazons and Reversi games and
 	  contains game-specific rules.  The lower part contains time limit settings
 	  controls and is the same for all three games.  It is
-	  <a href="#new-game-dialog-time-settings" title="Time Limit Settings">described</a> last.
+	  <a class="link" href="#new-game-dialog-time-settings" title="Time Limit Settings">described</a> last.
 	</p><p>
 	  When you have selected the rules you want, click the <span class="guibutton">Play</span>
 	  button to start the game.
-	</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="new-game-dialog-go-rules"></a>Go Rules</h4></div></div></div><p>
+	</p><div class="section" title="Go Rules"><div class="titlepage"><div><div><h4 class="title"><a id="new-game-dialog-go-rules"></a>Go Rules</h4></div></div></div><p>
 	    Go has many different rule sets that differ in scoring details, treating of
 	    some special positions etc.  Currently, <span class="application">Quarry</span> doesn’t make any difference
 	    between them.  However, existing rule controls should be enough in most cases.
@@ -318,7 +318,7 @@
 		  limit you to these—choose any size between 5×5 and 25×25 inclusive.
 		</p></dd><dt><span class="term">Traditional board size buttons</span></dt><dd><p>
 		  These buttons allows you to quickly select one of
-		  three “<span class="quote">traditional</span>” Go board sizes—either 9×9, 13×13 or
+		  three <span class="quote">“<span class="quote">traditional</span>”</span> Go board sizes—either 9×9, 13×13 or
 		  19×19.
 		</p></dd><dt><span class="term">Handicap controls</span></dt><dd><p>
 		  When one of the players is weaker, it is common practice in Go to give
@@ -334,49 +334,49 @@
 		  stones.  With free handicap, on the other hand, black player actively
 		  places the handicap stones at any intersections on the board.  Free
 		  handicap is practically not limited.
-		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+		</p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 		    <span class="application">Quarry</span> treats free handicap as non-obligatory: it allows black to place
 		    fewer handicap stones than specified in game rules (but not less than
 		    two.)
 		  </p></div><p>
-		  If you want an “<span class="quote">even</span>” game, simply set the handicap to
+		  If you want an <span class="quote">“<span class="quote">even</span>”</span> game, simply set the handicap to
 		  zero.
 		</p></dd><dt><span class="term"><span class="guilabel">Komi</span> spin button</span></dt><dd><p>
 		  <em class="firstterm">Komi</em> is the compensation to the white player for
 		  playing second.  It is usually non-integer to make draws impossible.
-		  The currently suggested komi for “<span class="quote">even</span>” game on 19×19 board
+		  The currently suggested komi for <span class="quote">“<span class="quote">even</span>”</span> game on 19×19 board
 		  is 6.5 points.  Smaller (or even negative) komi gives some advantage to
 		  black player and can be used in addition to or instead of handicap.
 		</p></dd></dl></div><p>
 	    See also
-	    <a href="#new-game-dialog-time-settings" title="Time Limit Settings">time limit settings
+	    <a class="link" href="#new-game-dialog-time-settings" title="Time Limit Settings">time limit settings
 	      description</a>.
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="new-game-dialog-amazons-rules"></a>Amazons Rules</h4></div></div></div><p>
+	  </p></div><div class="section" title="Amazons Rules"><div class="titlepage"><div><div><h4 class="title"><a id="new-game-dialog-amazons-rules"></a>Amazons Rules</h4></div></div></div><p>
 	    At present, Amazons rules in <span class="application">Quarry</span> are limited to board size and common
-	    <a href="#new-game-dialog-time-settings" title="Time Limit Settings">time limit settings</a>.
+	    <a class="link" href="#new-game-dialog-time-settings" title="Time Limit Settings">time limit settings</a>.
 	    Standard board size for Amazons is 10×10 (which is also selectable with the
 	    small button to the right), but you can choose anything from 5×5 to 25×25
 	    inclusive.
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="new-game-dialog-reversi-rules"></a>Reversi Rules</h4></div></div></div><p>
+	  </p></div><div class="section" title="Reversi Rules"><div class="titlepage"><div><div><h4 class="title"><a id="new-game-dialog-reversi-rules"></a>Reversi Rules</h4></div></div></div><p>
 	    Reversi rules in <span class="application">Quarry</span> are limited to board size and
-	    <a href="#new-game-dialog-time-settings" title="Time Limit Settings">time limit settings</a>
+	    <a class="link" href="#new-game-dialog-time-settings" title="Time Limit Settings">time limit settings</a>
 	    described just below this section.  Standard board size for Reversi is 8×8,
 	    though 10×10 boards are not uncommon either.  This is reflected by the choice
-	    of “<span class="quote">traditional</span>” board sizes with the buttons to the right.
+	    of <span class="quote">“<span class="quote">traditional</span>”</span> board sizes with the buttons to the right.
 	    However, in <span class="application">Quarry</span> you can select any even board size from 6×6 to 24×24
 	    inclusive.
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="new-game-dialog-time-settings"></a>Time Limit Settings</h4></div></div></div><p>
+	  </p></div><div class="section" title="Time Limit Settings"><div class="titlepage"><div><div><h4 class="title"><a id="new-game-dialog-time-settings"></a>Time Limit Settings</h4></div></div></div><p>
 	    <span class="application">Quarry</span> allows to play games with limited time for both players.  This also
 	    applies to computer program players—they have to honor the alloted time
 	    or lose.  Of course the programs are properly notified about the time limit
 	    settings and the remaining time.
-	  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	  </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 	      Computer opponents use CPU time to generate moves.  This means that they
 	      usually need less time on faster machines and more on slower machines.
 	      Also, if you run a computationally intensive task while playing, your
 	      computer opponents may become slower.  Finally, certain computer programs
 	      may also
-	      “<span class="quote">think</span>” on opponent’s time.
+	      <span class="quote">“<span class="quote">think</span>”</span> on opponent’s time.
 	    </p></div><p>
 	    <span class="application">Quarry</span> has four types of time control:
 	  </p><div class="variablelist"><dl><dt><span class="term">No limit</span></dt><dd><p>
@@ -392,7 +392,7 @@
 		</p></dd><dt><span class="term">Limited time per move</span></dt><dd><p>
 		  Each move has to be played in fixed time.  Time not used is not stored
 		  and not added to available time on next moves.  When using this mode,
-		  keep in mind that in most games there are “<span class="quote">difficult</span>”
+		  keep in mind that in most games there are <span class="quote">“<span class="quote">difficult</span>”</span>
 		  positions that require more pondering time.
 		</p></dd><dt><a id="canadian-overtime"></a><span class="term">Canadian overtime (also known as Canadian byo-yomi)</span></dt><dd><p>
 		  This time control is often used in Go, but has nothing Go-specific, so
@@ -414,7 +414,7 @@
 		  unlimited and they are completely equal to each other: time not used in
 		  one overtime period is not stored and not added to other overtime
 		  periods.
-		</p></dd></dl></div></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="new-game-record-dialog"></a>New Game Record Dialog</h2></div></div></div><p>
+		</p></dd></dl></div></div></div></div><div class="section" title="New Game Record Dialog"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="new-game-record-dialog"></a>New Game Record Dialog</h2></div></div></div><p>
 	The New Game Record dialog allows you to start a new game record without actually
 	playing a game.  When you are done entering game record information, press
 	the <span class="guibutton">Create</span> button.  Or press
@@ -426,7 +426,7 @@
 	      Reversi.  All the games supported by <span class="application">Quarry</span> are listed.
 	    </p></dd><dt><span class="term">Rules section</span></dt><dd><p>
 	      This section contains various controls for basic game rules.  They are
-	      described in more details in the <a href="#new-game-dialog" title="New Game Dialog">New Game
+	      described in more details in the <a class="link" href="#new-game-dialog" title="New Game Dialog">New Game
 	      dialog section</a>.
 	    </p><p>
 	      One important change is the <span class="guibutton">Place stones</span> check button
@@ -436,8 +436,8 @@
 	    </p></dd><dt><span class="term"><span class="guilabel">Short Game Information</span></span></dt><dd><p>
 	      Here you can enter the names of white and black player and the name of the
 	      game.  You can change or expand this information later, using the
-	      <a href="#game-information-dialog" title="Game Information Dialog">Game Information dialog </a>.
-	    </p></dd></dl></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="resuming-game-dialog"></a>Resuming Game Dialog</h2></div></div></div><p>
+	      <a class="link" href="#game-information-dialog" title="Game Information Dialog">Game Information dialog </a>.
+	    </p></dd></dl></div></div><div class="section" title="Resuming Game Dialog"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="resuming-game-dialog"></a>Resuming Game Dialog</h2></div></div></div><p>
 	The Resuming Game Dialog allows you to specify or correct game players when
 	resuming a game.  It also shows some information about the game, most of which is
 	not editable.
@@ -451,15 +451,15 @@
 	Normally, if the game was adjourned in <span class="application">Quarry</span> and you don’t alter computer player
 	names, it should guess correctly.  However, you can always override and correct
 	its decision.
-      </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="board-windows"></a>Board Windows</h2></div></div></div><p>
+      </p></div><div class="section" title="Board Windows"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="board-windows"></a>Board Windows</h2></div></div></div><p>
 	Board windows are the main part of <span class="application">Quarry</span>.  They are used to play games and view
 	and edit game records.  To the left in a window is the game board itself.  The
 	exact appearance of the board depends on the current game (Go, Amazons or Reversi)
-	and can be <a href="#preferences-go-board-appearance" title="Go Board Appearance">configured</a>.  On
+	and can be <a class="link" href="#preferences-go-board-appearance" title="Go Board Appearance">configured</a>.  On
 	the right side of the window there is information pane, including the comment
-	window.  There can also be the <a href="#game-tree-view" title="Game Tree View">game tree
+	window.  There can also be the <a class="link" href="#game-tree-view" title="Game Tree View">game tree
 	view</a> to the bottom of the right pane.
-      </p><div class="figure"><a id="board-window-screen-shot"></a><p class="title"><b>Figure 3.1. <span class="application">Quarry</span> Board Window showing Kogo’s Joseki Dictionary</b></p><div class="screenshot"><div class="mediaobject"><img src="figures/board-window.png" alt="&#10;&#9;&#9;Shows Quarry Board Window with Kogo&#x2019;s Joseki Dictionary.&#10;&#9;      " /></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="board"></a>The Board</h3></div></div></div><p>
+      </p><div class="figure"><a id="board-window-screen-shot"></a><p class="title"><b>Figure 3.1. <span class="application">Quarry</span> Board Window showing Kogo’s Joseki Dictionary</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="figures/board-window.png" alt="Shows Quarry Board Window with Kogo’s Joseki Dictionary." /></div></div></div></div><br class="figure-break" /><div class="section" title="The Board"><div class="titlepage"><div><div><h3 class="title"><a id="board"></a>The Board</h3></div></div></div><p>
 	  Board displays current game position, including pieces, markup, labels and
 	  variations of the current node.  Coordinate labels are shown on the edges of the
 	  board.  They depend on the current game.  In the top-left corner a small
@@ -468,16 +468,16 @@
 	  The last move made is marked.  Depending on the markup theme, this can be a
 	  cross or a bullet.  On the screen shot above, last placed stone at P15 is marked
 	  with a cross.
-	</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	</p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 	    This section can be improved. 
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="variations"></a>Variations</h4></div></div></div><p>
+	  </p></div><div class="section" title="Variations"><div class="titlepage"><div><div><h4 class="title"><a id="variations"></a>Variations</h4></div></div></div><p>
 	    <span class="application">Quarry</span> treats variations as siblings of the current node.  This is like Jago
 	    does and unlike CGoban.  You always see the current variation and it is not a
 	    potential for the next node/move.
 	  </p><p>
 	    On the board, non-current variations that contain a move are shown as small
 	    ghostly pieces.  Variations that don’t contain a move or contain a pass move
-	    (in Go) can be seen only in the <a href="#game-tree-view" title="Game Tree View">Game Tree
+	    (in Go) can be seen only in the <a class="link" href="#game-tree-view" title="Game Tree View">Game Tree
 	    View</a>.  Screen shot above shows two variations—at Q18 and Q19—of the
 	    white move on the board.
 	  </p><p>
@@ -488,38 +488,38 @@
 	    shift-right-clicking scrolls through the list of such variations.  Alternative
 	    ways of switching to different variations include using the Game Tree View and
 	    using menu items, toolbar buttons or
-	    <a href="#board-keyboard-navigation" title="Keyboard Navigation">keyboard shortcuts</a>.
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="board-keyboard-navigation"></a>Keyboard Navigation</h4></div></div></div><p>
+	    <a class="link" href="#board-keyboard-navigation" title="Keyboard Navigation">keyboard shortcuts</a>.
+	  </p></div><div class="section" title="Keyboard Navigation"><div class="titlepage"><div><div><h4 class="title"><a id="board-keyboard-navigation"></a>Keyboard Navigation</h4></div></div></div><p>
 	    Board has several keyboard shortcuts to ease game record navigation.
 	    Remember, that these shortcuts are active only if the board has focus, as
 	    indicated with a small rectangle in the top-left corner.  Otherwise, you
-	    should type them with <span><strong class="keycap">Alt</strong></span> modifier: more complicated
+	    should type them with <span class="keycap"><strong>Alt</strong></span> modifier: more complicated
 	    shortcuts work everywhere in Board Windows.
 
-	    </p><div class="table"><a id="id2513234"></a><p class="title"><b>Table 3.1. Board keyboard shortcuts</b></p><table summary="Board keyboard shortcuts" border="0"><colgroup><col /><col /></colgroup><thead><tr><th>Shortcut</th><th>Action</th></tr></thead><tbody><tr><td><span><strong class="keycap">Left arrow</strong></span></td><td>
+	    </p><div class="table"><a id="id2905107"></a><p class="title"><b>Table 3.1. Board keyboard shortcuts</b></p><div class="table-contents"><table summary="Board keyboard shortcuts" border="0"><colgroup><col /><col /></colgroup><thead><tr><th>Shortcut</th><th>Action</th></tr></thead><tbody><tr><td><span class="keycap"><strong>Left arrow</strong></span></td><td>
 		      Go to the previous node (current node’s parent.)
-		    </td></tr><tr><td><span><strong class="keycap">Right arrow</strong></span></td><td>
+		    </td></tr><tr><td><span class="keycap"><strong>Right arrow</strong></span></td><td>
 		      Go to the next node (current node’s child.)  By default, next node
 		      is the first child, but it is remembered if you switch to a
 		      different child.
-		    </td></tr><tr><td><span><strong class="keycap">Page Up</strong></span></td><td>
+		    </td></tr><tr><td><span class="keycap"><strong>Page Up</strong></span></td><td>
 		      Go ten nodes backward.  If there are less than ten nodes, stop at
 		      the root of the game tree.
-		    </td></tr><tr><td><span><strong class="keycap">Page Down</strong></span></td><td>
+		    </td></tr><tr><td><span class="keycap"><strong>Page Down</strong></span></td><td>
 		      Go ten nodes forward.  If there are less than ten nodes, stop at the
 		      branch end.
-		    </td></tr><tr><td><span><strong class="keycap">Home</strong></span></td><td>
+		    </td></tr><tr><td><span class="keycap"><strong>Home</strong></span></td><td>
 		      Go to the game tree root.
-		    </td></tr><tr><td><span><strong class="keycap">End</strong></span></td><td>
+		    </td></tr><tr><td><span class="keycap"><strong>End</strong></span></td><td>
 		      Go to the last node in the current branch (variation.)
-		    </td></tr><tr><td><span><strong class="keycap">Up arrow</strong></span></td><td>
+		    </td></tr><tr><td><span class="keycap"><strong>Up arrow</strong></span></td><td>
 		      Go to the previous variation of the current node.  I.e. go to the
 		      previous child of the parent of the current node.
-		    </td></tr><tr><td><span><strong class="keycap">Down arrow</strong></span></td><td>
+		    </td></tr><tr><td><span class="keycap"><strong>Down arrow</strong></span></td><td>
 		      Go to the next variation of the current node.  I.e. go to the next
 		      child of the parent of the current node.
-		    </td></tr></tbody></table></div><p>
-	  </p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="board-window-information-pane"></a>Board Window Information Pane</h3></div></div></div><p>
+		    </td></tr></tbody></table></div></div><p><br class="table-break" />
+	  </p></div></div><div class="section" title="Board Window Information Pane"><div class="titlepage"><div><div><h3 class="title"><a id="board-window-information-pane"></a>Board Window Information Pane</h3></div></div></div><p>
 	  Game Information Pane shows information about the game in general, about the
 	  last move made and about the current node.  Some of its components are optional
 	  and can be hidden in the <span class="guimenu">View</span> menu.
@@ -528,7 +528,7 @@
 		  At the top of the pane is the player information for both players.  It
 		  shows player name, team and rank (first line), plus game-specific
 		  information (second line.)  If name is missing,
-		  string “<span class="quote">[unknown]</span>” is shown in its place.  If team or rank
+		  string <span class="quote">“<span class="quote">[unknown]</span>”</span> is shown in its place.  If team or rank
 		  is not specified, they are simply not shown.
 		</p><p>
 		  Game-specific information includes number of captures made by a player
@@ -538,7 +538,7 @@
 		  Close to player information are the clocks.  When a game is played, they
 		  display the time left for a player.  Additionally, they can display
 		  number of pieces left in the current
-		  <a href="#canadian-overtime">Canadian overtime</a> period in
+		  <a class="link" href="#canadian-overtime">Canadian overtime</a> period in
 		  smaller digits to the right.  When a game record is viewed, clocks
 		  display time left <span class="emphasis"><em>after</em></span> move in the current node
 		  has been played.  Clocks can be empty if a game is played without time
@@ -549,7 +549,7 @@
 		  and the move itself.  Afterwards, player to move is specified.  This can
 		  sometimes seemingly contradict with the last move, but it is allowed to
 		  override player to move in game records (see
-		  <span class="guimenu">Edit</span>&nbsp;&rarr;&nbsp;<span class="guisubmenu">Player to Move</span>
+		  <span class="guimenu">Edit</span> → <span class="guisubmenu">Player to Move</span>
 		  submenu.)  This feature is often used in problem collections.
 		</p></dd><dt><span class="term">Game Result</span></dt><dd><p>
 		  Below move information game result is shown, but only at the very last
@@ -561,7 +561,7 @@
 		  include <span class="guibutton">Pass</span> (for Go) and
 		  <span class="guibutton">Resign</span>.  Because functionality of this buttons is
 		  quite rarely used and they take up space, you can hide them using
-		  <span class="guimenu">View</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Game Action Buttons</span> menu item.  They are shown by default mainly as a reminder
+		  <span class="guimenu">View</span> → <span class="guimenuitem">Game Action Buttons</span> menu item.  They are shown by default mainly as a reminder
 		  of the options you have.
 		</p></dd><dt><span class="term">Comment Window</span></dt><dd><p>
 		  Most of the right side is taken by comment window.  It displays any
@@ -573,25 +573,25 @@
 		  underlined font.  It can be edited just like comment and you don’t need
 		  any special steps to edit node name.  However, to create a name for a
 		  node that lacks one, use
-		  <span class="guimenu">Edit</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Edit Node Name</span> menu item.  It will insert a placeholder for node name in
+		  <span class="guimenu">Edit</span> → <span class="guimenuitem">Edit Node Name</span> menu item.  It will insert a placeholder for node name in
 		  the window, which you can then replace with actual name.  To delete a
 		  name, simply delete all its text.  <span class="application">Quarry</span> will notice it and remove node
 		  line from the window.
 		</p></dd><dt><span class="term">Game Tree View</span></dt><dd><p>
 		  Finally, there can be the Game Tree View, described in detail in the
-		  <a href="#game-tree-view" title="Game Tree View">next section</a>.  Its visibility is
+		  <a class="link" href="#game-tree-view" title="Game Tree View">next section</a>.  Its visibility is
 		  controlled by
-		  <span class="guimenu">View</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Game Tree</span> menu item and
-		  <a href="#preferences-game-tree" title="Game Tree">preferences</a>.
+		  <span class="guimenu">View</span> → <span class="guimenuitem">Game Tree</span> menu item and
+		  <a class="link" href="#preferences-game-tree" title="Game Tree">preferences</a>.
 		</p></dd></dl></div><p>
-	</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="game-tree-view"></a>Game Tree View</h3></div></div></div><p>
+	</p></div><div class="section" title="Game Tree View"><div class="titlepage"><div><div><h3 class="title"><a id="game-tree-view"></a>Game Tree View</h3></div></div></div><p>
 	  Game Tree View shows game record as a tree in a style used
 	  by <span class="application">CGoban1</span>.  Generally, it is of interest only if the
 	  game record contains variations.  For instance, a debut/joseki dictionary or a
 	  well-annotated game with alternate branches.  Visibility of Game Tree View is
 	  controlled with <span class="guimenuitem">Game Tree</span> item in
 	  <span class="guimenu">View</span> menu and with
-	  <a href="#preferences-game-tree" title="Game Tree">preferences</a>.
+	  <a class="link" href="#preferences-game-tree" title="Game Tree">preferences</a>.
 	</p><p>
 	  Node with a move of a specific player, including pass move in Go, are shown as
 	  pieces of player’s color.  Other nodes, including position setup, at present
@@ -610,14 +610,14 @@
 	  some of these can be absent from the tooltip, if they are not present in the
 	  node to begin with.  If node comment is too long, only first part of it is
 	  shown.  Tooltips can be disabled in
-	  <a href="#preferences-game-tree" title="Game Tree">preferences</a> if they look too
+	  <a class="link" href="#preferences-game-tree" title="Game Tree">preferences</a> if they look too
 	  distracting to you.
-	</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="board-window-menu"></a>Board Window Menu</h3></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="file-menu"></a><span class="guimenu">File</span> menu</h4></div></div></div><p>
+	</p></div><div class="section" title="Board Window Menu"><div class="titlepage"><div><div><h3 class="title"><a id="board-window-menu"></a>Board Window Menu</h3></div></div></div><div class="section" title="File menu"><div class="titlepage"><div><div><h4 class="title"><a id="file-menu"></a><span class="guimenu">File</span> menu</h4></div></div></div><p>
 	    </p><div class="variablelist"><dl><dt><span class="term"><span class="guimenuitem">New Game…</span></span></dt><dd><p>
-		    Show <a href="#new-game-dialog" title="New Game Dialog">New Game Dialog</a> to start a
+		    Show <a class="link" href="#new-game-dialog" title="New Game Dialog">New Game Dialog</a> to start a
 		    new game.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">New Game Record…</span></span></dt><dd><p>
-		    Show <a href="#new-game-record-dialog" title="New Game Record Dialog">New Game Record
+		    Show <a class="link" href="#new-game-record-dialog" title="New Game Record Dialog">New Game Record
 		      Dialog</a> to create a new game record without actually playing a
 		    game.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Open…</span></span></dt><dd><p>
@@ -625,7 +625,7 @@
 		    application.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Resume Game…</span></span></dt><dd><p>
 		    Open a game record and show
-		    <a href="#resuming-game-dialog" title="Resuming Game Dialog">Resume Game Dialog</a> to
+		    <a class="link" href="#resuming-game-dialog" title="Resuming Game Dialog">Resume Game Dialog</a> to
 		    resume the game.  Games adjourned in different applications can be
 		    resumed too.
 		  </p></dd><dt><span class="term"><span class="guisubmenu">Export…</span></span></dt><dd><p>
@@ -639,7 +639,7 @@
 			    the clipboard.  Pieces, circle and square markup and labels
 			    are exported.  Result, of course, can be imported into the
 			    Sensei’s Library.  Only available for Go games.
-			  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+			  </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 			      It is currenly impossible to export only part of the board.
 			      You need to manually delete unneeded information in such
 			      cases.
@@ -656,7 +656,7 @@
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Quit</span></span></dt><dd><p>
 		    Quit <span class="application">Quarry</span>.  Prompts to save any unsaved game records first.
 		  </p></dd></dl></div><p>
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="edit-menu"></a><span class="guimenu">Edit</span> menu</h4></div></div></div><p>
+	  </p></div><div class="section" title="Edit menu"><div class="titlepage"><div><div><h4 class="title"><a id="edit-menu"></a><span class="guimenu">Edit</span> menu</h4></div></div></div><p>
 	    </p><div class="variablelist"><dl><dt><span class="term"><span class="guimenuitem">Undo</span></span></dt><dd><p>
 		    Undo the last change made in the current game record.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Redo</span></span></dt><dd><p>
@@ -669,7 +669,7 @@
 		    Paste subtree contained in clipboard as last child of the current
 		    node.  This command may fail if e.g. the subtree was copied from a
 		    different kind of game.
-		  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+		  </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 		      It is currently impossible to determine if the clipboard contains
 		      anything, therefore this menu item is sensitive even if there is no
 		      subtree to paste.
@@ -703,7 +703,7 @@
 			  </p></dd><dt><span class="term"><span class="guimenuitem">Selected Markup</span></span></dt><dd><p>
 			    Activate tool which adds selected markup to the current
 			    position.
-			  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+			  </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 			      It is not recommended to use this type of markup, as it has
 			      no standard appearance and may confuse other users.
 			    </p></div></dd><dt><span class="term"><span class="guimenuitem">Label Tool</span></span></dt><dd><p>
@@ -749,7 +749,7 @@
 			    default.)
 			  </p></dd></dl></div><p>
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Find</span></span></dt><dd><p>
-		    Show the <a href="#find-dialog" title="Find Dialog">Find Dialog</a> to find a
+		    Show the <a class="link" href="#find-dialog" title="Find Dialog">Find Dialog</a> to find a
 		    string in node comments and/or names.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Find Next</span></span></dt><dd><p>
 		    Repeat the last search in forward direction.  If there were no last
@@ -758,13 +758,13 @@
 		    Repeat the last search in backward direction.  If there were no last
 		    search, acts just as <span class="guimenuitem">Find</span> menu item.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Game Information</span></span></dt><dd><p>
-		    Show the <a href="#game-information-dialog" title="Game Information Dialog">Game Information
+		    Show the <a class="link" href="#game-information-dialog" title="Game Information Dialog">Game Information
 		      Dialog</a> to view and/org edit game information.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Preferences</span></span></dt><dd><p>
-		    Show the <a href="#preferences" title="Chapter&#xA0;4.&#xA0;Settings">Preferences Dialog</a> to
+		    Show the <a class="link" href="#preferences" title="Chapter 4. Settings">Preferences Dialog</a> to
 		    change <span class="application">Quarry</span> settings.
 		  </p></dd></dl></div><p>
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="view-menu"></a><span class="guimenu">View</span> menu</h4></div></div></div><p>
+	  </p></div><div class="section" title="View menu"><div class="titlepage"><div><div><h4 class="title"><a id="view-menu"></a><span class="guimenu">View</span> menu</h4></div></div></div><p>
 	    </p><div class="variablelist"><dl><dt><span class="term"><span class="guimenuitem">Main Toolbar</span></span></dt><dd><p>
 		    Show or hide main toolbar in this window.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Editing Toolbar</span></span></dt><dd><p>
@@ -776,26 +776,26 @@
 		    game and <span class="guibutton">Resign</span>.)  They have quite rarely used
 		    functionality and take precious space on the right.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Game Tree</span></span></dt><dd><p>
-		    Show or hide <a href="#game-tree-view" title="Game Tree View">Game Tree View</a> in
+		    Show or hide <a class="link" href="#game-tree-view" title="Game Tree View">Game Tree View</a> in
 		    this window.  Its visibility can also be globally changed in the
-		    <a href="#preferences-game-tree" title="Game Tree">preferences</a>.
+		    <a class="link" href="#preferences-game-tree" title="Game Tree">preferences</a>.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Recenter on Current Node</span></span></dt><dd><p>
-		    Recenter <a href="#game-tree-view" title="Game Tree View">Game Tree View</a> on the
+		    Recenter <a class="link" href="#game-tree-view" title="Game Tree View">Game Tree View</a> on the
 		    current node.  Of course, the view should be shown to begin with.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Control Center</span></span></dt><dd><p>
-		    Show <a href="#when-start" title="When You Start Quarry"><span class="application">Quarry</span> Control Center</a>.
+		    Show <a class="link" href="#when-start" title="When You Start Quarry"><span class="application">Quarry</span> Control Center</a>.
 		  </p></dd></dl></div><p>
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="play-menu"></a><span class="guimenu">Play</span> menu</h4></div></div></div><p>
+	  </p></div><div class="section" title="Play menu"><div class="titlepage"><div><div><h4 class="title"><a id="play-menu"></a><span class="guimenu">Play</span> menu</h4></div></div></div><p>
 	    </p><div class="variablelist"><dl><dt><span class="term"><span class="guimenuitem">Pass</span></span></dt><dd><p>
 		    Play a pass move.  (Only valid in Go.)
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Resign</span></span></dt><dd><p>
 		    Resign current game.  Opponent is declared a winner.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Adjourn Game</span></span></dt><dd><p>
 		    Adjourn current game and save game record, so it can be later
-		    <a href="#resume-game" title="To Resume a Game">resumed</a>.
+		    <a class="link" href="#resume-game" title="To Resume a Game">resumed</a>.
 		  </p></dd></dl></div><p>
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="go-menu"></a><span class="guimenu">Go</span> menu</h4></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
-	      This menu’s title is English verb “<span class="quote">go</span>”, not game name.
+	  </p></div><div class="section" title="Go menu"><div class="titlepage"><div><div><h4 class="title"><a id="go-menu"></a><span class="guimenu">Go</span> menu</h4></div></div></div><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	      This menu’s title is English verb <span class="quote">“<span class="quote">go</span>”</span>, not game name.
 	    </p></div><p>
 	    </p><div class="variablelist"><dl><dt><span class="term"><span class="guimenuitem">Previous Node</span></span></dt><dd><p>
 		    Go to the previous node (current node’s parent.)
@@ -821,23 +821,23 @@
 		    child of the parent of the current node.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">Go to Named Node…</span></span></dt><dd><p>
 		    Go to a named node given its name.  You can also use
-		    <a href="#find-dialog" title="Find Dialog">Find Dialog</a> for this purpose, but
+		    <a class="link" href="#find-dialog" title="Find Dialog">Find Dialog</a> for this purpose, but
 		    this way there is completion on node names.
 		  </p></dd></dl></div><p>
-	  </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="help-menu"></a><span class="guimenu">Help</span> menu</h4></div></div></div><p>
+	  </p></div><div class="section" title="Help menu"><div class="titlepage"><div><div><h4 class="title"><a id="help-menu"></a><span class="guimenu">Help</span> menu</h4></div></div></div><p>
 	    </p><div class="variablelist"><dl><dt><span class="term"><span class="guimenuitem">Contents</span></span></dt><dd><p>
 		    Show this help.
 		  </p></dd><dt><span class="term"><span class="guimenuitem">About</span></span></dt><dd><p>
 		    Show short information about <span class="application">Quarry</span> and its version.
 		  </p></dd></dl></div><p>
-	  </p></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="find-dialog"></a>Find Dialog</h2></div></div></div><p>
+	  </p></div></div></div><div class="section" title="Find Dialog"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="find-dialog"></a>Find Dialog</h2></div></div></div><p>
 	Find Dialog allows you to search for text in node names and/or comments.  It is
 	invaluable for large game records, especially those containing multiple branches,
 	like debut/joseki dictionaries.
       </p><p>
-	When a node with matching text is found, <a href="#board-windows" title="Board Windows">board
+	When a node with matching text is found, <a class="link" href="#board-windows" title="Board Windows">board
 	  window</a> switches to it, if needed.  Matching text is selected in
-	<a href="#board-window-information-pane" title="Board Window Information Pane">information pane</a>.  Search can
+	<a class="link" href="#board-window-information-pane" title="Board Window Information Pane">information pane</a>.  Search can
 	be repeated later without opening this dialog using <span class="guimenu">Edit</span> menu
 	items or from keyboard.
       </p><p>
@@ -855,8 +855,8 @@
 	      In this case, the dialog will be hidden after any successful search.  You
 	      can repeat search afterwards using <span class="guimenuitem">Find Next</span>
 	      and <span class="guimenuitem">Find Previous</span> items of
-	      <span class="guimenu">Edit</span> menu or using <span><strong class="keycap">Ctrl+G</strong></span> and
-	      <span><strong class="keycap">Shift+Ctrl+G</strong></span> key combinations.
+	      <span class="guimenu">Edit</span> menu or using <span class="keycap"><strong>Ctrl+G</strong></span> and
+	      <span class="keycap"><strong>Shift+Ctrl+G</strong></span> key combinations.
 	    </p></dd><dt><span class="term"><span class="guilabel">Search scope</span></span></dt><dd><p>
 	      Search domain can include the whole game record tree or the current node
 	      only.  The latter option is only interesting if current node’s comment is
@@ -880,7 +880,7 @@
 	    </p></dd><dt><span class="term"><span class="guibutton">Close</span> button</span></dt><dd><p>
 	      Close the dialog without performing any further search.  Use it when you’ve
 	      finished searching or changed your mind.
-	    </p></dd></dl></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="game-information-dialog"></a>Game Information Dialog</h2></div></div></div><p>
+	    </p></dd></dl></div></div><div class="section" title="Game Information Dialog"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="game-information-dialog"></a>Game Information Dialog</h2></div></div></div><p>
 	The Game Information Dialog allows you to set values that describe game tree as a
 	whole and are not specific to a particular move or position in the game.  It has a
 	lot of fields which are splitted in three pages.  All fields are optional and can
@@ -904,7 +904,7 @@
 	      game took place.
 	    </p><p>
 	      Values of these fields are also displayed in the
-	      <a href="#board-window-information-pane" title="Board Window Information Pane">right column of board
+	      <a class="link" href="#board-window-information-pane" title="Board Window Information Pane">right column of board
 	      windows</a>.
 	    </p></dd><dt><span class="term"><span class="guilabel">Game Name</span></span></dt><dd><p>
 	      The name of the game.  This field can be empty if the game is not special
@@ -919,17 +919,17 @@
 	      The event this game is part of.  For instance, this can be the name of a
 	      tournament.  This field is often empty.
 	    </p></dd><dt><span class="term"><span class="guilabel">Round</span></span></dt><dd><p>
-	      The round this game is part of.  For instance “<span class="quote">1st round</span>” or
-	      “<span class="quote">Semifinal</span>”.  This field is often empty, especially
+	      The round this game is part of.  For instance <span class="quote">“<span class="quote">1st round</span>”</span> or
+	      <span class="quote">“<span class="quote">Semifinal</span>”</span>.  This field is often empty, especially
 	      if <span class="guilabel">Event</span> is.
 	    </p></dd><dt><span class="term"><span class="guilabel">Rule set</span></span></dt><dd><p>
 	      Descriptive name of the rules this game was played in accordance with.  For
-	      instance, for Go this can be “<span class="quote">Japanese</span>”, “<span class="quote">Chinese</span>”
+	      instance, for Go this can be <span class="quote">“<span class="quote">Japanese</span>”</span>, <span class="quote">“<span class="quote">Chinese</span>”</span>
 	      etc.
 	    </p></dd><dt><span class="term"><span class="guilabel">Handicap</span></span></dt><dd><p>
 	      For Go only: number of stones the black was allowed to place on his first
 	      move.  This field is either 0 or not set for the games with no handicap.
-	    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	    </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 		Value of this field is only informational.  It doesn’t imply any
 		particular setting of the black stones.
 	      </p></div></dd><dt><span class="term"><span class="guilabel">Komi</span></span></dt><dd><p>
@@ -941,12 +941,12 @@
 	      time limit.
 	    </p></dd><dt><span class="term"><span class="guilabel">Overtime</span></span></dt><dd><p>
 	      Description of the overtime rules used for this game.  For
-	      instance, “<span class="quote">25/600 Canadian</span>” means Canadian overtime with 10
+	      instance, <span class="quote">“<span class="quote">25/600 Canadian</span>”</span> means Canadian overtime with 10
 	      minutes (600 seconds) for every 25 moves.
 	    </p></dd><dt><span class="term"><span class="guilabel">Game result</span></span></dt><dd><p>
 	      The result of the game in SGF format.
 
-	      </p><div class="table"><a id="id2515906"></a><p class="title"><b>Table 3.2. Valid <span class="guilabel">Game result</span> values</b></p><table summary="Valid Game result values" border="0"><colgroup><col /><col /></colgroup><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td>Void</td><td>
+	      </p><div class="table"><a id="id2907767"></a><p class="title"><b>Table 3.2. Valid <span class="guilabel">Game result</span> values</b></p><div class="table-contents"><table summary="Valid Game result values" border="0"><colgroup><col /><col /></colgroup><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td>Void</td><td>
 			There is no result yet (the game is not finished) or there can be
 			no result at all (e.g. for problems.)
 		      </td></tr><tr><td>0 <span class="emphasis"><em>or</em></span> Draw</td><td>
@@ -956,7 +956,7 @@
 			<span class="emphasis"><em>or</em></span> B+<strong class="userinput"><code>score</code></strong>
 		      </td><td>
 			A player has won by the specified score.  For
-			instance, “<span class="quote">W+6.5</span>” means that white has won by 6.5
+			instance, <span class="quote">“<span class="quote">W+6.5</span>”</span> means that white has won by 6.5
 			points.
 		      </td></tr><tr><td>W+ <span class="emphasis"><em>or</em></span> B+</td><td>
 			A player has won.  Used mainly for the games without a notion for
@@ -980,7 +980,7 @@
 			move.
 		      </td></tr><tr><td>?</td><td>
 			Game result is unknown.
-		      </td></tr></tbody></table></div><p>
+		      </td></tr></tbody></table></div></div><p><br class="table-break" />
 	    </p></dd><dt><span class="term"><span class="guilabel">Opening played</span></span></dt><dd><p>
 	      Description of the opening played in the game.  This field is often empty.
 	    </p></dd><dt><span class="term"><span class="guilabel">Comment / description</span></span></dt><dd><p>
@@ -996,43 +996,43 @@
 	    </p></dd><dt><span class="term"><span class="guilabel">Entered by</span></span></dt><dd><p>
 	      Name of the person who entered the game record.  Usually empty for
 	      automatically created records.
-	    </p></dd></dl></div></div></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="preferences"></a>Chapter 4. Settings</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#preferences-gtk-ui">General Interface</a></span></dt><dt><span class="section"><a href="#preferences-game-tree">Game Tree</a></span></dt><dt><span class="section"><a href="#preferences-gtp-engines">GTP Engines</a></span></dt><dd><dl><dt><span class="section"><a href="#preferences-gtp-engine-information-dialog">GTP Engine Information Dialog</a></span></dt></dl></dd><dt><span class="section"><a href="#preferences-saving-game-records">Saving Game Records</a></span></dt><dt><span class="section"><a href="#preferences-go-board-appearance">Go Board Appearance</a></span></dt><dt><span class="section"><a href="#preferences-amazons-board-appearance">Amazons Board Appearance</a></span></dt><dt><span class="section"><a href="#preferences-reversi-board-appearance">Reversi Board Appearance</a></span></dt></dl></div><p>
+	    </p></dd></dl></div></div></div><div class="chapter" title="Chapter 4. Settings"><div class="titlepage"><div><div><h2 class="title"><a id="preferences"></a>Chapter 4. Settings</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#preferences-gtk-ui">General Interface</a></span></dt><dt><span class="section"><a href="#preferences-game-tree">Game Tree</a></span></dt><dt><span class="section"><a href="#preferences-gtp-engines">GTP Engines</a></span></dt><dd><dl><dt><span class="section"><a href="#preferences-gtp-engine-information-dialog">GTP Engine Information Dialog</a></span></dt></dl></dd><dt><span class="section"><a href="#preferences-saving-game-records">Saving Game Records</a></span></dt><dt><span class="section"><a href="#preferences-go-board-appearance">Go Board Appearance</a></span></dt><dt><span class="section"><a href="#preferences-amazons-board-appearance">Amazons Board Appearance</a></span></dt><dt><span class="section"><a href="#preferences-reversi-board-appearance">Reversi Board Appearance</a></span></dt></dl></div><p>
       To configure <span class="application">Quarry</span> either click the <span class="guibutton">Preferences</span> button in the
-      <a href="#when-start" title="When You Start Quarry">Control Center window</a> or choose
-      <span class="guimenu">Edit</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Preferences</span>
+      <a class="link" href="#when-start" title="When You Start Quarry">Control Center window</a> or choose
+      <span class="guimenu">Edit</span> → <span class="guimenuitem">Preferences</span>
       menu item.
     </p><p>
       The Preferences dialog is displayed.  It consists of the following categories:
-    </p><div class="itemizedlist"><ul type="disc"><li><p>
+    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
 	  General
 
-	  </p><div class="itemizedlist"><ul type="circle"><li><p><a href="#preferences-gtk-ui" title="General Interface">Interface</a></p></li></ul></div><p>
-	</p></li><li><p>
+	  </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p><a class="link" href="#preferences-gtk-ui" title="General Interface">Interface</a></p></li></ul></div><p>
+	</p></li><li class="listitem"><p>
 	  Editing &amp; Viewing
 
-	  </p><div class="itemizedlist"><ul type="circle"><li><p><a href="#preferences-game-tree" title="Game Tree">Game Tree</a></p></li></ul></div><p>
-	</p></li><li><p>
+	  </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p><a class="link" href="#preferences-game-tree" title="Game Tree">Game Tree</a></p></li></ul></div><p>
+	</p></li><li class="listitem"><p>
 	  GTP
 
-	  </p><div class="itemizedlist"><ul type="circle"><li><p><a href="#preferences-gtp-engines" title="GTP Engines">GTP Engines</a></p></li></ul></div><p>
-	</p></li><li><p>
+	  </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p><a class="link" href="#preferences-gtp-engines" title="GTP Engines">GTP Engines</a></p></li></ul></div><p>
+	</p></li><li class="listitem"><p>
 	  Game Records (SGF)
 
-	  </p><div class="itemizedlist"><ul type="circle"><li><p><a href="#preferences-saving-game-records" title="Saving Game Records">Saving</a></p></li></ul></div><p>
-	</p></li><li><p>
+	  </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p><a class="link" href="#preferences-saving-game-records" title="Saving Game Records">Saving</a></p></li></ul></div><p>
+	</p></li><li class="listitem"><p>
 	  Board Appearance
 
-	  </p><div class="itemizedlist"><ul type="circle"><li><p><a href="#preferences-go-board-appearance" title="Go Board Appearance">Go Board
-		  Appearance</a></p></li><li><p><a href="#preferences-amazons-board-appearance" title="Amazons Board Appearance">Amazons Board
-		  Appearance</a></p></li><li><p><a href="#preferences-reversi-board-appearance" title="Reversi Board Appearance">Reversi Board
+	  </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p><a class="link" href="#preferences-go-board-appearance" title="Go Board Appearance">Go Board
+		  Appearance</a></p></li><li class="listitem"><p><a class="link" href="#preferences-amazons-board-appearance" title="Amazons Board Appearance">Amazons Board
+		  Appearance</a></p></li><li class="listitem"><p><a class="link" href="#preferences-reversi-board-appearance" title="Reversi Board Appearance">Reversi Board
 		  Appearance</a></p></li></ul></div><p>
-	</p></li></ul></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-gtk-ui"></a>General Interface</h2></div></div></div><p>
+	</p></li></ul></div><div class="section" title="General Interface"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-gtk-ui"></a>General Interface</h2></div></div></div><p>
 	General interface of <span class="application">Quarry</span> can be configured at this page.  It is not really
 	related to the functionality of the application.
       </p><div class="variablelist"><dl><dt><span class="term"><span class="guilabel">File Chooser Dialog Style</span></span></dt><dd><p>
 	      You can use either the new file chooser or the old one, which was the
 	      default on pre-2.4 GTK+.
-	    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+	    </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
 		This option will be removed in <span class="application">Quarry</span> ver. 0.3.  It was added when the new
 		file chooser was in early development stages and had significant usability
 		problems.  Nowadays it has little sense to keep supporting the old one.
@@ -1040,16 +1040,16 @@
 	      By default, <span class="application">Quarry</span> uses desktop settings for all its toolbars.  However, you
 	      can choose specific style for each of three toolbar kinds.  You can also
 	      return toolbars to using desktop defaults here.
-	    </p></dd></dl></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-game-tree"></a>Game Tree</h2></div></div></div><p>
+	    </p></dd></dl></div></div><div class="section" title="Game Tree"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-game-tree"></a>Game Tree</h2></div></div></div><p>
 	Here you can customize appearance and behavior of the
-	<a href="#game-tree-view" title="Game Tree View">Game Tree View</a>.
+	<a class="link" href="#game-tree-view" title="Game Tree View">Game Tree View</a>.
       </p><div class="variablelist"><dl><dt><span class="term"><span class="guilabel">Show Game Tree</span></span></dt><dd><p>
 	      You can choose whether the Game Tree View is shown in
-	      <a href="#board-windows" title="Board Windows">Board Windows</a> by default.  If you
+	      <a class="link" href="#board-windows" title="Board Windows">Board Windows</a> by default.  If you
 	      choose <span class="guilabel">Automatically</span> option, it will be shown if game
 	      record has anything in addition to the main branch.  In any case, you can
 	      show or hide the view manually, using
-	      <span class="guimenu">View</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Game Tree</span> menu item.  In this case, automatic showing will be disabled,
+	      <span class="guimenu">View</span> → <span class="guimenuitem">Game Tree</span> menu item.  In this case, automatic showing will be disabled,
 	      even if corresponding option is selected.
 	    </p></dd><dt><span class="term"><span class="guilabel">Track Tree’s Current Node</span></span></dt><dd><p>
 	      You can choose whether the view should track the current node,
@@ -1058,7 +1058,7 @@
 	      scrolling if you intentionally scrolled it to some part of the tree not
 	      containing the current node.  You can always force the view to display the
 	      current node by using
-	      <span class="guimenu">View</span>&nbsp;&rarr;&nbsp;<span class="guimenuitem">Recenter on Current Node</span> menu item.
+	      <span class="guimenu">View</span> → <span class="guimenuitem">Recenter on Current Node</span> menu item.
 	    </p><p>
 	      You can also choose whether the view will scroll minimal possible distance
 	      while tracking (i.e. the current node will be somewhere near an edge), or if
@@ -1066,9 +1066,9 @@
 	      make sense if tracking is disabled, so they are disabled then too.
 	    </p></dd><dt><span class="term"><span class="guilabel">Show tooltips</span></span></dt><dd><p>
 	      Choose whether Game Tree View should show tooltips over nodes.
-	      See <a href="#game-tree-view" title="Game Tree View">view description</a> for details.  You
+	      See <a class="link" href="#game-tree-view" title="Game Tree View">view description</a> for details.  You
 	      may want to disable tooltips if they look too distracting.
-	    </p></dd></dl></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-gtp-engines"></a>GTP Engines</h2></div></div></div><p>
+	    </p></dd></dl></div></div><div class="section" title="GTP Engines"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-gtp-engines"></a>GTP Engines</h2></div></div></div><p>
 	At this page, all game-playing programs registered in <span class="application">Quarry</span> are shown.  You can
 	register new programs and modify information in existing entries.
       </p><p>
@@ -1081,8 +1081,8 @@
 	the rest of information is reported by the program itself.
       </p><p>
 	Programs from the list are also shown in the
-	<a href="#new-game-dialog" title="New Game Dialog">New Game</a> and
-	<a href="#resuming-game-dialog" title="Resuming Game Dialog">Resuming Game</a> dialogs as available
+	<a class="link" href="#new-game-dialog" title="New Game Dialog">New Game</a> and
+	<a class="link" href="#resuming-game-dialog" title="Resuming Game Dialog">Resuming Game</a> dialogs as available
 	computer opponents.  However, you can hide some of them by removing the mark
 	beside the program name in the <span class="guilabel">Show</span> column.  This may be
 	better than removing a program record altogether in case you later regain your
@@ -1095,12 +1095,12 @@
 	      These two buttons allow you to register another program, or modify
 	      information about an already registered one, correspondingly.  They both pop
 	      up the
-	      <a href="#preferences-gtp-engine-information-dialog" title="GTP Engine Information Dialog">GTP Engine
+	      <a class="link" href="#preferences-gtp-engine-information-dialog" title="GTP Engine Information Dialog">GTP Engine
 		Information dialog</a>.
 	    </p></dd><dt><span class="term"><span class="guibutton">Remove</span> button</span></dt><dd><p>
 	      This button removes a game-playing program from the list of registered
 	      programs.  The unregistered program will not appear in the
-	      <a href="#new-game-dialog" title="New Game Dialog">New Game dialog</a> as an available
+	      <a class="link" href="#new-game-dialog" title="New Game Dialog">New Game dialog</a> as an available
 	      opponent.  Of course, the program itself is not touched and you can
 	      re-register it in <span class="application">Quarry</span> later.
 	    </p></dd><dt><span class="term"><span class="guibutton">Move Up</span> and <span class="guibutton">Move Down</span>
@@ -1110,7 +1110,7 @@
 	      this page, so you may want to place more frequently used programs on the
 	      top.  Another way to reorder GTP programs is to drag-and-drop their names in
 	      the list.
-	    </p></dd></dl></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="preferences-gtp-engine-information-dialog"></a>GTP Engine Information Dialog</h3></div></div></div><p>
+	    </p></dd></dl></div><div class="section" title="GTP Engine Information Dialog"><div class="titlepage"><div><div><h3 class="title"><a id="preferences-gtp-engine-information-dialog"></a>GTP Engine Information Dialog</h3></div></div></div><p>
 	  This dialog is shown whenever you want to register a game-playing program in
 	  <span class="application">Quarry</span> or modify information about an already registered one.  Depending on the
 	  situation, it can be titled either <span class="guilabel">New GTP Engine</span> or
@@ -1118,9 +1118,9 @@
 	  dialog, press the <span class="guibutton">Add</span> or <span class="guibutton">OK</span>
 	  button.  <span class="application">Quarry</span> will launch the program to check if it works and ask it for some
 	  information.
-	</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="preferences-gtp-engine-information-dialog-freeze"></a>Note</h3><p>
+	</p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title"><a id="preferences-gtp-engine-information-dialog-freeze"></a>Note</h3><p>
 	    If the message
-	    “<span class="quote">Querying engine’s name, version and known commands…</span>” appears and
+	    <span class="quote">“<span class="quote">Querying engine’s name, version and known commands…</span>”</span> appears and
 	    persists for too long (more than a few seconds), this most likely indicates
 	    that the command line you specify starts the program in non-GTP mode or starts
 	    a wrong program to begin with.  If you don’t expect the program to be very
@@ -1138,70 +1138,54 @@
 		should be used, see the manual of the program in question.
 	      </p><p>
 		For
-		<a href="http://www.gnugo.org/gnugo.html" target="_top"><span class="application">GNU
+		<a class="ulink" href="http://www.gnugo.org/gnugo.html" target="_top"><span class="application">GNU
 		Go</span></a>, the command line should look like this (note the
 		double hyphens):
 	      </p><p>
-		<span><strong class="command">gnugo --mode gtp --quiet</strong></span>
+		<span class="command"><strong>gnugo --mode gtp --quiet</strong></span>
 	      </p><p>
 		You may also want to specify additional options.  See <span class="application">GNU
 		Go</span> documentation for more information.
 	      </p></dd><dt><span class="term"><span class="guilabel">Screen name</span></span></dt><dd><p>
 		In this field you can specify the way <span class="application">Quarry</span> will display the name of the
 		program.  You can enter the full name or use special symbols
-		“<span class="quote">%n</span>” and “<span class="quote">%v</span>”.  They will be replaced with the
+		<span class="quote">“<span class="quote">%n</span>”</span> and <span class="quote">“<span class="quote">%v</span>”</span>.  They will be replaced with the
 		name and version of the program as it reports them itself.  In most cases
-		the default value of “<span class="quote">%n %v</span>” is what you want, but sometimes
+		the default value of <span class="quote">“<span class="quote">%n %v</span>”</span> is what you want, but sometimes
 		it makes sense to alter it.  For instance, you can specify
-		“<span class="quote">%n %v level 5</span>” here if you fixed program’s level in the
+		<span class="quote">“<span class="quote">%n %v level 5</span>”</span> here if you fixed program’s level in the
 		command line.  If, for some reason, you need the percent sign in the name,
-		type it in as “<span class="quote">%%</span>” (the percent sign is used as
+		type it in as <span class="quote">“<span class="quote">%%</span>”</span> (the percent sign is used as
 		<em class="firstterm">escape symbol</em> in this field.)
-	      </p></dd></dl></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-saving-game-records"></a>Saving Game Records</h2></div></div></div><p>
+	      </p></dd></dl></div></div></div><div class="section" title="Saving Game Records"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-saving-game-records"></a>Saving Game Records</h2></div></div></div><p>
 	Currently, you can only specify whether to save game records in UTF-8 or to
 	preserve original encoding.  The former option is recommended because UTF-8 can
 	encode any character and because Quarry loads UTF-8 encoded game records faster
 	than with any other encoding.  However, you may want to preserve original encoding
 	if, for instance, you use other SGF editor/viewer with poor support for UTF-8 or
 	this is required for some reason for distribution.
-      </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-go-board-appearance"></a>Go Board Appearance</h2></div></div></div><p>
+      </p></div><div class="section" title="Go Board Appearance"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-go-board-appearance"></a>Go Board Appearance</h2></div></div></div><p>
 	Sorry, not documented yet… 
-      </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-amazons-board-appearance"></a>Amazons Board Appearance</h2></div></div></div><p>
+      </p></div><div class="section" title="Amazons Board Appearance"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-amazons-board-appearance"></a>Amazons Board Appearance</h2></div></div></div><p>
 	Sorry, not documented yet… 
-      </p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-reversi-board-appearance"></a>Reversi Board Appearance</h2></div></div></div><p>
+      </p></div><div class="section" title="Reversi Board Appearance"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="preferences-reversi-board-appearance"></a>Reversi Board Appearance</h2></div></div></div><p>
 	Sorry, not documented yet… 
-      </p></div></div><div class="appendix" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="authors"></a>Appendix A. <span class="application">Quarry</span> Authors</h2></div></div></div><div class="simplesect" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2517181"></a>Programming</h2></div></div></div><p>
-      </p><div class="variablelist"><dl><dt><span class="term">
-	    <span class="firstname">Paul</span> <span class="surname">Pogonyshev</span>
+      </p></div></div><div class="appendix" title="Appendix A. Quarry Authors"><div class="titlepage"><div><div><h2 class="title"><a id="authors"></a>Appendix A. <span class="application">Quarry</span> Authors</h2></div></div></div><div class="simplesect" title="Programming"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2908939"></a>Programming</h2></div></div></div><p>
+	  <span class="author"><span class="firstname">Paul</span> <span class="surname">Pogonyshev</span></span>
 
-	  </span></dt><dd><p>
-	      Main author, programming, design.
-	    </p></dd><dt><span class="term">
-	    <span class="firstname">Martin</span> <span class="surname">Holters</span>
+	  <span class="author"><span class="firstname">Ethan</span> <span class="surname">Baldridge</span></span>
 
-	  </span></dt><dd><p>
-	      Programming.
-	    </p></dd></dl></div><p>
-    </p></div><div class="simplesect" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2517854"></a>Translation</h2></div></div></div><p>
-      </p><div class="variablelist"><dl><dt><span class="term">
-	    <span class="firstname">Jérémie</span> <span class="surname">Knuesel</span>
+	  <span class="author"><span class="firstname">Martin</span> <span class="surname">Holters</span></span>
+    </p></div><div class="simplesect" title="Translation"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2909608"></a>Translation</h2></div></div></div><p>
+	
+	  <span class="author"><span class="firstname">Jérémie</span> <span class="surname">Knuesel</span></span>
 
-	  </span></dt><dd><p>
-	      French translation.
-	    </p></dd><dt><span class="term">
-	    <span class="firstname">Paul</span> <span class="surname">Pogonyshev</span>
+	  <span class="author"><span class="firstname">Paul</span> <span class="surname">Pogonyshev</span></span>
 
-	  </span></dt><dd><p>
-	      British English and Russian translations.
-	    </p></dd><dt><span class="term">
-	    <span class="firstname">Robert</span> <span class="surname">Stefaniuk</span>
-
-	  </span></dt><dd><p>
-	      Polish translation.
-	    </p></dd></dl></div><p>
-    </p></div></div><div class="appendix" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="fdl"></a>Appendix B. GNU Free Documentation License</h2></div><div><p class="releaseinfo">
+	  <span class="author"><span class="firstname">Robert</span> <span class="surname">Stefaniuk</span></span>
+    </p></div></div><div class="appendix" title="Appendix B. GNU Free Documentation License"><div class="titlepage"><div><div><h2 class="title"><a id="fdl"></a>Appendix B. GNU Free Documentation License</h2></div><div><p class="releaseinfo">
       Version 1.2, November 2002
-    </p></div><div><p class="copyright">Copyright © 2000, 2001, 2002 Free Software Foundation, Inc.</p></div><div><div class="legalnotice"><a id="fdl-legalnotice"></a><p>
+    </p></div><div><p class="copyright">Copyright © 2000, 2001, 2002 Free Software Foundation, Inc.</p></div><div><div class="legalnotice" title="Legal Notice"><a id="fdl-legalnotice"></a><p>
 	</p><div class="address"><p><br />
 	  Free Software Foundation, Inc.<br />
 	  <span class="street">51 Franklin Street, Fifth Floor</span>,<br />
@@ -1211,21 +1195,21 @@
 	</p></div><p>
 	Everyone is permitted to copy and distribute verbatim copies of this license
 	document, but changing it is not allowed.
-      </p></div></div></div></div><h3><a id="id2517780"></a>Version 1.2, November 2002</h3><div class="blockquote"><blockquote class="blockquote"><p>
+      </p></div></div></div></div><div class="simplesect" title="GNU Free Documentation License"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id2909499"></a>GNU Free Documentation License</h2></div></div></div><h4><a id="id2909509"></a>Version 1.2, November 2002</h4><div class="blockquote"><blockquote class="blockquote"><p>
       Copyright © 2000, 2001, 2002 Free Software Foundation, Inc. 51 Franklin St,
       Fifth Floor, Boston, MA 02110-1301 USA
     </p><p>
       Everyone is permitted to copy and distribute verbatim copies of this license
       document, but changing it is not allowed.
-    </p></blockquote></div><div class="simplesect" lang="en" xml:lang="en"><div class="titlepage"></div><h3><a id="fdl-preamble"></a>0. PREAMBLE</h3><p>
+    </p></blockquote></div><h4><a id="fdl-preamble"></a>0. PREAMBLE</h4><p>
       The purpose of this License is to make a manual, textbook, or other functional and
-      useful document “<span class="quote">free</span>” in the sense of freedom: to assure everyone the
+      useful document <span class="quote">“<span class="quote">free</span>”</span> in the sense of freedom: to assure everyone the
       effective freedom to copy and redistribute it, with or without modifying it, either
       commercially or noncommercially.  Secondarily, this License preserves for the author
       and publisher a way to get credit for their work, while not being considered
       responsible for modifications made by others.
     </p><p>
-      This License is a kind of “<span class="quote">copyleft</span>”, which means that derivative works
+      This License is a kind of <span class="quote">“<span class="quote">copyleft</span>”</span>, which means that derivative works
       of the document must themselves be free in the same sense.  It complements the GNU
       General Public License, which is a copyleft license designed for free software.
     </p><p>
@@ -1235,43 +1219,43 @@
       limited to software manuals; it can be used for any textual work, regardless of
       subject matter or whether it is published as a printed book.  We recommend this
       License principally for works whose purpose is instruction or reference.
-    </p><h3><a id="fdl-section1"></a>1. APPLICABILITY AND
-      DEFINITIONS</h3><p><a id="fdl-document"></a>
+    </p><h4><a id="fdl-section1"></a>1. APPLICABILITY AND
+      DEFINITIONS</h4><p><a id="fdl-document"></a>
       This License applies to any manual or other work, in any medium, that contains a
       notice placed by the copyright holder saying it can be distributed under the terms
       of this License.  Such a notice grants a world-wide, royalty-free license, unlimited
       in duration, to use that work under the conditions stated herein.  The
-      “<span class="quote">Document</span>”, below, refers to any such manual or work.  Any member of
-      the public is a licensee, and is addressed as “<span class="quote">you</span>”.  You accept the
+      <span class="quote">“<span class="quote">Document</span>”</span>, below, refers to any such manual or work.  Any member of
+      the public is a licensee, and is addressed as <span class="quote">“<span class="quote">you</span>”</span>.  You accept the
       license if you copy, modify or distribute the work in a way requiring permission
       under copyright law.
     </p><p><a id="fdl-modified"></a>
-      A “<span class="quote">Modified Version</span>” of the Document means any work containing the
+      A <span class="quote">“<span class="quote">Modified Version</span>”</span> of the Document means any work containing the
       Document or a portion of it, either copied verbatim, or with modifications and/or
       translated into another language.
     </p><p><a id="fdl-secondary"></a>
-      A “<span class="quote">Secondary Section</span>” is a named appendix or a front-matter section of
+      A <span class="quote">“<span class="quote">Secondary Section</span>”</span> is a named appendix or a front-matter section of
       the Document that deals exclusively with the relationship of the publishers or
-      authors of the Document to the Document's overall subject (or to related matters)
+      authors of the Document to the Document’s overall subject (or to related matters)
       and contains nothing that could fall directly within that overall subject.  (Thus,
       if the Document is in part a textbook of mathematics, a Secondary Section may not
       explain any mathematics.)  The relationship could be a matter of historical
       connection with the subject or with related matters, or of legal, commercial,
       philosophical, ethical or political position regarding them.
     </p><p><a id="fdl-invariant"></a>
-      The “<span class="quote">Invariant Sections</span>” are certain Secondary Sections whose titles
+      The <span class="quote">“<span class="quote">Invariant Sections</span>”</span> are certain Secondary Sections whose titles
       are designated, as being those of Invariant Sections, in the notice that says that
       the Document is released under this License.  If a section does not fit the above
       definition of Secondary then it is not allowed to be designated as Invariant.  The
       Document may contain zero Invariant Sections.  If the Document does not identify any
       Invariant Sections then there are none.
     </p><p><a id="fdl-cover-texts"></a>
-      The “<span class="quote">Cover Texts</span>” are certain short passages of text that are listed,
+      The <span class="quote">“<span class="quote">Cover Texts</span>”</span> are certain short passages of text that are listed,
       as Front-Cover Texts or Back-Cover Texts, in the notice that says that the Document
       is released under this License.  A Front-Cover Text may be at most 5 words, and a
       Back-Cover Text may be at most 25 words.
     </p><p><a id="fdl-transparent"></a>
-      A “<span class="quote">Transparent</span>” copy of the Document means a machine-readable copy,
+      A <span class="quote">“<span class="quote">Transparent</span>”</span> copy of the Document means a machine-readable copy,
       represented in a format whose specification is available to the general public, that
       is suitable for revising the document straightforwardly with generic text editors or
       (for images composed of pixels) generic paint programs or (for drawings) some widely
@@ -1280,8 +1264,8 @@
       A copy made in an otherwise Transparent file format whose markup, or absence of
       markup, has been arranged to thwart or discourage subsequent modification by readers
       is not Transparent.  An image format is not Transparent if used for any substantial
-      amount of text.  A copy that is not “<span class="quote">Transparent</span>” is called
-      “<span class="quote">Opaque</span>”.
+      amount of text.  A copy that is not <span class="quote">“<span class="quote">Transparent</span>”</span> is called
+      <span class="quote">“<span class="quote">Opaque</span>”</span>.
     </p><p>
       Examples of suitable formats for Transparent copies include plain ASCII without
       markup, Texinfo input format, LaTeX input format, SGML or XML using a publicly
@@ -1292,28 +1276,28 @@
       are not generally available, and the machine-generated HTML, PostScript or PDF
       produced by some word processors for output purposes only.
     </p><p><a id="fdl-title-page"></a>
-      The “<span class="quote">Title Page</span>” means, for a printed book, the title page itself, plus
+      The <span class="quote">“<span class="quote">Title Page</span>”</span> means, for a printed book, the title page itself, plus
       such following pages as are needed to hold, legibly, the material this License
       requires to appear in the title page.  For works in formats which do not have any
-      title page as such, “<span class="quote">Title Page</span>” means the text near the most prominent
-      appearance of the work's title, preceding the beginning of the body of the text.
+      title page as such, <span class="quote">“<span class="quote">Title Page</span>”</span> means the text near the most prominent
+      appearance of the work’s title, preceding the beginning of the body of the text.
     </p><p><a id="fdl-entitled"></a>
-      A section “<span class="quote">Entitled XYZ</span>” means a named subunit of the Document whose
+      A section <span class="quote">“<span class="quote">Entitled XYZ</span>”</span> means a named subunit of the Document whose
       title either is precisely XYZ or contains XYZ in parentheses following text that
       translates XYZ in another language.  (Here XYZ stands for a specific section name
-      mentioned below, such as “<span class="quote">Acknowledgements</span>”,
-      “<span class="quote">Dedications</span>”, “<span class="quote">Endorsements</span>”, or
-      “<span class="quote">History</span>”.)  To “<span class="quote">Preserve the Title</span>” of such a section
+      mentioned below, such as <span class="quote">“<span class="quote">Acknowledgements</span>”</span>,
+      <span class="quote">“<span class="quote">Dedications</span>”</span>, <span class="quote">“<span class="quote">Endorsements</span>”</span>, or
+      <span class="quote">“<span class="quote">History</span>”</span>.)  To <span class="quote">“<span class="quote">Preserve the Title</span>”</span> of such a section
       when you modify the Document means that it remains a section
-      “<span class="quote">Entitled XYZ</span>” according to this definition.
+      <span class="quote">“<span class="quote">Entitled XYZ</span>”</span> according to this definition.
     </p><p><a id="fdl-warranty"></a>
       The Document may include Warranty Disclaimers next to the notice which states that
       this License applies to the Document.  These Warranty Disclaimers are considered to
       be included by reference in this License, but only as regards disclaiming
       warranties: any other implication that these Warranty Disclaimers may have is void
       and has no effect on the meaning of this License.
-    </p><h3><a id="fdl-section2"></a>2. VERBATIM COPYING</h3><p>
-      You may copy and distribute the <a href="#fdl-document">Document</a> in any
+    </p><h4><a id="fdl-section2"></a>2. VERBATIM COPYING</h4><p>
+      You may copy and distribute the <a class="link" href="#fdl-document">Document</a> in any
       medium, either commercially or noncommercially, provided that this License, the
       copyright notices, and the license notice saying this License applies to the
       Document are reproduced in all copies, and that you add no other conditions
@@ -1321,15 +1305,15 @@
       or control the reading or further copying of the copies you make or distribute.
       However, you may accept compensation in exchange for copies.  If you distribute a
       large enough number of copies you must also follow the conditions in
-      <a href="#fdl-section3">section 3</a>.
+      <a class="link" href="#fdl-section3" title="3. COPYING IN QUANTITY">section 3</a>.
     </p><p>
       You may also lend copies, under the same conditions stated above, and you may
       publicly display copies.
-    </p><h3><a id="fdl-section3"></a>3. COPYING IN QUANTITY</h3><p>
+    </p><h4><a id="fdl-section3"></a>3. COPYING IN QUANTITY</h4><p>
       If you publish printed copies (or copies in media that commonly have printed covers)
-      of the <a href="#fdl-document">Document</a>, numbering more than 100, and
-      the Document's license notice requires
-      <a href="#fdl-cover-texts">Cover Texts</a>, you must enclose the copies in
+      of the <a class="link" href="#fdl-document">Document</a>, numbering more than 100, and
+      the Document’s license notice requires
+      <a class="link" href="#fdl-cover-texts">Cover Texts</a>, you must enclose the copies in
       covers that carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on
       the front cover, and Back-Cover Texts on the back cover.  Both covers must also
       clearly and legibly identify you as the publisher of these copies.  The front cover
@@ -1342,9 +1326,9 @@
       put the first ones listed (as many as fit reasonably) on the actual cover, and
       continue the rest onto adjacent pages.
     </p><p>
-      If you publish or distribute <a href="#fdl-transparent">Opaque</a> copies of
+      If you publish or distribute <a class="link" href="#fdl-transparent">Opaque</a> copies of
       the Document numbering more than 100, you must either include a machine-readable
-      <a href="#fdl-transparent">Transparent</a> copy along with each Opaque copy,
+      <a class="link" href="#fdl-transparent">Transparent</a> copy along with each Opaque copy,
       or state in or with each Opaque copy a computer-network location from which the
       general network-using public has access to download using public-standard network
       protocols a complete Transparent copy of the Document, free of added material.  If
@@ -1357,88 +1341,88 @@
       It is requested, but not required, that you contact the authors of the Document well
       before redistributing any large number of copies, to give them a chance to provide
       you with an updated version of the Document.
-    </p><h3><a id="fdl-section4"></a>4. MODIFICATIONS</h3><p>
-      You may copy and distribute a <a href="#fdl-modified">Modified Version</a>
-      of the <a href="#fdl-document">Document</a> under the conditions of
-      sections <a href="#fdl-section2">2</a> and
-      <a href="#fdl-section3">3</a> above, provided that you release the Modified
+    </p><h4><a id="fdl-section4"></a>4. MODIFICATIONS</h4><p>
+      You may copy and distribute a <a class="link" href="#fdl-modified">Modified Version</a>
+      of the <a class="link" href="#fdl-document">Document</a> under the conditions of
+      sections <a class="link" href="#fdl-section2" title="2. VERBATIM COPYING">2</a> and
+      <a class="link" href="#fdl-section3" title="3. COPYING IN QUANTITY">3</a> above, provided that you release the Modified
       Version under precisely this License, with the Modified Version filling the role of
       the Document, thus licensing distribution and modification of the Modified Version
       to whoever possesses a copy of it.  In addition, you must do these things in the
       Modified Version:
-    </p><div class="orderedlist"><ol type="A"><li><p>
-	  Use in the <a href="#fdl-title-page">Title Page</a> (and on the
-	  <a href="#fdl-cover-texts">covers</a>, if any) a title distinct from
+    </p><div class="orderedlist"><ol class="orderedlist" type="A"><li class="listitem"><p>
+	  Use in the <a class="link" href="#fdl-title-page">Title Page</a> (and on the
+	  <a class="link" href="#fdl-cover-texts">covers</a>, if any) a title distinct from
 	  that of the Document, and from those of previous versions (which should, if
 	  there were any, be listed in the History section of the Document).  You may use
 	  the same title as a previous version if the original publisher of that version
 	  gives permission.
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
 	  List on the Title Page, as authors, one or more persons or entities responsible
 	  for authorship of the modifications in the Modified Version, together with at
 	  least five of the principal authors of the Document (all of its principal
 	  authors, if it has fewer than five), unless they release you from this
 	  requirement.
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
 	  State on the Title page the name of the publisher of the Modified Version, as
 	  the publisher.
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
 	  Preserve all the copyright notices of the Document.
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
 	  Add an appropriate copyright notice for your modifications adjacent to the other
 	  copyright notices.
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
 	  Include, immediately after the copyright notices, a license notice giving the
 	  public permission to use the Modified Version under the terms of this License,
-	  in the form shown in the <a href="#fdl-addendum">Addendum</a> below.
-	</p></li><li><p>
+	  in the form shown in the <a class="link" href="#fdl-addendum" title="ADDENDUM: How to use this License for your documents">Addendum</a> below.
+	</p></li><li class="listitem"><p>
 	  Preserve in that license notice the full lists of
-	  <a href="#fdl-invariant">Invariant Sections</a> and required Cover Texts
-	  given in the Document's license notice.
-	</p></li><li><p>
+	  <a class="link" href="#fdl-invariant">Invariant Sections</a> and required Cover Texts
+	  given in the Document’s license notice.
+	</p></li><li class="listitem"><p>
 	  Include an unaltered copy of this License.
-	</p></li><li><p>
-	  Preserve the section <a href="#fdl-entitled">Entitled</a>
-	  “<span class="quote">History</span>”, Preserve its Title, and add to it an item stating at
+	</p></li><li class="listitem"><p>
+	  Preserve the section <a class="link" href="#fdl-entitled">Entitled</a>
+	  <span class="quote">“<span class="quote">History</span>”</span>, Preserve its Title, and add to it an item stating at
 	  least the title, year, new authors, and publisher of the Modified Version as
-	  given on the Title Page.  If there is no section Entitled “<span class="quote">History</span>”
+	  given on the Title Page.  If there is no section Entitled <span class="quote">“<span class="quote">History</span>”</span>
 	  in the Document, create one stating the title, year, authors, and publisher of
 	  the Document as given on its Title Page, then add an item describing the
 	  Modified Version as stated in the previous sentence.
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
 	  Preserve the network location, if any, given in the Document for public access
-	  to a <a href="#fdl-transparent">Transparent</a> copy of the Document,
+	  to a <a class="link" href="#fdl-transparent">Transparent</a> copy of the Document,
 	  and likewise the network locations given in the Document for previous versions
-	  it was based on.  These may be placed in the “<span class="quote">History</span>” section.
+	  it was based on.  These may be placed in the <span class="quote">“<span class="quote">History</span>”</span> section.
 	  You may omit a network location for a work that was published at least four
 	  years before the Document itself, or if the original publisher of the version it
 	  refers to gives permission.
-	</p></li><li><p>
-	  For any section Entitled “<span class="quote">Acknowledgements</span>” or
-	  “<span class="quote">Dedications</span>”, Preserve the Title of the section, and preserve in
+	</p></li><li class="listitem"><p>
+	  For any section Entitled <span class="quote">“<span class="quote">Acknowledgements</span>”</span> or
+	  <span class="quote">“<span class="quote">Dedications</span>”</span>, Preserve the Title of the section, and preserve in
 	  the section all the substance and tone of each of the contributor
 	  acknowledgements and/or dedications given therein.
-	</p></li><li><p>
+	</p></li><li class="listitem"><p>
 	  Preserve all the Invariant Sections of the Document, unaltered in their text and
 	  in their titles.  Section numbers or the equivalent are not considered part of
 	  the section titles.
-	</p></li><li><p>
-	  Delete any section Entitled “<span class="quote">Endorsements</span>”.  Such a section may not
+	</p></li><li class="listitem"><p>
+	  Delete any section Entitled <span class="quote">“<span class="quote">Endorsements</span>”</span>.  Such a section may not
 	  be included in the Modified Version.
-	</p></li><li><p>
-	  Do not retitle any existing section to be Entitled “<span class="quote">Endorsements</span>”
+	</p></li><li class="listitem"><p>
+	  Do not retitle any existing section to be Entitled <span class="quote">“<span class="quote">Endorsements</span>”</span>
 	  or to conflict in title with any Invariant Section.
-	</p></li><li><p>
-	  Preserve any <a href="#fdl-warranty">Warranty Disclaimers</a>.
+	</p></li><li class="listitem"><p>
+	  Preserve any <a class="link" href="#fdl-warranty">Warranty Disclaimers</a>.
 	</p></li></ol></div><p>
       If the Modified Version includes new front-matter sections or appendices that
       qualify as Secondary Sections and contain no material copied from the Document, you
       may at your option designate some or all of these sections as invariant.  To do
-      this, add their titles to the list of Invariant Sections in the Modified Version's
+      this, add their titles to the list of Invariant Sections in the Modified Version’s
       license notice.  These titles must be distinct from any other section titles.
     </p><p>
-      You may add a section Entitled “<span class="quote">Endorsements</span>”, provided it contains
-      nothing but endorsements of your Modified Version by various parties—for
+      You may add a section Entitled <span class="quote">“<span class="quote">Endorsements</span>”</span>, provided it contains
+      nothing but endorsements of your Modified Version by various parties -- for
       example, statements of peer review or that the text has been approved by an
       organization as the authoritative definition of a standard.
     </p><p>
@@ -1454,15 +1438,15 @@
       The author(s) and publisher(s) of the Document do not by this License give
       permission to use their names for publicity for or to assert or imply endorsement of
       any Modified Version.
-    </p><h3><a id="fdl-section5"></a>5. COMBINING DOCUMENTS</h3><p>
-      You may combine the <a href="#fdl-document">Document</a> with other
+    </p><h4><a id="fdl-section5"></a>5. COMBINING DOCUMENTS</h4><p>
+      You may combine the <a class="link" href="#fdl-document">Document</a> with other
       documents released under this License, under the terms defined in
-      <a href="#fdl-section4">section 4</a> above for
-      <a href="#fdl-modified">modified versions</a>, provided that you include in
-      the combination all of the <a href="#fdl-invariant">Invariant Sections</a>
+      <a class="link" href="#fdl-section4" title="4. MODIFICATIONS">section 4</a> above for
+      <a class="link" href="#fdl-modified">modified versions</a>, provided that you include in
+      the combination all of the <a class="link" href="#fdl-invariant">Invariant Sections</a>
       of all of the original documents, unmodified, and list them all as Invariant
       Sections of your combined work in its license notice, and that you preserve all
-      their <a href="#fdl-warranty">Warranty Disclaimers</a>.
+      their <a class="link" href="#fdl-warranty">Warranty Disclaimers</a>.
     </p><p>
       The combined work need only contain one copy of this License, and multiple identical
       Invariant Sections may be replaced with a single copy.  If there are multiple
@@ -1473,15 +1457,15 @@
       the license notice of the combined work.
     </p><p>
       In the combination, you must combine any sections
-      <a href="#fdl-entitled">Entitled</a> “<span class="quote">History</span>” in the various
-      original documents, forming one section Entitled “<span class="quote">History</span>”; likewise
-      combine any sections Entitled “<span class="quote">Acknowledgements</span>”, and any sections
-      Entitled “<span class="quote">Dedications</span>”.  You must delete all sections Entitled
-      “<span class="quote">Endorsements.</span>”
-    </p><h3><a id="fdl-section6"></a>6. COLLECTIONS OF
-      DOCUMENTS</h3><p>
+      <a class="link" href="#fdl-entitled">Entitled</a> <span class="quote">“<span class="quote">History</span>”</span> in the various
+      original documents, forming one section Entitled <span class="quote">“<span class="quote">History</span>”</span>; likewise
+      combine any sections Entitled <span class="quote">“<span class="quote">Acknowledgements</span>”</span>, and any sections
+      Entitled <span class="quote">“<span class="quote">Dedications</span>”</span>.  You must delete all sections Entitled
+      <span class="quote">“<span class="quote">Endorsements.</span>”</span>
+    </p><h4><a id="fdl-section6"></a>6. COLLECTIONS OF
+      DOCUMENTS</h4><p>
       You may make a collection consisting of the
-      <a href="#fdl-document">Document</a> and other documents released under this
+      <a class="link" href="#fdl-document">Document</a> and other documents released under this
       License, and replace the individual copies of this License in the various documents
       with a single copy that is included in the collection, provided that you follow the
       rules of this License for verbatim copying of each of the documents in all other
@@ -1491,71 +1475,71 @@
       individually under this License, provided you insert a copy of this License into the
       extracted document, and follow this License in all other respects regarding verbatim
       copying of that document.
-    </p><h3><a id="fdl-section7"></a>7. AGGREGATION WITH INDEPENDENT
-      WORKS</h3><p>
-      A compilation of the <a href="#fdl-document">Document</a> or its derivatives
+    </p><h4><a id="fdl-section7"></a>7. AGGREGATION WITH INDEPENDENT
+      WORKS</h4><p>
+      A compilation of the <a class="link" href="#fdl-document">Document</a> or its derivatives
       with other separate and independent documents or works, in or on a volume of a
-      storage or distribution medium, is called an “<span class="quote">aggregate</span>” if the
+      storage or distribution medium, is called an <span class="quote">“<span class="quote">aggregate</span>”</span> if the
       copyright resulting from the compilation is not used to limit the legal rights of
-      the compilation's users beyond what the individual works permit.  When the Document
+      the compilation’s users beyond what the individual works permit.  When the Document
       is included in an aggregate, this License does not apply to the other works in the
       aggregate which are not themselves derivative works of the Document.
     </p><p>
-      If the <a href="#fdl-cover-texts">Cover Text</a> requirement of
-      <a href="#fdl-section3">section 3</a> is applicable to these copies of the
+      If the <a class="link" href="#fdl-cover-texts">Cover Text</a> requirement of
+      <a class="link" href="#fdl-section3" title="3. COPYING IN QUANTITY">section 3</a> is applicable to these copies of the
       Document, then if the Document is less than one half of the entire aggregate, the
-      Document's Cover Texts may be placed on covers that bracket the Document within the
+      Document’s Cover Texts may be placed on covers that bracket the Document within the
       aggregate, or the electronic equivalent of covers if the Document is in electronic
       form.  Otherwise they must appear on printed covers that bracket the whole
       aggregate.
-    </p><h3><a id="fdl-section8"></a>8. TRANSLATION</h3><p>
+    </p><h4><a id="fdl-section8"></a>8. TRANSLATION</h4><p>
       Translation is considered a kind of modification, so you may distribute translations
-      of the <a href="#fdl-document">Document</a> under the terms of
-      <a href="#fdl-section4">section 4</a>.  Replacing
-      <a href="#fdl-invariant">Invariant Sections</a> with translations requires
+      of the <a class="link" href="#fdl-document">Document</a> under the terms of
+      <a class="link" href="#fdl-section4" title="4. MODIFICATIONS">section 4</a>.  Replacing
+      <a class="link" href="#fdl-invariant">Invariant Sections</a> with translations requires
       special permission from their copyright holders, but you may include translations of
       some or all Invariant Sections in addition to the original versions of these
       Invariant Sections.  You may include a translation of this License, and all the
       license notices in the Document, and any
-      <a href="#fdl-warranty">Warranty Disclaimers</a>, provided that you also
+      <a class="link" href="#fdl-warranty">Warranty Disclaimers</a>, provided that you also
       include the original English version of this License and the original versions of
       those notices and disclaimers.  In case of a disagreement between the translation
       and the original version of this License or a notice or disclaimer, the original
       version will prevail.
     </p><p>
-      If a section in the Document is <a href="#fdl-entitled">Entitled</a>
-      “<span class="quote">Acknowledgements</span>”, “<span class="quote">Dedications</span>”, or
-      “<span class="quote">History</span>”, the requirement
-      (<a href="#fdl-section4">section 4</a>) to Preserve its Title
-      (<a href="#fdl-section1">section 1</a>) will typically require changing the
+      If a section in the Document is <a class="link" href="#fdl-entitled">Entitled</a>
+      <span class="quote">“<span class="quote">Acknowledgements</span>”</span>, <span class="quote">“<span class="quote">Dedications</span>”</span>, or
+      <span class="quote">“<span class="quote">History</span>”</span>, the requirement
+      (<a class="link" href="#fdl-section4" title="4. MODIFICATIONS">section 4</a>) to Preserve its Title
+      (<a class="link" href="#fdl-section1" title="1. APPLICABILITY AND DEFINITIONS">section 1</a>) will typically require changing the
       actual title.
-    </p><h3><a id="fdl-section9"></a>9. TERMINATION</h3><p>
+    </p><h4><a id="fdl-section9"></a>9. TERMINATION</h4><p>
       You may not copy, modify, sublicense, or distribute the
-      <a href="#fdl-document">Document</a> except as expressly provided for under
+      <a class="link" href="#fdl-document">Document</a> except as expressly provided for under
       this License.  Any other attempt to copy, modify, sublicense or distribute the
       Document is void, and will automatically terminate your rights under this License.
       However, parties who have received copies, or rights, from you under this License
       will not have their licenses terminated so long as such parties remain in full
       compliance.
-    </p><h3><a id="fdl-section10"></a>10. FUTURE REVISIONS OF THIS
-      LICENSE</h3><p>
+    </p><h4><a id="fdl-section10"></a>10. FUTURE REVISIONS OF THIS
+      LICENSE</h4><p>
       The
-      <a href="http://www.gnu.org/fsf/fsf.html" target="_top">Free Software Foundation</a>
+      <a class="ulink" href="http://www.gnu.org/fsf/fsf.html" target="_top">Free Software Foundation</a>
       may publish new, revised versions of the GNU Free Documentation License from time to
       time.  Such new versions will be similar in spirit to the present version, but may
       differ in detail to address new problems or concerns.  See
-      <a href="http://www.gnu.org/copyleft/" target="_top">http://www.gnu.org/copyleft/</a>.
+      <a class="ulink" href="http://www.gnu.org/copyleft/" target="_top">http://www.gnu.org/copyleft/</a>.
     </p><p>
       Each version of the License is given a distinguishing version number.  If the
-      <a href="#fdl-document">Document</a> specifies that a particular numbered
-      version of this License “<span class="quote">or any later version</span>” applies to it, you have
+      <a class="link" href="#fdl-document">Document</a> specifies that a particular numbered
+      version of this License <span class="quote">“<span class="quote">or any later version</span>”</span> applies to it, you have
       the option of following the terms and conditions either of that specified version or
       of any later version that has been published (not as a draft) by the Free Software
       Foundation.  If the Document does not specify a version number of this License, you
       may choose any version ever published (not as a draft) by the Free Software
       Foundation.
-    </p><h3><a id="fdl-addendum"></a>ADDENDUM: How to use this License for
-      your documents</h3><p>
+    </p><h4><a id="fdl-addendum"></a>ADDENDUM: How to use this License for
+      your documents</h4><p>
       To use this License in a document you have written, include a copy of the License in
       the document and put the following copyright and license notices just after the
       title page:
@@ -1566,11 +1550,11 @@
 	terms of the GNU Free Documentation License, Version 1.2 or any later version
 	published by the Free Software Foundation; with no Invariant Sections, no
 	Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in
-	the section entitled “<span class="quote">GNU Free Documentation License</span>”.
+	the section entitled <span class="quote">“<span class="quote">GNU Free Documentation License</span>”</span>.
       </p></blockquote></div><p>
-      If you have <a href="#fdl-invariant">Invariant Sections</a>,
-      <a href="#fdl-cover-texts">Front-Cover Texts and Back-Cover Texts</a>,
-      replace the “<span class="quote">with...Texts.</span>” line with this:
+      If you have <a class="link" href="#fdl-invariant">Invariant Sections</a>,
+      <a class="link" href="#fdl-cover-texts">Front-Cover Texts and Back-Cover Texts</a>,
+      replace the <span class="quote">“<span class="quote">with...Texts.</span>”</span> line with this:
     </p><div class="blockquote"><a id="inv-cover-sample"></a><blockquote class="blockquote"><p>
 	with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover Texts
 	being LIST, and with the Back-Cover Texts being LIST.
@@ -1581,7 +1565,7 @@
       If your document contains nontrivial examples of program code, we recommend
       releasing these examples in parallel under your choice of free software license,
       such as the
-      <a href="http://www.gnu.org/copyleft/gpl.html" target="_top">GNU General Public
+      <a class="ulink" href="http://www.gnu.org/copyleft/gpl.html" target="_top">GNU General Public
 	License</a>,
       to permit their use in free software.
     </p></div></div></div></td></tr></table></body></html>

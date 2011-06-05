@@ -6,90 +6,65 @@
   <simplesect>
     <title>Programming</title>
     <para>
-      <variablelist>
-	<varlistentry>
-	  <term>
-	    <personname>
+	  <author>
 	      <firstname>Paul</firstname>
 	      <surname>Pogonyshev</surname>
-	    </personname>
 <!--       <email>pogonyshev@gmx.net</email> -->
-	  </term>
-	  <listitem>
-	    <para>
-	      Main author, programming, design.
-	    </para>
-	  </listitem>
-	</varlistentry>
+	  <contrib>
+	      Original author, programming, design.
+	  </contrib>
+	  </author>
 
-	<varlistentry>
-	  <term>
-	    <personname>
+	  <author>
+	      <firstname>Ethan</firstname>
+	      <surname>Baldridge</surname>
+<!--       <email>baldridge.ethan@gmail.com</email> -->
+	  <contrib>
+	      Current maintainer, programming, design.
+	  </contrib>
+	  </author>
+
+	  <author>
 	      <firstname>Martin</firstname>
 	      <surname>Holters</surname>
-	    </personname>
 <!--       <email>martin.holters@gmx.de</email> -->
-	  </term>
-	  <listitem>
-	    <para>
+	  <contrib>
 	      Programming.
-	    </para>
-	  </listitem>
-	</varlistentry>
-      </variablelist>
+	  </contrib>
+	  </author>
     </para>
   </simplesect>
 
   <simplesect>
     <title>Translation</title>
     <para>
-      <variablelist>
 	<!-- Sorted alphabetically by surname. -->
-	<varlistentry>
-	  <term>
-	    <personname>
+	  <author>
 	      <firstname>Jérémie</firstname>
 	      <surname>Knuesel</surname>
-	    </personname>
 <!--       <email>knuesel@gmail.com</email> -->
-	  </term>
-	  <listitem>
-	    <para>
+	  <contrib>
 	      French translation.
-	    </para>
-	  </listitem>
-	</varlistentry>
+	  </contrib>
+	  </author>
 
-	<varlistentry>
-	  <term>
-	    <personname>
+	  <author>
 	      <firstname>Paul</firstname>
 	      <surname>Pogonyshev</surname>
-	    </personname>
 <!--       <email>pogonyshev@gmx.net</email> -->
-	  </term>
-	  <listitem>
-	    <para>
+	  <contrib>
 	      British English and Russian translations.
-	    </para>
-	  </listitem>
-	</varlistentry>
+	  </contrib>
+	  </author>
 
-	<varlistentry>
-	  <term>
-	    <personname>
+	  <author>
 	      <firstname>Robert</firstname>
 	      <surname>Stefaniuk</surname>
-	    </personname>
 <!--       <email>kacprey@gazeta.pl</email> -->
-	  </term>
-	  <listitem>
-	    <para>
+	  <contrib>
 	      Polish translation.
-	    </para>
-	  </listitem>
-	</varlistentry>
-      </variablelist>
+	  </contrib>
+	  </author>
     </para>
   </simplesect>
 </appendix>

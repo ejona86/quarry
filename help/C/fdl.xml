@@ -1,7 +1,8 @@
 <!-- Markup by Paul Pogonyshev, October 2004. -->
+<!-- Entities changed by Ethan Baldridge, June 2011. -->
 
 <appendix id="fdl">
-  <docinfo>
+  <appendixinfo>
     <releaseinfo>
       Version 1.2, November 2002
     </releaseinfo>
@@ -24,8 +25,11 @@
 	document, but changing it is not allowed.
       </para>
     </legalnotice>
-  </docinfo>
+  </appendixinfo>
 
+  <title>GNU Free Documentation License</title>
+
+  <simplesect>
   <title>GNU Free Documentation License</title>
   <!-- subtitle doesn't get rendered properly :( -->
   <bridgehead renderas="sect3">Version 1.2, November 2002</bridgehead>
@@ -42,7 +46,6 @@
     </para>
   </blockquote>
 
-  <simplesect>
     <bridgehead id="fdl-preamble" renderas="sect3">0. PREAMBLE</bridgehead>
     <para>
       The purpose of this License is to make a manual, textbook, or other functional and
@@ -373,7 +376,7 @@
 
     <para>
       You may add a section Entitled <quote>Endorsements</quote>, provided it contains
-      nothing but endorsements of your Modified Version by various parties&mdash;for
+      nothing but endorsements of your Modified Version by various parties -- for
       example, statements of peer review or that the text has been approved by an
       organization as the authoritative definition of a standard.
     </para>

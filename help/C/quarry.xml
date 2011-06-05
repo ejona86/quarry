@@ -4,10 +4,11 @@
 	  [ <!ENTITY LEGAL       SYSTEM "legal.xml">
 	    <!ENTITY AUTHORS     SYSTEM "authors.xml">
 	    <!ENTITY FDL         SYSTEM "fdl.xml">
-	    <!ENTITY appversion  "0.2">
-	    <!ENTITY manrevision "0.2">
-	    <!ENTITY date        "November 2006">
-	    <!ENTITY app         "<application>Quarry</application>"> ]>
+	    <!ENTITY appversion  "0.3">
+	    <!ENTITY manrevision "0.3">
+	    <!ENTITY date        "June 2011">
+	    <!ENTITY app         "<application>Quarry</application>">
+	    <!ENTITY copy        "&#169;"> ]>
 <!--
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
@@ -30,6 +31,10 @@
       <year>2005</year>
       <year>2006</year>
       <holder>Paul Pogonyshev</holder>
+    </copyright>
+    <copyright>
+      <year>2011</year>
+      <holder>Ethan Baldridge</holder>
     </copyright>
 
     <!-- TRANSLATORS: Uncomment this:
@@ -62,6 +67,13 @@
 	  <address><email>pogonyshev@gmx.net</email></address>
 	</affiliation>
       </author>
+      <author>
+	<firstname>Ethan</firstname>
+	<surname>Baldridge</surname>
+	<affiliation>
+	  <address><email>baldridge.ethan@gmail.com</email></address>
+	</affiliation>
+      </author>
 
 <!-- This is appropriate place for other contributors: translators, maintainers,
      etc. Commented out by default.
@@ -83,8 +95,8 @@
 	<revnumber>Quarry Manual V&manrevision;</revnumber>
 	<date>&date;</date>
 	<revdescription>
-	  <para role="author">Paul Pogonyshev
-	    <email>pogonyshev@gmx.net</email>
+	  <para role="author">Ethan Balridge
+	    <email>baldridge.ethan@gmail.com</email>
 	  </para>
 	</revdescription>
       </revision>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-<!ENTITY LEGAL       SYSTEM "legal.xml">
-	    <!ENTITY AUTHORS     SYSTEM "authors.xml">
-	    <!ENTITY FDL         SYSTEM "fdl.xml">
-	    <!ENTITY appversion  "0.2">
-	    <!ENTITY manrevision "0.2">
-	    <!ENTITY date        "November 2006">
-	    <!ENTITY app         "<application>Quarry</application>"> ]>
+<!ENTITY LEGAL SYSTEM "legal.xml">
+<!ENTITY AUTHORS SYSTEM "authors.xml">
+<!ENTITY FDL SYSTEM "fdl.xml">
+<!ENTITY appversion "0.3">
+<!ENTITY manrevision "0.3">
+<!ENTITY date "June 2011">
+<!ENTITY copy "&#169;">
+<!ENTITY app "<application>Quarry</application>">
+]>
 <!--
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
@@ -14,15 +16,12 @@
   Template version: 2.0 beta
   Template last modified Apr 11, 2002
 -->
-
 <!-- Since Quarry is not a GNOME project, I modified this template somewhat.  /pp -->
-
 <!-- Document Header -->
-
 <!-- Please do not change the `id'; for translations, change `lang' to appropriate
      code. -->
 <book id="index" lang="de"><bookinfo><title>&app;-Handbuch</title> <copyright><year>2004</year> <year>2005</year> <year>
-2006</year> <holder>Paul Pogonyshev</holder></copyright>
+2006</year> <holder>Paul Pogonyshev</holder></copyright><copyright><year>2011</year> <holder>Ethan Baldridge</holder></copyright>
 
     <!-- TRANSLATORS: Uncomment this:    -->
 
@@ -47,6 +46,8 @@
 
     <authorgroup><author><firstname>Paul</firstname> <surname>Pogonyshev</surname> <affiliation><address><email>
     pogonyshev@gmx.net</email></address></affiliation></author>
+    <author><firstname>Ethan</firstname> <surname>Baldridge</surname> <affiliation><address><email>
+    baldridge.ethan@gmail.com</email></address></affiliation></author>
 
 <!-- This is appropriate place for other contributors: translators, maintainers,
      etc. Commented out by default.-->
@@ -68,8 +69,7 @@
 
     <releaseinfo>In diesem Handbuch wird Version &appversion; von Quarry beschrieben.</releaseinfo> <legalnotice><title>
     Feedback</title> <para>Wenn Sie Fehler melden möchten oder Hinweise zu &app; selbst oder zu diesem Handbuch haben,
-    senden Sie eine Nachricht an <email>quarry-dev@gna.org</email>, oder verwenden Sie den <ulink url=
-    "https://gna.org/bugs/?group=quarry">&app;-Bug Tracker</ulink>. Anmerkungen und Hinweise zur deutschen
+    senden Sie eine Nachricht an <email>quarry-dev@gna.org</email>, oder verwenden Sie den <ulink url="https://gna.org/bugs/?group=quarry">&app;-Bug Tracker</ulink>. Anmerkungen und Hinweise zur deutschen
     Übersetzung dieses Handbuchs senden Sie bitte an <email>dblase@web.de</email>.</para></legalnotice>
 
     <indexterm zone="index"><primary>Quarry</primary></indexterm> <indexterm zone="index"><primary>quarry</primary>
@@ -98,22 +98,19 @@
 	    <listitem><para>Spiele von Computer gegen Computer und Person gegen Person sind auch möglich.</para>
 	    </listitem>
 
-	    <listitem><para>Gute Unterstützung für die <link
-	    linkend="new-game-dialog-time-settings">Zeitkontrolle</link>.</para></listitem>
+	    <listitem><para>Gute Unterstützung für die <link linkend="new-game-dialog-time-settings">Zeitkontrolle</link>.</para></listitem>
 
 	    <listitem><para>Sie können Spiele <link linkend="adjourn-game">unterbrechen</link> und zu einen späteren
 	    Zeitpunkt <link linkend="resume-game">fortsetzen</link>.</para></listitem></itemizedlist></para></listitem>
 
       <listitem><para>Spielaufzeichnungen:
 
-	  <itemizedlist><listitem><para>Sämtliche Spiele können im allgemein unterstützten Dateiformat <ulink type="http"
-	  url="http://www.red-bean.com/sgf/">SGF</ulink> FF[4] gespeichert werden.</para></listitem>
+	  <itemizedlist><listitem><para>Sämtliche Spiele können im allgemein unterstützten Dateiformat <ulink type="http" url="http://www.red-bean.com/sgf/">SGF</ulink> FF[4] gespeichert werden.</para></listitem>
 
 	    <listitem><para>Ein schneller und sicherer Parser ermöglicht das Lesen von SGF-Dateien beliebiger Versionen.
 	    </para></listitem>
 
-	    <listitem><para>&app; ist insbesondere für das Durchsuchen von <ulink type="http" url=
-	    "http://waterfire.us/joseki.htm">Kogo’s Joseki Dictionary</ulink> geeignet.</para></listitem>
+	    <listitem><para>&app; ist insbesondere für das Durchsuchen von <ulink type="http" url="http://waterfire.us/joseki.htm">Kogo’s Joseki Dictionary</ulink> geeignet.</para></listitem>
 
 	    <listitem><para>Die <link linkend="game-tree-view">Spielverlaufsansicht</link> vereinfacht die Navigation in
 	    Spielaufzeichnungen.</para></listitem>
@@ -121,8 +118,7 @@
 	    <listitem><para>Die <link linkend="find-dialog">Textsuche in Kommentaren</link> ist ein hilfreiches Tool,
 	    sofern Sie wissen, wonach Sie suchen.</para></listitem>
 
-	    <listitem><para>Die Stellung auf dem Go-Brett kann in ein Format exportiert werden, das in die <ulink type=
-	    "http" url="http://senseis.xmp.net/">Sensei’s Library</ulink> eingefügt werden kann.</para></listitem>
+	    <listitem><para>Die Stellung auf dem Go-Brett kann in ein Format exportiert werden, das in die <ulink type="http" url="http://senseis.xmp.net/">Sensei’s Library</ulink> eingefügt werden kann.</para></listitem>
 
 	    <listitem><para>Unterstützung verschiedener SGF-Bezeichner und -Markups.</para></listitem></itemizedlist>
 	    </para></listitem></itemizedlist>
@@ -137,8 +133,11 @@
   <!-- Getting Started --> <chapter id="getting-started"><title>Erste Schritte</title>
 
     <section id="start"><title>So starten Sie &app;</title> <para>Sie können &app; über das Anwendungsmenü starten. Sie
-    finden den entsprechenden Eintrag i.d.R. unter <menuchoice><guimenu>Spiele</guimenu> <guisubmenu>Brettspiele
-    </guisubmenu></menuchoice>.
+    finden den entsprechenden Eintrag i.d.R. unter
+	<menuchoice>
+		<guimenu>Spiele</guimenu>
+		<guisubmenu>Brettspiele</guisubmenu>
+	</menuchoice>.
 
 	Dies ist jedoch von der von Ihnen gewählten Installation und vom verwendeten Betriebssystem abhängig.</para>
 
@@ -159,19 +158,18 @@
     <section id="when-start"><title>Start von &app;</title> <para>Wenn Sie &app; starten, wird das Quarry Control Center
     angezeigt:</para>
 
-      <figure id="control-center-screen-shot"><title>&app; Control Center</title> <screenshot><mediaobject><imageobject>
+      <figure id="control-center-screen-shot"><title>&app; Control Center</title>
+      <screenshot><mediaobject><imageobject>
       <imagedata fileref="figures/control-center.png" format="PNG"/></imageobject> <textobject><phrase>Zeigt das &app;
       Control Center.</phrase></textobject></mediaobject></screenshot></figure>
-
       <para>Das Quarry Control Center enthält folgende Elemente:</para>
 
-      <variablelist><varlistentry><term>Schaltfläche <guibutton>New Game</guibutton> (Neues Spiel)</term> <listitem><para
-      >Über diese Schaltfläche können Sie ein neues Spiel starten.  Sie öffnen damit das <link linkend="new-game-dialog">
+
+      <variablelist><varlistentry><term>Schaltfläche <guibutton>New Game</guibutton> (Neues Spiel)</term> <listitem><para>Über diese Schaltfläche können Sie ein neues Spiel starten.  Sie öffnen damit das <link linkend="new-game-dialog">
       Dialogfeld New Game (Neues Spiel)</link>, in dem Sie das Spiel (Go, Amazons oder Reversi), die Gegner und
       spielspezifische Regeln auswählen können.</para></listitem></varlistentry>
 
-	<varlistentry><term>Schaltfläche <guibutton>New Game Record</guibutton> (Neue Spielaufzeichnung)</term> <listitem
-	><para>Mit dieser Schaltfläche können Sie eine Spielaufzeichnung erstellen, ohne tatsächlich ein Spiel zu
+	<varlistentry><term>Schaltfläche <guibutton>New Game Record</guibutton> (Neue Spielaufzeichnung)</term> <listitem><para>Mit dieser Schaltfläche können Sie eine Spielaufzeichnung erstellen, ohne tatsächlich ein Spiel zu
 	spielen.  Das <link linkend="new-game-record-dialog">Dialogfeld New Game Record (Neue Spielaufzeichnung)</link>
 	wird angezeigt, in dem Sie grundlegende Parameter für die Spielaufzeichnung angeben können.</para></listitem>
 	</varlistentry>
@@ -182,8 +180,7 @@
 	Dateien auswählen.</para></listitem></varlistentry>
 
 	<varlistentry><term>Schaltfläche <guibutton>Resume Game</guibutton> (Spiel fortsetzen)</term> <listitem><para>
-	Klicken Sie auf diese Schaltfläche, um ein Spiel fortzusetzen, das Sie zu einem früheren Zeitpunkt <link linkend=
-	"adjourn-game">unterbrochen</link> haben.  Sie können fast jedes nicht beendete Spiel fortsetzen, selbst wenn Sie
+	Klicken Sie auf diese Schaltfläche, um ein Spiel fortzusetzen, das Sie zu einem früheren Zeitpunkt <link linkend="adjourn-game">unterbrochen</link> haben.  Sie können fast jedes nicht beendete Spiel fortsetzen, selbst wenn Sie
 	dieses mit einem anderen Client begonnen haben.  Es wird ein Standarddialogfeld für das Öffnen von Dateien
 	geöffnet, in dem Sie die Datei mit dem Spiel auswählen können, das Sie fortsetzen möchten.</para></listitem>
 	</varlistentry>
@@ -201,13 +198,12 @@
 
     <section id="new-game"><title>So starten Sie ein neues Spiel</title> <para>Klicken Sie zum Starten eines neuen Spiels
     im <link linkend="when-start">&app; Control Center</link> auf die Schaltfläche <guibutton>New Game</guibutton> (Neues
-    Spiel), oder wählen Sie den Menüeintrag <menuchoice><guimenu>File</guimenu> (Datei) <guimenuitem>New Game…
-    </guimenuitem> (Neues Spiel…)</menuchoice> in einem der bereits geöffneten <link linkend="board-windows">
+    Spiel), oder wählen Sie den Menüeintrag <menuchoice><guimenu>File (Datei)</guimenu><guimenuitem>New Game… (Neues Spiel...)
+    </guimenuitem></menuchoice> in einem der bereits geöffneten <link linkend="board-windows">
     Spielbrettfenster</link>.  Das <link linkend="new-game-dialog">Dialogfeld New Game (Neues Spiel)</link> wird
     angezeigt, in dem Sie die Art des Spiels und die Gegner auswählen können.</para>
 
-      <para>Wenn Sie gegen ein Computerprogramm spielen möchten, müssen Sie dieses zunächst in &app; <link linkend=
-      "register-game-playing-program">registrieren</link> (natürlich nur einmal).  Klicken Sie dafür in dem Dialogfeld
+      <para>Wenn Sie gegen ein Computerprogramm spielen möchten, müssen Sie dieses zunächst in &app; <link linkend="register-game-playing-program">registrieren</link> (natürlich nur einmal).  Klicken Sie dafür in dem Dialogfeld
       auf die Schaltfläche <guibutton>Manage Engine List</guibutton> (Programmliste verwalten).</para>
 
       <para>Weitere Informationen finden Sie in der <link linkend="new-game-dialog">detaillierten Beschreibung des
@@ -222,7 +218,7 @@
       Spielaufzeichnung aus, und klicken Sie auf <guibutton>OK</guibutton>.</para></listitem>
 
 	<listitem><para>Wählen Sie in einem geöffneten <link linkend="board-windows">Spielbrettfenster</link> den
-	Menüeintrag <menuchoice><guimenu>File</guimenu> (Datei) <guimenuitem>Open</guimenuitem> (Öffnen)</menuchoice>,
+	Menüeintrag <menuchoice><guimenu>Datei</guimenu><guimenuitem>Öffnen</guimenuitem></menuchoice>,
 	oder drücken Sie einfach die Tastenkombination <keycap>STRG+O</keycap>.  Wie auch zuvor zeigt &app; das
 	Dialogfeld <guilabel>Open SGF File</guilabel> (SGF-Datei öffnen) an.</para></listitem>
 
@@ -235,21 +231,20 @@
 
     <section id="save-game-record"><title>So speichern Sie eine Spielaufzeichnung</title> <para>Wählen Sie zum Speichern
     einer Spielaufzeichnung im entsprechenden <link linkend="board-windows">Spielbrettfenster</link> den Menüeintrag
-    <menuchoice><guimenu>File</guimenu> (Datei) <guimenuitem>Save</guimenuitem> (Speichern)</menuchoice> aus (oder
+    <menuchoice><guimenu>File (Datei)</guimenu> <guimenuitem>Save (Speichern)</guimenuitem></menuchoice> aus (oder
     drücken Sie einfach <keycap>STRG+S</keycap>).  Wenn für die Spielaufzeichnung noch kein Name festgelegt wurde, zeigt
     &app; das Dialogfeld <guilabel>Save As</guilabel> (Speichern unter) an.  Geben Sie einen Namen für die Datei ein, und
     klicken Sie dann auf <guibutton>OK</guibutton>.</para>
 
       <para>Wenn Sie eine Spielaufzeichnung unter einen anderen Namen speichern möchten, wählen Sie den Menüeintrag
-      <menuchoice><guimenu>File</guimenu> (Datei) <guimenuitem>Save As</guimenuitem> (Speichern unter)</menuchoice> aus.
+      <menuchoice><guimenu>File (Datei)</guimenu> <guimenuitem>Save As (Speichern unter)</guimenuitem></menuchoice> aus.
       Geben Sie im Dialogfeld <guilabel>Save As</guilabel> (Speichern unter) einen Namen für die Datei ein, und klicken
       Sie auf <guibutton>OK</guibutton>.</para></section>
 
     <section id="register-game-playing-program"><title>So registrieren Sie ein Spielprogramm</title> <para>Öffnen Sie zum
     Registrieren eines Spielprogramms in &app; zunächst das <link linkend="preferences">Dialogfeld Preferences
     (Einstellungen)</link>, und wählen Sie dann im linken Bereich <guilabel>GTP Engines</guilabel> (GTP-Programme) aus.
-    (Sie können auch auf die Schaltfläche <guibutton>Manage Engine List</guibutton> (Programmliste verwalten) im <link
-    linkend="new-game-dialog">Dialogfeld New Game (Neues Spiel)</link> klicken, dann wird die Kategorie <guilabel>GTP
+    (Sie können auch auf die Schaltfläche <guibutton>Manage Engine List</guibutton> (Programmliste verwalten) im <link linkend="new-game-dialog">Dialogfeld New Game (Neues Spiel)</link> klicken, dann wird die Kategorie <guilabel>GTP
     Engines</guilabel> (GTP-Programme) direkt angezeigt.)</para>
 
       <para>Klicken Sie anschließend auf die Schaltfläche <guibutton>Add</guibutton> (Hinzufügen), und geben Sie dann im
@@ -264,17 +259,16 @@
       <para>Für andere Programm sind möglicherweise andere oder gar keine Optionen erforderlich.</para></section>
 
     <section id="adjourn-game"><title>So unterbrechen Sie ein Spiel</title> <para>Wählen Sie zum Unterbrechen eines
-    Spiels den Menüeintrag <menuchoice><guimenu>Play</guimenu> (Spiel) <guimenuitem>Adjourn Game</guimenuitem> (Spiel
-    unterbrechen)</menuchoice> aus.  Wenn das Spiel bisher noch nicht gespeichert wurde, müssen Sie einen Namen für die
+    Spiels den Menüeintrag <menuchoice><guimenu>Play (Spiel)</guimenu> <guimenuitem>Adjourn Game (Spiel unterbrechen)</guimenuitem>
+    </menuchoice> aus.  Wenn das Spiel bisher noch nicht gespeichert wurde, müssen Sie einen Namen für die
     Datei eingeben, in der Sie das Spiel speichern möchten.</para>
 
-      <para>Das Unterbrechen eines Spiels unterscheidet sich vom Speichern nur darin, dass das <link linkend=
-      "board-windows">Fenster des Spiels</link> geschlossen wird.</para></section>
+      <para>Das Unterbrechen eines Spiels unterscheidet sich vom Speichern nur darin, dass das <link linkend="board-windows">Fenster des Spiels</link> geschlossen wird.</para></section>
 
     <section id="resume-game"><title>So setzen Sie ein Spiel fort</title> <para>Um ein zuvor unterbrochenes Spiel
     fortzusetzen, klicken Sie im <link linkend="when-start">&app; Control Center</link> auf die Schaltfläche <guibutton>
-    Resume Game</guibutton> (Spiel fortsetzen), oder wählen Sie im Menü <guimenu>File</guimenu> (Datei) den Eintrag
-    <guimenuitem>Resume Game…</guimenuitem> (Spiel fortsetzen…) aus.  Sie werden aufgefordert, die Datei mit der
+    Resume Game</guibutton> (Spiel fortsetzen), oder wählen Sie im Menü <guimenu>File (Datei)</guimenu> den Eintrag
+    <guimenuitem>Resume Game… (Spiel fortsetzen…)</guimenuitem> aus.  Sie werden aufgefordert, die Datei mit der
     Spielaufzeichnung auszuwählen.</para>
 
       <para>Wenn Sie die Datei auswählen, wird das <link linkend="resuming-game-dialog">Dialogfeld Resume Game (Spiel
@@ -301,8 +295,7 @@
       spielbare Kombinationen mit <quote>Nein</quote> gekennzeichnet sind. Die Schaltfläche <guibutton>Next</guibutton>
       (Vor) ist nur aktiviert, wenn eine spielbare Kombination aus Spiel und Gegner ausgewählt wurde.</para>
 
-	<note><para>Bevor Sie gegen ein Computerprogramm spielen können (z.B. <ulink type="http" url=
-	"http://www.gnugo.org/gnugo.html"><application>GNU Go</application></ulink>), müssen Sie es in &app;
+	<note><para>Bevor Sie gegen ein Computerprogramm spielen können (z.B. <ulink type="http" url="http://www.gnugo.org/gnugo.html"><application>GNU Go</application></ulink>), müssen Sie es in &app;
 	registrieren.  Im Abschnitt <link linkend="preferences-gtp-engines">GTP-Programme</link> finden Sie hierzu eine
 	Anleitung.</para></note>
 
@@ -330,8 +323,7 @@
 	  </guilabel> (Spieler Schwarz) kopiert und umgekehrt.</para></listitem></varlistentry>
 
 	  <varlistentry><term>Schaltfläche <guibutton>Manage Engine List</guibutton> (Programmliste verwalten)</term>
-	  <listitem><para>Mit dieser Schaltfläche öffnen Sie das Einstellungsdialogfeld von &app; auf der Seite <link
-	  linkend="preferences-gtp-engines">GTP Engines</link> (GTP-Programme).  Diese bietet ein einfaches Verfahren für
+	  <listitem><para>Mit dieser Schaltfläche öffnen Sie das Einstellungsdialogfeld von &app; auf der Seite <link linkend="preferences-gtp-engines">GTP Engines</link> (GTP-Programme).  Diese bietet ein einfaches Verfahren für
 	  das Registrieren eines neuen Programms und/oder das Ändern der Parameter bereits registrierter Programme, bevor
 	  Sie ein neues Spiel starten.</para></listitem></varlistentry>
 
@@ -342,8 +334,7 @@
       <section id="new-game-dialog-game-rules"><title>Seite Game Rules (Spielregeln)</title> <para>Auf dieser Seite
       können Sie die Regeln für das Spiel auswählen.  Die Seite besteht aus zwei Teilen. Der obere Teil ist für Go,
       Amazons und Reversi jeweils unterschiedlich und enthält spielspezifische Regeln.  Im unteren Teil können Sie
-      Zeiteinstellungen vornehmen. Dieser Teil ist bei allen drei Spielen identisch.  Er wird zuletzt <link linkend=
-      "new-game-dialog-time-settings">beschrieben</link>.</para>
+      Zeiteinstellungen vornehmen. Dieser Teil ist bei allen drei Spielen identisch.  Er wird zuletzt <link linkend="new-game-dialog-time-settings">beschrieben</link>.</para>
 
 	<para>Nachdem Sie die gewünschten Regeln ausgewählt haben, klicken Sie auf die Schaltfläche <guibutton>Play
 	</guibutton> (Spielen), um das Spiel zu starten.</para>
@@ -374,8 +365,7 @@
 		die Schnittpunkte auf dem Brett.  Für die freie Vorgabe gibt es praktisch keine Beschränkung.</para>
 
 		<note><para>&app; behandelt die freie Vorgabe nicht als verpflichtend: Schwarz kann auch weniger
-		Vorgabesteine auf das Brett setzen, als in den Spielregeln angegeben (aber nicht weniger als zwei).</para
-		></note>
+		Vorgabesteine auf das Brett setzen, als in den Spielregeln angegeben (aber nicht weniger als zwei).</para></note>
 
 		<para>Wenn Sie ein Spiel zwischen <quote>gleich starken</quote> Spielern führen möchten, legen Sie die
 		Vorgabe einfach auf Null fest.</para></listitem></varlistentry>
@@ -384,8 +374,7 @@
 	    der Ausgleich für den weißen Spieler, dass er nicht beginnen kann.  Dabei handelt es sich i.d.R. nicht um
 	    eine ganze Zahl, um Unentschieden unmöglich zu machen. Das derzeit empfohlene Komi für <quote>ausgeglichene
 	    </quote> Spiele auf einem 19×19-Brett beträgt 6,5 Punkte.  Kleinere (oder sogar negative) Komi geben Schwarz
-	    einen gewissen Vorteil und können zusätzlich zu oder anstelle von Vorgaben verwendet werden.</para></listitem
-	    ></varlistentry></variablelist>
+	    einen gewissen Vorteil und können zusätzlich zu oder anstelle von Vorgaben verwendet werden.</para></listitem></varlistentry></variablelist>
 
 	  <para>Weitere Informationen finden Sie in der <link linkend="new-game-dialog-time-settings">Beschreibung zu den
 	  Zeiteinstellungen</link>.</para></section>
@@ -495,8 +484,7 @@
     &app;.  Hier werden die Spiele gespielt und die Spielaufzeichnungen angezeigt und bearbeitet.  Im linken Teil des
     Fensters finden Sie das Spielbrett selbst.  Die genaue Darstellung des Bretts hängt vom aktuellen Spiel ab (Go,
     Amazons oder Reversi) und kann <link linkend="preferences-go-board-appearance">konfiguriert</link> werden.  Recht im
-    Fenster befindet sich der Informationsbereich mit dem Kommentarfeld.  Unten im rechten Bereich kann auch die <link
-    linkend="game-tree-view">Spielverlaufsansicht</link> angezeigt werden.</para>
+    Fenster befindet sich der Informationsbereich mit dem Kommentarfeld.  Unten im rechten Bereich kann auch die <link linkend="game-tree-view">Spielverlaufsansicht</link> angezeigt werden.</para>
 
       <figure id="board-window-screen-shot"><title>Spielbrettfenster in &app; mit Kogo’s Joseki Dictionary</title>
       <screenshot><mediaobject><imageobject><imagedata fileref="figures/board-window.png" format="PNG"/></imageobject>
@@ -593,8 +581,8 @@
 	    (i.d.R. der Zug am aktuellen Knoten) sowie der Zug selbst angezeigt.  Dahinter wird der Spieler angezeigt,
 	    der mit dem nächsten Zug an der Reihe ist.  Dies scheint in einigen Fällen nicht mit dem letzten Zug
 	    übereinzustimmen, aber es ermöglicht das Überschreiben des nächsten Spielers in Spielaufzeichnungen (siehe
-	    Untermenü <menuchoice><guimenu>Edit</guimenu> (Bearbeiten) <guisubmenu>Player to Move</guisubmenu> (Spieler
-	    am Zug)</menuchoice>).  Dieses Feature wird häufig in Problemsammlungen verwendet.</para></listitem>
+	    Untermenü <menuchoice><guimenu>Edit (Bearbeiten)</guimenu> <guisubmenu>Player to Move (Spieler am Zug)</guisubmenu>
+	    </menuchoice>).  Dieses Feature wird häufig in Problemsammlungen verwendet.</para></listitem>
 	    </varlistentry>
 
 	    <varlistentry><term>Spielergebnis</term> <listitem><para>Unterhalb der Informationen zum Zug wird das
@@ -605,8 +593,8 @@
 	    <varlistentry><term>Spielaktions-Schaltflächen</term> <listitem><para>Noch weiter unten finden Sie die
 	    Schaltflächen für Spielaktionen.  Dazu gehören <guibutton>Pass</guibutton> (Passen - bei Go) und <guibutton>
 	    Resign</guibutton> (Aufgeben).  Da diese Schaltflächen nur sehr selten benötigt werden und trotzdem immer
-	    Platz beanspruchen, können Sie sie mit dem Menüeintrag <menuchoice><guimenu>View</guimenu> (Ansicht)
-	    <guimenuitem>Game Action Buttons</guimenuitem> (Spielaktions-Schaltflächen)</menuchoice> ausblenden.  Sie
+	    Platz beanspruchen, können Sie sie mit dem Menüeintrag <menuchoice><guimenu>View (Ansicht)</guimenu>
+	    <guimenuitem>Game Action Buttons (Spielaktions-Schaltflächen)</guimenuitem></menuchoice> ausblenden.  Sie
 	    werden standardmäßig angezeigt, um auf die entsprechenden Funktionen hinzuweisen.</para></listitem>
 	    </varlistentry>
 
@@ -620,7 +608,7 @@
 		Schriftart über dem Kommentar angezeigt.  Sie können ihn wie den Kommentar selbst bearbeiten - es sind
 		keine besonderen Schritte für das Ändern des Knotennamens erforderlich.  Verwenden Sie für das Eingeben
 		eines Namens für einen Knoten, der noch keinen Namen hat, den Menüeintrag <menuchoice><guimenu>Edit
-		</guimenu> (Bearbeiten) <guimenuitem>Edit Node Name</guimenuitem> (Knotennamen ändern)</menuchoice>.
+		 (Bearbeiten)</guimenu> <guimenuitem>Edit Node Name (Knotennamen ändern)</guimenuitem></menuchoice>.
 		Damit wird im Kommentarfeld ein Platzhalter für den Knotennamen eingefügt, den Sie dann mit dem
 		gewünschten Namen überschreiben können.  Um einen Namen zu entfernen, löschen Sie einfach den gesamten
 		Text. &app; erkennt dies automatisch und entfernt die Knotenlinie aus dem Feld.</para></listitem>
@@ -628,24 +616,22 @@
 
 	    <varlistentry><term>Spielverlaufsansicht</term> <listitem><para>Und schließlich kann noch die
 	    Spielverlaufsansicht angezeigt werden, die im <link linkend="game-tree-view">nächsten Abschnitt</link>
-	    ausführlich beschrieben wird.  Ihre Anzeige wird durch den Menüeintrag <menuchoice><guimenu>View</guimenu>
-	    (Ansicht) <guimenuitem>Game Tree</guimenuitem> (Spielverlauf)</menuchoice> und die <link linkend=
-	    "preferences-game-tree">Einstellungen</link> gesteuert.</para></listitem></varlistentry></variablelist></para
-	    ></section>
+	    ausführlich beschrieben wird.  Ihre Anzeige wird durch den Menüeintrag <menuchoice><guimenu>View (Ansicht) </guimenu>
+	    <guimenuitem>Game Tree (Spielverlauf)</guimenuitem></menuchoice> und die <link linkend="preferences-game-tree">Einstellungen</link> gesteuert.</para></listitem></varlistentry></variablelist></para></section>
 
       <section id="game-tree-view"><title>Spielverlaufsansicht</title> <para>In der Spielverlaufsansicht wird die
       Spielaufzeichnung als Baum angezeigt, und zwar ähnlich dem Stil von <application>CGoban1</application>.  Sie ist
       i.Allg. nur dann interessant, wenn die Spielaufzeichnung Variationen enthält.  Dies gilt z.B. für ein
       Eröffnungs-/Joseki-Wörterbuch oder ein sehr gut kommentiertes Spielt mit abweichenden Verzweigungen.  Sie können
-      die Spielverlaufsansicht mit dem Menüeintrag <guimenuitem>Game Tree</guimenuitem> (Spielverlauf) im Menü <guimenu>
-      View</guimenu> (Ansicht) und über die <link linkend="preferences-game-tree">Einstellungen</link> anzeigen.</para>
+      die Spielverlaufsansicht mit dem Menüeintrag <guimenuitem>Game Tree (Spielverlauf)</guimenuitem> im Menü <guimenu>
+      View (Ansicht)</guimenu> und über die <link linkend="preferences-game-tree">Einstellungen</link> anzeigen.</para>
 
 	<para>Ein Knoten mit dem Zug eines bestimmten Spielers (einschließlich des Passens im Go) wird als Stein in der
 	Farbe des entsprechenden Spielers angezeigt.  Andere Knoten, einschließlich des Positionssetups, haben derzeit
 	noch kein Symbol.  Knoten, die zu einem Zweig (einer Variation) gehören, sind durch eine Linie verbunden. Der
 	aktuelle Zweig wird jeweils hervorgehoben.  Der aktuelle Knoten wird mit einem schwarzen Rechteck angezeigt.
 	Wenn das Rechteck nicht angezeigt wird, können Sie es mit dem Befehl <guimenuitem>Recenter on Current Node
-	</guimenuitem> (Aktuellen Knoten anzeigen) im Menü <guimenu>View</guimenu> (Ansicht) anzeigen.</para>
+	 (Aktuellen Knoten anzeigen)</guimenuitem> im Menü <guimenu>View (Ansicht)</guimenu> anzeigen.</para>
 
 	<para>Untergeordnete Zweige können Sie durch Klicken mit der rechten Maustaste erweitern und reduzieren.  Dies
 	ist hilfreich, um Knoten auszublenden, die Sie derzeit nicht interessieren.  Auf den Wurzeln reduzierter Knoten
@@ -654,14 +640,12 @@
 	<para>Wenn Sie die Maus über einen Knoten halten, wird ein Tooltipp mit Informationen über den Knoten angezeigt.
 	Dazu gehören die Zugnummer, der Zug selbst, der Knotenname und Kommentare.  Natürlich können einige dieser
 	Informationen im Tooltipp fehlen, nämlich dann, wenn sie im Knoten nicht enthalten sind.  Wenn der Kommentar
-	eines Knotens zu lang ist, wird nur der erste Teil angezeigt.  Sie können Tooltipps in den <link linkend=
-	"preferences-game-tree">Einstellungen</link> deaktivieren, falls sie Sie stören.</para></section>
+	eines Knotens zu lang ist, wird nur der erste Teil angezeigt.  Sie können Tooltipps in den <link linkend="preferences-game-tree">Einstellungen</link> deaktivieren, falls sie Sie stören.</para></section>
 
       <section id="board-window-menu"><title>Spielbrettfenster-Menü</title>
 
-	<section id="file-menu"><title>Menü <guimenu>File</guimenu> (Datei) </title> <para><variablelist><varlistentry>
-	<term><guimenuitem>New Game…</guimenuitem> (Neues Spiel…)</term> <listitem><para>Zeigt das <link linkend=
-	"new-game-dialog">Dialogfeld New Game (Neues Spiel)</link> an, in dem Sie ein neues Spiel starten können.</para>
+	<section id="file-menu"><title>Menü <guimenu>File (Datei)</guimenu> </title> <para><variablelist><varlistentry>
+	<term><guimenuitem>New Game… (Neues Spiel…)</guimenuitem></term> <listitem><para>Zeigt das <link linkend="new-game-dialog">Dialogfeld New Game (Neues Spiel)</link> an, in dem Sie ein neues Spiel starten können.</para>
 	</listitem></varlistentry>
 
 	      <varlistentry><term><guimenuitem>New Game Record… (Neue Spielaufzeichnung…)</guimenuitem></term> <listitem>
@@ -669,22 +653,22 @@
 	      </link> an, in dem Sie eine neue Spielaufzeichnung erstellen können, ohne tatsächlich ein Spiel zu spielen.
 	      </para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Open…</guimenuitem> (Öffnen…)</term> <listitem><para>Öffnet eine
+	      <varlistentry><term><guimenuitem>Open… (Öffnen…)</guimenuitem></term> <listitem><para>Öffnet eine
 	      Spielaufzeichnung.  Die Aufzeichnung kann auch in einer anderen Anwendung gespeichert worden sein.</para>
 	      </listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Resume Game…</guimenuitem> (Spiel fortsetzen…)</term> <listitem><para>
+	      <varlistentry><term><guimenuitem>Resume Game… (Spiel fortsetzen…)</guimenuitem></term> <listitem><para>
 	      Öffnet eine Spielaufzeichnung und zeigt das <link linkend="resuming-game-dialog">Dialogfeld Resume Game
 	      (Spiel fortsetzen)</link> an, in dem Sie ein Spiel fortsetzen können.  Sie können auch Spiele fortsetzen,
 	      die in anderen Anwendungen unterbrochen wurden.</para></listitem></varlistentry>
 
 	      <varlistentry><term><guisubmenu>Export…</guisubmenu> (Exportieren…)</term> <listitem><para><variablelist>
-	      <varlistentry><term><guimenuitem>ASCII Diagram</guimenuitem> (ASCII-Diagramm)</term> <listitem><para>
+	      <varlistentry><term><guimenuitem>ASCII Diagram (ASCII-Diagramm)</guimenuitem></term> <listitem><para>
 	      Exportiert die aktuelle Brettstellung als formatfreies ASCII-Diagramm in die Zwischenablage.  Dies ist z.B.
 	      hilfreich, um Spielstellungen per E-Mail zu senden, wenn Sie keine umfangreiche SGF-Datei benötigen.  Es
 	      wird lediglich die Brettstellung ohne jegliches Markup gespeichert.</para></listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Sensei’s Library Diagram</guimenuitem> (Sensei’s Library-Diagramm)
+		      <varlistentry><term><guimenuitem>Sensei’s Library Diagram (Sensei’s Library-Diagramm)</guimenuitem>
 		      </term> <listitem><para>Exportiert die aktuelle Brettstellung als Sensei’s Library-Diagramm in die
 		      Zwischenablage.  Es werden Markups und Bezeichnungen für Steine, Kreise und Rechtecke exportiert.
 		      Das Ergebnis kann logischerweise in Sensei’s Library importiert werden.  Diese Option ist nur bei
@@ -694,37 +678,37 @@
 			  erforderlich ist, müssen Sie nicht erforderliche Informationen manuell löschen.</para></note>
 			  </listitem></varlistentry></variablelist></para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Save</guimenuitem> (Speichern)</term> <listitem><para>Speichert die
+	      <varlistentry><term><guimenuitem>Save (Speichern)</guimenuitem></term> <listitem><para>Speichert die
 	      Spielaufzeichnung mit dem bereits festgelegten Dateinamen.  Bei einer neuen Spielaufzeichnung werden Sie
 	      zunächst nach dem Dateinamen gefragt.  Dieser Befehl ist deaktiviert, wenn die Spielaufzeichnung nicht
 	      verändert wurde.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Save as…</guimenuitem> (Speichern unter…)</term> <listitem><para>Speichert
+	      <varlistentry><term><guimenuitem>Save as… (Speichern unter…)</guimenuitem></term> <listitem><para>Speichert
 	      die Spielaufzeichnung unter einem anderen Dateinamen.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Close</guimenuitem> (Schließen)</term> <listitem><para>Schließt das
+	      <varlistentry><term><guimenuitem>Close (Schließen)</guimenuitem></term> <listitem><para>Schließt das
 	      Spielbrettfenster.  Wenn die Spielaufzeichnung verändert wurde, werden Sie zunächst gefragt, ob Sie die
 	      Änderungen speichern möchten.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Quit</guimenuitem> (Beenden)</term> <listitem><para>Beendet &app;.  Sie
+	      <varlistentry><term><guimenuitem>Quit (Beenden)</guimenuitem></term> <listitem><para>Beendet &app;.  Sie
 	      werden aufgefordert, noch nicht gespeicherte Spielaufzeichnungen zuvor zu sichern.</para></listitem>
 	      </varlistentry></variablelist></para></section>
 
-	<section id="edit-menu"><title>Menü <guimenu>Edit</guimenu> (Bearbeiten)</title> <para><variablelist>
-	<varlistentry><term><guimenuitem>Undo</guimenuitem> (Rückgängig)</term> <listitem><para>Macht die letzte Änderung
+	<section id="edit-menu"><title>Menü <guimenu>Edit (Bearbeiten)</guimenu></title> <para><variablelist>
+	<varlistentry><term><guimenuitem>Undo (Rückgängig)</guimenuitem></term> <listitem><para>Macht die letzte Änderung
 	an der aktuellen Spielaufzeichnung rückgängig.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Redo</guimenuitem> (Wiederholen)</term> <listitem><para>Wiederholt die
+	      <varlistentry><term><guimenuitem>Redo (Wiederholen)</guimenuitem></term> <listitem><para>Wiederholt die
 	      letzte Änderung an der aktuellen Spielaufzeichnung.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Cut</guimenuitem> (Ausschneiden)</term> <listitem><para>Schneidet den
+	      <varlistentry><term><guimenuitem>Cut (Ausschneiden)</guimenuitem></term> <listitem><para>Schneidet den
 	      untergeordneten Zweig mit dem aktuellen Knoten aus und kopiert ihn in die Zwischenablage.</para></listitem>
 	      </varlistentry>
 
-	      <varlistentry><term><guimenuitem>Copy</guimenuitem> (Kopieren)</term> <listitem><para>Kopiert den
+	      <varlistentry><term><guimenuitem>Copy (Kopieren)</guimenuitem></term> <listitem><para>Kopiert den
 	      untergeordneten Zweig mit dem aktuellen Knoten in die Zwischenablage.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Paste</guimenuitem> (Einfügen)</term> <listitem><para>Fügt den
+	      <varlistentry><term><guimenuitem>Paste (Einfügen)</guimenuitem></term> <listitem><para>Fügt den
 	      untergeordneten Zweig aus der Zwischenablage als letzten untergeordneten Zweig des aktuellen Knotens ein.
 	      Dieser Befehl schlägt fehl, wenn der untergeordnete Zweig z.B. aus einem anderen Spieltyp kopiert wurde.
 	      </para>
@@ -733,7 +717,7 @@
 		  Menüeintrag auch dann verfügbar, wenn kein untergeordneter Zweig zum Einfügen vorhanden ist.</para>
 		  </note></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Delete Node</guimenuitem> (Knoten löschen)</term> <listitem><para>Löscht
+	      <varlistentry><term><guimenuitem>Delete Node (Knoten löschen)</guimenuitem></term> <listitem><para>Löscht
 	      den aktuellen Knoten und seine untergeordneten Zweige aus der Spielaufzeichnung.</para></listitem>
 	      </varlistentry>
 
@@ -742,75 +726,73 @@
 	      verwendet werden.  Sie können das aktive Tool auch über die Bearbeitungsleiste oder die Tastatur wechseln.
 	      </para>
 
-		  <para><variablelist><varlistentry><term><guimenuitem>Move Tool</guimenuitem> (Spielzug)</term>
+		  <para><variablelist><varlistentry><term><guimenuitem>Move Tool (Spielzug)</guimenuitem></term>
 		  <listitem><para>Verwenden Sie dieses Tool für das setzen neuer Züge in der aktuellen Spielaufzeichnung.
 		  </para></listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Setup Tool</guimenuitem> (Setup-Tool)</term> <listitem><para>
+		      <varlistentry><term><guimenuitem>Setup Tool (Setup-Tool)</guimenuitem></term> <listitem><para>
 		      Verwenden Sie dieses Tool für das Hinzufügen und Entfernen von Steinen im aktuellen Knoten.</para>
 		      </listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Cross Markup</guimenuitem> (Kreuz)</term> <listitem><para>
+		      <varlistentry><term><guimenuitem>Cross Markup (Kreuz)</guimenuitem></term> <listitem><para>
 		      Verwenden Sie dieses Tool für das Hinzufügen eines Kreuzes an der aktuellen Position.</para>
 		      </listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Circle Markup</guimenuitem> (Kreis)</term> <listitem><para>
+		      <varlistentry><term><guimenuitem>Circle Markup (Kreis)</guimenuitem></term> <listitem><para>
 		      Verwenden Sie dieses Tool für das Hinzufügen eines Kreises an der aktuellen Position.</para>
 		      </listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Cross Markup</guimenuitem> (Kreuz)</term> <listitem><para>
+		      <varlistentry><term><guimenuitem>Cross Markup (Kreuz)</guimenuitem></term> <listitem><para>
 		      Verwenden Sie dieses Tool für das Hinzufügen eines Kreuzes an der aktuellen Position.</para>
 		      </listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Square Markup</guimenuitem> (Quadrat)</term> <listitem><para>
+		      <varlistentry><term><guimenuitem>Square Markup (Quadrat)</guimenuitem></term> <listitem><para>
 		      Verwenden Sie dieses Tool für das Hinzufügen eines Quadrates an der aktuellen Position.</para>
 		      </listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Triangle Markup</guimenuitem> (Dreieck)</term> <listitem><para>
+		      <varlistentry><term><guimenuitem>Triangle Markup (Dreieck)</guimenuitem></term> <listitem><para>
 		      Verwenden Sie dieses Tool für das Hinzufügen eines Dreiecks an der aktuellen Position.</para>
 		      </listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Selected Markup</guimenuitem> (Auswahlmarkierung)</term> <listitem
-		      ><para>Verwenden Sie dieses Tool für das Hinzufügen einer Auswahlmarkierung an der aktuellen
+		      <varlistentry><term><guimenuitem>Selected Markup (Auswahlmarkierung)</guimenuitem></term> <listitem><para>Verwenden Sie dieses Tool für das Hinzufügen einer Auswahlmarkierung an der aktuellen
 		      Position.</para>
 
 			  <note><para>Es wird nicht empfohlen, diese Markierung zu verwenden, da hierfür keine
 			  Standarddarstellung existiert und sie andere Benutzer daher verwirren könnte.</para></note>
 			  </listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Label Tool</guimenuitem> (Bezeichner)</term> <listitem><para>
+		      <varlistentry><term><guimenuitem>Label Tool (Bezeichner)</guimenuitem></term> <listitem><para>
 		      Verwenden Sie dieses Tool für das Hinzufügen eines Buchstabens oder beliebiger Textbezeichner auf
 		      dem Brett.</para></listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Number Tool</guimenuitem> (Nummerierung)</term> <listitem><para>
+		      <varlistentry><term><guimenuitem>Number Tool (Nummerierung)</guimenuitem></term> <listitem><para>
 		      Verwenden Sie dieses Tool für das Hinzufügen von Nummerierungen auf dem Brett.</para></listitem>
 		      </varlistentry>
 
-		      <varlistentry><term><guimenuitem>Scoring Tool</guimenuitem> (Auswertung)</term> <listitem><para>
+		      <varlistentry><term><guimenuitem>Scoring Tool (Auswertung)</guimenuitem></term> <listitem><para>
 		      Verwenden Sie dieses Tool für die Berechnung der Punkte anhand der aktuellen Position.  Dieses Tool
 		      kann nur bei Go-Spielen verwendet werden.</para></listitem></varlistentry></variablelist></para>
 		      </listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Add Empty Node</guimenuitem> (Leeren Knoten hinzufügen)</term> <listitem>
+	      <varlistentry><term><guimenuitem>Add Empty Node (Leeren Knoten hinzufügen)</guimenuitem></term> <listitem>
 	      <para>Fügt einen leeren untergeordneten Knoten im aktuellen Knoten hinzu.  Normalerweise werden
 	      untergeordnete Knoten durch das Setzen eines Steins hinzugefügt, dieser Befehl gibt Ihnen allerdings die
 	      Möglichkeit, einen Knoten hinzuzufügen, ohne einen Stein zu setzen.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Move Branch Up</guimenuitem> (Zweig nach oben)</term> <listitem><para>
+	      <varlistentry><term><guimenuitem>Move Branch Up (Zweig nach oben)</guimenuitem></term> <listitem><para>
 	      Wechselt einen Zweig nach oben, wodurch dieser mit dem aktuellen Zweig vertauscht wird.  Dies ist für das
 	      Umsortieren von Zweigen in einer Spielaufzeichnung hilfreich.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Move Branch Down</guimenuitem> (Zweig nach unten)</term> <listitem><para>
+	      <varlistentry><term><guimenuitem>Move Branch Down (Zweig nach unten)</guimenuitem></term> <listitem><para>
 	      Wechselt einen Zweig nach unten, wodurch dieser mit dem aktuellen Zweig vertauscht wird.  Dies ist für das
 	      Umsortieren von Zweigen in einer Spielaufzeichnung hilfreich.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Edit Node Name</guimenuitem> (Knotennamen bearbeiten)</term> <listitem>
+	      <varlistentry><term><guimenuitem>Edit Node Name (Knotennamen bearbeiten)</guimenuitem></term> <listitem>
 	      <para>Ändert den Namen des aktuellen Knotens.  Wenn der Knoten keinen Namen hat, wird dieser eingefügt.
 	      Andernfalls können Sie den Knoten bearbeiten, indem Sie ihn einfach im Kommentarfenster ändern, wobei
 	      dieser Befehl den Namen auswählt.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Set Move Number</guimenuitem> (Zugnummer festlegen)</term> <listitem><para
-	      >Legt die Nummer des aktuellen Zugs fest.  Normalerweise wird die Zugnummer nach jedem Zug um eins erhöht,
+	      <varlistentry><term><guimenuitem>Set Move Number (Zugnummer festlegen)</guimenuitem></term> <listitem><para>Legt die Nummer des aktuellen Zugs fest.  Normalerweise wird die Zugnummer nach jedem Zug um eins erhöht,
 	      es gibt allerdings Situationen, in denen diese Nummer überschrieben werden muss, z.B. wenn eine
 	      Spielaufzeichnung nicht am Spielanfang beginnt.</para></listitem></varlistentry>
 
@@ -818,123 +800,118 @@
 	      einigen Fällen ist es erforderlich, explizit festzulegen, wer mit dem nächsten Zug an der Reihe ist, z.B.
 	      bei einer Problemsammlung.</para>
 
-		  <para><variablelist><varlistentry><term><guimenuitem>White</guimenuitem> (Weiß)</term> <listitem><para>
+		  <para><variablelist><varlistentry><term><guimenuitem>White (Weiß)</guimenuitem></term> <listitem><para>
 		  Legt den Spieler Weiß als Spieler am Zug fest, und zwar unabhängig von den Spielregeln.</para>
 		  </listitem></varlistentry>
 
-		      <varlistentry><term><guimenuitem>Black</guimenuitem> (Schwarz)</term> <listitem><para>Legt den
+		      <varlistentry><term><guimenuitem>Black (Schwarz)</guimenuitem></term> <listitem><para>Legt den
 		      Spieler Schwarz als Spieler am Zug fest, und zwar unabhängig von den Spielregeln.</para></listitem>
 		      </varlistentry>
 
-		      <varlistentry><term><guimenuitem>By Game Rules</guimenuitem> (Nach Spielregeln)</term> <listitem>
+		      <varlistentry><term><guimenuitem>By Game Rules (Nach Spielregeln)</guimenuitem></term> <listitem>
 		      <para>Bestimmt anhand der Spielregeln, welcher Spieler den nächsten Zug macht
 		      (Standardeinstellung).</para></listitem></varlistentry></variablelist></para></listitem>
 		      </varlistentry>
 
-	      <varlistentry><term><guimenuitem>Find</guimenuitem> (Suchen)</term> <listitem><para>Zeigt das <link
-	      linkend="find-dialog">Dialogfeld Find (Suchen)</link> an, in dem Sie eine Zeichenfolge in den Kommentaren
+	      <varlistentry><term><guimenuitem>Find (Suchen)</guimenuitem></term> <listitem><para>Zeigt das <link linkend="find-dialog">Dialogfeld Find (Suchen)</link> an, in dem Sie eine Zeichenfolge in den Kommentaren
 	      und/oder Namen von Knoten suchen können.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Find Next</guimenuitem> (Abwärts suchen)</term> <listitem><para>Wiederholt
+	      <varlistentry><term><guimenuitem>Find Next (Abwärts suchen)</guimenuitem></term> <listitem><para>Wiederholt
 	      den letzten Suchvorgang vorwärts.  Wenn noch keine Suche durchgeführt wurde, entspricht dieser Befehl dem
-	      Menüeintrag <guimenuitem>Find</guimenuitem> (Suchen).</para></listitem></varlistentry>
+	      Menüeintrag <guimenuitem>Find (Suchen)</guimenuitem>.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Find Previous</guimenuitem> (Aufwärts suchen)</term> <listitem><para>
+	      <varlistentry><term><guimenuitem>Find Previous (Aufwärts suchen)</guimenuitem></term> <listitem><para>
 	      Wiederholt den letzten Suchvorgang rückwärts.  Wenn noch keine Suche durchgeführt wurde, entspricht dieser
-	      Befehl dem Menüeintrag <guimenuitem>Find</guimenuitem> (Suchen).</para></listitem></varlistentry>
+	      Befehl dem Menüeintrag <guimenuitem>Find (Suchen)</guimenuitem>.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Game Information</guimenuitem> (Spieldaten)</term> <listitem><para>Zeigt
+	      <varlistentry><term><guimenuitem>Game Information (Spieldaten)</guimenuitem></term> <listitem><para>Zeigt
 	      das <link linkend="game-information-dialog">Dialogfeld Game Information (Spieldaten)</link> an, in dem Sie
 	      Spieldaten anzeigen und/oder bearbeiten können.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Preferences</guimenuitem> (Einstellungen)</term> <listitem><para>Zeigt das
+	      <varlistentry><term><guimenuitem>Preferences (Einstellungen)</guimenuitem></term> <listitem><para>Zeigt das
 	      <link linkend="preferences">Dialogfeld Preferences (Einstellungen)</link> an, in dem Sie &app;-
 	      Einstellungen ändern können.</para></listitem></varlistentry></variablelist></para></section>
 
-	<section id="view-menu"><title>Menü <guimenu>View</guimenu> (Ansicht)</title> <para><variablelist><varlistentry>
-	<term><guimenuitem>Main Toolbar</guimenuitem> (Standardleiste)</term> <listitem><para>Blendet die Standardleiste
+	<section id="view-menu"><title>Menü <guimenu>View (Ansicht)</guimenu></title> <para><variablelist><varlistentry>
+	<term><guimenuitem>Main Toolbar (Standardleiste)</guimenuitem></term> <listitem><para>Blendet die Standardleiste
 	in diesem Fenster ein oder aus.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Editing Toolbar</guimenuitem> (Bearbeitungsleiste)</term> <listitem><para>
+	      <varlistentry><term><guimenuitem>Editing Toolbar (Bearbeitungsleiste)</guimenuitem></term> <listitem><para>
 	      Blendet die Bearbeitungsleiste in diesem Fenster ein oder aus.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Navigation Toolbar</guimenuitem> (Navigationsleiste)</term> <listitem>
+	      <varlistentry><term><guimenuitem>Navigation Toolbar (Navigationsleiste)</guimenuitem></term> <listitem>
 	      <para>Blendet die Navigationsleiste in diesem Fenster ein oder aus.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Game Action Buttons</guimenuitem> (Spielaktions-Schaltflächen)</term>
+	      <varlistentry><term><guimenuitem>Game Action Buttons (Spielaktions-Schaltflächen)</guimenuitem></term>
 	      <listitem><para>Blendet die Spielaktions-Schaltflächen (<guibutton>Pass</guibutton> (Passen) bei Go und
 	      <guibutton>Resign</guibutton> (Aufgeben)) ein oder aus.  Diese Schaltflächen werden nur selten verwendet
 	      und nehmen sehr viel Platz auf der rechten Seite ein.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Game Tree</guimenuitem> (Spielverlauf)</term> <listitem><para>Blendet die
+	      <varlistentry><term><guimenuitem>Game Tree (Spielverlauf)</guimenuitem></term> <listitem><para>Blendet die
 	      <link linkend="game-tree-view">Spielverlaufsansicht</link> in diesem Fenster ein oder aus.  Sie können die
 	      Anzeige dieser Ansicht auch global in den <link linkend="preferences-game-tree">Einstellungen</link>
 	      ändern.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Recenter on Current Node</guimenuitem> (Aktuellen Knoten anzeigen)</term>
-	      <listitem><para>Zeigt den aktuellen Knoten in der <link linkend="game-tree-view">Spielverlaufsansicht</link
-	      > an.  Natürlich muss dafür die Spielverlaufsansicht angezeigt werden.</para></listitem></varlistentry>
+	      <varlistentry><term><guimenuitem>Recenter on Current Node (Aktuellen Knoten anzeigen)</guimenuitem></term>
+	      <listitem><para>Zeigt den aktuellen Knoten in der <link linkend="game-tree-view">Spielverlaufsansicht</link> an.  Natürlich muss dafür die Spielverlaufsansicht angezeigt werden.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Control Center</guimenuitem></term> <listitem><para>Zeigt das <link
-	      linkend="when-start">&app; Control Center</link> an.</para></listitem></varlistentry></variablelist></para>
+	      <varlistentry><term><guimenuitem>Control Center</guimenuitem></term> <listitem><para>Zeigt das <link linkend="when-start">&app; Control Center</link> an.</para></listitem></varlistentry></variablelist></para>
 	      </section>
 
-	<section id="play-menu"><title>Menü <guimenu>Play</guimenu> (Spiel)</title> <para><variablelist><varlistentry>
-	<term><guimenuitem>Pass</guimenuitem> (Passen)</term> <listitem><para>Setzt den aktuellen Zug aus.  (Gilt
+	<section id="play-menu"><title>Menü <guimenu>Play (Spiel)</guimenu></title> <para><variablelist><varlistentry>
+	<term><guimenuitem>Pass (Passen)</guimenuitem></term> <listitem><para>Setzt den aktuellen Zug aus.  (Gilt
 	ausschließlich bei Go.)</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Resign</guimenuitem> (Aufgeben)</term> <listitem><para>Beendet das
+	      <varlistentry><term><guimenuitem>Resign (Aufgeben)</guimenuitem></term> <listitem><para>Beendet das
 	      aktuelle Spiel durch Aufgabe.  Der Gegner ist Sieger.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Adjourn Game</guimenuitem> (Spiel unterbrechen)</term> <listitem><para>
+	      <varlistentry><term><guimenuitem>Adjourn Game (Spiel unterbrechen)</guimenuitem></term> <listitem><para>
 	      Beendet das aktuelle Spiel und sichert dieses als Spielaufzeichnung, damit es zu einem späteren Zeitpunkt
 	      <link linkend="resume-game">fortgesetzt</link> werden kann.</para></listitem></varlistentry></variablelist>
 	      </para></section>
 
-	<section id="go-menu"><title>Menü <guimenu>Go</guimenu> (Navigation)</title>
+	<section id="go-menu"><title>Menü <guimenu>Go (Navigation)</guimenu></title>
 
-	  <para><variablelist><varlistentry><term><guimenuitem>Previous Node</guimenuitem> (Vorheriger Knoten)</term>
+	  <para><variablelist><varlistentry><term><guimenuitem>Previous Node (Vorheriger Knoten)</guimenuitem></term>
 	  <listitem><para>Wechselt zum vorherigen Knoten (übergeordneter Knoten des aktuellen Knotens).</para></listitem>
 	  </varlistentry>
 
-	      <varlistentry><term><guimenuitem>Next Node</guimenuitem> (Nächster Knoten)</term> <listitem><para>Wechselt
+	      <varlistentry><term><guimenuitem>Next Node (Nächster Knoten)</guimenuitem></term> <listitem><para>Wechselt
 	      zum nächsten Knoten (untergeordneter Knoten des aktuellen Knotens).  Der nächste Knoten ist standardmäßig
 	      der erste untergeordnete Knoten des aktuellen Knotens, dieser wird aber beibehalten, wenn Sie zu einem
 	      anderen untergeordneten Knoten wechseln.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Ten Nodes Backward</guimenuitem> (Zehn Knoten zurück)</term> <listitem>
+	      <varlistentry><term><guimenuitem>Ten Nodes Backward (Zehn Knoten zurück)</guimenuitem></term> <listitem>
 	      <para>Wechselt zehn Knoten zurück.  Wenn weniger als zehn Knoten vorhanden sind, wird der Vorgang am Stamm
 	      des Spielverlaufs abgebrochen.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Ten Nodes Forward</guimenuitem> (Zehn Knoten vor)</term> <listitem><para>
+	      <varlistentry><term><guimenuitem>Ten Nodes Forward (Zehn Knoten vor)</guimenuitem></term> <listitem><para>
 	      Wechselt zehn Knoten vor.  Wenn weniger als zehn Knoten vorhanden sind, wird der Vorgang am Ende des Zweigs
 	      abgebrochen.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Root Node</guimenuitem> (Stammknoten)</term> <listitem><para>Wechselt zum
+	      <varlistentry><term><guimenuitem>Root Node (Stammknoten)</guimenuitem></term> <listitem><para>Wechselt zum
 	      Stamm des Spielverlaufs.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Variation Last Node</guimenuitem> (Letzter Knoten der Variation)</term>
-	      <listitem><para>Wechselt zum letzten Knoten im aktuellen Zweig (Variation).</para></listitem></varlistentry
-	      >
+	      <varlistentry><term><guimenuitem>Variation Last Node (Letzter Knoten der Variation)</guimenuitem></term>
+	      <listitem><para>Wechselt zum letzten Knoten im aktuellen Zweig (Variation).</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Previous Variation</guimenuitem> (Vorherige Variation)</term> <listitem>
+	      <varlistentry><term><guimenuitem>Previous Variation (Vorherige Variation)</guimenuitem></term> <listitem>
 	      <para>Wechselt zur vorherigen Variation des aktuellen Knotens, also zum vorherigen untergeordneten Knoten
 	      des übergeordneten Knotens des aktuellen Knotens.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Next Node</guimenuitem> (Nächster Knoten)</term> <listitem><para>Wechselt
+	      <varlistentry><term><guimenuitem>Next Node (Nächster Knoten)</guimenuitem></term> <listitem><para>Wechselt
 	      zur nächsten Variation des aktuellen Knotens, also zum nächsten untergeordneten Knoten des übergeordneten
 	      Knotens des aktuellen Knotens.</para></listitem></varlistentry>
 
-	      <varlistentry><term><guimenuitem>Go to Named Node…</guimenuitem> (Zu benanntem Knoten)</term> <listitem>
-	      <para>Wechselt zu einem Knoten mit dem angegebenen Namen.  Sie können für diesen Zweck auch das <link
-	      linkend="find-dialog">Dialogfeld Find (Suchen)</link> verwenden, bei diesem Verfahren gibt es allerdings
+	      <varlistentry><term><guimenuitem>Go to Named Node… (Zu benanntem Knoten)</guimenuitem></term> <listitem>
+	      <para>Wechselt zu einem Knoten mit dem angegebenen Namen.  Sie können für diesen Zweck auch das <link linkend="find-dialog">Dialogfeld Find (Suchen)</link> verwenden, bei diesem Verfahren gibt es allerdings
 	      eine Namensvervollständigung.</para></listitem></varlistentry></variablelist></para></section>
 
-	<section id="help-menu"><title>Menü <guimenu>Help</guimenu> (Hilfe)</title> <para><variablelist><varlistentry>
-	<term><guimenuitem>Contents</guimenuitem> (Inhalt)</term> <listitem><para>Zeigt diese Hilfe an.</para></listitem>
+	<section id="help-menu"><title>Menü <guimenu>Help (Hilfe)</guimenu></title> <para><variablelist><varlistentry>
+	<term><guimenuitem>Contents (Inhalt)</guimenuitem></term> <listitem><para>Zeigt diese Hilfe an.</para></listitem>
 	</varlistentry>
 
-	      <varlistentry><term><guimenuitem>About</guimenuitem> (Info)</term> <listitem><para>Zeigt kurze
+	      <varlistentry><term><guimenuitem>About (Info)</guimenuitem></term> <listitem><para>Zeigt kurze
 	      Informationen über &app; und die Version an.</para></listitem></varlistentry></variablelist></para>
 	      </section></section></section>
 
@@ -943,10 +920,8 @@
     Spielaufzeichnungen hilfreich, insbesondere bei solchen mit vielen Zweigen wie Eröffnungs- oder Joseki-Wörterbüchern.
     </para>
 
-      <para>Wenn ein Knoten mit übereinstimmendem Text gefunden wird, wechselt die Anzeige im <link linkend=
-      "board-windows">Spielbrettfenster</link> zu diesem.  Der Text wird im <link linkend="board-window-information-pane"
-      >Informationsbereich</link> ausgewählt.  Sie können die Suche später wiederholen, ohne dieses Dialogfeld zu öffnen,
-      indem Sie die entsprechenden Einträge im Menü <guimenu>Edit</guimenu> (Bearbeiten) oder die Tastatur verwenden.
+      <para>Wenn ein Knoten mit übereinstimmendem Text gefunden wird, wechselt die Anzeige im <link linkend="board-windows">Spielbrettfenster</link> zu diesem.  Der Text wird im <link linkend="board-window-information-pane">Informationsbereich</link> ausgewählt.  Sie können die Suche später wiederholen, ohne dieses Dialogfeld zu öffnen,
+      indem Sie die entsprechenden Einträge im Menü <guimenu>Edit (Bearbeiten)</guimenu> oder die Tastatur verwenden.
       </para>
 
       <para>Das Dialogfeld enthält mehrere Elemente:</para>
@@ -962,8 +937,8 @@
 
 	    <para>Sie können auch auf die Schaltfläche <guibutton>Auto-close this dialog</guibutton> (Dieses Dialogfeld
 	    automatisch schließen) klicken. In diesem Fall wird das Dialogfeld nach erfolgreicher Suche ausgeblendet.
-	    Sie können die Suche anschließend mit den Einträgen <guimenuitem>Find Next</guimenuitem> (Abwärts suchen) und
-	    <guimenuitem>Find Previous</guimenuitem> (Aufwärts suchen) im Menü <guimenu>Edit</guimenu> (Bearbeiten) oder
+	    Sie können die Suche anschließend mit den Einträgen <guimenuitem>Find Next (Abwärts suchen)</guimenuitem> und
+	    <guimenuitem>Find Previous (Aufwärts suchen)</guimenuitem> im Menü <guimenu>Edit (Bearbeiten)</guimenu> oder
 	    mithilfe der Tastenkombinationen <keycap>STRG+G</keycap> und <keycap>UMSCHALT+STRG+G</keycap> fortsetzen.
 	    </para></listitem></varlistentry>
 
@@ -1067,7 +1042,7 @@
 	      <table frame="none"><title>Gültige Werte für <guilabel>Game result</guilabel> (Spielergebnis)</title>
 	      <tgroup cols="2"><thead><row><entry>Wert</entry> <entry>Bedeutung</entry></row></thead>
 
-		  <tbody><row><entry>Void</entry> (Leer) <entry>Es steht noch kein Ergebnis fest (das Spiel wurde noch
+		  <tbody><row><entry>Void (Leer) </entry> <entry>Es steht noch kein Ergebnis fest (das Spiel wurde noch
 		  nicht beendet), oder es gibt kein Ergebnis (z.B. bei Problemen).</entry></row>
 
 		    <row><entry>0 <emphasis>oder</emphasis> Draw</entry> <entry>Das Spiel endete unentschieden, d.h., es
@@ -1118,16 +1093,15 @@
 
   <chapter id="preferences"><title>Einstellungen</title> <para>Klicken Sie zum Konfigurieren von &app; auf die
   Schaltfläche <guibutton>Preferences</guibutton> (Einstellungen) im <link linkend="when-start">Fenster Control Center
-  </link>, oder wählen Sie den Menüeintrag <menuchoice><guimenu>Edit</guimenu> (Bearbeiten) <guimenuitem>Preferences
-  </guimenuitem> (Einstellungen)</menuchoice> aus.</para>
+  </link>, oder wählen Sie den Menüeintrag <menuchoice><guimenu>Edit (Bearbeiten)</guimenu> <guimenuitem>Preferences
+   (Einstellungen)</guimenuitem></menuchoice> aus.</para>
 
     <para>Das Dialogfeld <guilabel>Preferences</guilabel> (Einstellungen) wird angezeigt.  Es enthält folgende
     Kategorien:</para>
 
     <itemizedlist><listitem><para>General (Allgemein)
 
-	  <itemizedlist><listitem><para><link linkend="preferences-gtk-ui">Interface (Oberfläche)</link></para></listitem
-	  ></itemizedlist></para></listitem>
+	  <itemizedlist><listitem><para><link linkend="preferences-gtk-ui">Interface (Oberfläche)</link></para></listitem></itemizedlist></para></listitem>
 
       <listitem><para>Bearbeitung &amp; Ansicht
 
@@ -1173,15 +1147,15 @@
 	Typen von Symbolleisten einen Stil festlegen.  An dieser Stelle können Sie die Symbolleisten auch wieder auf die
 	Standardeinstellungen für den Desktop zurücksetzen.</para></listitem></varlistentry></variablelist></section>
 
-    <section id="preferences-game-tree"><title>Game Tree</title> (Spielverlauf) <para>Hier können Sie die Darstellung und
+    <section id="preferences-game-tree"><title>Game Tree (Spielverlauf)</title> <para>Hier können Sie die Darstellung und
     das Verhalten der <link linkend="game-tree-view">Spielverlaufsansicht</link> anpassen.</para>
 
       <variablelist><varlistentry><term><guilabel>Show Game Tree</guilabel> (Spielverlauf anzeigen)</term> <listitem>
       <para>Sie können festlegen, ob die Spielverlaufsansicht standardmäßig in den <link linkend="board-windows">
       Spielbrettfenstern</link> angezeigt werden soll.  Wenn Sie <guilabel>Automatically</guilabel> (Automatisch)
       auswählen, wird sie angezeigt, wenn die Spielaufzeichnung mehr Zweige als den Hauptzweig enthält.  Sie können diese
-      Ansicht aber in jedem Fall manuell mit dem Menüeintrag <menuchoice><guimenu>View</guimenu> (Ansicht) <guimenuitem>
-      Game Tree</guimenuitem> (Spielverlauf)</menuchoice> anzeigen.  In diesem Fall wird die automatische Anzeige
+      Ansicht aber in jedem Fall manuell mit dem Menüeintrag <menuchoice><guimenu>View (Ansicht)</guimenu> <guimenuitem>
+      Game Tree (Spielverlauf)</guimenuitem></menuchoice> anzeigen.  In diesem Fall wird die automatische Anzeige
       deaktiviert, auch wenn die entsprechende Option ausgewählt wurde.</para></listitem></varlistentry>
 
 	<varlistentry><term><guilabel>Track Tree’s Current Node</guilabel> (Aktuellem Knoten im Verlauf folgen)</term>
@@ -1189,8 +1163,8 @@
 	Neupositionierung durchführen soll.  Im automatischen Modus wird der aktuelle Knoten nur dann verfolgt, wenn er
 	bereits angezeigt wurde.  Dieser Modus verhindert den Bildlauf, wenn Sie einen Bildlauf zu einer anderen Stelle
 	im Spielverlauf durchgeführt haben, die den aktuellen Knoten nicht enthält.  Sie können jederzeit den aktuellen
-	Knoten anzeigen, indem Sie den Menüeintrag <menuchoice><guimenu>View</guimenu> (Ansicht) <guimenuitem>Recenter on
-	Current Node</guimenuitem> (Aktuellen Knoten anzeigen)</menuchoice> auswählen.</para>
+	Knoten anzeigen, indem Sie den Menüeintrag <menuchoice><guimenu>View (Ansicht)</guimenu> <guimenuitem>Recenter on
+	Current Node (Aktuellen Knoten anzeigen)</guimenuitem></menuchoice> auswählen.</para>
 
 	    <para>Sie können außerdem auswählen, ob bei der Verfolgung der kleinstmögliche Bildlauf durchgeführt werden
 	    soll (dabei ist der aktuelle Knoten in der Nähe des Randes) oder ob der aktuelle Knoten immer in der Mitte
@@ -1202,7 +1176,7 @@
 	Sie in der <link linkend="game-tree-view">Beschreibung der Ansicht</link>.  Sie können Tooltipps deaktivieren,
 	wenn sie Sie stören.</para></listitem></varlistentry></variablelist></section>
 
-    <section id="preferences-gtp-engines"><title>GTP Engines</title> (GTP-Programme) <para>Auf dieser Seite werden
+    <section id="preferences-gtp-engines"><title>GTP Engines (GTP-Programme)</title> <para>Auf dieser Seite werden
     sämtliche in &app; registrierte Spielprogramme angezeigt.  Sie können neue Programme registrieren und Informationen
     zu vorhandenen Einträgen ändern.</para>
 
@@ -1267,8 +1241,7 @@
 	Programms.</para>
 
 	      <para>Die Befehlszeile für <ulink type="http" url="http://www.gnugo.org/gnugo.html"><application>GNU Go
-	      </application></ulink> sollte z.B. folgendermaßen aussehen (beachten Sie die doppelten Bindestriche):</para
-	      >
+	      </application></ulink> sollte z.B. folgendermaßen aussehen (beachten Sie die doppelten Bindestriche):</para>
 
 	      <para><command>gnugo --mode gtp --quiet</command></para>
 
@@ -1285,7 +1258,7 @@
 	  wird in diesem Feld als <firstterm>Escapezeichen</firstterm> verwendet).</para></listitem></varlistentry>
 	  </variablelist></section></section>
 
-    <section id="preferences-saving-game-records"><title>Saving Game Records</title> (Spielaufzeichnungen speichern)
+    <section id="preferences-saving-game-records"><title>Saving Game Records (Spielaufzeichnungen speichern) </title>
     <para>Derzeit können Sie hier lediglich angeben, ob die Spielaufzeichnungen in UTF-8 gespeichert werden sollen oder
     ob die ursprüngliche Kodierung beibehalten werden soll.  Es wird die erste Option empfohlen, da in UTF-8 sämtliche
     Zeichen kodiert werden können und da Quarry in UTF-8 kodierte Spielaufzeichnungen schneller lädt als solche mit
@@ -1293,17 +1266,17 @@
     Editor/Viewer verwenden, der UTF-8 nur mäßig unterstützt, oder wenn diese Kodierung für die Weiterverteilung
     erforderlich ist.</para></section>
 
-    <section id="preferences-go-board-appearance"><title>Go Board Appearance</title> (Go-Brettdarstellung) <para>Sorry,
+    <section id="preferences-go-board-appearance"><title>Go Board Appearance (Go-Brettdarstellung)</title> <para>Sorry,
     noch keine Dokumentation… <!-- FIXME --></para></section>
 
-    <section id="preferences-amazons-board-appearance"><title>Amazons Board Appearance</title> (Amazons-Brettdarstellung)
+    <section id="preferences-amazons-board-appearance"><title>Amazons Board Appearance (Amazons-Brettdarstellung) </title>
     <para>Sorry, noch keine Dokumentation… <!-- FIXME --></para></section>
 
-    <section id="preferences-reversi-board-appearance"><title>Reversi Board Appearance</title> (Reversi-Brettdarstellung)
+    <section id="preferences-reversi-board-appearance"><title>Reversi Board Appearance (Reversi-Brettdarstellung) </title>
     <para>Sorry, noch keine Dokumentation… <!-- FIXME --></para></section></chapter>
 
-  &AUTHORS; &FDL;</book>
-
+  &AUTHORS; &FDL;
+</book>
 <!--
     Local Variables:
     tab-width: 8
@@ -1311,4 +1284,3 @@
     fill-column: 90
     End:
   -->
-
